@@ -1,0 +1,207 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==============================================================
+    // CORE SECURITY & ROLE HELPER FUNCTIONS
+    // ==============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.role == 'admin' ||
+        request.auth.token.admin == true ||
+        request.auth.token.superAdmin == true ||
+        (request.auth.token.email != null && (
+          request.auth.token.email == 'admin@brainstormacademy.in' ||
+          request.auth.token.email == 'admin@brainstorm.edu'
+        )) ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    function isApprovedTeacher() {
+      return isAuthenticated() && (
+        request.auth.token.role == 'teacher' ||
+        request.auth.token.teacherApproved == true ||
+        isAdmin() ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher')
+      );
+    }
+
+    function isStaff() {
+      return isAdmin() || isApprovedTeacher();
+    }
+
+    function isCourseFree(courseId) {
+      return exists(/databases/$(database)/documents/courses/$(courseId)) && (
+        get(/databases/$(database)/documents/courses/$(courseId)).data.price == 0 ||
+        get(/databases/$(database)/documents/courses/$(courseId)).data.isFree == true
+      );
+    }
+
+    // ==============================================================
+    // 1. USERS COLLECTION
+    // ==============================================================
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isStaff();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ==============================================================
+    // 2. COURSES & CURRICULUM
+    // ==============================================================
+    match /courses/{courseId} {
+      allow read: if true;
+      allow create, update: if isStaff();
+      allow delete: if isAdmin();
+    }
+
+    match /chapters/{chapterId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    match /lessons/{lessonId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    // ==============================================================
+    // 3. ENROLLMENTS
+    // ==============================================================
+    match /enrollments/{enrollmentId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow create: if isStaff() || (isAuthenticated() && request.auth.uid == request.resource.data.userId);
+      allow update: if isStaff() || (isAuthenticated() && request.auth.uid == resource.data.userId);
+      allow delete: if isAdmin();
+    }
+
+    // ==============================================================
+    // 4. PAYMENTS & TRANSACTIONS
+    // ==============================================================
+    match /payments/{paymentId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update, delete: if isAdmin();
+    }
+
+    // ==============================================================
+    // 5. TEST ATTEMPTS & SCORES
+    // ==============================================================
+    match /testAttempts/{attemptId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow delete: if isAdmin();
+    }
+
+    match /test_attempts/{attemptId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow delete: if isAdmin();
+    }
+
+    // Tests & Question Banks
+    match /tests/{testId} {
+      allow read: if true;
+      allow create, update, delete: if isStaff();
+    }
+
+    // ==============================================================
+    // 6. ASSIGNMENTS & SUBMISSIONS
+    // ==============================================================
+    match /assignments/{assignmentId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isStaff();
+    }
+
+    match /assignmentSubmissions/{submissionId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update: if isStaff() || (isAuthenticated() && request.auth.uid == resource.data.userId);
+      allow delete: if isAdmin();
+    }
+
+    // ==============================================================
+    // 7. STUDY MATERIALS & LIVE CLASSES
+    // ==============================================================
+    match /studyMaterials/{materialId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated() || isStaff();
+      allow delete: if isStaff();
+    }
+
+    match /classes/{classId} {
+      allow read: if isAuthenticated();
+      allow write: if isStaff();
+    }
+
+    // ==============================================================
+    // 8. DOUBTS & ACADEMIC SUPPORT
+    // ==============================================================
+    match /doubts/{doubtId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update: if isAuthenticated() && (request.auth.uid == resource.data.userId || isStaff());
+      allow delete: if isAdmin();
+    }
+
+    // ==============================================================
+    // 9. IN-APP NOTIFICATIONS & PREFERENCES
+    // ==============================================================
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAuthenticated();
+      allow delete: if isAdmin();
+    }
+
+    match /notificationPreferences/{userId} {
+      allow read, write: if isAuthenticated() && (request.auth.uid == userId || isStaff());
+    }
+
+    // ==============================================================
+    // 10. CATEGORIES & SUBJECTS
+    // ==============================================================
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    match /subjects/{subjectId} {
+      allow read: if true;
+      allow write: if isStaff();
+    }
+
+    // ==============================================================
+    // 11. AUDIT LOGS & SETTINGS
+    // ==============================================================
+    match /auditLogs/{logId} {
+      allow read, create: if isAuthenticated();
+      allow update, delete: if false;
+    }
+
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ==============================================================
+    // DEFAULT DENY FOR ANY UNMATCHED PATH
+    // ==============================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

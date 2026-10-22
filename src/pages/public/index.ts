@@ -1,0 +1,14 @@
+export { default as NotFoundPage } from './NotFoundPage';
+export { default as UnauthorizedPage } from './UnauthorizedPage';
+export { default as TeacherPendingPage } from './TeacherPendingPage';
+export { default as HomePage } from '../HomePage';
+export { default as SchoolCoursesPage } from '../SchoolCoursesPage';
+export { default as ClassPage } from '../ClassPage';
+export { default as CompetitiveExamsPage } from '../CompetitiveExamsPage';
+export { default as AmuJamiaPage } from '../AmuJamiaPage';
+export { default as CourseDetailsPage } from '../CourseDetailsPage';
+export { default as StudyMaterialsPage } from '../StudyMaterialsPage';
+export { default as MockTestsPage } from '../MockTestsPage';
+export { default as LoginPage } from '../auth/LoginPage';
+export { default as RegisterPage } from '../auth/RegisterPage';
+export { default as ForgotPasswordPage } from '../auth/ForgotPasswordPage';

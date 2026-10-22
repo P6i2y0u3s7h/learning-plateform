@@ -1,0 +1,16 @@
+export { default as StudentOverview } from '../dashboard/student/StudentOverview';
+export { default as StudentCourses } from '../dashboard/student/StudentCourses';
+export { default as StudentStudyMaterials } from '../dashboard/student/StudentStudyMaterials';
+export { default as StudentUpcomingClasses } from '../dashboard/student/StudentUpcomingClasses';
+export { default as StudentPracticeTests } from '../dashboard/student/StudentPracticeTests';
+export { default as StudentAssignments } from '../dashboard/student/StudentAssignments';
+export { default as StudentTestResults } from '../dashboard/student/StudentTestResults';
+export { default as StudentProgressReports } from '../dashboard/student/StudentProgressReports';
+export { default as StudentNotifications } from '../dashboard/student/StudentNotifications';
+export { default as StudentAskDoubt } from '../dashboard/student/StudentAskDoubt';
+export { default as StudentPaymentHistory } from '../dashboard/student/StudentPaymentHistory';
+export { default as StudentGenericView } from '../dashboard/student/StudentGenericView';
+export { default as StudentClassroom } from '../dashboard/student/StudentClassroom';
+export { default as StudentExamRoom } from '../dashboard/student/StudentExamRoom';
+export { default as TestResultDetail } from '../dashboard/student/TestResultDetail';
+export { default as ProfilePage } from './ProfilePage';

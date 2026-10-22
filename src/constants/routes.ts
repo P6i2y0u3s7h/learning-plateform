@@ -1,0 +1,50 @@
+export const ROUTES = {
+  HOME: '/',
+  SCHOOL_COURSES: '/school-courses',
+  CLASS_PAGE: (classId: string = ':classId') => `/school-courses/${classId}`,
+  COMPETITIVE_EXAMS: '/competitive-exams',
+  AMU_JAMIA: '/amu-jamia',
+  COURSE_DETAILS: (courseId: string = ':courseId') => `/courses/${courseId}`,
+  STUDY_MATERIALS: '/study-materials',
+  MOCK_TESTS: '/mock-tests',
+
+  // Auth
+  LOGIN: '/login',
+  REGISTER: '/register',
+  FORGOT_PASSWORD: '/forgot-password',
+
+  // Dashboards
+  STUDENT: {
+    ROOT: '/dashboard/student',
+    COURSES: '/dashboard/student/courses',
+    TESTS: '/dashboard/student/tests',
+    RESULTS: '/dashboard/student/results',
+    MATERIALS: '/dashboard/student/materials',
+    CLASSES: '/dashboard/student/classes',
+    PROGRESS: '/dashboard/student/progress',
+    DOUBTS: '/dashboard/student/doubts',
+    SETTINGS: '/dashboard/student/settings',
+  },
+  TEACHER: {
+    ROOT: '/dashboard/teacher',
+    COURSES: '/dashboard/teacher/courses',
+    MATERIALS: '/dashboard/teacher/materials',
+    LESSONS: '/dashboard/teacher/lessons',
+    ASSIGNMENTS: '/dashboard/teacher/assignments',
+    TESTS: '/dashboard/teacher/tests',
+    DOUBTS: '/dashboard/teacher/doubts',
+    SETTINGS: '/dashboard/teacher/settings',
+  },
+  ADMIN: {
+    ROOT: '/dashboard/admin',
+    STUDENTS: '/dashboard/admin/students',
+    TEACHERS: '/dashboard/admin/teachers',
+    ADMINS: '/dashboard/admin/admins',
+    COURSES: '/dashboard/admin/courses',
+    SUBJECTS: '/dashboard/admin/subjects',
+    MATERIALS: '/dashboard/admin/materials',
+    TESTS: '/dashboard/admin/tests',
+    REPORTS: '/dashboard/admin/reports',
+    SETTINGS: '/dashboard/admin/settings',
+  },
+} as const;

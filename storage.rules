@@ -1,0 +1,63 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // ==============================================================
+    // HELPER SECURITY FUNCTIONS
+    // ==============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isValidStudyMaterial() {
+      return request.resource.size <= 25 * 1024 * 1024; // Max 25MB
+    }
+
+    // ==============================================================
+    // 1. PUBLIC AVATARS & PROFILE PICTURES (Max 5MB images)
+    // ==============================================================
+    match /avatars/{userId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if isAuthenticated()
+        && request.resource.size <= 5 * 1024 * 1024;
+    }
+
+    // ==============================================================
+    // 2. STUDY MATERIALS & CHAPTER NOTES (PDFs, Worksheets, Images)
+    // ==============================================================
+    match /study-materials/{allPaths=**} {
+      allow read: if true;
+      allow create, update: if isValidStudyMaterial();
+      allow delete: if isAuthenticated();
+    }
+
+    match /study_materials/{allPaths=**} {
+      allow read: if true;
+      allow create, update: if isValidStudyMaterial();
+      allow delete: if isAuthenticated();
+    }
+
+    // ==============================================================
+    // 3. STUDENT ASSIGNMENT SUBMISSIONS (Max 20MB)
+    // ==============================================================
+    match /assignments/{allPaths=**} {
+      allow read, write: if isAuthenticated()
+        && request.resource.size <= 20 * 1024 * 1024;
+    }
+
+    // ==============================================================
+    // 4. STUDENT DOUBTS ATTACHMENTS (Images, Max 10MB)
+    // ==============================================================
+    match /doubts/{allPaths=**} {
+      allow read, write: if isAuthenticated()
+        && request.resource.size <= 10 * 1024 * 1024;
+    }
+
+    // ==============================================================
+    // 5. GENERAL UPLOADS
+    // ==============================================================
+    match /{allPaths=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

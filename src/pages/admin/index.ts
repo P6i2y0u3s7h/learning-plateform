@@ -1,0 +1,17 @@
+export { default as AdminOverview } from '../dashboard/admin/AdminOverview';
+export { default as AdminStudents } from '../dashboard/admin/AdminStudents';
+export { default as AdminTeachers } from '../dashboard/admin/AdminTeachers';
+export { default as AdminCourses } from '../dashboard/admin/AdminCourses';
+export { default as AdminCurriculum } from '../dashboard/admin/AdminCurriculum';
+export { default as AdminMaterials } from '../dashboard/admin/AdminMaterials';
+export { default as AdminTests } from '../dashboard/admin/AdminTests';
+export { default as AdminAssignments } from '../dashboard/admin/AdminAssignments';
+export { default as AdminEnrollments } from '../dashboard/admin/AdminEnrollments';
+export { default as AdminPayments } from '../dashboard/admin/AdminPayments';
+export { default as AdminNotifications } from '../dashboard/admin/AdminNotifications';
+export { default as AdminDoubts } from '../dashboard/admin/AdminDoubts';
+export { default as AdminReports } from '../dashboard/admin/AdminReports';
+export { default as AdminSettings } from '../dashboard/admin/AdminSettings';
+export { default as AdminAuditLogs } from '../dashboard/admin/AdminAuditLogs';
+export { default as AdminViews } from '../dashboard/admin/AdminViews';
+export { default as AdminAdmins } from '../dashboard/admin/AdminAdmins';

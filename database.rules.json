@@ -1,0 +1,54 @@
+{
+  "rules": {
+    "users": {
+      // Admin can list all users; non-admins can only read their own $uid below
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$uid": {
+        // Read: Authenticated user can read their own profile, OR an admin can read any user profile
+        ".read": "auth != null && (auth.uid === $uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+
+        // Write:
+        // 1. Existing Admin can create, modify, or delete any user record (including changing roles/status).
+        // 2. User self-registration: allowed ONLY if new record, role is strictly 'student', status is 'active', and uid matches auth.uid.
+        // 3. User self-update: allowed ONLY on existing record, cannot change role, status, or uid.
+        ".write": "auth != null && (
+          // Admin privileged access
+          root.child('users').child(auth.uid).child('role').val() === 'admin'
+          // New student self-registration
+          || (auth.uid === $uid && !data.exists() && newData.child('role').val() === 'student' && newData.child('status').val() === 'active' && newData.child('uid').val() === auth.uid)
+          // Self-profile updates (name, phone, classGrade, etc.): strictly preserves role, status, and uid
+          || (auth.uid === $uid && data.exists() && newData.child('role').val() === data.child('role').val() && newData.child('status').val() === data.child('status').val() && newData.child('uid').val() === data.child('uid').val())
+        )",
+
+        // Validate structure and integrity
+        ".validate": "newData.hasChildren(['uid', 'email', 'role', 'status'])
+          && (newData.child('role').val() === 'admin' || newData.child('role').val() === 'teacher' || newData.child('role').val() === 'student')
+          && (newData.child('status').val() === 'active' || newData.child('status').val() === 'disabled')",
+
+        "uid": {
+          ".validate": "newData.val() === $uid"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().length > 3"
+        },
+        "role": {
+          ".validate": "newData.val() === 'admin' || newData.val() === 'teacher' || newData.val() === 'student'"
+        },
+        "status": {
+          ".validate": "newData.val() === 'active' || newData.val() === 'disabled'"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "updatedAt": {
+          ".validate": "!newData.exists() || newData.isNumber()"
+        }
+      }
+    },
+    // Default fallback: deny all other paths
+    "$other": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}

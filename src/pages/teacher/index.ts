@@ -1,0 +1,11 @@
+export { default as TeacherOverview } from '../dashboard/teacher/TeacherOverview';
+export { default as TeacherCourses } from '../dashboard/teacher/TeacherCourses';
+export { default as TeacherMaterials } from '../dashboard/teacher/TeacherMaterials';
+export { default as TeacherLessons } from '../dashboard/teacher/TeacherLessons';
+export { default as TeacherTests } from '../dashboard/teacher/TeacherTests';
+export { default as TeacherAssignments } from '../dashboard/teacher/TeacherAssignments';
+export { default as TeacherDoubts } from '../dashboard/teacher/TeacherDoubts';
+export { default as TeacherPerformance } from '../dashboard/teacher/TeacherPerformance';
+export { default as TeacherNotifications } from '../dashboard/teacher/TeacherNotifications';
+export { default as TeacherSettings } from '../dashboard/teacher/TeacherSettings';
+export { default as TeacherViews } from '../dashboard/teacher/TeacherViews';
