@@ -104,58 +104,62 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
   }, [role]);
 
   const renderContent = (isMobile = false) => (
-    <div className={`flex flex-col h-full bg-[#060C17] text-white border-r border-white/10 ${!collapsed || isMobile ? 'w-64' : 'w-16'} transition-all duration-300`}>
-      {/* Brand Wordmark Header */}
-      <div className="flex items-center gap-3 px-3.5 py-4 border-b border-white/10">
-        <Link to="/" className="flex-shrink-0 group" title="Brainstorm Academy">
-          <div className="w-10 h-10 rounded-xl overflow-hidden bg-black flex-shrink-0 flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(204,255,0,0.2)]">
-            <img
-              src={brandLogo}
-              alt="Brainstorm Academy Logo"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-        </Link>
-        {(!collapsed || isMobile) && (
-          <div className="min-w-0 flex flex-col justify-center">
-            <div className="flex items-center gap-1 leading-tight">
-              <span className="font-display font-black text-white text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap">
-                BRAINSTORM
-              </span>
-              <span className="font-display font-black text-[#CCFF00] text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap drop-shadow-[0_0_12px_rgba(204,255,0,0.4)]">
-                ACADEMY.
-              </span>
+    <div className={`flex flex-col h-full bg-[#060C17] text-white border-r border-white/10 ${!collapsed || isMobile ? 'w-64' : 'w-16'} transition-all duration-300 overflow-hidden`}>
+      {/* 1. Header & User Profile section (fixed at top of sidebar) */}
+      <div className="flex-shrink-0">
+        {/* Brand Wordmark Header */}
+        <div className="flex items-center gap-3 px-3.5 py-4 border-b border-white/10">
+          <Link to="/" className="flex-shrink-0 group" title="Brainstorm Academy">
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-black flex-shrink-0 flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(204,255,0,0.2)]">
+              <img
+                src={brandLogo}
+                alt="Brainstorm Academy Logo"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
-            <span className="font-mono text-[7px] sm:text-[7.5px] text-[#38BDF8] tracking-[0.18em] uppercase block font-bold whitespace-nowrap mt-0.5">
-              LEARN TODAY. LEAD TOMORROW.
-            </span>
-            <div className="flex items-center gap-1.5 mt-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-              <span className="font-mono text-[8px] text-[#CCFF00] uppercase tracking-widest font-bold">
-                [ {roleLabel} ]
+          </Link>
+          {(!collapsed || isMobile) && (
+            <div className="min-w-0 flex flex-col justify-center">
+              <div className="flex items-center gap-1 leading-tight">
+                <span className="font-display font-black text-white text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap">
+                  BRAINSTORM
+                </span>
+                <span className="font-display font-black text-[#CCFF00] text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap drop-shadow-[0_0_12px_rgba(204,255,0,0.4)]">
+                  ACADEMY.
+                </span>
+              </div>
+              <span className="font-mono text-[7px] sm:text-[7.5px] text-[#38BDF8] tracking-[0.18em] uppercase block font-bold whitespace-nowrap mt-0.5">
+                LEARN TODAY. LEAD TOMORROW.
               </span>
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
+                <span className="font-mono text-[8px] text-[#CCFF00] uppercase tracking-widest font-bold">
+                  [ {roleLabel} ]
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* User Info Strip with Cyber Squircle Avatar */}
+        {(!collapsed || isMobile) && (
+          <div className="px-3.5 py-3 border-b border-white/10 bg-white/[0.02]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#CCFF00] via-[#10B981] to-[#047857] text-black border border-[#CCFF00]/40 flex items-center justify-center flex-shrink-0 font-mono text-xs font-black shadow-[0_0_10px_rgba(204,255,0,0.25)]">
+                {(user.name || 'U').charAt(0).toUpperCase()}
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-bold text-white truncate font-sans">{user.name}</p>
+                <p className="font-mono text-[9.5px] text-slate-400 truncate tracking-wide">{user.email}</p>
+              </div>
             </div>
           </div>
         )}
       </div>
 
-      {/* User Info Strip with Cyber Squircle Avatar */}
-      {(!collapsed || isMobile) && (
-        <div className="px-3.5 py-3 border-b border-white/10 bg-white/[0.02]">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#CCFF00] via-[#10B981] to-[#047857] text-black border border-[#CCFF00]/40 flex items-center justify-center flex-shrink-0 font-mono text-xs font-black shadow-[0_0_10px_rgba(204,255,0,0.25)]">
-              {(user.name || 'U').charAt(0).toUpperCase()}
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs font-bold text-white truncate font-sans">{user.name}</p>
-              <p className="font-mono text-[9.5px] text-slate-400 truncate tracking-wide">{user.email}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Navigation Directory with Scrub Monospace Styling */}
-      <div className="flex-1 overflow-y-auto px-2 py-3 space-y-0.5">
+      {/* 2. Navigation Directory with Scrub Monospace Styling */}
+      {/* Independently scrolls between profile section and bottom collapse button */}
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-2 py-3 space-y-0.5 overscroll-contain sidebar-scrollbar">
         {(!collapsed || isMobile) && (
           <div className="px-3 pb-2 pt-1 font-mono text-[9px] text-slate-500 uppercase tracking-[0.2em]">
             NAVIGATION INDEX
@@ -197,9 +201,9 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
         })}
       </div>
 
-      {/* Collapse Toggle Footer */}
+      {/* 3. Collapse Toggle Footer (fixed at bottom of sidebar) */}
       {!isMobile && (
-        <div className="p-3 border-t border-white/10">
+        <div className="flex-shrink-0 p-3 border-t border-white/10 bg-[#060C17]">
           <button
             type="button"
             onClick={() => setCollapsed(!collapsed)}
@@ -234,15 +238,15 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
       {/* Mobile Backdrop & Drawer */}
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-black/70 backdrop-blur-sm">
-          <div className="fixed inset-y-0 left-0 w-72 z-50 animate-in slide-in-from-left duration-200">
+          <div className="fixed inset-y-0 left-0 w-72 h-full z-50 animate-in slide-in-from-left duration-200">
             {renderContent(true)}
           </div>
           <div className="w-full h-full" onClick={() => setMobileOpen(false)} />
         </div>
       )}
 
-      {/* Desktop Persistent Sidebar */}
-      <aside className="hidden lg:flex flex-shrink-0 h-screen sticky top-0 z-30">
+      {/* Desktop Persistent Sidebar: fixed-width, full viewport height, independent */}
+      <aside className="hidden lg:flex flex-shrink-0 h-full h-screen h-[100dvh] sticky top-0 z-30">
         {renderContent(false)}
       </aside>
     </>

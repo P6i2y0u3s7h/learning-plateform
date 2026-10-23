@@ -31,12 +31,14 @@ export default function DashboardLayout() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#07080D] text-slate-100 scrub-grid-bg relative overflow-x-hidden">
+    <div className="flex h-screen h-[100dvh] w-full bg-[#07080D] text-slate-100 scrub-grid-bg relative overflow-hidden">
+      {/* Fixed-width, full-height independent sidebar */}
       <DashboardSidebar role={role} user={currentUser} />
 
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Scrub-inspired Architectural Dashboard Top Bar */}
-        <header className="bg-[#090D16]/95 backdrop-blur-xl text-white border-b border-white/10 px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3 sticky top-0 z-30 shadow-lg">
+      {/* Main Layout Area */}
+      <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
+        {/* Fixed/Sticky Top Header */}
+        <header className="bg-[#090D16]/95 backdrop-blur-xl text-white border-b border-white/10 px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3 flex-shrink-0 sticky top-0 z-20 shadow-lg">
           <div className="flex-1 max-w-sm pl-10 lg:pl-0">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
@@ -79,8 +81,8 @@ export default function DashboardLayout() {
           </div>
         </header>
 
-        {/* Page Content with Hardware Accelerated Scrolling */}
-        <main className="flex-1 overflow-y-auto overflow-x-hidden transform-gpu will-change-scroll">
+        {/* Independently Scrollable Main Content */}
+        <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden transform-gpu will-change-scroll overscroll-contain">
           <div className="p-4 sm:p-6 lg:p-8 max-w-[1400px]">
             <Suspense fallback={<DashboardContentLoadingFallback />}>
               <Outlet />
