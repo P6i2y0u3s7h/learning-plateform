@@ -584,31 +584,6 @@ export const Navbar: React.FC = () => {
                     <LogIn className="w-3.5 h-3.5 text-[#CCFF00] group-hover:text-white transition-colors" />
                     <span>SIGN IN</span>
                   </Link>
-
-                  {/* Get Started Button */}
-                  <Link
-                    to={ROUTES.REGISTER}
-                    className="relative group overflow-hidden inline-flex items-center justify-center gap-2 h-10 px-4 sm:px-5 rounded-full bg-gradient-to-r from-[#CCFF00] via-[#00F59B] to-[#38BDF8] text-black font-mono text-xs font-black tracking-wider uppercase transition-all duration-300 shadow-[0_0_20px_rgba(204,255,0,0.35)] hover:shadow-[0_0_35px_rgba(204,255,0,0.65)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer flex-shrink-0 whitespace-nowrap"
-                  >
-                    {/* Animated Shimmer Light Sweep */}
-                    <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none animate-button-shimmer" />
-
-                    {/* Live Radar Beacon Pulse Dot */}
-                    <span className="relative flex h-2 w-2 flex-shrink-0">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-60" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-black" />
-                    </span>
-
-                    {/* Button Label */}
-                    <span className="relative z-10 font-black tracking-widest text-black">
-                      GET STARTED
-                    </span>
-
-                    {/* Arrow Icon Badge */}
-                    <div className="relative z-10 w-4.5 h-4.5 rounded-full bg-black/15 group-hover:bg-black/25 flex items-center justify-center transition-all group-hover:translate-x-0.5 flex-shrink-0">
-                      <ArrowRight className="w-3 h-3 stroke-[3] text-black" />
-                    </div>
-                  </Link>
                 </div>
               )}
 
