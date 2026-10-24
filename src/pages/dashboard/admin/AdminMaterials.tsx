@@ -224,67 +224,65 @@ export const AdminMaterials: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-[#0E121A]/85 backdrop-blur-2xl border border-white/10 p-6 sm:p-8 shadow-2xl">
-        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/50 to-transparent pointer-events-none" />
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#CCFF00] text-[11px] font-mono tracking-widest uppercase">
-              <FileText className="w-3.5 h-3.5" />
-              <span>[ ARCHIVE INDEX · STUDY MATERIALS ]</span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-bold font-display text-white tracking-tight">
-              Study Materials & Notes
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-2xl font-mono">
-              Upload chapter notes, formula sheets, and PDF question banks stored securely in Firebase Storage.
-            </p>
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+        <div className="space-y-1.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
+            <FileText className="w-3.5 h-3.5 text-blue-600" />
+            <span>Study Materials & Notes</span>
           </div>
-
-          <button
-            onClick={() => {
-              setFormData({
-                title: '',
-                subjectName: 'Mathematics',
-                classGrade: 'Class 10',
-                courseTitle: '',
-                fileUrl: '',
-                storagePath: '',
-                fileType: 'pdf',
-                fileSizeMb: 1.5,
-                isPublished: true,
-                isDownloadable: true,
-              });
-              setSelectedFile(null);
-              setFileError(null);
-              setUploadProgress(null);
-              setModalOpen(true);
-            }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold bg-[#CCFF00] text-black hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition cursor-pointer shadow-lg w-fit self-start sm:self-auto"
-          >
-            <Plus className="w-4 h-4" />
-            <span>+ Upload Material</span>
-          </button>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Study Materials & Notes
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 max-w-2xl">
+            Upload chapter notes, formula sheets, and PDF question banks stored securely in Firebase Storage.
+          </p>
         </div>
+
+        <button
+          onClick={() => {
+            setFormData({
+              title: '',
+              subjectName: 'Mathematics',
+              classGrade: 'Class 10',
+              courseTitle: '',
+              fileUrl: '',
+              storagePath: '',
+              fileType: 'pdf',
+              fileSizeMb: 1.5,
+              isPublished: true,
+              isDownloadable: true,
+            });
+            setSelectedFile(null);
+            setFileError(null);
+            setUploadProgress(null);
+            setModalOpen(true);
+          }}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer shadow-sm hover:shadow w-fit self-start sm:self-auto"
+        >
+          <Plus className="w-4 h-4" />
+          <span>+ Upload Material</span>
+        </button>
       </div>
 
       {successMsg && (
-        <div className="p-4 bg-[#CCFF00]/10 border border-[#CCFF00]/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-white font-mono animate-in fade-in">
-          <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-[#CCFF00]" />
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-emerald-800 animate-in fade-in">
+          <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-600" />
           <span>{successMsg}</span>
         </div>
       )}
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-300 font-mono">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-700">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Search Bar */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-4 border border-white/10 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 relative overflow-hidden">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-96">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="search"
             value={searchQuery}
@@ -293,43 +291,41 @@ export const AdminMaterials: React.FC = () => {
               setCurrentPage(1);
             }}
             placeholder="Search documents by title or subject..."
-            className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-[#060C17] border border-white/15 text-white placeholder-slate-500 rounded-xl outline-none font-mono focus:border-[#CCFF00]"
+            className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 rounded-xl outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
           />
         </div>
-        <span className="text-xs font-mono text-slate-400">
-          TOTAL: <strong className="text-[#CCFF00]">{materials.length}</strong> DOCUMENTS
+        <span className="text-xs text-slate-500">
+          TOTAL: <strong className="text-blue-600 font-bold">{materials.length}</strong> DOCUMENTS
         </span>
       </div>
 
       {/* Materials Table */}
       {loading ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-6 border border-white/10 shadow-2xl space-y-3">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-3">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="flex justify-between py-3 border-b border-white/5">
-              <Skeleton className="h-4 w-40 bg-white/5" />
-              <Skeleton className="h-4 w-20 bg-white/5" />
-              <Skeleton className="h-4 w-12 bg-white/5" />
+            <div key={i} className="flex justify-between py-3 border-b border-slate-100">
+              <Skeleton className="h-4 w-40" />
+              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-4 w-12" />
             </div>
           ))}
         </div>
       ) : filteredMaterials.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-12 border border-white/10 text-center shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/30 to-transparent pointer-events-none" />
-          <FileText className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="font-display font-bold text-base text-white mb-1">
+        <div className="bg-white rounded-3xl p-12 border border-slate-200/80 text-center shadow-sm">
+          <FileText className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+          <h3 className="font-bold text-base text-slate-800 mb-1">
             No Study Materials Found
           </h3>
-          <p className="text-xs text-slate-400 font-mono mb-5">
+          <p className="text-xs text-slate-500 mb-5">
             Click "+ Upload Material" to publish notes or formula cards.
           </p>
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden relative">
-            <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/40 to-transparent pointer-events-none" />
+          <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-white/[0.03] border-b border-white/10 text-slate-400 text-[11px] font-mono font-bold uppercase tracking-wider">
+                <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 text-[11px] font-semibold uppercase tracking-wider">
                   <tr>
                     <th className="py-3.5 px-6">Document Title</th>
                     <th className="py-3.5 px-4">Subject</th>
@@ -339,34 +335,34 @@ export const AdminMaterials: React.FC = () => {
                     <th className="py-3.5 px-6 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-slate-300">
+                <tbody className="divide-y divide-slate-100 text-slate-600">
                   {paginatedMaterials.map((m) => (
-                    <tr key={m.id} className="hover:bg-white/[0.03] transition-colors">
-                      <td className="py-4 px-6 font-bold text-sm text-white">
+                    <tr key={m.id} className="hover:bg-slate-50/70 transition-colors">
+                      <td className="py-4 px-6 font-bold text-sm text-slate-900">
                         {m.title}
                         {m.courseTitle && (
-                          <span className="block text-[11px] font-normal font-mono text-slate-400">
+                          <span className="block text-xs font-normal text-slate-500">
                             {m.courseTitle}
                           </span>
                         )}
                       </td>
                       <td className="py-4 px-4">
-                        <span className="text-xs font-mono font-bold text-[#CCFF00] bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
+                        <span className="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200/80 px-2.5 py-0.5 rounded-full">
                           {m.subjectName || 'General'}
                         </span>
                       </td>
-                      <td className="py-4 px-4 text-xs font-mono text-slate-400 uppercase">
+                      <td className="py-4 px-4 text-xs text-slate-500 uppercase">
                         {m.fileType || 'PDF'} ({m.fileSizeMb || 1.5} MB)
                       </td>
                       <td className="py-4 px-4">
                         {m.isDownloadable !== false ? (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-[#CCFF00] bg-[#CCFF00]/10 border border-[#CCFF00]/20 px-2.5 py-0.5 rounded-full">
-                            <Unlock className="w-3 h-3" />
+                          <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                            <Unlock className="w-3 h-3 text-emerald-600" />
                             PERMITTED
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-amber-300 bg-amber-400/10 border border-amber-400/20 px-2.5 py-0.5 rounded-full">
-                            <Lock className="w-3 h-3" />
+                          <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full">
+                            <Lock className="w-3 h-3 text-amber-600" />
                             ONLINE ONLY
                           </span>
                         )}
@@ -374,10 +370,10 @@ export const AdminMaterials: React.FC = () => {
                       <td className="py-4 px-4">
                         <button
                           onClick={() => handleTogglePublish(m)}
-                          className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold transition cursor-pointer border ${
+                          className={`px-3 py-1 rounded-full text-xs font-semibold transition cursor-pointer border ${
                             m.isPublished
-                              ? 'bg-[#CCFF00]/10 border-[#CCFF00]/30 text-[#CCFF00] hover:bg-[#CCFF00]/20'
-                              : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                              ? 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100'
+                              : 'bg-slate-100 border-slate-200 text-slate-600 hover:bg-slate-200'
                           }`}
                         >
                           {m.isPublished ? 'PUBLISHED' : 'HIDDEN'}
@@ -392,7 +388,7 @@ export const AdminMaterials: React.FC = () => {
                               isDownloadable: m.isDownloadable !== false,
                             })
                           }
-                          className="p-2 text-slate-400 hover:text-[#CCFF00] inline-block rounded-lg hover:bg-white/5 transition cursor-pointer"
+                          className="p-2 text-slate-400 hover:text-blue-600 inline-block rounded-lg hover:bg-blue-50 transition cursor-pointer"
                           title="Preview Online"
                         >
                           <Eye className="w-4 h-4" />
@@ -402,7 +398,7 @@ export const AdminMaterials: React.FC = () => {
                             href={m.fileUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="p-2 text-slate-400 hover:text-white inline-block rounded-lg hover:bg-white/5 transition"
+                            className="p-2 text-slate-400 hover:text-blue-600 inline-block rounded-lg hover:bg-blue-50 transition"
                             title="Download File"
                           >
                             <Download className="w-4 h-4" />
@@ -410,7 +406,7 @@ export const AdminMaterials: React.FC = () => {
                         )}
                         <button
                           onClick={() => handleDelete(m)}
-                          className="p-2 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-rose-500/10 transition cursor-pointer"
+                          className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition cursor-pointer"
                           title="Delete Material"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -425,22 +421,22 @@ export const AdminMaterials: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-4 border border-white/10 shadow-2xl">
-              <p className="text-xs font-mono text-slate-400">
-                Page {currentPage} of {totalPages}
+            <div className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm">
+              <p className="text-xs text-slate-500">
+                Page <strong className="text-slate-900">{currentPage}</strong> of <strong className="text-slate-900">{totalPages}</strong>
               </p>
               <div className="flex gap-1.5">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 transition cursor-pointer"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 disabled:opacity-30 transition cursor-pointer"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 transition cursor-pointer"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 disabled:opacity-30 transition cursor-pointer"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -452,61 +448,60 @@ export const AdminMaterials: React.FC = () => {
 
       {/* Upload Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-          <div className="bg-[#0D111A]/95 backdrop-blur-2xl rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-white/15 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/50 to-transparent pointer-events-none" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-slate-200 shadow-2xl relative max-h-[90vh] overflow-y-auto text-slate-800">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <h3 className="font-display font-bold text-lg text-white mb-4">
+            <h3 className="font-bold text-lg text-slate-900 mb-4">
               Upload Study Resource
             </h3>
 
             <form onSubmit={handleCreateMaterial} className="space-y-4 text-xs">
               <div>
-                <label className="block font-mono text-slate-400 mb-1">Document Title *</label>
+                <label className="block font-semibold text-slate-700 mb-1">Document Title *</label>
                 <input
                   type="text"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   placeholder="e.g. Class 10 Physics Formulas & Key Definitions"
-                  className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] font-mono"
+                  className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   required
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-mono text-slate-400 mb-1">Subject</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Subject</label>
                   <input
                     type="text"
                     value={formData.subjectName}
                     onChange={(e) => setFormData({ ...formData, subjectName: e.target.value })}
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] font-mono"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block font-mono text-slate-400 mb-1">Class / Category</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Class / Category</label>
                   <input
                     type="text"
                     value={formData.classGrade}
                     onChange={(e) => setFormData({ ...formData, classGrade: e.target.value })}
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] font-mono"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-mono text-slate-400 mb-1">File Type</label>
+                <label className="block font-semibold text-slate-700 mb-1">File Type</label>
                 <select
                   value={formData.fileType}
                   onChange={(e) => setFormData({ ...formData, fileType: e.target.value as any })}
-                  className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] font-mono"
+                  className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                 >
                   <option value="pdf">PDF Document</option>
                   <option value="formula_sheet">Formula Sheet</option>
@@ -518,11 +513,11 @@ export const AdminMaterials: React.FC = () => {
               </div>
 
               {/* Physical File Upload */}
-              <div className="p-4 bg-[#060C17] border-2 border-dashed border-white/20 rounded-2xl">
+              <div className="p-4 bg-slate-50 border-2 border-dashed border-slate-200 hover:border-blue-400 rounded-2xl transition">
                 <div className="text-center">
-                  <Upload className="w-8 h-8 text-[#CCFF00] mx-auto mb-2 opacity-80" />
+                  <Upload className="w-8 h-8 text-blue-600 mx-auto mb-2 opacity-80" />
                   <label className="cursor-pointer">
-                    <span className="text-xs font-mono font-bold text-[#CCFF00] hover:underline">
+                    <span className="text-xs font-semibold text-blue-600 hover:underline">
                       {selectedFile ? selectedFile.name : 'Select file to upload to Firebase Storage'}
                     </span>
                     <input
@@ -533,24 +528,24 @@ export const AdminMaterials: React.FC = () => {
                       className="hidden"
                     />
                   </label>
-                  <p className="text-[11px] text-slate-500 font-mono mt-1">
+                  <p className="text-[11px] text-slate-500 mt-1">
                     Max size: 25 MB for PDF/Docs, 10 MB for Images. Enforced by Storage Security Rules.
                   </p>
                 </div>
                 {fileError && (
-                  <p className="text-[11px] font-mono font-bold text-rose-400 mt-2 text-center">
+                  <p className="text-[11px] font-semibold text-rose-600 mt-2 text-center">
                     {fileError}
                   </p>
                 )}
                 {uploadProgress !== null && (
                   <div className="mt-3">
-                    <div className="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
+                    <div className="flex justify-between text-[10px] text-slate-500 mb-1">
                       <span>Uploading to Firebase Storage...</span>
                       <span>{uploadProgress}%</span>
                     </div>
-                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                    <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
                       <div
-                        className="bg-[#CCFF00] h-full transition-all duration-300"
+                        className="bg-blue-600 h-full transition-all duration-300"
                         style={{ width: `${uploadProgress}%` }}
                       />
                     </div>
@@ -559,7 +554,7 @@ export const AdminMaterials: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-mono text-slate-400 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Or External Cloud Document URL (Optional)
                 </label>
                 <input
@@ -567,50 +562,50 @@ export const AdminMaterials: React.FC = () => {
                   value={formData.fileUrl}
                   onChange={(e) => setFormData({ ...formData, fileUrl: e.target.value })}
                   placeholder="https://storage.googleapis.com/... or Google Drive"
-                  className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] font-mono"
+                  className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                 />
               </div>
 
               {/* Permissions */}
-              <div className="p-3 bg-[#060C17] border border-white/10 rounded-2xl space-y-2">
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
                 <label className="flex items-center justify-between cursor-pointer">
-                  <span className="font-mono text-white text-xs">Permit Student Download</span>
+                  <span className="text-slate-700 text-xs font-medium">Permit Student Download</span>
                   <input
                     type="checkbox"
                     checked={formData.isDownloadable}
                     onChange={(e) => setFormData({ ...formData, isDownloadable: e.target.checked })}
-                    className="w-4 h-4 rounded text-[#CCFF00] focus:ring-[#CCFF00] accent-[#CCFF00]"
+                    className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 accent-blue-600"
                   />
                 </label>
-                <p className="text-[10px] text-slate-500 font-mono">
+                <p className="text-[10px] text-slate-500">
                   When disabled, students can only read online inside the platform.
                 </p>
 
-                <div className="border-t border-white/10 pt-2">
+                <div className="border-t border-slate-200 pt-2">
                   <label className="flex items-center justify-between cursor-pointer">
-                    <span className="font-mono text-white text-xs">Publish Resource Immediately</span>
+                    <span className="text-slate-700 text-xs font-medium">Publish Resource Immediately</span>
                     <input
                       type="checkbox"
                       checked={formData.isPublished}
                       onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-                      className="w-4 h-4 rounded text-[#CCFF00] focus:ring-[#CCFF00] accent-[#CCFF00]"
+                      className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 accent-blue-600"
                     />
                   </label>
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-4 border-t border-white/10">
+              <div className="flex justify-end gap-2 pt-4 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-white hover:bg-white/5 transition border border-transparent hover:border-white/10"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-mono font-bold bg-[#CCFF00] text-black hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition cursor-pointer disabled:opacity-50"
+                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer disabled:opacity-50 shadow-sm"
                 >
                   {saving ? (
                     <>

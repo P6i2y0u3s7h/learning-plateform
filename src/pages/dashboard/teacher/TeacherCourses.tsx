@@ -271,88 +271,88 @@ export const TeacherCourses: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header and Quick Stats */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] text-[#CCFF00] tracking-widest uppercase font-bold bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/20">
-              FACULTY CURRICULUM
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Faculty Curriculum
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black font-display text-white uppercase tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Assigned Courses & Batches
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-sans mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Manage your teaching batches, syllabus structure, and active student cohorts.
           </p>
         </div>
 
         <button
           onClick={handleOpenCreateModal}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#CCFF00] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(204,255,0,0.2)] cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer self-start sm:self-auto"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-4 h-4 text-white" />
           <span>Create New Course</span>
         </button>
       </div>
 
       {/* Success & Error alerts */}
       {successMsg && (
-        <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-mono flex items-center gap-3">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm flex items-center gap-3">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
           <span>{successMsg}</span>
         </div>
       )}
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-mono flex items-center justify-between">
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs sm:text-sm flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+            <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
             <span>{error}</span>
           </div>
-          <button onClick={() => setError(null)} className="text-slate-400 hover:text-white">
-            <X className="w-3.5 h-3.5" />
+          <button onClick={() => setError(null)} className="text-slate-400 hover:text-slate-600">
+            <X className="w-4 h-4" />
           </button>
         </div>
       )}
 
       {/* KPI Stats Strip */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-4 sm:p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mb-3">
             <BookOpen className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Total Courses</p>
-          <p className="text-2xl font-black font-display text-white mt-0.5">{courses.length}</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Total Courses</p>
+          <p className="text-2xl font-black text-slate-900 mt-0.5">{courses.length}</p>
         </div>
 
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-4 sm:p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mb-3">
             <Users className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Active Students</p>
-          <p className="text-2xl font-black font-display text-white mt-0.5">{totalStudents}</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Active Students</p>
+          <p className="text-2xl font-black text-slate-900 mt-0.5">{totalStudents}</p>
         </div>
 
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-4 sm:p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center mb-3">
             <PlayCircle className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Lectures Published</p>
-          <p className="text-2xl font-black font-display text-white mt-0.5">{totalLessons}</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Lectures Published</p>
+          <p className="text-2xl font-black text-slate-900 mt-0.5">{totalLessons}</p>
         </div>
 
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 border border-[#CCFF00]/20 text-[#CCFF00] flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-4 sm:p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center mb-3">
             <Sparkles className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Live Batches</p>
-          <p className="text-2xl font-black font-display text-white mt-0.5">
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Live Batches</p>
+          <p className="text-2xl font-black text-slate-900 mt-0.5">
             {courses.filter((c) => c.isPublished).length}
           </p>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
           <input
@@ -360,18 +360,18 @@ export const TeacherCourses: React.FC = () => {
             placeholder="Search by title, subject, grade..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 text-xs bg-[#060C17] border border-white/15 focus:border-[#CCFF00] rounded-xl text-white placeholder-slate-500 outline-none transition font-sans"
+            className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-slate-900 placeholder-slate-400 outline-none transition font-sans"
           />
         </div>
 
         <div className="flex items-center gap-3 w-full md:w-auto flex-wrap">
-          <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
-            <Filter className="w-3.5 h-3.5 text-[#CCFF00]" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
+            <Filter className="w-3.5 h-3.5 text-blue-600" />
             <span>Grade:</span>
             <select
               value={gradeFilter}
               onChange={(e) => setGradeFilter(e.target.value)}
-              className="bg-[#060C17] border border-white/15 rounded-lg px-2.5 py-1 text-xs text-white outline-none focus:border-[#CCFF00]"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-xs text-slate-900 outline-none focus:bg-white focus:border-blue-600"
             >
               <option value="All">All Grades</option>
               <option value="Class 9">Class 9</option>
@@ -381,12 +381,12 @@ export const TeacherCourses: React.FC = () => {
             </select>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs font-mono text-slate-400">
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
             <span>Status:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-[#060C17] border border-white/15 rounded-lg px-2.5 py-1 text-xs text-white outline-none focus:border-[#CCFF00]"
+              className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-xs text-slate-900 outline-none focus:bg-white focus:border-blue-600"
             >
               <option value="All">All Status</option>
               <option value="Published">Published</option>
@@ -400,21 +400,21 @@ export const TeacherCourses: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(6)].map((_, i) => (
-            <Skeleton key={i} className="h-64 rounded-3xl bg-white/5" />
+            <Skeleton key={i} className="h-64 rounded-3xl bg-slate-100" />
           ))}
         </div>
       ) : filteredCourses.length === 0 ? (
-        <div className="bg-[#0E121A] border border-white/10 rounded-3xl p-12 text-center space-y-4">
-          <BookOpen className="w-12 h-12 text-slate-600 mx-auto" />
-          <h3 className="font-display font-bold text-lg text-white uppercase">No Courses Found</h3>
-          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-12 text-center space-y-4 shadow-sm">
+          <BookOpen className="w-12 h-12 text-slate-400 mx-auto" />
+          <h3 className="font-bold text-lg text-slate-900">No Courses Found</h3>
+          <p className="text-xs text-slate-500 max-w-sm mx-auto">
             {searchQuery || gradeFilter !== 'All'
               ? 'No courses matched your current filter criteria. Clear filters to see all assigned courses.'
               : 'You have not been assigned any courses yet. Click the button below to add your first course.'}
           </p>
           <button
             onClick={handleOpenCreateModal}
-            className="px-5 py-2 rounded-xl bg-white text-black font-mono font-bold text-xs uppercase hover:bg-[#CCFF00] transition"
+            className="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-semibold text-xs hover:bg-blue-700 transition shadow-sm"
           >
             Create Course
           </button>
@@ -424,17 +424,17 @@ export const TeacherCourses: React.FC = () => {
           {filteredCourses.map((c) => (
             <div
               key={c.id}
-              className="bg-[#0E121A] border border-white/10 hover:border-[#CCFF00]/40 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 shadow-xl group relative"
+              className="bg-white border border-slate-200/80 hover:border-blue-400 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md group relative"
             >
               <div>
                 {/* Badges */}
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="font-mono text-[9px] uppercase font-bold text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/20">
+                    <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 uppercase tracking-wider">
                       {c.subjectName || 'ACADEMIC'}
                     </span>
                     {c.classGrade && (
-                      <span className="font-mono text-[9px] uppercase text-slate-300 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
+                      <span className="text-[10px] font-medium text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
                         {c.classGrade}
                       </span>
                     )}
@@ -442,10 +442,10 @@ export const TeacherCourses: React.FC = () => {
 
                   <button
                     onClick={() => handleTogglePublish(c)}
-                    className={`font-mono text-[9px] uppercase px-2.5 py-0.5 rounded-full font-bold border transition ${
+                    className={`text-[10px] uppercase px-2.5 py-0.5 rounded-full font-bold border transition ${
                       c.isPublished
-                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-rose-500/10 hover:text-rose-300'
-                        : 'bg-amber-500/10 text-amber-400 border-amber-500/20 hover:bg-emerald-500/10 hover:text-emerald-300'
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-rose-50 hover:text-rose-700'
+                        : 'bg-amber-50 text-amber-700 border-amber-200 hover:bg-emerald-50 hover:text-emerald-700'
                     }`}
                     title="Click to toggle publish status"
                   >
@@ -453,57 +453,57 @@ export const TeacherCourses: React.FC = () => {
                   </button>
                 </div>
 
-                <h3 className="font-display font-bold text-base text-white group-hover:text-[#CCFF00] transition-colors line-clamp-1 uppercase">
+                <h3 className="font-bold text-base text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1">
                   {c.title}
                 </h3>
 
-                <p className="text-xs text-slate-400 line-clamp-2 mt-2 font-sans leading-relaxed">
+                <p className="text-xs text-slate-500 line-clamp-2 mt-2 leading-relaxed">
                   {c.description || 'Comprehensive curriculum with video lectures, notes, and tests.'}
                 </p>
 
                 {/* Course Metadata Stats */}
-                <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-white/5 font-mono text-[10px] text-slate-400 text-center">
-                  <div className="bg-white/5 p-2 rounded-xl">
-                    <span className="block text-white font-bold">{c.enrolledStudentsCount || 0}</span>
-                    <span>Students</span>
+                <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-slate-100 text-[11px] text-slate-600 text-center font-medium">
+                  <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <span className="block text-slate-900 font-bold">{c.enrolledStudentsCount || 0}</span>
+                    <span className="text-[10px] text-slate-400">Students</span>
                   </div>
-                  <div className="bg-white/5 p-2 rounded-xl">
-                    <span className="block text-white font-bold">{c.totalLessons || 0}</span>
-                    <span>Lessons</span>
+                  <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <span className="block text-slate-900 font-bold">{c.totalLessons || 0}</span>
+                    <span className="text-[10px] text-slate-400">Lessons</span>
                   </div>
-                  <div className="bg-white/5 p-2 rounded-xl">
-                    <span className="block text-white font-bold">{c.durationHours || 40}h</span>
-                    <span>Duration</span>
+                  <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                    <span className="block text-slate-900 font-bold">{c.durationHours || 40}h</span>
+                    <span className="text-[10px] text-slate-400">Duration</span>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-2">
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                 <Link
                   to={`/courses/${c.id}`}
                   target="_blank"
-                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition"
+                  className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 border border-transparent hover:border-slate-200 transition"
                   title="View Public Page"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <ExternalLink className="w-4 h-4" />
                 </Link>
 
                 <div className="flex items-center gap-2">
                   <Link
                     to="/dashboard/teacher/lessons"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 text-xs font-mono uppercase transition border border-white/10"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold transition border border-slate-200"
                   >
-                    <PlayCircle className="w-3 h-3 text-[#CCFF00]" />
+                    <PlayCircle className="w-3.5 h-3.5 text-blue-600" />
                     <span>Lessons</span>
                   </Link>
 
                   <button
                     onClick={() => handleOpenEditModal(c)}
-                    className="p-2 rounded-xl text-slate-400 hover:text-[#CCFF00] hover:bg-[#CCFF00]/10 border border-transparent hover:border-[#CCFF00]/20 transition"
+                    className="p-2 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-blue-50 border border-transparent hover:border-blue-200 transition"
                     title="Edit Course Settings"
                   >
-                    <Edit2 className="w-3.5 h-3.5" />
+                    <Edit2 className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -514,18 +514,20 @@ export const TeacherCourses: React.FC = () => {
 
       {/* Course Modal (Create / Edit) */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-[#0E121A] border border-white/15 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl relative my-8">
-            <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl relative my-8">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-[#CCFF00]" />
-                <h3 className="font-display font-black text-white text-lg uppercase tracking-tight">
+                <div className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                  <BookOpen className="w-4 h-4" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-lg">
                   {editingCourse ? 'Update Course Details' : 'Create New Teaching Course'}
                 </h3>
               </div>
               <button
                 onClick={() => setModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg transition"
+                className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -533,7 +535,7 @@ export const TeacherCourses: React.FC = () => {
 
             <form onSubmit={handleSaveCourse} className="space-y-4">
               <div>
-                <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                   Course Title *
                 </label>
                 <input
@@ -542,19 +544,19 @@ export const TeacherCourses: React.FC = () => {
                   placeholder="e.g. Complete Class 10 Board Mathematics (Samarth Batch)"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition font-sans"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Subject
                   </label>
                   <select
                     value={formData.subjectName}
                     onChange={(e) => setFormData({ ...formData, subjectName: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition font-sans"
                   >
                     <option value="Mathematics">Mathematics</option>
                     <option value="Physics">Physics</option>
@@ -566,13 +568,13 @@ export const TeacherCourses: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Grade / Target Class
                   </label>
                   <select
                     value={formData.classGrade}
                     onChange={(e) => setFormData({ ...formData, classGrade: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition font-sans"
                   >
                     <option value="Class 9">Class 9</option>
                     <option value="Class 10">Class 10</option>
@@ -586,7 +588,7 @@ export const TeacherCourses: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Stream / Focus
                   </label>
                   <input
@@ -594,12 +596,12 @@ export const TeacherCourses: React.FC = () => {
                     placeholder="e.g. Science PCM / Boards"
                     value={formData.stream}
                     onChange={(e) => setFormData({ ...formData, stream: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition font-sans"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Target Examination
                   </label>
                   <input
@@ -607,13 +609,13 @@ export const TeacherCourses: React.FC = () => {
                     placeholder="e.g. CBSE 2027 Boards"
                     value={formData.targetExam}
                     onChange={(e) => setFormData({ ...formData, targetExam: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition font-sans"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                   Course Description
                 </label>
                 <textarea
@@ -621,13 +623,13 @@ export const TeacherCourses: React.FC = () => {
                   placeholder="Outline topics covered, key highlights, and expected student takeaways..."
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition font-sans resize-none"
                 />
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Duration (Hours)
                   </label>
                   <input
@@ -635,12 +637,12 @@ export const TeacherCourses: React.FC = () => {
                     min="1"
                     value={formData.durationHours}
                     onChange={(e) => setFormData({ ...formData, durationHours: Number(e.target.value) })}
-                    className="w-full px-3 py-2 rounded-xl bg-[#060C17] border border-white/15 text-white text-xs font-mono outline-none"
+                    className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-blue-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Pricing
                   </label>
                   <div className="flex items-center gap-2 mt-2">
@@ -649,16 +651,16 @@ export const TeacherCourses: React.FC = () => {
                       id="isFree"
                       checked={formData.isFree}
                       onChange={(e) => setFormData({ ...formData, isFree: e.target.checked })}
-                      className="accent-[#CCFF00]"
+                      className="accent-blue-600 w-4 h-4"
                     />
-                    <label htmlFor="isFree" className="text-xs font-mono text-slate-300">
+                    <label htmlFor="isFree" className="text-xs text-slate-700 font-medium">
                       100% Free
                     </label>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                     Status
                   </label>
                   <div className="flex items-center gap-2 mt-2">
@@ -667,9 +669,9 @@ export const TeacherCourses: React.FC = () => {
                       id="isPublished"
                       checked={formData.isPublished}
                       onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-                      className="accent-[#CCFF00]"
+                      className="accent-blue-600 w-4 h-4"
                     />
-                    <label htmlFor="isPublished" className="text-xs font-mono text-slate-300">
+                    <label htmlFor="isPublished" className="text-xs text-slate-700 font-medium">
                       Published
                     </label>
                   </div>
@@ -677,9 +679,9 @@ export const TeacherCourses: React.FC = () => {
               </div>
 
               {!formData.isFree && (
-                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-white/5">
+                <div className="grid grid-cols-2 gap-4 pt-2 border-t border-slate-100">
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                    <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                       Course Price (₹)
                     </label>
                     <input
@@ -687,11 +689,11 @@ export const TeacherCourses: React.FC = () => {
                       min="0"
                       value={formData.price}
                       onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#060C17] border border-white/15 text-white text-xs font-mono outline-none"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-blue-600"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+                    <label className="block text-xs font-semibold text-slate-700 uppercase mb-1.5">
                       MRP / Original Price (₹)
                     </label>
                     <input
@@ -699,24 +701,24 @@ export const TeacherCourses: React.FC = () => {
                       min="0"
                       value={formData.originalPrice}
                       onChange={(e) => setFormData({ ...formData, originalPrice: Number(e.target.value) })}
-                      className="w-full px-3 py-2 rounded-xl bg-[#060C17] border border-white/15 text-white text-xs font-mono outline-none"
+                      className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs outline-none focus:bg-white focus:border-blue-600"
                     />
                   </div>
                 </div>
               )}
 
-              <div className="pt-4 flex justify-end gap-3 border-t border-white/10">
+              <div className="pt-4 flex justify-end gap-3 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-5 py-2.5 rounded-xl border border-white/10 text-slate-400 hover:text-white font-mono text-xs uppercase transition"
+                  className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 text-xs font-medium transition cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-6 py-2.5 rounded-xl bg-[#CCFF00] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider transition disabled:opacity-50 flex items-center gap-2 shadow-[0_0_15px_rgba(204,255,0,0.3)] cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition disabled:opacity-50 flex items-center gap-2 shadow-sm cursor-pointer"
                 >
                   {saving && <Loader2 className="w-4 h-4 animate-spin" />}
                   <span>{editingCourse ? 'Save Changes' : 'Create Course'}</span>

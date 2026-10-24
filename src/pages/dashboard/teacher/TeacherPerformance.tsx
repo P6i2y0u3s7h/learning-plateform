@@ -116,28 +116,28 @@ export const TeacherPerformance: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] text-[#CCFF00] tracking-widest uppercase font-bold bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/20">
-              ACADEMIC METRICS & COHORT EVALUATION
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Academic Metrics & Cohort Evaluation
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black font-display text-white uppercase tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Student Performance Matrix
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-sans mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Real-time analytics across test submissions, pass percentages, and individualized learning interventions.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-          <span>Filter Cohort:</span>
+        <div className="flex items-center gap-2 text-xs text-slate-600">
+          <span className="font-medium">Filter Cohort:</span>
           <select
             value={selectedCourse}
             onChange={(e) => setSelectedCourse(e.target.value)}
-            className="bg-[#0E121A] border border-white/15 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#CCFF00]"
+            className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition font-medium"
           >
             <option value="All">All Active Batches</option>
             {courses.map((c) => (
@@ -151,82 +151,82 @@ export const TeacherPerformance: React.FC = () => {
 
       {/* KPI Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 border border-[#CCFF00]/20 text-[#CCFF00] flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center mb-3">
             <TrendingUp className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Cohort Avg. Score</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Cohort Avg. Score</p>
           <div className="flex items-baseline gap-2 mt-0.5">
-            <span className="text-2xl font-black font-display text-white">{metrics.averageScore}%</span>
-            <span className="text-[10px] font-mono text-emerald-400 font-bold">+3.2% vs last term</span>
+            <span className="text-2xl font-black text-slate-900">{metrics.averageScore}%</span>
+            <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">+3.2% vs last term</span>
           </div>
         </div>
 
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mb-3">
             <CheckCircle2 className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Pass Ratio</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Pass Ratio</p>
           <div className="flex items-baseline gap-2 mt-0.5">
-            <span className="text-2xl font-black font-display text-white">{metrics.passRate}%</span>
-            <span className="text-[10px] font-mono text-slate-400">Target: 85%</span>
+            <span className="text-2xl font-black text-slate-900">{metrics.passRate}%</span>
+            <span className="text-[10px] text-slate-500 font-medium">Target: 85%</span>
           </div>
         </div>
 
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-600 flex items-center justify-center mb-3">
             <ClipboardList className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Total Tests Evaluated</p>
-          <p className="text-2xl font-black font-display text-white mt-0.5">{metrics.totalAttempts}</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Total Tests Evaluated</p>
+          <p className="text-2xl font-black text-slate-900 mt-0.5">{metrics.totalAttempts}</p>
         </div>
 
-        <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-5 relative overflow-hidden">
-          <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-3">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-5 shadow-sm relative overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center mb-3">
             <Award className="w-5 h-5" />
           </div>
-          <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Distinction Rate (&gt;90%)</p>
-          <p className="text-2xl font-black font-display text-white mt-0.5">24.5%</p>
+          <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Distinction Rate (&gt;90%)</p>
+          <p className="text-2xl font-black text-slate-900 mt-0.5">24.5%</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Top Performers Leaderboard */}
-        <div className="bg-[#0E121A] border border-white/10 rounded-3xl p-6 sm:p-7 shadow-xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-[#CCFF00]" />
-              <h3 className="font-display font-black text-white text-base uppercase tracking-tight">
+              <Award className="w-5 h-5 text-amber-500" />
+              <h3 className="font-bold text-slate-900 text-base">
                 Top Performing Aspirants
               </h3>
             </div>
-            <span className="font-mono text-[10px] text-slate-400 uppercase">Class Rank</span>
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Class Rank</span>
           </div>
 
-          <div className="divide-y divide-white/5">
+          <div className="divide-y divide-slate-100">
             {topStudents.map((s) => (
               <div key={s.id} className="py-3.5 flex items-center justify-between gap-3 first:pt-0 last:pb-0">
                 <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-mono font-bold text-xs ${
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs ${
                     s.rank === 1
-                      ? 'bg-[#CCFF00] text-black shadow-[0_0_12px_rgba(204,255,0,0.4)]'
+                      ? 'bg-amber-100 text-amber-800 border border-amber-300'
                       : s.rank === 2
-                      ? 'bg-slate-200 text-black'
+                      ? 'bg-slate-100 text-slate-800 border border-slate-300'
                       : s.rank === 3
-                      ? 'bg-amber-600 text-white'
-                      : 'bg-white/5 text-slate-400 border border-white/10'
+                      ? 'bg-orange-100 text-orange-800 border border-orange-300'
+                      : 'bg-slate-50 text-slate-600 border border-slate-200'
                   }`}>
                     #{s.rank}
                   </div>
                   <div>
-                    <p className="font-display font-bold text-white text-xs uppercase">{s.name}</p>
-                    <p className="text-[11px] font-mono text-slate-400">{s.course} • {s.attempts} tests</p>
+                    <p className="font-bold text-slate-900 text-xs">{s.name}</p>
+                    <p className="text-[11px] text-slate-500">{s.course} • {s.attempts} tests</p>
                   </div>
                 </div>
 
                 <div className="text-right">
-                  <span className="font-mono font-bold text-sm text-[#CCFF00]">{s.score}%</span>
-                  <span className="block text-[10px] font-mono text-emerald-400">Consistent</span>
+                  <span className="font-bold text-sm text-blue-600">{s.score}%</span>
+                  <span className="block text-[10px] text-emerald-600 font-medium">Consistent</span>
                 </div>
               </div>
             ))}
@@ -234,37 +234,37 @@ export const TeacherPerformance: React.FC = () => {
         </div>
 
         {/* Conceptual Reinforcement Alert List */}
-        <div className="bg-[#0E121A] border border-white/10 rounded-3xl p-6 sm:p-7 shadow-xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-7 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-amber-400" />
-              <h3 className="font-display font-black text-white text-base uppercase tracking-tight">
+              <AlertTriangle className="w-5 h-5 text-amber-500" />
+              <h3 className="font-bold text-slate-900 text-base">
                 Intervention Recommended
               </h3>
             </div>
-            <span className="font-mono text-[10px] text-amber-400 uppercase bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
+            <span className="text-[10px] font-semibold text-amber-700 uppercase bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
               Needs Attention
             </span>
           </div>
 
-          <p className="text-xs text-slate-400 font-sans">
+          <p className="text-xs text-slate-500">
             Students who scored below 45% in recent practice tests. Review their doubt tickets or share targeted revision notes.
           </p>
 
           <div className="space-y-3 pt-2">
             {studentsNeedingSupport.map((st) => (
-              <div key={st.id} className="p-4 rounded-2xl bg-[#060C17] border border-white/10 flex items-center justify-between gap-3">
+              <div key={st.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-3">
                 <div>
-                  <p className="font-display font-bold text-white text-xs uppercase">{st.name}</p>
-                  <p className="text-[11px] font-mono text-slate-400 mt-0.5">{st.course}</p>
-                  <p className="text-[11px] font-mono text-rose-300 mt-1">Focus Topic: {st.topic}</p>
+                  <p className="font-bold text-slate-900 text-xs">{st.name}</p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{st.course}</p>
+                  <p className="text-[11px] text-rose-600 font-medium mt-1">Focus Topic: {st.topic}</p>
                 </div>
 
                 <div className="text-right flex flex-col items-end gap-1.5">
-                  <span className="font-mono font-bold text-xs text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-md border border-rose-500/20">
+                  <span className="font-bold text-xs text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-200">
                     {st.recentScore}%
                   </span>
-                  <span className="text-[10px] font-mono text-amber-400">{st.status}</span>
+                  <span className="text-[10px] text-amber-600 font-medium">{st.status}</span>
                 </div>
               </div>
             ))}

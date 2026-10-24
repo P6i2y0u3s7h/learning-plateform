@@ -92,41 +92,35 @@ export const StudentTestResults: React.FC = () => {
 
   return (
     <div className="space-y-6 relative">
-      {/* Zero-cost GPU accelerated ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
-
-      {/* Header */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 text-white">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
+      {/* Header - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
 
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-              [ 08 // PERFORMANCE RECORDS ]
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Performance Records
           </div>
-          <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Test Results & Assessment History
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Review your scores, passing ratios, answer accuracy, and time allocation across all attempts.
           </p>
         </div>
 
         <Link
           to="/dashboard/student/tests"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(204,255,0,0.3)] active:scale-95 w-fit"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm active:scale-95 w-fit"
         >
-          <ClipboardList className="w-4 h-4 stroke-[2.5]" />
+          <ClipboardList className="w-4 h-4" />
           <span>Take a Practice Test</span>
         </Link>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-mono shadow-lg">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3 text-xs sm:text-sm shadow-sm">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
@@ -138,21 +132,21 @@ export const StudentTestResults: React.FC = () => {
           label="Total Attempts"
           value={stats.total.toString()}
           sub={stats.total > 0 ? `${stats.passed} tests passed` : 'No attempts recorded'}
-          color="#38BDF8"
+          color="#2563EB"
         />
         <StatCard
           icon={CheckCircle2}
           label="Passed Tests"
           value={stats.passed.toString()}
           sub={stats.total > 0 ? `${Math.round((stats.passed / stats.total) * 100)}% pass rate` : '–'}
-          color="#10B981"
+          color="#16A34A"
         />
         <StatCard
           icon={TrendingUp}
           label="Average Score"
           value={stats.avgScore}
           sub="Across all mock attempts"
-          color="#CCFF00"
+          color="#3B82F6"
         />
         <StatCard
           icon={Award}
@@ -165,9 +159,9 @@ export const StudentTestResults: React.FC = () => {
 
       {/* Test Attempts Table / Cards */}
       {loading ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl p-6 border border-white/10 shadow-xl space-y-4">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">
           {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="flex justify-between items-center py-2 border-b border-white/10">
+            <div key={i} className="flex justify-between items-center py-2 border-b border-slate-100">
               <Skeleton className="h-5 w-48" />
               <Skeleton className="h-5 w-20" />
               <Skeleton className="h-5 w-16" />
@@ -175,32 +169,29 @@ export const StudentTestResults: React.FC = () => {
           ))}
         </div>
       ) : attempts.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 border border-white/10 text-center shadow-2xl relative overflow-hidden">
-          {/* Top specular hairline */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
-          <div className="w-16 h-16 bg-gradient-to-br from-[#CCFF00]/20 to-[#38BDF8]/20 border border-[#CCFF00]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.15)]">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 text-center shadow-sm relative overflow-hidden">
+          <div className="w-16 h-16 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
             <Award className="w-8 h-8" />
           </div>
-          <h3 className="font-mono font-black text-lg sm:text-xl text-white mb-2 tracking-tight">
+          <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-2 tracking-tight">
             No Test Attempts Recorded Yet
           </h3>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono max-w-sm mx-auto mb-6 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto mb-6 leading-relaxed">
             You haven't attempted any mock tests yet. Take an assessment to track your scores, uncover weak spots, and view detailed answer rationales.
           </p>
           <Link
             to="/dashboard/student/tests"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(204,255,0,0.25)] active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm active:scale-95"
           >
             <span>Browse Available Tests</span>
           </Link>
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl border border-white/10 shadow-xl overflow-hidden">
+          <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm font-mono">
-                <thead className="bg-[#060C17] border-b border-white/10 text-slate-400 text-[11px] font-bold uppercase tracking-wider">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 text-[11px] font-semibold uppercase tracking-wider">
                   <tr>
                     <th className="py-3.5 px-4 sm:px-6">Test Title</th>
                     <th className="py-3.5 px-4">Date Taken</th>
@@ -211,29 +202,29 @@ export const StudentTestResults: React.FC = () => {
                     <th className="py-3.5 px-4 sm:px-6 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10 text-slate-200">
+                <tbody className="divide-y divide-slate-100 text-slate-700">
                   {paginatedAttempts.map((att) => {
                     const minutes = Math.round((att.timeSpentSeconds || 0) / 60);
                     const isPass = att.isPassed;
 
                     return (
-                      <tr key={att.id} className="hover:bg-white/[0.03] transition">
-                        <td className="py-4 px-4 sm:px-6 font-bold text-white">
+                      <tr key={att.id} className="hover:bg-slate-50/80 transition">
+                        <td className="py-4 px-4 sm:px-6 font-semibold text-slate-900">
                           {att.testTitle || 'Mock Assessment'}
                         </td>
-                        <td className="py-4 px-4 text-slate-400 text-xs">
+                        <td className="py-4 px-4 text-slate-500 text-xs">
                           {att.startedAt ? new Date(att.startedAt).toLocaleDateString() : 'Recent'}
                         </td>
-                        <td className="py-4 px-4 text-slate-400 text-xs">
+                        <td className="py-4 px-4 text-slate-500 text-xs">
                           {minutes > 0 ? `${minutes} mins` : '< 1 min'}
                         </td>
-                        <td className="py-4 px-4 font-bold text-[#CCFF00]">
+                        <td className="py-4 px-4 font-bold text-blue-700">
                           {att.score} / {att.totalMarks}
                         </td>
                         <td className="py-4 px-4 font-bold">
                           <span
                             className={
-                              isPass ? 'text-emerald-400' : 'text-amber-400'
+                              isPass ? 'text-emerald-600' : 'text-amber-600'
                             }
                           >
                             {att.percentage}%
@@ -241,13 +232,13 @@ export const StudentTestResults: React.FC = () => {
                         </td>
                         <td className="py-4 px-4">
                           {isPass ? (
-                            <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-full">
-                              <CheckCircle2 className="w-3 h-3" />
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                               Passed
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
-                              <XCircle className="w-3 h-3" />
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full">
+                              <XCircle className="w-3 h-3 text-amber-600" />
                               Needs Review
                             </span>
                           )}
@@ -256,7 +247,7 @@ export const StudentTestResults: React.FC = () => {
                           <div className="flex items-center justify-end gap-2">
                             <Link
                               to={`/dashboard/student/test-results/${att.id}`}
-                              className="text-xs font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/15 border border-[#38BDF8]/30 hover:bg-[#38BDF8] hover:text-black px-3 py-1.5 rounded-xl transition"
+                              className="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded-xl transition"
                             >
                               Review Solutions
                             </Link>
@@ -272,16 +263,16 @@ export const StudentTestResults: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl font-mono text-xs text-slate-400">
+            <div className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm text-xs text-slate-500 font-medium">
               <p>
-                Showing page <strong className="text-white">{currentPage}</strong> of{' '}
-                <strong className="text-white">{totalPages}</strong>
+                Showing page <strong className="text-slate-900">{currentPage}</strong> of{' '}
+                <strong className="text-slate-900">{totalPages}</strong>
               </p>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Previous page"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -290,10 +281,10 @@ export const StudentTestResults: React.FC = () => {
                   <button
                     key={p}
                     onClick={() => setCurrentPage(p)}
-                    className={`w-8 h-8 rounded-lg text-xs font-mono font-bold transition ${
+                    className={`w-8 h-8 rounded-lg text-xs font-semibold transition ${
                       currentPage === p
-                        ? 'bg-[#CCFF00] text-black border border-[#CCFF00]'
-                        : 'border border-white/10 text-slate-300 hover:bg-white/5'
+                        ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
+                        : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {p}
@@ -302,7 +293,7 @@ export const StudentTestResults: React.FC = () => {
                 <button
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Next page"
                 >
                   <ChevronRight className="w-4 h-4" />

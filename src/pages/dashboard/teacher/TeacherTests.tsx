@@ -305,99 +305,97 @@ export const TeacherTests: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header Banner - Scrub Aesthetic */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0E121A] via-[#090D14] to-[#04060A] border border-white/10 p-6 sm:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#CCFF00]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#CCFF00] font-mono text-xs uppercase tracking-widest mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-              [ 06 // EVALUATION STUDIO ]
-            </div>
-            <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
-              Online Examination & Quiz Management
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1 tracking-tight">
-              Author timed tests, configure marking rules and question banks, and monitor student evaluation.
-            </p>
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Evaluation Studio
           </div>
-
-          <button
-            onClick={handleOpenCreateModal}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition cursor-pointer shadow-lg active:scale-95 w-fit flex-shrink-0"
-          >
-            <Plus className="w-4 h-4 text-black" />
-            <span>Create New Test</span>
-          </button>
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Online Examination & Quiz Management
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Author timed tests, configure marking rules and question banks, and monitor student evaluation.
+          </p>
         </div>
+
+        <button
+          onClick={handleOpenCreateModal}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer shadow-sm active:scale-95 w-fit flex-shrink-0"
+        >
+          <Plus className="w-4 h-4 text-white" />
+          <span>Create New Test</span>
+        </button>
       </div>
 
       {/* Notifications */}
       {successMsg && (
-        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-emerald-300 font-mono animate-in fade-in">
-          <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-400" />
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-emerald-800">
+          <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-emerald-600" />
           <span>{successMsg}</span>
         </div>
       )}
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-300 font-mono">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-red-700">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Search Bar & Stats */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search test by title, subject, or class..."
-            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#060C17] border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80 font-mono transition"
+            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition"
           />
         </div>
-        <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-          Total Tests: <strong className="text-[#CCFF00] font-bold">{tests.length}</strong>
+        <div className="text-xs text-slate-500 font-medium">
+          Total Tests: <strong className="text-blue-600 font-bold">{tests.length}</strong>
         </div>
       </div>
 
       {/* Test List Table */}
       {loading ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl space-y-4">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="flex justify-between py-3 border-b border-white/5">
-              <Skeleton className="h-5 w-1/3 bg-white/5" />
-              <Skeleton className="h-5 w-20 bg-white/5" />
-              <Skeleton className="h-5 w-16 bg-white/5" />
+            <div key={i} className="flex justify-between py-3 border-b border-slate-100">
+              <Skeleton className="h-5 w-1/3" />
+              <Skeleton className="h-5 w-20" />
+              <Skeleton className="h-5 w-16" />
             </div>
           ))}
         </div>
       ) : filteredTests.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-12 border border-white/10 text-center shadow-2xl">
-          <ClipboardList className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="font-display font-bold text-base text-white mb-1">
+        <div className="bg-white rounded-3xl p-12 border border-slate-200/80 text-center shadow-sm">
+          <ClipboardList className="w-12 h-12 text-slate-400 mx-auto mb-3" />
+          <h3 className="font-bold text-base text-slate-900 mb-1">
             No Examination Tests Found
           </h3>
-          <p className="text-xs text-slate-400 font-mono mb-5">
+          <p className="text-xs text-slate-500 mb-5">
             Click "Create New Test" to build an interactive timed MCQ assessment.
           </p>
           <button
             onClick={handleOpenCreateModal}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create Test</span>
           </button>
         </div>
       ) : (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-white/10 bg-[#060C17]/90 text-slate-400 font-mono uppercase tracking-wider text-[11px]">
+                <tr className="border-b border-slate-200 bg-slate-50 text-slate-500 uppercase tracking-wider text-[11px] font-semibold">
                   <th className="py-4 px-5">Test Title</th>
                   <th className="py-4 px-4">Subject & Class</th>
                   <th className="py-4 px-4">Duration</th>
@@ -407,36 +405,36 @@ export const TeacherTests: React.FC = () => {
                   <th className="py-4 px-5 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 font-medium text-slate-200">
+              <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
                 {filteredTests.map((t) => (
-                  <tr key={t.id} className="hover:bg-white/[0.03] transition">
+                  <tr key={t.id} className="hover:bg-slate-50/70 transition">
                     <td className="py-4 px-5">
-                      <div className="font-bold text-sm text-white line-clamp-1">{t.title}</div>
-                      <div className="text-[11px] text-slate-400 font-mono line-clamp-1 mt-0.5">
+                      <div className="font-bold text-sm text-slate-900 line-clamp-1">{t.title}</div>
+                      <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
                         {t.description || 'Curriculum assessment test'}
                       </div>
                     </td>
                     <td className="py-4 px-4">
-                      <span className="font-semibold text-white block">{t.subjectName || 'General'}</span>
-                      <span className="text-[11px] text-slate-400 font-mono block">{t.classGrade || 'Class 10'}</span>
+                      <span className="font-semibold text-slate-900 block">{t.subjectName || 'General'}</span>
+                      <span className="text-[11px] text-slate-500 block">{t.classGrade || 'Class 10'}</span>
                     </td>
-                    <td className="py-4 px-4 text-slate-300 font-mono">
+                    <td className="py-4 px-4 text-slate-600">
                       <span className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-slate-500" />
+                        <Clock className="w-3.5 h-3.5 text-slate-400" />
                         {t.durationMinutes} mins
                       </span>
                     </td>
-                    <td className="py-4 px-4 font-mono text-slate-300">
-                      <span>{t.questionsCount || t.questions?.length || 25} Qs</span>
+                    <td className="py-4 px-4 text-slate-600">
+                      <span className="font-semibold text-slate-900">{t.questionsCount || t.questions?.length || 25} Qs</span>
                       <span className="text-slate-500 block text-[11px]">{t.totalMarks || 100} pts</span>
                     </td>
                     <td className="py-4 px-4">
                       {t.negativeMarking ? (
-                        <span className="text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-md text-[10px] font-mono font-bold">
+                        <span className="text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-md text-[10px] font-semibold">
                           -1 penalty
                         </span>
                       ) : (
-                        <span className="text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-md text-[10px] font-mono">
+                        <span className="text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md text-[10px]">
                           None
                         </span>
                       )}
@@ -444,10 +442,10 @@ export const TeacherTests: React.FC = () => {
                     <td className="py-4 px-4">
                       <button
                         onClick={() => handleTogglePublish(t)}
-                        className={`px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider transition cursor-pointer ${
+                        className={`px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider transition cursor-pointer border ${
                           t.isPublished
-                            ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25'
-                            : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10'
+                            ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
+                            : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
                         }`}
                       >
                         {t.isPublished ? 'Published' : 'Draft'}
@@ -457,14 +455,14 @@ export const TeacherTests: React.FC = () => {
                       <div className="flex items-center justify-end gap-1.5">
                         <button
                           onClick={() => handleOpenEditModal(t)}
-                          className="p-2 text-slate-400 hover:text-[#CCFF00] hover:bg-white/5 rounded-lg transition"
+                          className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
                           title="Edit Test & Questions"
                         >
                           <Edit2 className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(t)}
-                          className="p-2 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition"
+                          className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition"
                           title="Delete Test"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -483,32 +481,32 @@ export const TeacherTests: React.FC = () => {
       {/* TEST AUTHORING & QUESTION BUILDER MODAL                  */}
       {/* ======================================================== */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in">
-          <div className="bg-[#0E121A] rounded-3xl max-w-3xl w-full p-6 sm:p-8 border border-white/15 shadow-2xl relative max-h-[92vh] flex flex-col text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 border border-slate-200 shadow-2xl relative max-h-[92vh] flex flex-col text-slate-900">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#CCFF00] font-mono text-[10px] uppercase tracking-widest mb-2 w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-              [ TEST_BUILDER_v2 ]
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-semibold uppercase tracking-wider mb-2 w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+              Test Builder
             </div>
 
-            <h3 className="font-display font-bold text-lg text-white mb-1">
+            <h3 className="font-bold text-xl text-slate-900 mb-1">
               {editingTestId ? 'Edit Examination Test' : 'Create Examination Test'}
             </h3>
-            <p className="text-xs text-slate-400 font-mono mb-4">
+            <p className="text-xs text-slate-500 mb-4">
               Configure parameters, negative marking, and question answer keys evaluated securely on the backend.
             </p>
 
             <form onSubmit={handleSaveTest} className="flex-1 overflow-y-auto space-y-5 pr-1 text-xs">
               {/* Test Meta Inputs */}
-              <div className="space-y-4 p-5 bg-[#080B11] rounded-2xl border border-white/10">
+              <div className="space-y-4 p-5 bg-slate-50 rounded-2xl border border-slate-200">
                 <div>
-                  <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">
+                  <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                     Test Title *
                   </label>
                   <input
@@ -516,34 +514,34 @@ export const TeacherTests: React.FC = () => {
                     value={testForm.title}
                     onChange={(e) => setTestForm({ ...testForm, title: e.target.value })}
                     placeholder="e.g. Class 10 Physics: Electricity & Circuits Final Mock"
-                    className="w-full py-2.5 px-3.5 bg-[#060C17] border border-white/10 rounded-xl text-white placeholder-slate-500 font-mono outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80 transition"
+                    className="w-full py-2.5 px-3.5 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition"
                     required
                   />
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div>
-                    <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">Subject</label>
+                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Subject</label>
                     <input
                       type="text"
                       value={testForm.subjectName}
                       onChange={(e) => setTestForm({ ...testForm, subjectName: e.target.value })}
-                      className="w-full py-2 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white font-mono outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80"
+                      className="w-full py-2 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">Class / Target</label>
+                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Class / Target</label>
                     <input
                       type="text"
                       value={testForm.classGrade}
                       onChange={(e) => setTestForm({ ...testForm, classGrade: e.target.value })}
-                      className="w-full py-2 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white font-mono outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80"
+                      className="w-full py-2 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">Duration (Mins)</label>
+                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Duration (Mins)</label>
                     <input
                       type="number"
                       min="5"
@@ -551,12 +549,12 @@ export const TeacherTests: React.FC = () => {
                       onChange={(e) =>
                         setTestForm({ ...testForm, durationMinutes: parseInt(e.target.value) || 30 })
                       }
-                      className="w-full py-2 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white font-mono outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80"
+                      className="w-full py-2 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">Pass Marks</label>
+                    <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Pass Marks</label>
                     <input
                       type="number"
                       min="1"
@@ -564,21 +562,21 @@ export const TeacherTests: React.FC = () => {
                       onChange={(e) =>
                         setTestForm({ ...testForm, passingMarks: parseInt(e.target.value) || 16 })
                       }
-                      className="w-full py-2 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white font-mono outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80"
+                      className="w-full py-2 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600"
                       required
                     />
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-6 pt-2 border-t border-white/5">
+                <div className="flex flex-wrap items-center gap-6 pt-2 border-t border-slate-200">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={testForm.negativeMarking}
                       onChange={(e) => setTestForm({ ...testForm, negativeMarking: e.target.checked })}
-                      className="w-4 h-4 rounded border-white/20 bg-[#060C17] accent-[#CCFF00]"
+                      className="w-4 h-4 rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="font-mono text-xs text-slate-300">Enable Negative Marking (-1 per wrong)</span>
+                    <span className="text-xs text-slate-700 font-medium">Enable Negative Marking (-1 per wrong)</span>
                   </label>
 
                   <label className="flex items-center gap-2 cursor-pointer">
@@ -586,9 +584,9 @@ export const TeacherTests: React.FC = () => {
                       type="checkbox"
                       checked={testForm.allowRetake}
                       onChange={(e) => setTestForm({ ...testForm, allowRetake: e.target.checked })}
-                      className="w-4 h-4 rounded border-white/20 bg-[#060C17] accent-[#CCFF00]"
+                      className="w-4 h-4 rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="font-mono text-xs text-slate-300">Allow Retakes</span>
+                    <span className="text-xs text-slate-700 font-medium">Allow Retakes</span>
                   </label>
 
                   <label className="flex items-center gap-2 cursor-pointer">
@@ -596,9 +594,9 @@ export const TeacherTests: React.FC = () => {
                       type="checkbox"
                       checked={testForm.isPublished}
                       onChange={(e) => setTestForm({ ...testForm, isPublished: e.target.checked })}
-                      className="w-4 h-4 rounded border-white/20 bg-[#060C17] accent-[#CCFF00]"
+                      className="w-4 h-4 rounded border-slate-300 bg-white text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="font-mono text-xs text-slate-300">Publish Immediately</span>
+                    <span className="text-xs text-slate-700 font-medium">Publish Immediately</span>
                   </label>
                 </div>
               </div>
@@ -606,16 +604,16 @@ export const TeacherTests: React.FC = () => {
               {/* Dynamic Question Builder */}
               <div className="space-y-4 pt-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-display font-bold text-sm text-white flex items-center gap-2">
+                  <h4 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                     <span>Question Bank</span>
-                    <span className="font-mono text-xs text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/20">
+                    <span className="text-xs text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 font-semibold">
                       {questions.length} Qs • {questions.reduce((s, q) => s + (q.marks || 4), 0)} pts total
                     </span>
                   </h4>
                   <button
                     type="button"
                     onClick={handleAddQuestion}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-[#CCFF00] border border-white/10 transition cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Add Question</span>
@@ -625,17 +623,17 @@ export const TeacherTests: React.FC = () => {
                 {questions.map((q, qIdx) => (
                   <div
                     key={q.id || qIdx}
-                    className="p-5 bg-[#080B11] rounded-2xl border border-white/10 shadow-lg space-y-3.5 relative group"
+                    className="p-5 bg-slate-50 rounded-2xl border border-slate-200 shadow-xs space-y-3.5 relative group"
                   >
-                    <div className="flex items-center justify-between pb-2 border-b border-white/5">
-                      <span className="font-mono font-bold text-xs text-[#CCFF00] tracking-wide">
-                        [ QUESTION #{String(qIdx + 1).padStart(2, '0')} ]
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-200">
+                      <span className="font-bold text-xs text-blue-700 tracking-wide">
+                        Question #{String(qIdx + 1).padStart(2, '0')}
                       </span>
                       {questions.length > 1 && (
                         <button
                           type="button"
                           onClick={() => handleRemoveQuestion(qIdx)}
-                          className="text-slate-500 hover:text-rose-400 p-1 transition"
+                          className="text-slate-400 hover:text-rose-600 p-1 transition"
                           title="Remove Question"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -644,7 +642,7 @@ export const TeacherTests: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-300 mb-1.5">
+                      <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                         Question Statement *
                       </label>
                       <textarea
@@ -657,14 +655,14 @@ export const TeacherTests: React.FC = () => {
                           );
                         }}
                         placeholder="Type the question clearly..."
-                        className="w-full py-2 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white placeholder-slate-500 font-mono text-xs outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80 transition"
+                        className="w-full py-2 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-xs outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition"
                         required
                       />
                     </div>
 
                     {/* Options Grid */}
                     <div className="space-y-2">
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-300">
+                      <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700">
                         Options & Correct Key (Select radio to specify correct answer):
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -677,8 +675,8 @@ export const TeacherTests: React.FC = () => {
                               key={opt.id}
                               className={`p-2.5 rounded-xl border flex items-center gap-2.5 transition ${
                                 isCorrect
-                                  ? 'border-[#CCFF00]/60 bg-[#CCFF00]/10 text-white'
-                                  : 'border-white/10 bg-[#060C17] text-slate-300'
+                                  ? 'border-blue-400 bg-blue-50 text-slate-900 ring-1 ring-blue-400'
+                                  : 'border-slate-200 bg-white text-slate-700'
                               }`}
                             >
                               <input
@@ -692,9 +690,9 @@ export const TeacherTests: React.FC = () => {
                                     )
                                   );
                                 }}
-                                className="w-4 h-4 accent-[#CCFF00]"
+                                className="w-4 h-4 text-blue-600 focus:ring-blue-500"
                               />
-                              <span className="font-mono font-bold text-xs text-slate-400">{letter}.</span>
+                              <span className="font-bold text-xs text-slate-500">{letter}.</span>
                               <input
                                 type="text"
                                 value={opt.text}
@@ -714,7 +712,7 @@ export const TeacherTests: React.FC = () => {
                                   );
                                 }}
                                 placeholder={`Option ${letter}`}
-                                className="w-full bg-transparent outline-none text-xs font-mono text-white placeholder-slate-500"
+                                className="w-full bg-transparent outline-none text-xs text-slate-900 placeholder-slate-400"
                                 required
                               />
                             </div>
@@ -725,7 +723,7 @@ export const TeacherTests: React.FC = () => {
 
                     {/* Explanation */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                      <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
                         Faculty Explanation / Solution Rationale (Revealed to students after submission)
                       </label>
                       <textarea
@@ -738,7 +736,7 @@ export const TeacherTests: React.FC = () => {
                           );
                         }}
                         placeholder="Explain why the chosen option is correct..."
-                        className="w-full py-1.5 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white placeholder-slate-500 font-mono text-xs outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80 transition"
+                        className="w-full py-1.5 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 placeholder-slate-400 text-xs outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition"
                       />
                     </div>
                   </div>
@@ -746,22 +744,22 @@ export const TeacherTests: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+              <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-white/5 transition"
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold uppercase tracking-wider bg-[#CCFF00] hover:bg-white text-black transition shadow-lg disabled:opacity-50 cursor-pointer active:scale-95"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition shadow-sm disabled:opacity-50 cursor-pointer active:scale-95"
                 >
                   {saving ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin text-black" />
+                      <Loader2 className="w-4 h-4 animate-spin text-white" />
                       <span>Saving Assessment...</span>
                     </>
                   ) : (

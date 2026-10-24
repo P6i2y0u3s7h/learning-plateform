@@ -156,32 +156,27 @@ export const StudentAskDoubt: React.FC = () => {
   });
 
   return (
-    <div className="space-y-8 relative">
-      {/* Zero-cost GPU accelerated ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
-
-      {/* Header Banner */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden text-white">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
-        <div className="flex items-center gap-2 mb-2">
-          <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-          <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-            [ 11 // ACADEMIC HELPDESK ]
-          </span>
+    <div className="space-y-6">
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Academic Helpdesk
+          </div>
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Ask a Doubt & Faculty Support
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Have a question about a formula, theorem, or textbook problem? Submit it directly to our subject matter experts.
+          </p>
         </div>
-        <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
-          Ask a Doubt & Faculty Support
-        </h1>
-        <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
-          Have a question about a formula, theorem, or textbook problem? Submit it directly to our subject matter experts.
-        </p>
       </div>
 
       {error && (
-        <div className="p-4 bg-red-950/40 border border-red-500/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-red-300 font-mono">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-400" />
+        <div className="p-4 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-red-700">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
@@ -189,33 +184,36 @@ export const StudentAskDoubt: React.FC = () => {
       {/* Main Grid: Form on Left, History on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Ask Form */}
-        <div className="lg:col-span-5 bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-white/10 shadow-2xl relative overflow-hidden text-white">
-          <div className="flex items-center gap-2 mb-5 pb-4 border-b border-white/10">
-            <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#CCFF00]">
+        <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-sm relative overflow-hidden text-slate-900">
+          <div className="flex items-center gap-2.5 mb-5 pb-4 border-b border-slate-100">
+            <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
               <MessageSquare className="w-4 h-4" />
             </div>
-            <h2 className="font-mono font-bold text-base text-white tracking-tight">
-              New Academic Query
-            </h2>
+            <div>
+              <h2 className="font-bold text-base text-slate-900">
+                New Academic Query
+              </h2>
+              <p className="text-[11px] text-slate-400">Directly answered by certified educators</p>
+            </div>
           </div>
 
           {submitSuccess && (
-            <div className="p-4 bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 rounded-2xl text-xs font-mono font-bold flex items-center gap-2 mb-5 animate-in fade-in">
-              <CheckCircle2 className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+            <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-medium flex items-center gap-2 mb-5 animate-in fade-in">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
               <span>Your question has been forwarded to faculty. Track responses below!</span>
             </div>
           )}
 
           {imageError && (
-            <div className="p-3 bg-red-950/40 border border-red-500/30 text-red-300 rounded-2xl text-xs font-mono flex items-center gap-2 mb-4">
-              <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
+            <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs flex items-center gap-2 mb-4">
+              <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
               <span>{imageError}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmitDoubt} className="space-y-4 font-mono">
+          <form onSubmit={handleSubmitDoubt} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                 Select Course
               </label>
               <select
@@ -225,10 +223,10 @@ export const StudentAskDoubt: React.FC = () => {
                   const found = COURSE_OPTIONS.find((c) => c.id === e.target.value);
                   if (found) setSelectedSubject(found.subjects[0]);
                 }}
-                className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-xs text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] transition"
+                className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition font-medium"
               >
                 {COURSE_OPTIONS.map((c) => (
-                  <option key={c.id} value={c.id} className="bg-[#0E121A] text-white">
+                  <option key={c.id} value={c.id}>
                     {c.title}
                   </option>
                 ))}
@@ -237,16 +235,16 @@ export const StudentAskDoubt: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Subject
                 </label>
                 <select
                   value={selectedSubject}
                   onChange={(e) => setSelectedSubject(e.target.value)}
-                  className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-xs text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] transition"
+                  className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition font-medium"
                 >
                   {activeCourse.subjects.map((s) => (
-                    <option key={s} value={s} className="bg-[#0E121A] text-white">
+                    <option key={s} value={s}>
                       {s}
                     </option>
                   ))}
@@ -254,7 +252,7 @@ export const StudentAskDoubt: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Chapter / Topic (Optional)
                 </label>
                 <input
@@ -262,41 +260,41 @@ export const StudentAskDoubt: React.FC = () => {
                   value={chapterName}
                   onChange={(e) => setChapterName(e.target.value)}
                   placeholder="e.g. Thermodynamics"
-                  className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-xs text-white placeholder-slate-500 outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] transition"
+                  className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
-                Question Details
+              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                Question Details *
               </label>
               <textarea
                 rows={4}
                 value={questionText}
                 onChange={(e) => setQuestionText(e.target.value)}
                 placeholder="Explain what concept, formula step, or question you need clarification on..."
-                className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-xs text-white placeholder-slate-500 outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] transition leading-relaxed font-sans"
+                className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition leading-relaxed resize-none"
                 required
               />
             </div>
 
             {/* Image Attachment */}
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                 Attach Image / Diagram (Optional)
               </label>
 
               {imagePreview ? (
-                <div className="relative border border-white/15 rounded-2xl p-2.5 bg-[#060C17] flex items-center justify-between">
+                <div className="relative border border-slate-200 rounded-2xl p-2.5 bg-slate-50 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
                       src={imagePreview}
                       alt="Attachment preview"
-                      className="w-12 h-12 object-cover rounded-xl border border-white/15"
+                      className="w-12 h-12 object-cover rounded-xl border border-slate-200"
                     />
                     <div>
-                      <p className="text-xs font-bold text-white line-clamp-1">{selectedImage?.name}</p>
+                      <p className="text-xs font-bold text-slate-900 line-clamp-1">{selectedImage?.name}</p>
                       <p className="text-[10px] text-slate-400">
                         {selectedImage ? (selectedImage.size / 1024).toFixed(0) + ' KB' : ''}
                       </p>
@@ -305,7 +303,7 @@ export const StudentAskDoubt: React.FC = () => {
                   <button
                     type="button"
                     onClick={removeImage}
-                    className="p-1.5 text-slate-400 hover:text-red-400 rounded-lg hover:bg-white/5 transition"
+                    className="p-1.5 text-slate-400 hover:text-red-500 rounded-lg hover:bg-slate-200/60 transition"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -314,7 +312,7 @@ export const StudentAskDoubt: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full border border-dashed border-white/20 hover:border-[#CCFF00] rounded-xl py-3 px-4 text-xs font-medium text-slate-400 hover:text-[#CCFF00] bg-white/[0.02] hover:bg-[#CCFF00]/5 transition flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full border border-dashed border-slate-300 hover:border-blue-500 rounded-xl py-3 px-4 text-xs font-medium text-slate-500 hover:text-blue-600 bg-slate-50 hover:bg-blue-50/50 transition flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ImageIcon className="w-4 h-4 text-slate-400" />
                   <span>Attach snapshot of problem or diagram</span>
@@ -332,9 +330,9 @@ export const StudentAskDoubt: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 px-4 rounded-xl text-xs font-black uppercase tracking-wider bg-[#CCFF00] hover:bg-white text-black transition cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98 shadow-[0_0_15px_rgba(204,255,0,0.25)]"
+              className="w-full py-3 px-4 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98 shadow-sm"
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-3.5 h-3.5 text-white" />
               <span>{submitting ? 'Submitting Question...' : 'Post Question to Faculty'}</span>
             </button>
           </form>
@@ -342,43 +340,43 @@ export const StudentAskDoubt: React.FC = () => {
 
         {/* Doubts History & Faculty Replies */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-white">
+          <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-slate-900">
             <div>
-              <h3 className="font-mono font-bold text-base text-white">
+              <h3 className="font-bold text-base text-slate-900">
                 My Questions & Faculty Answers
               </h3>
-              <p className="text-xs text-slate-400 font-mono">
+              <p className="text-xs text-slate-500">
                 Showing {filteredDoubts.length} {filteredDoubts.length === 1 ? 'ticket' : 'tickets'}
               </p>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-[#060C17] p-1 rounded-xl border border-white/10 self-start sm:self-auto font-mono">
+            <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl self-start sm:self-auto text-xs font-medium">
               <button
                 onClick={() => setStatusFilter('all')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`px-3 py-1 rounded-lg transition cursor-pointer ${
                   statusFilter === 'all'
-                    ? 'bg-[#CCFF00] text-black shadow-[0_0_10px_rgba(204,255,0,0.3)]'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white shadow-sm font-semibold'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 All
               </button>
               <button
                 onClick={() => setStatusFilter('pending')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`px-3 py-1 rounded-lg transition cursor-pointer ${
                   statusFilter === 'pending'
-                    ? 'bg-[#38BDF8] text-black shadow-[0_0_10px_rgba(56,189,248,0.3)]'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white shadow-sm font-semibold'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 Pending
               </button>
               <button
                 onClick={() => setStatusFilter('resolved')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`px-3 py-1 rounded-lg transition cursor-pointer ${
                   statusFilter === 'resolved'
-                    ? 'bg-[#10B981] text-black shadow-[0_0_10px_rgba(16,185,129,0.3)]'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-blue-600 text-white shadow-sm font-semibold'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 Resolved
@@ -389,7 +387,7 @@ export const StudentAskDoubt: React.FC = () => {
           {loading ? (
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-xl space-y-3">
+                <div key={i} className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-3">
                   <Skeleton className="h-4 w-28 rounded-full" />
                   <Skeleton className="h-5 w-3/4" />
                   <Skeleton className="h-12 w-full rounded-xl" />
@@ -397,14 +395,14 @@ export const StudentAskDoubt: React.FC = () => {
               ))}
             </div>
           ) : filteredDoubts.length === 0 ? (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-10 border border-white/10 text-center shadow-2xl text-white">
-              <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-3 text-[#CCFF00]">
+            <div className="bg-white rounded-3xl p-10 border border-slate-200/80 text-center shadow-sm text-slate-900">
+              <div className="w-14 h-14 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3 text-blue-600">
                 <FileQuestion className="w-7 h-7" />
               </div>
-              <h4 className="font-mono font-bold text-sm text-white mb-1">
+              <h4 className="font-bold text-sm text-slate-900 mb-1">
                 No Doubts Recorded
               </h4>
-              <p className="text-xs text-slate-400 font-mono max-w-xs mx-auto">
+              <p className="text-xs text-slate-500 max-w-xs mx-auto">
                 {statusFilter === 'all'
                   ? 'Ask any question using the form to receive customized faculty explanations.'
                   : `No doubts in the "${statusFilter}" category.`}
@@ -419,39 +417,39 @@ export const StudentAskDoubt: React.FC = () => {
                 return (
                   <div
                     key={d.id}
-                    className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-xl hover:border-white/20 transition-all space-y-4 text-white"
+                    className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:border-blue-400 transition-all space-y-4 text-slate-900"
                   >
-                    <div className="flex items-center justify-between gap-2 flex-wrap font-mono">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
                       <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        <span className="text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                           {d.subjectName}
                         </span>
                         {d.chapterName && (
-                          <span className="text-xs text-slate-400 hidden sm:inline">
+                          <span className="text-xs text-slate-500 hidden sm:inline">
                             • {d.chapterName}
                           </span>
                         )}
                       </div>
 
                       {isResolved ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#10B981] bg-[#10B981]/10 px-2.5 py-0.5 rounded-full border border-[#10B981]/30">
-                          <CheckCircle2 className="w-3 h-3" />
-                          RESOLVED
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                          Resolved
                         </span>
                       ) : isInReview ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#38BDF8] bg-[#38BDF8]/10 px-2.5 py-0.5 rounded-full border border-[#38BDF8]/30">
-                          <Clock className="w-3 h-3" />
-                          UNDER REVIEW
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200">
+                          <Clock className="w-3 h-3 text-indigo-600" />
+                          Under Review
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/30">
-                          <Clock className="w-3 h-3" />
-                          PENDING
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                          <Clock className="w-3 h-3 text-amber-600" />
+                          Pending
                         </span>
                       )}
                     </div>
 
-                    <div className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans">
+                    <div className="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans">
                       <p className="font-semibold">{d.question}</p>
                     </div>
 
@@ -461,9 +459,9 @@ export const StudentAskDoubt: React.FC = () => {
                           href={d.attachmentUrls[0]}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs text-[#38BDF8] bg-white/5 hover:bg-white/10 border border-white/10 px-3 py-1.5 rounded-xl font-mono font-semibold transition"
+                          className="inline-flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-3 py-1.5 rounded-xl font-medium transition"
                         >
-                          <ImageIcon className="w-3.5 h-3.5" />
+                          <ImageIcon className="w-3.5 h-3.5 text-blue-600" />
                           <span>View Question Attachment</span>
                         </a>
                       </div>
@@ -471,27 +469,27 @@ export const StudentAskDoubt: React.FC = () => {
 
                     {/* Faculty Answer Box */}
                     {d.facultyReply ? (
-                      <div className="p-4 bg-emerald-950/20 rounded-2xl border border-emerald-500/30 space-y-2 mt-3 font-mono">
+                      <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-2 mt-3">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="font-bold text-emerald-400 flex items-center gap-1.5">
-                            <UserCheck className="w-4 h-4 text-[#10B981]" />
+                          <span className="font-bold text-emerald-800 flex items-center gap-1.5">
+                            <UserCheck className="w-4 h-4 text-emerald-600" />
                             <span>Faculty Response: {d.repliedByName || 'Academic Mentor'}</span>
                           </span>
-                          <span className="text-[11px] text-emerald-500/80">
+                          <span className="text-[11px] text-emerald-600">
                             {d.repliedAt ? new Date(d.repliedAt).toLocaleDateString() : 'Recent'}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-200 leading-relaxed whitespace-pre-wrap pl-3 border-l-2 border-[#10B981] font-sans">
+                        <p className="text-xs text-emerald-950 leading-relaxed whitespace-pre-wrap pl-3 border-l-2 border-emerald-500 font-sans">
                           {d.facultyReply}
                         </p>
                       </div>
                     ) : (
-                      <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-[11px] text-slate-400 font-mono italic">
+                      <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-[11px] text-slate-500 italic">
                         Turnaround: Faculty mentors usually respond within 4–6 business hours.
                       </div>
                     )}
 
-                    <div className="text-[11px] text-slate-500 pt-2 border-t border-white/10 flex items-center justify-between font-mono">
+                    <div className="text-[11px] text-slate-400 pt-2 border-t border-slate-100 flex items-center justify-between">
                       <span>Course: {d.courseTitle || 'Curriculum'}</span>
                       <span>{new Date(d.createdAt).toLocaleString()}</span>
                     </div>

@@ -188,45 +188,42 @@ export const StudentAssignments: React.FC = () => {
       {/* Zero-cost GPU accelerated ambient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
 
-      {/* Header */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col sm:flex-row sm:items-center justify-between gap-6 text-white">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
+      {/* Header - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
 
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-              [ 07 // CURRICULUM COURSEWORK ]
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Curriculum Coursework
           </div>
-          <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Assignments & Homework
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Review practice problem sets, upload handwritten solutions, and inspect faculty feedback.
           </p>
         </div>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-mono shadow-lg">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3 text-xs sm:text-sm shadow-sm">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Filter Tabs */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl flex items-center gap-2 overflow-x-auto font-mono text-xs">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex items-center gap-2 overflow-x-auto text-xs">
         <button
           onClick={() => {
             setStatusFilter('all');
             setCurrentPage(1);
           }}
-          className={`px-3.5 py-1.5 rounded-xl font-bold transition cursor-pointer border ${
+          className={`px-3.5 py-1.5 rounded-xl font-semibold transition cursor-pointer border ${
             statusFilter === 'all'
-              ? 'bg-[#CCFF00] text-black border-[#CCFF00] shadow-[0_0_12px_rgba(204,255,0,0.25)]'
-              : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+              ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+              : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
           All ({assignments.length})
@@ -236,10 +233,10 @@ export const StudentAssignments: React.FC = () => {
             setStatusFilter('pending');
             setCurrentPage(1);
           }}
-          className={`px-3.5 py-1.5 rounded-xl font-bold transition cursor-pointer border ${
+          className={`px-3.5 py-1.5 rounded-xl font-semibold transition cursor-pointer border ${
             statusFilter === 'pending'
-              ? 'bg-amber-400 text-black border-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.25)]'
-              : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+              ? 'bg-amber-600 text-white border-amber-600 shadow-sm'
+              : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
           Pending
@@ -249,10 +246,10 @@ export const StudentAssignments: React.FC = () => {
             setStatusFilter('submitted');
             setCurrentPage(1);
           }}
-          className={`px-3.5 py-1.5 rounded-xl font-bold transition cursor-pointer border ${
+          className={`px-3.5 py-1.5 rounded-xl font-semibold transition cursor-pointer border ${
             statusFilter === 'submitted'
-              ? 'bg-[#38BDF8] text-black border-[#38BDF8] shadow-[0_0_10px_rgba(56,189,248,0.25)]'
-              : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+              ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+              : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
           Submitted
@@ -262,10 +259,10 @@ export const StudentAssignments: React.FC = () => {
             setStatusFilter('graded');
             setCurrentPage(1);
           }}
-          className={`px-3.5 py-1.5 rounded-xl font-bold transition cursor-pointer border ${
+          className={`px-3.5 py-1.5 rounded-xl font-semibold transition cursor-pointer border ${
             statusFilter === 'graded'
-              ? 'bg-emerald-400 text-black border-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.25)]'
-              : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+              ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+              : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
           }`}
         >
           Graded
@@ -276,7 +273,7 @@ export const StudentAssignments: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl p-6 border border-white/10 shadow-xl space-y-4">
+            <div key={i} className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">
               <Skeleton className="h-5 w-24 rounded-full" />
               <Skeleton className="h-6 w-3/4" />
               <Skeleton className="h-4 w-full" />
@@ -285,17 +282,14 @@ export const StudentAssignments: React.FC = () => {
           ))}
         </div>
       ) : filteredAssignments.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 border border-white/10 text-center shadow-2xl relative overflow-hidden">
-          {/* Top specular hairline */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
-          <div className="w-16 h-16 bg-gradient-to-br from-[#CCFF00]/20 to-[#38BDF8]/20 border border-[#CCFF00]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.15)]">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 text-center shadow-sm relative overflow-hidden">
+          <div className="w-16 h-16 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
             <ClipboardCheck className="w-8 h-8" />
           </div>
-          <h3 className="font-mono font-black text-lg sm:text-xl text-white mb-2 tracking-tight">
+          <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-2 tracking-tight">
             No Assignments Found
           </h3>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono max-w-sm mx-auto mb-4 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto mb-4 leading-relaxed">
             {assignments.length === 0
               ? 'You do not have any pending assignments at this time. Great job staying on track!'
               : 'No coursework matches your selected filter.'}
@@ -319,49 +313,47 @@ export const StudentAssignments: React.FC = () => {
               return (
                 <div
                   key={assignment.id}
-                  className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl border border-white/10 p-6 shadow-xl hover:border-[#CCFF00]/40 transition-all flex flex-col justify-between group text-white relative overflow-hidden"
+                  className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between group relative overflow-hidden"
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
                   <div>
                     <div className="flex items-center justify-between mb-3.5">
-                      <span className="text-[11px] font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full uppercase tracking-wider">
                         Max Marks: {assignment.totalMarks || 50}
                       </span>
                       {isGraded ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
-                          <Award className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                          <Award className="w-3 h-3 text-emerald-600" />
                           Graded: {submission?.grade} / {assignment.totalMarks}
                         </span>
                       ) : isSubmitted ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 px-2.5 py-0.5 rounded-full border border-[#38BDF8]/30">
-                          <CheckCircle2 className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                          <CheckCircle2 className="w-3 h-3 text-blue-600" />
                           Submitted
                         </span>
                       ) : isOverdue ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-rose-400 bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/30">
-                          <Clock className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
+                          <Clock className="w-3 h-3 text-red-600" />
                           Overdue
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/30">
-                          <Clock className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                          <Clock className="w-3 h-3 text-amber-600" />
                           {daysLeft !== null && daysLeft >= 0 ? `Due in ${daysLeft}d` : 'Pending'}
                         </span>
                       )}
                     </div>
 
-                    <h3 className="font-mono font-bold text-base text-white group-hover:text-[#CCFF00] transition mb-1.5 line-clamp-2">
+                    <h3 className="font-bold text-base text-slate-900 group-hover:text-blue-600 transition mb-1.5 line-clamp-2">
                       {assignment.title}
                     </h3>
 
                     {assignment.subjectName && (
-                      <p className="text-[11px] font-mono font-bold text-slate-400 mb-2 uppercase tracking-wide">
+                      <p className="text-[11px] font-medium text-slate-400 mb-2 uppercase tracking-wide">
                         {assignment.subjectName} • {assignment.chapterName || 'Module'}
                       </p>
                     )}
 
-                    <p className="text-xs text-slate-400 font-sans line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
                       {assignment.instructions || 'Review the attached worksheet and submit your answers.'}
                     </p>
 
@@ -372,7 +364,7 @@ export const StudentAssignments: React.FC = () => {
                           href={assignment.attachmentUrls[0]}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 hover:bg-[#38BDF8] hover:text-black px-3 py-1.5 rounded-xl transition"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded-xl transition"
                         >
                           <Paperclip className="w-3.5 h-3.5" />
                           <span>{assignment.attachmentNames?.[0] || 'Teacher Worksheet (PDF)'}</span>
@@ -382,26 +374,26 @@ export const StudentAssignments: React.FC = () => {
                     )}
 
                     {/* Due Date & Faculty Details */}
-                    <div className="bg-[#060C17] rounded-2xl p-3.5 text-xs font-mono text-slate-300 space-y-1.5 mb-5 border border-white/10">
+                    <div className="bg-slate-50 rounded-2xl p-3.5 text-xs text-slate-700 space-y-1.5 mb-5 border border-slate-200/60">
                       <div className="flex items-center justify-between">
-                        <span className="text-slate-500">Due Date:</span>
-                        <span className={`font-bold ${isOverdue ? 'text-rose-400' : 'text-[#CCFF00]'}`}>
+                        <span className="text-slate-500 font-medium">Due Date:</span>
+                        <span className={`font-semibold ${isOverdue ? 'text-red-600' : 'text-slate-900'}`}>
                           {dueDateObj ? dueDateObj.toLocaleDateString() : 'Flexible'}
                         </span>
                       </div>
                       {assignment.teacherName && (
                         <div className="flex items-center justify-between text-[11px]">
                           <span className="text-slate-500">Instructor:</span>
-                          <span className="text-slate-200">{assignment.teacherName}</span>
+                          <span className="text-slate-800 font-medium">{assignment.teacherName}</span>
                         </div>
                       )}
                       {submission?.feedback && (
-                        <div className="pt-2 border-t border-white/10">
-                          <p className="font-bold text-emerald-400 flex items-center gap-1 text-[11px]">
-                            <UserCheck className="w-3 h-3 text-emerald-400" />
+                        <div className="pt-2 border-t border-slate-200">
+                          <p className="font-semibold text-emerald-700 flex items-center gap-1 text-[11px]">
+                            <UserCheck className="w-3 h-3 text-emerald-600" />
                             <span>Faculty Evaluation:</span>
                           </p>
-                          <p className="italic text-slate-300 text-[11px] mt-0.5 line-clamp-2">
+                          <p className="italic text-slate-600 text-[11px] mt-0.5 line-clamp-2">
                             "{submission.feedback}"
                           </p>
                         </div>
@@ -413,7 +405,7 @@ export const StudentAssignments: React.FC = () => {
                     {isSubmitted ? (
                       <button
                         onClick={() => openSubmitModal(item)}
-                        className="w-full py-2.5 px-3 rounded-xl text-xs font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/15 border border-[#38BDF8]/30 hover:bg-[#38BDF8] hover:text-black transition cursor-pointer flex items-center justify-center gap-1.5"
+                        className="w-full py-2.5 px-3 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-600 hover:text-white transition cursor-pointer flex items-center justify-center gap-1.5"
                       >
                         <FileCheck2 className="w-3.5 h-3.5" />
                         <span>{isGraded ? 'Review Score & Feedback' : 'View Submitted Answer'}</span>
@@ -421,9 +413,9 @@ export const StudentAssignments: React.FC = () => {
                     ) : (
                       <button
                         onClick={() => openSubmitModal(item)}
-                        className="w-full py-2.5 px-3 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition cursor-pointer shadow-[0_0_15px_rgba(204,255,0,0.25)] flex items-center justify-center gap-2 active:scale-95"
+                        className="w-full py-2.5 px-3 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer shadow-sm flex items-center justify-center gap-2 active:scale-95"
                       >
-                        <Upload className="w-3.5 h-3.5 text-black" />
+                        <Upload className="w-3.5 h-3.5 text-white" />
                         <span>Submit Solution</span>
                       </button>
                     )}
@@ -435,16 +427,16 @@ export const StudentAssignments: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl font-mono text-xs text-slate-400">
+            <div className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm text-xs text-slate-500 font-medium">
               <p>
-                Showing page <strong className="text-white">{currentPage}</strong> of{' '}
-                <strong className="text-white">{totalPages}</strong>
+                Showing page <strong className="text-slate-900">{currentPage}</strong> of{' '}
+                <strong className="text-slate-900">{totalPages}</strong>
               </p>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Previous page"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -453,10 +445,10 @@ export const StudentAssignments: React.FC = () => {
                   <button
                     key={p}
                     onClick={() => setCurrentPage(p)}
-                    className={`w-8 h-8 rounded-lg text-xs font-mono font-bold transition ${
+                    className={`w-8 h-8 rounded-lg text-xs font-semibold transition ${
                       currentPage === p
-                        ? 'bg-[#CCFF00] text-black border border-[#CCFF00]'
-                        : 'border border-white/10 text-slate-300 hover:bg-white/5'
+                        ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
+                        : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {p}
@@ -465,7 +457,7 @@ export const StudentAssignments: React.FC = () => {
                 <button
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Next page"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -478,23 +470,23 @@ export const StudentAssignments: React.FC = () => {
 
       {/* Submission & Feedback Modal */}
       {activeItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-          <div className="bg-[#0E121A] rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-white/15 shadow-2xl relative max-h-[90vh] overflow-y-auto text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-slate-200 shadow-2xl relative max-h-[90vh] overflow-y-auto text-slate-900">
             <button
               onClick={() => setActiveItem(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
             <div className="mb-4">
-              <span className="text-[11px] font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+              <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                 Max Marks: {activeItem.assignment.totalMarks}
               </span>
-              <h3 className="font-mono font-black text-xl text-white mt-2 mb-1 tracking-tight">
+              <h3 className="font-bold text-xl text-slate-900 mt-2 mb-1 tracking-tight">
                 {activeItem.assignment.title}
               </h3>
-              <p className="text-xs text-slate-400 font-sans">
+              <p className="text-xs text-slate-500">
                 {activeItem.assignment.instructions}
               </p>
             </div>
@@ -503,24 +495,24 @@ export const StudentAssignments: React.FC = () => {
             {activeItem.submission ? (
               <div className="space-y-4">
                 {activeItem.submission.status === 'graded' && (
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+                  <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <Award className="w-4 h-4 text-emerald-400" />
+                      <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <Award className="w-4 h-4 text-emerald-600" />
                         Graded Assignment Result
                       </span>
-                      <span className="text-sm font-mono font-black text-emerald-400 bg-emerald-500/20 px-3 py-1 rounded-xl shadow-xs border border-emerald-500/30">
+                      <span className="text-sm font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-xl border border-emerald-200">
                         {activeItem.submission.grade} / {activeItem.assignment.totalMarks} Marks
                       </span>
                     </div>
                     {activeItem.submission.feedback && (
-                      <div className="bg-[#060C17] border border-white/10 rounded-xl p-3 text-xs text-slate-200 mt-2 font-sans">
-                        <p className="font-mono font-bold text-emerald-400 mb-0.5">Faculty Feedback:</p>
-                        <p className="italic text-slate-300 leading-relaxed">{activeItem.submission.feedback}</p>
+                      <div className="bg-white border border-emerald-200 rounded-xl p-3 text-xs text-slate-700 mt-2">
+                        <p className="font-semibold text-emerald-800 mb-0.5">Faculty Feedback:</p>
+                        <p className="italic text-slate-600 leading-relaxed">{activeItem.submission.feedback}</p>
                       </div>
                     )}
                     {activeItem.submission.gradedByName && (
-                      <p className="text-[11px] font-mono text-emerald-400 mt-2 text-right">
+                      <p className="text-[11px] text-emerald-700 mt-2 text-right">
                         Evaluated by <strong>{activeItem.submission.gradedByName}</strong> on{' '}
                         {activeItem.submission.gradedAt ? new Date(activeItem.submission.gradedAt).toLocaleDateString() : 'Recent'}
                       </p>
@@ -528,23 +520,23 @@ export const StudentAssignments: React.FC = () => {
                   </div>
                 )}
 
-                <div className="p-4 bg-[#060C17] border border-white/10 rounded-2xl space-y-3">
-                  <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="font-bold text-[#CCFF00]">Your Submission</span>
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-semibold text-blue-700">Your Submission</span>
                     <span className="text-slate-500">
                       Submitted: {new Date(activeItem.submission.submittedAt).toLocaleString()}
                     </span>
                   </div>
 
                   {activeItem.submission.answerText && (
-                    <div className="bg-white/5 p-3 rounded-xl border border-white/10 text-xs text-slate-200 leading-relaxed whitespace-pre-wrap font-sans">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 text-xs text-slate-800 leading-relaxed whitespace-pre-wrap">
                       {activeItem.submission.answerText}
                     </div>
                   )}
 
                   {activeItem.submission.submissionUrls && activeItem.submission.submissionUrls.length > 0 && (
                     <div className="pt-2">
-                      <p className="text-[11px] font-mono font-bold text-slate-400 mb-1.5 uppercase tracking-wider">
+                      <p className="text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">
                         Attached Files / Links:
                       </p>
                       {activeItem.submission.submissionUrls.map((url, idx) => (
@@ -553,7 +545,7 @@ export const StudentAssignments: React.FC = () => {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 hover:bg-[#38BDF8] hover:text-black px-3 py-2 rounded-xl transition mr-2 mb-2 shadow-xs"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-600 hover:text-white px-3 py-2 rounded-xl transition mr-2 mb-2 shadow-xs"
                         >
                           <FileText className="w-3.5 h-3.5" />
                           <span>{activeItem.submission?.attachmentNames?.[idx] || `Uploaded File #${idx + 1}`}</span>
@@ -568,7 +560,7 @@ export const StudentAssignments: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveItem(null)}
-                    className="px-5 py-2.5 rounded-xl text-xs font-mono font-bold bg-white/10 hover:bg-white/20 text-white transition"
+                    className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
                   >
                     Close
                   </button>
@@ -578,21 +570,21 @@ export const StudentAssignments: React.FC = () => {
               /* If not yet submitted: submission form */
               <form onSubmit={handleSubmitResponse} className="space-y-4">
                 {submitSuccess && (
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl text-xs font-mono font-bold flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-semibold flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                     <span>Assignment solution submitted successfully!</span>
                   </div>
                 )}
 
                 {fileError && (
-                  <div className="p-3 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl text-xs font-mono flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
                     <span>{fileError}</span>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">
                     Written Explanation or Solution Text
                   </label>
                   <textarea
@@ -600,28 +592,28 @@ export const StudentAssignments: React.FC = () => {
                     value={answerText}
                     onChange={(e) => setAnswerText(e.target.value)}
                     placeholder="Write your step-by-step mathematical derivation or solution notes..."
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-xs text-white placeholder-slate-500 outline-none focus:border-[#CCFF00] font-sans"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition"
                   />
                 </div>
 
                 {/* File Upload Attachment */}
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">
                     Upload Solution Document (PDF, JPG, PNG, DOCX — Max 10MB)
                   </label>
                   <div
                     onClick={() => fileInputRef.current?.click()}
-                    className="border-2 border-dashed border-white/15 hover:border-[#CCFF00] rounded-2xl p-4 text-center cursor-pointer bg-[#060C17]/60 hover:bg-[#CCFF00]/5 transition group"
+                    className="border-2 border-dashed border-slate-200 hover:border-blue-600 rounded-2xl p-4 text-center cursor-pointer bg-slate-50/70 hover:bg-blue-50/30 transition group"
                   >
-                    <Upload className="w-6 h-6 mx-auto mb-1.5 text-slate-500 group-hover:text-[#CCFF00] transition" />
+                    <Upload className="w-6 h-6 mx-auto mb-1.5 text-slate-400 group-hover:text-blue-600 transition" />
                     {selectedFile ? (
-                      <p className="text-xs font-mono font-bold text-[#CCFF00]">
+                      <p className="text-xs font-semibold text-blue-700">
                         Selected: {selectedFile.name} ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
                       </p>
                     ) : (
                       <>
-                        <p className="text-xs font-mono font-bold text-white">Click to select handwritten scan or solution file</p>
-                        <p className="text-[11px] font-mono text-slate-500 mt-0.5">Supports PDF, PNG, JPG, DOCX</p>
+                        <p className="text-xs font-semibold text-slate-800">Click to select handwritten scan or solution file</p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">Supports PDF, PNG, JPG, DOCX</p>
                       </>
                     )}
                     <input
@@ -635,7 +627,7 @@ export const StudentAssignments: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono font-bold text-slate-300 mb-1.5 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wider">
                     Or Share External Document Link (Optional)
                   </label>
                   <input
@@ -643,7 +635,7 @@ export const StudentAssignments: React.FC = () => {
                     value={externalUrl}
                     onChange={(e) => setExternalUrl(e.target.value)}
                     placeholder="https://drive.google.com/file/d/..."
-                    className="w-full py-2 px-3 bg-[#060C17] border border-white/15 rounded-xl text-xs text-white placeholder-slate-500 outline-none focus:border-[#CCFF00] font-sans"
+                    className="w-full py-2 px-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition"
                   />
                 </div>
 
@@ -651,14 +643,14 @@ export const StudentAssignments: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveItem(null)}
-                    className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-white hover:bg-white/5 transition cursor-pointer"
+                    className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition cursor-pointer disabled:opacity-50 active:scale-95 shadow-[0_0_15px_rgba(204,255,0,0.25)]"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer disabled:opacity-50 active:scale-95 shadow-sm"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>{submitting ? 'Submitting to Faculty...' : 'Submit Assignment'}</span>

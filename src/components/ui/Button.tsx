@@ -47,29 +47,29 @@ export type ButtonProps = ButtonAsButton | ButtonAsLink | ButtonAsAnchor;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-[#2457A7] text-white hover:bg-[#1E4A7A] border border-blue-400/20 focus-visible:ring-[#2457A7] shadow-sm hover:shadow-md active:scale-[0.99]',
+    'bg-[#2563EB] text-white hover:bg-[#1D4ED8] focus-visible:ring-[#2563EB] shadow-xs active:scale-[0.99]',
   navy:
-    'bg-[#0A1324] text-white hover:bg-[#17365D] border border-white/10 focus-visible:ring-[#17365D] shadow-sm hover:shadow-md active:scale-[0.99]',
+    'bg-[#1E3A8A] text-white hover:bg-[#1E40AF] focus-visible:ring-[#1E3A8A] shadow-xs active:scale-[0.99]',
   gold:
-    'bg-[#F4B942] text-[#070E1A] font-bold hover:bg-amber-400 focus-visible:ring-[#F4B942] shadow-sm hover:shadow-md active:scale-[0.99]',
+    'bg-[#F59E0B] text-white font-semibold hover:bg-amber-600 focus-visible:ring-amber-500 shadow-xs active:scale-[0.99]',
   outline:
-    'border border-slate-300 text-slate-800 bg-white hover:border-[#17365D] hover:bg-slate-50 focus-visible:ring-[#2457A7] active:scale-[0.99]',
+    'border border-slate-300 text-slate-700 bg-white hover:border-slate-400 hover:bg-slate-50 focus-visible:ring-[#2563EB] active:scale-[0.99]',
   outlineWhite:
-    'border border-white/20 text-white bg-transparent hover:border-white/40 hover:bg-white/5 focus-visible:ring-white active:scale-[0.99]',
+    'border border-white/60 text-white bg-transparent hover:bg-white/10 focus-visible:ring-white active:scale-[0.99]',
   ghost:
-    'text-slate-700 bg-transparent hover:bg-slate-100 hover:text-slate-900 active:scale-[0.99]',
+    'text-slate-600 bg-transparent hover:bg-slate-100 hover:text-slate-900 active:scale-[0.99]',
   danger:
-    'bg-rose-600 text-white hover:bg-rose-700 focus-visible:ring-rose-500 shadow-sm active:scale-[0.99]',
+    'bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500 shadow-xs active:scale-[0.99]',
   success:
-    'bg-emerald-600 text-white hover:bg-emerald-700 focus-visible:ring-emerald-600 shadow-sm active:scale-[0.99]',
+    'bg-emerald-600 text-white hover:bg-emerald-700 focus-visible:ring-emerald-600 shadow-xs active:scale-[0.99]',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  xs: 'px-2.5 py-1 text-[11px] font-mono tracking-wider uppercase rounded-xs',
-  sm: 'px-3.5 py-1.5 text-xs font-mono tracking-wider uppercase rounded-xs',
-  md: 'px-5 py-2.5 text-xs font-mono tracking-wider uppercase rounded-xs font-bold',
-  lg: 'px-7 py-3 text-xs sm:text-sm font-mono tracking-[0.14em] uppercase rounded-xs font-bold',
-  xl: 'px-8 py-3.5 text-sm font-mono tracking-[0.16em] uppercase rounded-xs font-bold',
+  xs: 'px-2.5 py-1 text-xs font-sans rounded-lg',
+  sm: 'px-3.5 py-1.5 text-xs font-sans font-medium rounded-lg',
+  md: 'px-4 py-2 text-xs sm:text-sm font-sans font-semibold rounded-xl',
+  lg: 'px-6 py-2.5 text-sm font-sans font-semibold rounded-xl',
+  xl: 'px-8 py-3 text-base font-sans font-semibold rounded-xl',
 };
 
 export const Button: React.FC<ButtonProps> = ({

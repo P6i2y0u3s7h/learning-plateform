@@ -18,13 +18,13 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       className={cn(
-        'rounded-xs overflow-hidden transition-all duration-300',
+        'rounded-2xl overflow-hidden transition-all duration-300',
         dark
-          ? 'bg-[#0A1324] text-white border border-white/10'
+          ? 'bg-[#1E3A8A] text-white border border-blue-900'
           : 'bg-white text-slate-900',
-        bordered && !dark ? 'border border-slate-200/90 shadow-xs' : '',
-        hoverEffect && !dark && 'hover:-translate-y-1 hover:border-[#17365D] hover:shadow-lg',
-        hoverEffect && dark && 'hover:border-white/30 hover:shadow-2xl hover:bg-white/[0.04]',
+        bordered && !dark ? 'border border-slate-200 shadow-xs' : '',
+        hoverEffect && !dark && 'hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md',
+        hoverEffect && dark && 'hover:border-blue-400 hover:shadow-xl',
         className
       )}
       {...props}

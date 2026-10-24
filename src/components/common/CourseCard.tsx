@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Clock, Layers, ArrowRight, Star, Users, CheckCircle } from 'lucide-react';
+import { BookOpen, Clock, Layers, ArrowRight, Star, Users, CheckCircle, GraduationCap, User } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import { formatCurrency } from '../../utils/formatters';
 
@@ -34,6 +34,9 @@ export interface CourseData {
   price?: number;
   originalPrice?: number;
   validityDays?: number;
+  instructorName?: string;
+  teacherName?: string;
+  thumbnailUrl?: string;
 }
 
 export interface CourseCardProps {
@@ -55,7 +58,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({
 }) => {
   const id = course.id;
   const title = course.title;
-  const subject = course.subject || course.subjectName || course.stream || 'General';
+  const subject = course.subject || course.subjectName || course.stream || 'Curriculum';
   const cls = course.class || course.classGrade;
   const category = course.category || course.categoryId || 'school';
   const targetExam = course.targetExam;
@@ -64,74 +67,79 @@ export const CourseCard: React.FC<CourseCardProps> = ({
   const lessons = course.lessons || course.totalLessons || 45;
   const duration = course.duration || (course.durationHours ? `${course.durationHours} hrs` : '60 hrs');
   const tags = course.tags || [];
-  const badge = course.badge || (course.price === 0 ? 'FREE' : null);
+  const badge = course.badge || (course.price === 0 ? 'FREE BATCH' : null);
   const rating = course.rating || course.averageRating || 4.9;
   const enrolledStudents = course.enrolledStudents || course.enrolledStudentsCount || 850;
   const price = course.price ?? 0;
   const originalPrice = course.originalPrice;
+  const teacherName = course.instructorName || course.teacherName;
 
-  // Format index e.g. "01", "02"
-  const formattedIndex = indexNumber
-    ? String(indexNumber).padStart(2, '0')
-    : undefined;
+  const categoryLabel = targetExam || (category === 'school' ? cls : subject) || 'Course';
 
   return (
     <div
       className={cn(
-        'group bg-[#0E121A] border border-white/10 rounded-2xl relative flex flex-col justify-between overflow-hidden transition-all duration-300',
-        'hover:border-white/30 hover:bg-[#121722] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.8)] hover:-translate-y-1',
+        'group bg-white border border-slate-200/90 rounded-2xl relative flex flex-col justify-between overflow-hidden transition-all duration-300',
+        'hover:border-blue-200 hover:shadow-md hover:-translate-y-1',
         className
       )}
     >
-      {/* Top Architectural Metadata Strip */}
-      <div className="p-4 sm:p-5 pb-3 border-b border-white/5 flex items-center justify-between gap-2 bg-white/[0.02]">
+      {/* Top Academic Tag Strip */}
+      <div className="p-4 sm:p-5 pb-3 border-b border-slate-100 flex items-center justify-between gap-2 bg-slate-50/50">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#CCFF00]" />
-          <span className="font-mono text-[10px] text-slate-400 tracking-[0.2em] uppercase font-semibold">
-            {targetExam || subject || (category === 'school' ? cls : 'TRACK')}
+          <span className="w-2 h-2 rounded-full bg-blue-600" />
+          <span className="font-sans text-xs text-blue-700 tracking-wide uppercase font-semibold">
+            {categoryLabel}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           {badge && (
-            <span className="font-mono text-[9px] tracking-[0.16em] uppercase font-bold px-2.5 py-0.5 rounded-full bg-[#CCFF00]/15 text-[#CCFF00] border border-[#CCFF00]/30">
+            <span className="font-sans text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
               {badge}
             </span>
           )}
-          {formattedIndex && (
-            <span className="font-mono text-[10px] text-slate-500 font-bold">
-              {formattedIndex}
-            </span>
-          )}
+          <div className="flex items-center gap-1 text-[11px] font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/60">
+            <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+            <span>{rating}</span>
+          </div>
         </div>
       </div>
 
       {/* Main Content Area */}
       <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
-          <h3 className="font-display font-extrabold text-white text-base sm:text-lg leading-snug group-hover:text-[#CCFF00] transition-colors line-clamp-2 min-h-[2.8rem] mb-2 uppercase tracking-tight">
+          <h3 className="font-display font-bold text-slate-900 text-base sm:text-lg leading-snug group-hover:text-blue-600 transition-colors line-clamp-2 min-h-[2.8rem] mb-2 tracking-tight">
             {title}
           </h3>
 
           {description && (
-            <p className="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-4 font-sans">
+            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2 mb-3.5 font-sans">
               {description}
             </p>
           )}
 
-          {/* Architectural Metrics HUD Bar */}
-          <div className="grid grid-cols-3 border border-white/5 bg-black/40 py-2.5 px-1 text-center font-mono text-[11px] mb-4 rounded-xl">
-            <div className="border-r border-white/5 px-1">
-              <span className="block text-slate-500 text-[9px] uppercase tracking-wider">CHs</span>
-              <span className="font-bold text-slate-200">{chapters}</span>
+          {/* Teacher name if present */}
+          {teacherName && (
+            <div className="flex items-center gap-1.5 text-xs text-slate-600 mb-3.5">
+              <User className="w-3.5 h-3.5 text-blue-600" />
+              <span className="font-medium">Faculty: {teacherName}</span>
             </div>
-            <div className="border-r border-white/5 px-1">
-              <span className="block text-slate-500 text-[9px] uppercase tracking-wider">LESSONS</span>
-              <span className="font-bold text-slate-200">{lessons}</span>
+          )}
+
+          {/* Metrics HUD Bar */}
+          <div className="grid grid-cols-3 border border-slate-100 bg-slate-50/80 py-2 px-1 text-center font-sans text-xs mb-4 rounded-xl">
+            <div className="border-r border-slate-200/60 px-1">
+              <span className="block text-slate-400 text-[10px] uppercase font-medium">Chapters</span>
+              <span className="font-semibold text-slate-700">{chapters}</span>
+            </div>
+            <div className="border-r border-slate-200/60 px-1">
+              <span className="block text-slate-400 text-[10px] uppercase font-medium">Lessons</span>
+              <span className="font-semibold text-slate-700">{lessons}</span>
             </div>
             <div className="px-1">
-              <span className="block text-slate-500 text-[9px] uppercase tracking-wider">HOURS</span>
-              <span className="font-bold text-slate-200">{duration}</span>
+              <span className="block text-slate-400 text-[10px] uppercase font-medium">Duration</span>
+              <span className="font-semibold text-slate-700">{duration}</span>
             </div>
           </div>
 
@@ -141,9 +149,9 @@ export const CourseCard: React.FC<CourseCardProps> = ({
               {tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1 font-mono text-[9px] tracking-wider uppercase text-slate-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/5"
+                  className="inline-flex items-center gap-1 font-sans text-[11px] font-medium text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md"
                 >
-                  <CheckCircle className="w-2.5 h-2.5 text-[#CCFF00]" />
+                  <CheckCircle className="w-3 h-3 text-emerald-600" />
                   {tag}
                 </span>
               ))}
@@ -153,13 +161,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           {/* Progress bar if enrolled */}
           {showProgress && (
             <div className="mb-4">
-              <div className="flex justify-between font-mono text-[10px] text-slate-400 mb-1.5">
-                <span className="uppercase tracking-wider">COMPLETION</span>
-                <span className="font-bold text-[#CCFF00]">{progress}%</span>
+              <div className="flex justify-between font-sans text-xs text-slate-600 mb-1">
+                <span className="font-medium">Completion</span>
+                <span className="font-bold text-blue-600">{progress}%</span>
               </div>
-              <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                 <div
-                  className="bg-[#CCFF00] h-full transition-all duration-500"
+                  className="bg-blue-600 h-full transition-all duration-500 rounded-full"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -167,33 +175,33 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           )}
         </div>
 
-        {/* Card Footer with Price & Scrub-style CTA */}
-        <div className="pt-4 border-t border-white/5 flex items-center justify-between gap-3 mt-2">
+        {/* Card Footer with Price & EduCore CTA */}
+        <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3 mt-2">
           <div>
             {price > 0 ? (
               <div className="flex items-baseline gap-1.5">
-                <span className="font-display font-black text-lg text-white">
+                <span className="font-display font-bold text-lg text-slate-900">
                   {formatCurrency(price)}
                 </span>
                 {originalPrice && (
-                  <span className="font-mono text-xs text-slate-500 line-through">
+                  <span className="font-sans text-xs text-slate-400 line-through">
                     {formatCurrency(originalPrice)}
                   </span>
                 )}
               </div>
             ) : (
-              <span className="font-mono text-[10px] tracking-wider uppercase font-bold text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-1 rounded-full border border-[#CCFF00]/25">
-                FREE BATCH
+              <span className="font-sans text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                Free Batch
               </span>
             )}
           </div>
 
           <Link
             to={`/courses/${id}`}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-mono text-xs tracking-[0.14em] uppercase font-bold transition-all hover:bg-[#CCFF00] hover:text-black group-hover:shadow-[0_0_15px_rgba(204,255,0,0.3)]"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-blue-600 text-white font-sans text-xs font-semibold hover:bg-blue-700 transition-all shadow-xs"
           >
-            <span>{enrolled ? 'Resume' : 'View'}</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <span>{enrolled ? 'Continue Learning' : 'View Course'}</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
       </div>

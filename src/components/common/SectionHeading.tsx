@@ -28,7 +28,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   return (
     <div
       className={cn(
-        'mb-10 sm:mb-14',
+        'mb-8 sm:mb-12',
         center
           ? 'text-center max-w-3xl mx-auto'
           : 'flex flex-col md:flex-row md:items-end md:justify-between gap-6',
@@ -37,29 +37,29 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     >
       <div className={center ? 'w-full' : 'max-w-3xl'}>
         {(tag || tagNumber) && (
-          <div className="inline-flex items-center gap-2 mb-3.5 font-mono text-[11px] tracking-[0.22em] uppercase font-semibold text-[#CCFF00] bg-[#CCFF00]/10 px-3 py-1 rounded-full border border-[#CCFF00]/25">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-            {tagNumber && <span className="opacity-75">{tagNumber} //</span>}
+          <div className="inline-flex items-center gap-2 mb-3 text-xs tracking-wider uppercase font-semibold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            {tagNumber && <span className="opacity-70">{tagNumber} //</span>}
             <span>{tag}</span>
           </div>
         )}
 
-        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.08] uppercase text-white">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight text-slate-900">
           {title}{' '}
           {highlight && (
-            <span className="text-[#CCFF00]">
+            <span className="text-[#2563EB]">
               {highlight}
             </span>
           )}
           {editorialSubtitle && (
-            <span className="block font-editorial font-normal italic normal-case tracking-normal text-slate-400 text-xl sm:text-2xl md:text-3xl mt-1.5">
+            <span className="block font-sans font-normal normal-case tracking-normal text-slate-500 text-lg sm:text-xl mt-1.5">
               {editorialSubtitle}
             </span>
           )}
         </h2>
 
         {subtitle && (
-          <p className="mt-4 text-sm sm:text-base leading-relaxed max-w-2xl text-slate-400 font-sans">
+          <p className="mt-3 text-sm sm:text-base leading-relaxed max-w-2xl text-slate-600 font-sans">
             {subtitle}
           </p>
         )}

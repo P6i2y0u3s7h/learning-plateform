@@ -79,32 +79,31 @@ export const ProfilePage: React.FC = () => {
       {/* Zero-cost GPU accelerated ambient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
 
-      {/* Top Banner Card */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col sm:flex-row items-center gap-6">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
+      {/* Top Banner Card - EduCore Theme */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm relative overflow-hidden flex flex-col sm:flex-row items-center gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
         
-        {/* Squircle Avatar with glowing accent */}
-        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#CCFF00] via-[#10B981] to-[#047857] text-black flex items-center justify-center font-mono font-black text-3xl flex-shrink-0 shadow-[0_0_30px_rgba(204,255,0,0.35)] ring-1 ring-white/20">
+        {/* Avatar */}
+        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center font-extrabold text-3xl flex-shrink-0 shadow-sm">
           {formData.displayName ? formData.displayName[0].toUpperCase() : 'U'}
         </div>
 
         <div className="flex-1 text-center sm:text-left">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1.5">
-            <h1 className="font-mono font-black text-2xl text-white tracking-tight">
+            <h1 className="font-extrabold text-2xl text-slate-900 tracking-tight">
               {formData.displayName || 'Academic Scholar'}
             </h1>
-            <span className="bg-[#CCFF00]/15 border border-[#CCFF00]/30 text-[#CCFF00] font-mono text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
               {role}
             </span>
             {userProfile?.approvalStatus && (
-              <span className="bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono text-[10px] px-2.5 py-0.5 rounded uppercase">
+              <span className="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-medium px-2.5 py-0.5 rounded-full uppercase">
                 {userProfile.approvalStatus}
               </span>
             )}
           </div>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono flex items-center justify-center sm:justify-start gap-2">
-            <Mail className="w-3.5 h-3.5 text-slate-500" />
+          <p className="text-xs sm:text-sm text-slate-500 flex items-center justify-center sm:justify-start gap-2">
+            <Mail className="w-3.5 h-3.5 text-slate-400" />
             <span>{user?.email}</span>
           </p>
         </div>
@@ -112,21 +111,21 @@ export const ProfilePage: React.FC = () => {
         {/* Email Verification Status */}
         <div className="flex items-center gap-2">
           {isEmailVerified ? (
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-3.5 py-1.5 rounded-xl font-bold">
-              <CheckCircle className="w-4 h-4 text-emerald-400" />
+            <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs px-3.5 py-1.5 rounded-xl font-semibold">
+              <CheckCircle className="w-4 h-4 text-emerald-600" />
               Verified Email
             </span>
           ) : (
             <div className="text-right flex flex-col items-end gap-1">
-              <span className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-300 border border-amber-500/30 font-mono text-xs px-3.5 py-1.5 rounded-xl font-bold">
-                <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
+              <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 border border-amber-200 text-xs px-3.5 py-1.5 rounded-xl font-semibold">
+                <AlertCircle className="w-3.5 h-3.5 text-amber-600" />
                 Unverified Email
               </span>
               <button
                 type="button"
                 onClick={handleResendVerification}
                 disabled={resendingEmail || emailSentNotice}
-                className="text-xs text-[#CCFF00] font-mono font-bold hover:underline disabled:opacity-50 transition-colors"
+                className="text-xs text-blue-600 font-semibold hover:underline disabled:opacity-50 transition-colors"
               >
                 {emailSentNotice ? 'Verification link dispatched' : 'Resend link →'}
               </button>
@@ -137,35 +136,30 @@ export const ProfilePage: React.FC = () => {
 
       {/* Messages */}
       {successMessage && (
-        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-2xl text-xs sm:text-sm font-mono flex items-center gap-3 animate-in fade-in shadow-lg">
-          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs sm:text-sm flex items-center gap-3 shadow-sm">
+          <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
           <span>{successMessage}</span>
         </div>
       )}
 
       {errorMessage && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl text-xs sm:text-sm font-mono flex items-center gap-3 animate-in fade-in shadow-lg">
-          <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs sm:text-sm flex items-center gap-3 shadow-sm">
+          <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {/* Profile Edit Form */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-        <div className="flex items-center gap-2 mb-2">
-          <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-          <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-            [ 02 // STUDENT IDENTITY DOSSIER ]
-          </span>
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm relative overflow-hidden">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+          Student Identity Dossier
         </div>
 
-        <h2 className="font-mono font-black text-xl text-white tracking-tight mb-1">
+        <h2 className="font-extrabold text-xl text-slate-900 tracking-tight mb-1">
           Profile Information
         </h2>
-        <p className="text-xs sm:text-sm text-slate-400 font-mono mb-6">
+        <p className="text-xs sm:text-sm text-slate-500 mb-6">
           Update your contact details and academic goals. Your account role is server-enforced and cannot be altered from this panel.
         </p>
 
@@ -173,8 +167,8 @@ export const ProfilePage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Full Name */}
             <div>
-              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#CCFF00]" />
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-blue-600" />
                 Full Name
               </label>
               <input
@@ -183,14 +177,14 @@ export const ProfilePage: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
                 placeholder="Rahul Kumar"
                 required
-                className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
               />
             </div>
 
             {/* Contact Phone */}
             <div>
-              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-[#CCFF00]" />
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-blue-600" />
                 Contact Phone
               </label>
               <input
@@ -198,7 +192,7 @@ export const ProfilePage: React.FC = () => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="10-digit mobile number"
-                className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
               />
             </div>
           </div>
@@ -206,8 +200,8 @@ export const ProfilePage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* Class / Standard */}
             <div>
-              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-[#CCFF00]" />
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <GraduationCap className="w-3.5 h-3.5 text-blue-600" />
                 Class / Standard
               </label>
               <input
@@ -215,14 +209,14 @@ export const ProfilePage: React.FC = () => {
                 value={formData.classGrade}
                 onChange={(e) => setFormData({ ...formData, classGrade: e.target.value })}
                 placeholder="Class 10 / BPSC / AMU Prep"
-                className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
               />
             </div>
 
             {/* Target Examination */}
             <div>
-              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-                <BookOpen className="w-3.5 h-3.5 text-[#CCFF00]" />
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5 text-blue-600" />
                 Target Examination
               </label>
               <input
@@ -230,7 +224,7 @@ export const ProfilePage: React.FC = () => {
                 value={formData.targetExam}
                 onChange={(e) => setFormData({ ...formData, targetExam: e.target.value })}
                 placeholder="e.g. CBSE Boards, BPSC TRE 4.0, Bihar SI, AMU Class 11"
-                className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
               />
             </div>
           </div>
@@ -238,8 +232,8 @@ export const ProfilePage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* City / Town */}
             <div>
-              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#CCFF00]" />
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-blue-600" />
                 City / Town
               </label>
               <input
@@ -247,14 +241,14 @@ export const ProfilePage: React.FC = () => {
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 placeholder="e.g. Patna, Lucknow, Aligarh"
-                className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
               />
             </div>
 
             {/* State */}
             <div>
-              <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#CCFF00]" />
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-blue-600" />
                 State
               </label>
               <input
@@ -262,15 +256,15 @@ export const ProfilePage: React.FC = () => {
                 value={formData.state}
                 onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                 placeholder="e.g. Bihar, Uttar Pradesh, Delhi"
-                className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
               />
             </div>
           </div>
 
           {/* Bio / Objective */}
           <div>
-            <label className="block font-mono text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#CCFF00]" />
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
               Bio / Academic Objective
             </label>
             <textarea
@@ -278,21 +272,21 @@ export const ProfilePage: React.FC = () => {
               value={formData.bio}
               onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
               placeholder="Tell instructors and mentors about your preparation goals, target score, or dream institutions..."
-              className="w-full px-4 py-3 bg-[#060C17] border border-white/15 focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/40 rounded-xl text-xs sm:text-sm text-white placeholder-slate-600 font-mono outline-none transition-all"
+              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-all"
             />
           </div>
 
           {/* Security Notice Box */}
-          <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/10 text-xs font-mono text-slate-400 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200/60 text-xs text-slate-600 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <span className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-[#CCFF00]" />
+              <Shield className="w-4 h-4 text-blue-600" />
               <span>Account Role:</span>
-              <strong className="text-white uppercase font-black bg-white/5 px-2 py-0.5 rounded border border-white/10">
+              <strong className="text-slate-900 uppercase font-bold bg-white px-2 py-0.5 rounded border border-slate-200">
                 {role}
               </strong>
             </span>
             <span className="text-[11px] text-slate-500 flex items-center gap-1">
-              <Lock className="w-3 h-3 text-slate-500" />
+              <Lock className="w-3 h-3 text-slate-400" />
               Role verified via Cloud Firestore Rules
             </span>
           </div>
@@ -302,10 +296,10 @@ export const ProfilePage: React.FC = () => {
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-mono text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] disabled:opacity-50 active:scale-95"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm active:scale-95 disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
-              <span>{saving ? 'Persisting...' : 'Save Profile Changes'}</span>
+              <span>{saving ? 'Saving...' : 'Save Profile Changes'}</span>
             </button>
           </div>
         </form>

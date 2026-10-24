@@ -156,36 +156,33 @@ export const StudentStudyMaterials: React.FC = () => {
       {/* Zero-cost GPU accelerated ambient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
 
-      {/* Header Banner */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 text-white">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
 
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-              [ 04 // RESOURCE REPOSITORY ]
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Resource Repository
           </div>
-          <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Study Materials & Notes
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Access verified chapter notes, practice worksheets, formula cards, and reference documents.
           </p>
         </div>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-mono shadow-lg">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3 text-xs sm:text-sm shadow-sm">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Filter Tabs by Resource Type */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none font-mono text-xs">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
         {MATERIAL_TYPES.map((type) => (
           <button
             key={type.key}
@@ -193,10 +190,10 @@ export const StudentStudyMaterials: React.FC = () => {
               setSelectedType(type.key);
               setCurrentPage(1);
             }}
-            className={`px-4 py-2 rounded-xl font-bold transition whitespace-nowrap cursor-pointer border ${
+            className={`px-4 py-2 rounded-xl font-semibold transition whitespace-nowrap cursor-pointer border ${
               selectedType === type.key
-                ? 'bg-[#CCFF00] text-black border-[#CCFF00] shadow-[0_0_12px_rgba(204,255,0,0.25)]'
-                : 'bg-[#0E121A]/85 backdrop-blur-xl border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                : 'bg-white border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
             }`}
           >
             {type.label}
@@ -205,7 +202,7 @@ export const StudentStudyMaterials: React.FC = () => {
       </div>
 
       {/* Search & Subject Filters */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
@@ -216,7 +213,7 @@ export const StudentStudyMaterials: React.FC = () => {
               setCurrentPage(1);
             }}
             placeholder="Search notes, chapters, formulas..."
-            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#060C17] border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] transition font-sans"
+            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition"
           />
         </div>
 
@@ -228,10 +225,10 @@ export const StudentStudyMaterials: React.FC = () => {
                 setSelectedSubject(sub);
                 setCurrentPage(1);
               }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition whitespace-nowrap cursor-pointer border ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition whitespace-nowrap cursor-pointer border ${
                 selectedSubject === sub
-                  ? 'bg-[#38BDF8] text-black border-[#38BDF8] shadow-[0_0_10px_rgba(56,189,248,0.25)]'
-                  : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                  ? 'bg-blue-50 text-blue-700 border-blue-200'
+                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               {sub}
@@ -244,7 +241,7 @@ export const StudentStudyMaterials: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <div key={i} className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl p-5 border border-white/10 shadow-xl space-y-3">
+            <div key={i} className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm space-y-3">
               <Skeleton className="h-4 w-20 rounded-full" />
               <Skeleton className="h-5 w-3/4" />
               <Skeleton className="h-4 w-full" />
@@ -253,17 +250,14 @@ export const StudentStudyMaterials: React.FC = () => {
           ))}
         </div>
       ) : filteredMaterials.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 border border-white/10 text-center shadow-2xl relative overflow-hidden">
-          {/* Top specular hairline */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
-          <div className="w-16 h-16 bg-gradient-to-br from-[#CCFF00]/20 to-[#38BDF8]/20 border border-[#CCFF00]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.15)]">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 text-center shadow-sm relative overflow-hidden">
+          <div className="w-16 h-16 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
             <FileCheck className="w-8 h-8" />
           </div>
-          <h3 className="font-mono font-black text-lg sm:text-xl text-white mb-2 tracking-tight">
+          <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-2 tracking-tight">
             No Study Materials Available
           </h3>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono max-w-sm mx-auto mb-4 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto mb-4 leading-relaxed">
             {materials.length === 0
               ? 'New chapter notes and formula cards will be published by faculty soon.'
               : 'No documents match your filter. Try clearing the search query or selecting a different category.'}
@@ -275,7 +269,7 @@ export const StudentStudyMaterials: React.FC = () => {
                 setSelectedSubject('All');
                 setSelectedType('all');
               }}
-              className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-[#CCFF00] bg-[#CCFF00]/10 hover:bg-[#CCFF00]/20 border border-[#CCFF00]/30 transition cursor-pointer"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition cursor-pointer"
             >
               Reset Filters
             </button>
@@ -289,21 +283,19 @@ export const StudentStudyMaterials: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl border border-white/10 p-5 shadow-xl hover:border-[#CCFF00]/40 transition-all flex flex-col justify-between group text-white relative overflow-hidden"
+                  className="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between group relative overflow-hidden"
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
+                      <span className="text-[10px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
                         {getTypeIcon(item.fileType)}
                         {item.subjectName || 'General'}
                       </span>
                       <span
-                        className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-full uppercase border ${
+                        className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase border ${
                           isDownloadAllowed
-                            ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
-                            : 'text-amber-400 bg-amber-500/10 border-amber-500/30 flex items-center gap-1'
+                            ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
+                            : 'text-amber-700 bg-amber-50 border-amber-200 flex items-center gap-1'
                         }`}
                         title={isDownloadAllowed ? 'Download permitted' : 'Protected: Read Online Only'}
                       >
@@ -312,29 +304,29 @@ export const StudentStudyMaterials: React.FC = () => {
                       </span>
                     </div>
 
-                    <h3 className="font-mono font-bold text-sm text-white group-hover:text-[#CCFF00] transition line-clamp-2 mb-1.5">
+                    <h3 className="font-bold text-sm text-slate-900 group-hover:text-blue-600 transition line-clamp-2 mb-1.5">
                       {item.title}
                     </h3>
 
                     {item.courseTitle && (
-                      <p className="text-[11px] font-mono text-slate-400 mb-2 truncate">
+                      <p className="text-[11px] text-slate-400 mb-2 truncate">
                         {item.courseTitle}
                       </p>
                     )}
 
-                    <p className="text-xs text-slate-400 font-sans line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
                       {item.description || 'Essential revision guide and conceptual highlights.'}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-                    <span className="text-[11px] font-mono text-slate-500">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <span className="text-[11px] text-slate-400 font-medium">
                       {item.fileSizeMb ? `${item.fileSizeMb} MB` : 'Cloud Doc'}
                     </span>
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => handleOpenViewer(item)}
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] hover:bg-[#38BDF8] hover:text-black transition cursor-pointer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white transition cursor-pointer"
                         title="Read and Preview Online"
                       >
                         <Eye className="w-3.5 h-3.5" />
@@ -344,7 +336,7 @@ export const StudentStudyMaterials: React.FC = () => {
                       {isDownloadAllowed ? (
                         <button
                           onClick={(e) => handleDownload(e, item)}
-                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition cursor-pointer shadow-[0_0_12px_rgba(204,255,0,0.25)]"
+                          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer shadow-sm"
                           title="Download File"
                         >
                           <Download className="w-3.5 h-3.5" />
@@ -352,10 +344,10 @@ export const StudentStudyMaterials: React.FC = () => {
                         </button>
                       ) : (
                         <span
-                          className="inline-flex items-center gap-1 px-2 py-1.5 rounded-xl text-[10px] font-mono font-bold bg-white/5 border border-white/10 text-slate-400 cursor-not-allowed"
+                          className="inline-flex items-center gap-1 px-2 py-1.5 rounded-xl text-[10px] font-medium bg-slate-100 border border-slate-200 text-slate-500 cursor-not-allowed"
                           title="Download disabled by administrator/teacher"
                         >
-                          <Lock className="w-3 h-3 text-slate-500" />
+                          <Lock className="w-3 h-3 text-slate-400" />
                           <span>Protected</span>
                         </span>
                       )}
@@ -368,16 +360,16 @@ export const StudentStudyMaterials: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl font-mono text-xs text-slate-400">
+            <div className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm text-xs text-slate-500 font-medium">
               <p>
-                Showing page <strong className="text-white">{currentPage}</strong> of{' '}
-                <strong className="text-white">{totalPages}</strong>
+                Showing page <strong className="text-slate-900">{currentPage}</strong> of{' '}
+                <strong className="text-slate-900">{totalPages}</strong>
               </p>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Previous page"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -386,10 +378,10 @@ export const StudentStudyMaterials: React.FC = () => {
                   <button
                     key={p}
                     onClick={() => setCurrentPage(p)}
-                    className={`w-8 h-8 rounded-lg text-xs font-mono font-bold transition ${
+                    className={`w-8 h-8 rounded-lg text-xs font-semibold transition ${
                       currentPage === p
-                        ? 'bg-[#CCFF00] text-black border border-[#CCFF00]'
-                        : 'border border-white/10 text-slate-300 hover:bg-white/5'
+                        ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
+                        : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {p}
@@ -398,7 +390,7 @@ export const StudentStudyMaterials: React.FC = () => {
                 <button
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Next page"
                 >
                   <ChevronRight className="w-4 h-4" />

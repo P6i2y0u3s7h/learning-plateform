@@ -36,10 +36,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block font-mono text-[11px] uppercase tracking-wider font-semibold text-slate-700"
+            className="block font-sans text-xs font-semibold text-slate-700"
           >
             {label}
-            {required && <span className="text-rose-500 ml-1">*</span>}
+            {required && <span className="text-red-500 ml-1">*</span>}
           </label>
         )}
 
@@ -56,12 +56,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             disabled={disabled}
             required={required}
             className={cn(
-              'w-full py-2.5 bg-white border rounded-xs text-xs sm:text-sm text-slate-900 placeholder-slate-400 transition-all duration-200',
+              'w-full py-2.5 bg-white border rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 transition-all duration-200',
               leftIcon ? 'pl-10' : 'pl-3.5',
               rightIcon ? 'pr-10' : 'pr-3.5',
-              'focus:outline-none focus:ring-1 focus:ring-[#17365D] focus:border-[#17365D]',
+              'focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600',
               error
-                ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400'
+                ? 'border-red-400 bg-red-50/30 focus:ring-red-400'
                 : 'border-slate-300 hover:border-slate-400',
               disabled && 'opacity-60 bg-slate-100 cursor-not-allowed',
               className

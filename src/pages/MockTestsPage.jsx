@@ -100,31 +100,31 @@ export default function MockTestsPage() {
     : mockTests.filter(t => t.category === selectedCategory);
 
   return (
-    <div className="w-full bg-[#07080D] text-slate-100 min-h-screen py-12">
+    <div className="w-full bg-[#F8FAFC] text-slate-900 min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6">
-          <Link to="/" className="hover:text-white transition-colors">HOME</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="text-[#CCFF00] font-semibold">CBT MOCK TEST SIMULATOR</span>
+        <div className="flex items-center gap-2 text-xs font-medium text-slate-500 mb-6">
+          <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+          <span className="text-blue-600 font-semibold">CBT Mock Test Simulator</span>
         </div>
 
-        {/* Header Banner */}
-        <div className="bg-[#0E121A] border border-white/10 rounded-3xl p-8 sm:p-12 mb-12 text-white relative overflow-hidden shadow-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#CCFF00]/10 border border-[#CCFF00]/25 text-[#CCFF00] font-mono text-xs uppercase tracking-widest mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span>NTA-STANDARD TIMED ASSESSMENT ENGINE</span>
+        {/* Header Banner (EduCore Theme) */}
+        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/40 border border-blue-200/80 rounded-3xl p-8 sm:p-12 mb-10 relative overflow-hidden shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mb-4">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span>NTA-Standard Timed Assessment Engine</span>
           </div>
 
-          <h1 className="font-display font-black text-3xl sm:text-5xl uppercase tracking-tight mb-4 text-white">
-            AUTHENTIC EXAM-PATTERN{' '}
-            <span className="font-editorial italic font-normal text-slate-300 normal-case">
+          <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4 text-slate-900">
+            Authentic Exam-Pattern{' '}
+            <span className="text-blue-600">
               Mock Test Series.
             </span>
           </h1>
 
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed mb-6 font-sans">
-            Test your knowledge under timed conditions. Get instant score breakdowns, negative marking penalties, and topic-wise diagnostic performance evaluation.
+          <p className="text-slate-600 text-sm sm:text-base max-w-2xl leading-relaxed mb-6">
+            Test your knowledge under timed exam conditions. Get instant score breakdowns, negative marking analysis, and topic-wise diagnostic performance evaluation.
           </p>
         </div>
 
@@ -135,10 +135,10 @@ export default function MockTestsPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition cursor-pointer border ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition cursor-pointer border ${
                   selectedCategory === cat
-                    ? 'bg-white text-black border-white font-extrabold shadow-md'
-                    : 'bg-[#0E121A] text-slate-400 hover:text-white border-white/10 hover:border-white/20'
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                    : 'bg-white text-slate-700 hover:text-blue-600 border-slate-200 hover:border-blue-200 shadow-sm'
                 }`}
               >
                 {cat === 'All' ? 'All Mock Tests' : `${cat} Tests`}
@@ -146,66 +146,66 @@ export default function MockTestsPage() {
             ))}
           </div>
 
-          <div className="font-mono text-xs text-slate-400">
-            AVAILABLE PAPERS: <span className="font-bold text-[#CCFF00]">{filteredTests.length} TESTS</span>
+          <div className="text-xs text-slate-500 font-medium">
+            Available Papers: <span className="font-bold text-blue-600">{filteredTests.length} Tests</span>
           </div>
         </div>
 
         {/* Tests Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {filteredTests.map((test, idx) => (
+          {filteredTests.map((test) => (
             <div
               key={test.id}
-              className="bg-[#0E121A] rounded-2xl border border-white/10 hover:border-white/25 hover:bg-[#121722] p-6 transition-all flex flex-col justify-between group"
+              className="bg-white rounded-2xl border border-slate-200/80 hover:border-blue-300 hover:shadow-md p-6 transition-all flex flex-col justify-between group shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className={`font-mono text-[9px] uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                  <span className={`text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full border ${
                     test.difficulty === 'High'
-                      ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
-                      : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                      ? 'bg-rose-50 text-rose-700 border-rose-200'
+                      : 'bg-emerald-50 text-emerald-700 border-emerald-200'
                   }`}>
-                    {test.difficulty} DIFFICULTY
+                    {test.difficulty} Difficulty
                   </span>
-                  <span className="font-mono text-xs text-slate-400 font-semibold">{test.class}</span>
+                  <span className="text-xs text-slate-500 font-semibold">{test.class}</span>
                 </div>
 
-                <h3 className="font-display font-extrabold text-white text-base sm:text-lg mb-2 group-hover:text-[#CCFF00] transition-colors leading-snug uppercase">
+                <h3 className="font-bold text-slate-900 text-base mb-2 group-hover:text-blue-600 transition-colors leading-snug">
                   {test.title}
                 </h3>
 
-                <p className="text-xs text-slate-400 mb-5 line-clamp-2">
-                  <strong className="text-slate-300">Syllabus:</strong> {test.syllabus}
+                <p className="text-xs text-slate-500 mb-5 line-clamp-2">
+                  <strong className="text-slate-700 font-semibold">Syllabus:</strong> {test.syllabus}
                 </p>
 
-                {/* HUD Metrics Grid */}
-                <div className="grid grid-cols-3 gap-2 p-3 bg-black/40 border border-white/5 rounded-xl mb-6 text-center font-mono text-xs">
+                {/* Metrics Grid */}
+                <div className="grid grid-cols-3 gap-2 p-3 bg-slate-50 border border-slate-100 rounded-xl mb-6 text-center text-xs">
                   <div>
-                    <p className="text-slate-500 text-[9px] uppercase">QUESTIONS</p>
-                    <p className="font-bold text-white mt-0.5">{test.questions}</p>
+                    <p className="text-slate-400 text-[10px] font-semibold uppercase">Questions</p>
+                    <p className="font-bold text-slate-900 mt-0.5">{test.questions}</p>
                   </div>
                   <div>
-                    <p className="text-slate-500 text-[9px] uppercase">TIME</p>
-                    <p className="font-bold text-white mt-0.5">{test.duration}</p>
+                    <p className="text-slate-400 text-[10px] font-semibold uppercase">Time</p>
+                    <p className="font-bold text-slate-900 mt-0.5">{test.duration}</p>
                   </div>
                   <div>
-                    <p className="text-slate-500 text-[9px] uppercase">MARKS</p>
-                    <p className="font-bold text-[#CCFF00] mt-0.5">{test.totalMarks}</p>
+                    <p className="text-slate-400 text-[10px] font-semibold uppercase">Marks</p>
+                    <p className="font-bold text-blue-600 mt-0.5">{test.totalMarks}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-white/5 flex items-center justify-between">
-                <span className="font-mono text-[10px] text-slate-500 uppercase">
-                  {test.attempts} ATTEMPTS
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[11px] text-slate-400 font-medium">
+                  {test.attempts} attempts
                 </span>
                 <button
                   type="button"
                   onClick={() => setActiveTestModal(test)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#CCFF00] hover:text-black transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-all cursor-pointer shadow-sm"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>START MOCK</span>
+                  <span>Start Mock</span>
                 </button>
               </div>
             </div>
@@ -217,55 +217,52 @@ export default function MockTestsPage() {
           <Modal
             isOpen={!!activeTestModal}
             onClose={() => setActiveTestModal(null)}
-            title="EXAM INSTRUCTIONS & GUIDELINES"
+            title="Exam Instructions & Guidelines"
             size="md"
             footer={
               <div className="flex items-center justify-end gap-3 w-full">
                 <button
                   type="button"
                   onClick={() => setActiveTestModal(null)}
-                  className="px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider text-slate-600 hover:text-slate-900 font-bold transition-colors cursor-pointer"
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
                 >
-                  CANCEL
+                  Cancel
                 </button>
                 <Link
                   to={ROUTES.STUDENT.TESTS}
                   onClick={() => setActiveTestModal(null)}
-                  className="px-5 py-2.5 rounded-full bg-[#CCFF00] text-black font-mono text-xs font-black uppercase tracking-wider hover:bg-[#b8e600] transition-all shadow-sm cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-all shadow-sm cursor-pointer"
                 >
-                  ENTER EXAM ROOM
+                  Enter Exam Room →
                 </Link>
               </div>
             }
           >
             <div className="space-y-4">
-              <div className="p-4 bg-slate-50 border border-slate-200/90 rounded-2xl shadow-xs">
-                <h4 className="font-display font-extrabold text-slate-900 text-base uppercase tracking-tight">
+              <div className="p-4 bg-blue-50/60 border border-blue-200/80 rounded-2xl">
+                <h4 className="font-bold text-slate-900 text-base">
                   {activeTestModal.title}
                 </h4>
-                <div className="flex flex-wrap items-center gap-2.5 mt-3 font-mono text-xs">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-800 font-bold shadow-xs">
-                    <span className="text-sm">⏱</span>
-                    <span>DURATION: <span className="text-slate-950 font-black">{activeTestModal.duration}</span></span>
+                <div className="flex flex-wrap items-center gap-2.5 mt-3 text-xs">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold shadow-xs">
+                    <span>⏱ Duration: <strong className="text-slate-900">{activeTestModal.duration}</strong></span>
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-800 font-bold shadow-xs">
-                    <span className="text-sm">📝</span>
-                    <span>QUESTIONS: <span className="text-slate-950 font-black">{activeTestModal.questions}</span></span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold shadow-xs">
+                    <span>📝 Questions: <strong className="text-slate-900">{activeTestModal.questions}</strong></span>
                   </span>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-800 font-bold shadow-xs">
-                    <span className="text-sm">🎯</span>
-                    <span>MAX MARKS: <span className="text-slate-950 font-black">{activeTestModal.totalMarks}</span></span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 font-semibold shadow-xs">
+                    <span>🎯 Max Marks: <strong className="text-blue-600">{activeTestModal.totalMarks}</strong></span>
                   </span>
                 </div>
               </div>
 
               <div className="space-y-2 pt-1 text-xs">
-                <h5 className="font-mono font-bold text-slate-900 uppercase tracking-wider text-xs">EXAM RULES & GUIDELINES:</h5>
-                <ul className="space-y-2 list-disc pl-5 text-slate-700 font-sans leading-relaxed">
+                <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wide">Exam Rules & Guidelines:</h5>
+                <ul className="space-y-2 list-disc pl-5 text-slate-600 leading-relaxed">
                   <li>Each correct response carries marks according to the official pattern.</li>
                   <li>Ensure a stable internet connection before beginning the assessment.</li>
                   <li>The timer cannot be paused once initiated.</li>
-                  <li>Your submission will generate detailed analytics in the Student Dashboard.</li>
+                  <li>Your submission will generate detailed analytics in your Student Dashboard.</li>
                 </ul>
               </div>
             </div>

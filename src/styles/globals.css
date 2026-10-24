@@ -1,61 +1,72 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian: #060709;
-  --color-obsidian-subtle: #0B0E14;
-  --color-card-dark: #0E121A;
-  --color-card-border: rgba(255, 255, 255, 0.08);
-  --color-card-border-hover: rgba(255, 255, 255, 0.22);
-  --color-lime: #CCFF00;
-  --color-lime-glow: rgba(204, 255, 0, 0.15);
-  --color-emerald-accent: #00F59B;
-  --color-cyan-accent: #38BDF8;
-  --color-purple-accent: #A855F7;
-  --color-amber-accent: #F4B942;
-
-  --color-navy: #17365D;
-  --color-navy-dark: #0A1324;
-  --color-navy-obsidian: #060C17;
-  --color-navy-light: #1E4A7A;
-  --color-blue: #2457A7;
-  --color-blue-light: #3068C0;
-  --color-gold: #F4B942;
-  --color-gold-dark: #D9A230;
-  --color-gold-light: #FCE8B3;
-  --color-bg: #07080D;
-  --color-card: #0E121A;
-  --color-text: #F8FAFC;
-  --color-text-muted: #94A3B8;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-dark: rgba(255, 255, 255, 0.15);
-  --color-success: #10B981;
+  /* EduCore Consistent Color Palette */
+  --color-primary-blue: #2563EB;
+  --color-dark-blue: #1E3A8A;
+  --color-light-blue: #EFF6FF;
+  --color-page-bg: #F8FAFC;
+  --color-card-bg: #FFFFFF;
+  --color-text-main: #111827;
+  --color-text-muted: #64748B;
+  --color-border-color: #E2E8F0;
+  --color-success: #16A34A;
   --color-warning: #F59E0B;
-  --color-error: #EF4444;
-  --color-info: #38BDF8;
+  --color-error: #DC2626;
+
+  /* Legacy utility mapped colors for backward compatibility across components */
+  --color-obsidian: #111827;
+  --color-obsidian-subtle: #1E293B;
+  --color-card-dark: #FFFFFF;
+  --color-card-border: #E2E8F0;
+  --color-card-border-hover: #BFDBFE;
+  --color-lime: #2563EB;
+  --color-lime-glow: rgba(37, 99, 235, 0.12);
+  --color-emerald-accent: #16A34A;
+  --color-cyan-accent: #2563EB;
+  --color-purple-accent: #6366F1;
+  --color-amber-accent: #F59E0B;
+
+  --color-navy: #1E3A8A;
+  --color-navy-dark: #0F172A;
+  --color-navy-obsidian: #090E17;
+  --color-navy-light: #2563EB;
+  --color-blue: #2563EB;
+  --color-blue-light: #3B82F6;
+  --color-gold: #F59E0B;
+  --color-gold-dark: #D97706;
+  --color-gold-light: #FEF3C7;
+
+  --color-bg: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-text: #111827;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+  --color-border-dark: #CBD5E1;
 
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-editorial: "Newsreader", Georgia, Cambria, "Times New Roman", Times, serif;
 
-  --radius-card: 0.75rem;
-  --radius-btn: 9999px;
+  --radius-card: 1rem;
+  --radius-btn: 0.625rem;
 
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-  --shadow-card-hover: 0 16px 40px -8px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(255, 255, 255, 0.05);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 10px 25px -5px rgba(37, 99, 235, 0.08), 0 8px 10px -6px rgba(37, 99, 235, 0.04);
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  background-color: #07080D;
-  color: #F8FAFC;
+  background-color: #F8FAFC;
+  color: #111827;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #07080D;
-  color: #F8FAFC;
+  background-color: #F8FAFC;
+  color: #111827;
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
@@ -64,41 +75,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* GPU Layer Promotion to Eliminate Scroll/Render Lag */
-.backdrop-blur-2xl,
-.backdrop-blur-xl,
-.backdrop-blur-3xl {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
 ::selection {
-  background: #CCFF00;
-  color: #07080D;
+  background: #2563EB;
+  color: #FFFFFF;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #07080D;
+  background-color: #F8FAFC;
+  color: #111827;
 }
 
-/* Scrub Architectural Utility Classes */
+/* EduCore Label & Heading Utilities */
 .mono-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
   line-height: 1rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
+  color: #64748B;
 }
 
 .heading-display {
   font-family: var(--font-display);
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .heading-editorial {
@@ -108,103 +112,97 @@ body {
 }
 
 /* ======================================================== */
-/* Glassmorphism Design System Tokens & Utilities          */
+/* EduCore Clean Card & Component Tokens                   */
 /* ======================================================== */
+.educore-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.educore-card:hover {
+  border-color: #BFDBFE;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+}
+
+.educore-card-highlight {
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 1rem;
+}
+
 .glass-cockpit {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 
-    0 24px 60px -12px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
 }
 
 .glass-cockpit-interactive {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 20px 50px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-cockpit-interactive:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border-color: rgba(255, 255, 255, 0.28);
-  transform: translateY(-4px);
-  box-shadow: 
-    0 30px 70px -15px rgba(0, 0, 0, 0.8),
-    0 0 35px -5px rgba(204, 255, 0, 0.18),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-}
-
-.glass-card-subtle {
-  background: rgba(14, 18, 26, 0.55);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card-subtle:hover {
-  background: rgba(20, 26, 38, 0.7);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-}
-
-.glass-pill {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 15px -2px rgba(15, 23, 42, 0.05);
   transition: all 0.25s ease;
 }
 
-.glass-pill:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+.glass-cockpit-interactive:hover {
+  border-color: #BFDBFE;
+  box-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
 }
 
-.glass-glow-orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(110px);
-  pointer-events: none;
-  opacity: 0.22;
-  mix-blend-mode: screen;
+.glass-card-subtle {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.glass-card-subtle:hover {
+  border-color: #BFDBFE;
+  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.08);
+  transform: translateY(-2px);
+}
+
+.glass-pill {
+  background: #EFF6FF;
+  border: 1px solid #DBEAFE;
+  color: #1E40AF;
+  transition: all 0.2s ease;
+}
+
+.glass-pill:hover {
+  background: #DBEAFE;
+  border-color: #93C5FD;
 }
 
 .scrub-border {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.scrub-crosshair {
-  position: relative;
-}
-.scrub-crosshair::before {
-  content: "+";
-  position: absolute;
-  top: -7px;
-  left: -6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.25);
-  pointer-events: none;
+  border: 1px solid #E2E8F0;
 }
 
 .scrub-grid-bg {
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+}
+
+/* Subtle EduCore Glow Animation */
+@keyframes educore-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.animate-aurora {
+  animation: educore-pulse 8s ease-in-out infinite;
 }
 
 /* Continuous Marquee Animations */
@@ -220,95 +218,33 @@ body {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  animation: marquee 35s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Subtle Aurora Pulse Animation */
-@keyframes aurora-pulse {
-  0%, 100% {
-    transform: scale(1) translate(0px, 0px);
-    opacity: 0.22;
-  }
-  50% {
-    transform: scale(1.1) translate(20px, -15px);
-    opacity: 0.35;
-  }
-}
-
-.animate-aurora {
-  animation: aurora-pulse 10s ease-in-out infinite;
-}
-
-/* Glassmorphism Grand Stage for Bottom Sections */
-.glass-stage {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(12, 16, 26, 0.75) 30%, rgba(5, 7, 12, 0.98) 100%);
-  backdrop-filter: blur(36px);
-  -webkit-backdrop-filter: blur(36px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 
-    0 -30px 100px -15px rgba(0, 0, 0, 0.95),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
-}
-
-.text-stroke-glass {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
-}
-
-.text-stroke-glass-sm {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-}
-
-@keyframes glass-beam {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(200%);
-  }
-}
-
-.animate-glass-beam {
-  animation: glass-beam 7s ease-in-out infinite;
-}
-
-@keyframes button-shimmer {
-  0% {
-    transform: translateX(-150%) skewX(-20deg);
-  }
-  100% {
-    transform: translateX(300%) skewX(-20deg);
-  }
-}
-
-.animate-button-shimmer {
-  animation: button-shimmer 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-/* Custom scrollbars */
+/* Custom Clean Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #07080D;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #94A3B8;
 }
 
 /* Independent Sidebar subtle scrollbar */
 .sidebar-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+  scrollbar-color: #CBD5E1 transparent;
 }
 .sidebar-scrollbar::-webkit-scrollbar {
   width: 4px;
@@ -317,9 +253,79 @@ body {
   background: transparent;
 }
 .sidebar-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: #E2E8F0;
   border-radius: 9999px;
 }
 .sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: #CBD5E1;
 }
+
+/* ======================================================== */
+/* EduCore Universal Normalizers for Subcomponents         */
+/* ======================================================== */
+[class*="bg-[#0E121A]"],
+[class*="bg-[#0D0F15]"],
+[class*="bg-[#07080D]"],
+[class*="bg-[#060C17]"],
+[class*="bg-[#0A0D14]"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #111827 !important;
+}
+
+[class*="bg-[#0E121A]"] .text-white,
+[class*="bg-[#0D0F15]"] .text-white,
+[class*="bg-[#07080D]"] .text-white,
+[class*="bg-[#060C17]"] .text-white,
+[class*="bg-[#0A0D14]"] .text-white {
+  color: #111827 !important;
+}
+
+[class*="bg-[#0E121A]"] .text-slate-400,
+[class*="bg-[#0D0F15]"] .text-slate-400,
+[class*="bg-[#07080D]"] .text-slate-400,
+[class*="bg-[#060C17]"] .text-slate-400,
+[class*="bg-[#0A0D14]"] .text-slate-400 {
+  color: #64748B !important;
+}
+
+[class*="bg-[#0E121A]"] .text-slate-300,
+[class*="bg-[#0D0F15]"] .text-slate-300,
+[class*="bg-[#07080D]"] .text-slate-300,
+[class*="bg-[#060C17]"] .text-slate-300,
+[class*="bg-[#0A0D14]"] .text-slate-300 {
+  color: #475569 !important;
+}
+
+[class*="border-white/10"],
+[class*="border-white/15"],
+[class*="border-white/20"],
+[class*="border-white/25"],
+[class*="border-white/5"] {
+  border-color: #E2E8F0 !important;
+}
+
+[class*="bg-white/5"],
+[class*="bg-white/10"],
+[class*="bg-white/[0.02]"],
+[class*="bg-white/[0.03]"],
+[class*="bg-white/[0.05]"],
+[class*="bg-black/30"],
+[class*="bg-black/40"] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+[class*="bg-[#CCFF00]"] {
+  background-color: #2563EB !important;
+  color: #FFFFFF !important;
+}
+
+[class*="text-[#CCFF00]"] {
+  color: #2563EB !important;
+}
+
+[class*="border-[#CCFF00]"] {
+  border-color: #2563EB !important;
+}
+

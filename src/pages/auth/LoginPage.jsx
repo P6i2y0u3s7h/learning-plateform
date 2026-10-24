@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { GraduationCap, LogIn, AlertCircle, ArrowRight, Briefcase, ShieldCheck, UserCheck } from 'lucide-react';
-import { FormField, PasswordField } from '../../components/FormFields';
+import { GraduationCap, LogIn, AlertCircle, ArrowRight, Briefcase, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { auth } from '../../firebase/config';
 import { fetchUserRoleRecord, getDashboardRoute } from '../../firebase/rtdb';
@@ -106,28 +105,26 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center py-14 px-4 sm:px-6 lg:px-8 bg-[#07080D] scrub-grid-bg relative overflow-hidden">
-      {/* Ambient Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#CCFF00]/10 blur-[130px] pointer-events-none" />
-
-      <div className="max-w-md w-full space-y-6 bg-[#0E121A] border border-white/10 p-8 sm:p-10 rounded-3xl shadow-2xl relative z-10 text-white">
-        {/* Top Architectural Metadata Strip */}
-        <div className="flex items-center justify-between pb-4 border-b border-white/10 text-[10px] font-mono tracking-[0.2em] text-slate-400 uppercase">
-          <div className="flex items-center gap-1.5 text-[#CCFF00]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
+    <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
+      <div className="max-w-md w-full space-y-6 bg-white border border-slate-200 p-7 sm:p-9 rounded-2xl shadow-sm relative z-10 text-slate-900">
+        
+        {/* Top Status Strip */}
+        <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs font-semibold uppercase tracking-wider text-slate-500">
+          <div className="flex items-center gap-1.5 text-blue-600">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
             <span>
               {activePortal === 'admin'
-                ? 'ADMINISTRATOR CONSOLE'
+                ? 'Administrator Portal'
                 : activePortal === 'teacher'
-                ? 'FACULTY PORTAL'
-                : 'STUDENT PORTAL'}
+                ? 'Faculty Portal'
+                : 'Student Portal'}
             </span>
           </div>
-          <span className="text-emerald-400">● SECURE ENGINE</span>
+          <span className="text-emerald-600 font-medium">Secure Login</span>
         </div>
 
         {/* Portal Switcher Tabs: Student vs Teacher vs Admin */}
-        <div className="grid grid-cols-3 gap-1.5 p-1 bg-black/40 border border-white/10 rounded-2xl">
+        <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
           <button
             type="button"
             onClick={() => {
@@ -137,10 +134,10 @@ export default function LoginPage() {
               setAuthError('');
               setErrors({});
             }}
-            className={`py-2 px-2 rounded-xl font-mono text-[10.5px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+            className={`py-2 px-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activePortal === 'student'
-                ? 'bg-white text-black font-black shadow-md'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <GraduationCap className="w-3.5 h-3.5" />
@@ -156,10 +153,10 @@ export default function LoginPage() {
               setAuthError('');
               setErrors({});
             }}
-            className={`py-2 px-2 rounded-xl font-mono text-[10.5px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+            className={`py-2 px-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activePortal === 'teacher'
-                ? 'bg-[#10B981] text-black font-black shadow-md'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-emerald-600 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Briefcase className="w-3.5 h-3.5" />
@@ -175,10 +172,10 @@ export default function LoginPage() {
               setAuthError('');
               setErrors({});
             }}
-            className={`py-2 px-2 rounded-xl font-mono text-[10.5px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+            className={`py-2 px-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
               activePortal === 'admin'
-                ? 'bg-[#CCFF00] text-black font-black shadow-md'
-                : 'text-slate-400 hover:text-white'
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <ShieldCheck className="w-3.5 h-3.5" />
@@ -188,57 +185,42 @@ export default function LoginPage() {
 
         {/* Brand Header */}
         <div className="text-left pt-1">
-          <Link to="/" className="inline-flex items-center gap-2.5 mb-3 group">
-            <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
-              {activePortal === 'admin' ? (
-                <ShieldCheck className="w-5 h-5 text-[#CCFF00]" />
-              ) : activePortal === 'teacher' ? (
-                <Briefcase className="w-5 h-5 text-emerald-400" />
-              ) : (
-                <GraduationCap className="w-5 h-5 text-white" />
-              )}
-            </div>
-            <span className="font-display font-black text-white text-base tracking-wider uppercase">
-              BRAINSTORM ACADEMY.
-            </span>
-          </Link>
-
-          <h2 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-tight">
+          <h2 className="font-display font-bold text-2xl text-slate-900 tracking-tight leading-tight">
             {activePortal === 'admin'
-              ? 'ADMIN CONTROL SIGN IN.'
+              ? 'Administrator Sign In'
               : activePortal === 'teacher'
-              ? 'TEACHER SIGN IN.'
-              : 'STUDENT SIGN IN.'}
-            <span className="block font-editorial font-normal italic lowercase tracking-normal text-slate-400 text-xl mt-1">
-              {activePortal === 'admin'
-                ? 'manage users, courses, reports & platform settings'
-                : activePortal === 'teacher'
-                ? 'access curriculum, student batches & testing'
-                : 'access courses, CBT mock tests & analytics'}
-            </span>
+              ? 'Teacher Sign In'
+              : 'Student Sign In'}
           </h2>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            {activePortal === 'admin'
+              ? 'Manage users, courses, reports & platform settings'
+              : activePortal === 'teacher'
+              ? 'Access curriculum, student batches & testing'
+              : 'Access your courses, mock tests & learning analytics'}
+          </p>
         </div>
 
         {/* Error Banner */}
         {authError && (
-          <div className="p-3.5 bg-rose-950/40 border border-rose-500/30 rounded-xl text-xs text-rose-200 flex items-start gap-2.5 animate-in fade-in font-mono">
-            <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
+          <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 flex items-start gap-2.5 animate-in fade-in">
+            <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="font-bold text-rose-300 uppercase tracking-wider">Authentication Error</p>
-              <p className="font-sans text-slate-300 mt-0.5">{authError}</p>
+              <p className="font-bold">Authentication Error</p>
+              <p className="mt-0.5">{authError}</p>
             </div>
           </div>
         )}
 
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1">
-            <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
+          <div className="space-y-1.5">
+            <label className="block text-xs font-semibold text-slate-700">
               {activePortal === 'admin'
-                ? 'ADMINISTRATOR EMAIL'
+                ? 'Administrator Email'
                 : activePortal === 'teacher'
-                ? 'FACULTY EMAIL ADDRESS'
-                : 'STUDENT EMAIL ADDRESS'}
+                ? 'Faculty Email Address'
+                : 'Student Email Address'}
             </label>
             <input
               type="email"
@@ -254,25 +236,25 @@ export default function LoginPage() {
                   ? 'teacher@example.com'
                   : 'student@example.com'
               }
-              className="w-full px-4 py-3 bg-black/40 border border-white/15 focus:border-[#CCFF00] rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-colors"
+              className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
               required
               autoComplete="email"
             />
             {errors.email && (
-              <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.email}</p>
+              <p className="text-xs text-red-600 mt-1">{errors.email}</p>
             )}
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-                PASSWORD
+              <label className="block text-xs font-semibold text-slate-700">
+                Password
               </label>
               <Link
                 to={ROUTES.FORGOT_PASSWORD}
-                className="font-mono text-[10px] text-[#CCFF00] hover:underline uppercase tracking-wider"
+                className="text-xs text-blue-600 hover:underline font-medium"
               >
-                Forgot?
+                Forgot Password?
               </Link>
             </div>
             <input
@@ -283,49 +265,49 @@ export default function LoginPage() {
                 if (errors.password) setErrors((prev) => ({ ...prev, password: '' }));
               }}
               placeholder="••••••••"
-              className="w-full px-4 py-3 bg-black/40 border border-white/15 focus:border-[#CCFF00] rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-colors"
+              className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
               required
               autoComplete="current-password"
             />
             {errors.password && (
-              <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.password}</p>
+              <p className="text-xs text-red-600 mt-1">{errors.password}</p>
             )}
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3.5 px-6 rounded-full text-black font-mono text-xs font-black uppercase tracking-[0.16em] transition-all flex items-center justify-center gap-2 cursor-pointer mt-3 shadow-lg ${
+            className={`w-full py-3 px-6 rounded-xl text-white text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer mt-4 shadow-sm ${
               activePortal === 'admin'
-                ? 'bg-[#CCFF00] hover:bg-white shadow-[0_0_20px_rgba(204,255,0,0.35)]'
+                ? 'bg-slate-900 hover:bg-slate-800'
                 : activePortal === 'teacher'
-                ? 'bg-[#10B981] hover:bg-white shadow-[0_0_20px_rgba(16,185,129,0.35)]'
-                : 'bg-white hover:bg-[#CCFF00] shadow-[0_0_20px_rgba(255,255,255,0.2)]'
+                ? 'bg-emerald-600 hover:bg-emerald-700'
+                : 'bg-blue-600 hover:bg-blue-700'
             }`}
           >
-            <LogIn className="w-3.5 h-3.5" />
+            <LogIn className="w-4 h-4" />
             <span>
               {loading
-                ? 'AUTHENTICATING...'
-                : `SIGN IN AS ${activePortal.toUpperCase()}`}
+                ? 'Authenticating...'
+                : `Sign In as ${activePortal.charAt(0).toUpperCase() + activePortal.slice(1)}`}
             </span>
           </button>
         </form>
 
-        {/* Footer Link - Only Students can create accounts publicly. Teacher & Admin accounts are created centrally */}
+        {/* Footer Link */}
         {activePortal === 'student' ? (
-          <div className="pt-2 text-center font-mono text-[11px] text-slate-400 tracking-wider">
-            NEW TO ACADEMY?{' '}
+          <div className="pt-2 text-center text-xs text-slate-500">
+            New to Brainstorm Academy?{' '}
             <Link
               to={ROUTES.REGISTER}
-              className="font-bold text-[#CCFF00] hover:underline uppercase"
+              className="font-semibold text-blue-600 hover:underline"
             >
-              Create an Account →
+              Create Student Account →
             </Link>
           </div>
         ) : (
-          <div className="pt-2 text-center font-mono text-[10px] text-slate-500 uppercase tracking-wider">
-            RESTRICTED ACCESS &bull; FACULTY & ADMIN ACCOUNTS ARE PROVISIONED BY ADMINISTRATORS
+          <div className="pt-2 text-center text-[11px] text-slate-500">
+            Restricted Portal • Faculty & Admin accounts are managed by administrators.
           </div>
         )}
       </div>

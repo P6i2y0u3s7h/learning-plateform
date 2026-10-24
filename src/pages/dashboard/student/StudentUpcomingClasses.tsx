@@ -62,32 +62,26 @@ export const StudentUpcomingClasses: React.FC = () => {
   return (
     <div className="space-y-6 relative">
       {/* Zero-cost GPU accelerated ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
-
-      {/* Header Banner */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 text-white">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-              [ 05 // INTERACTIVE SESSIONS ]
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Interactive Sessions
           </div>
-          <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             Upcoming Live Classes
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Participate in live faculty lectures, conceptual question hours, and weekly doubt resolutions.
           </p>
         </div>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-mono shadow-lg">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3 text-xs sm:text-sm shadow-sm">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
@@ -95,7 +89,7 @@ export const StudentUpcomingClasses: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl p-6 border border-white/10 shadow-xl space-y-4">
+            <div key={i} className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">
               <div className="flex justify-between items-center">
                 <Skeleton className="h-5 w-24 rounded-full" />
                 <Skeleton className="h-4 w-28" />
@@ -107,17 +101,14 @@ export const StudentUpcomingClasses: React.FC = () => {
           ))}
         </div>
       ) : classes.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 border border-white/10 text-center shadow-2xl relative overflow-hidden">
-          {/* Top specular hairline */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
-          <div className="w-16 h-16 bg-gradient-to-br from-[#CCFF00]/20 to-[#38BDF8]/20 border border-[#CCFF00]/30 rounded-2xl flex items-center justify-center mx-auto mb-4 text-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.15)]">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 text-center shadow-sm relative overflow-hidden">
+          <div className="w-16 h-16 bg-blue-50 border border-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600">
             <Radio className="w-8 h-8" />
           </div>
-          <h3 className="font-mono font-black text-lg sm:text-xl text-white mb-2 tracking-tight">
+          <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-2 tracking-tight">
             No Live Sessions Currently Scheduled
           </h3>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono max-w-md mx-auto mb-6 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-6 leading-relaxed">
             Live lectures and doubt clearing classrooms are scheduled regularly by your mentors. You will receive notification alerts once upcoming sessions are announced.
           </p>
         </div>
@@ -129,58 +120,56 @@ export const StudentUpcomingClasses: React.FC = () => {
             return (
               <div
                 key={cls.id}
-                className={`bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl border p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between text-white relative overflow-hidden group ${
+                className={`bg-white rounded-3xl border p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group ${
                   isLiveNow
-                    ? 'border-rose-500/50 shadow-[0_0_25px_rgba(244,63,94,0.15)] ring-1 ring-rose-500/30'
-                    : 'border-white/10 hover:border-[#CCFF00]/40'
+                    ? 'border-red-300 ring-2 ring-red-100'
+                    : 'border-slate-200/80 hover:border-blue-300'
                 }`}
               >
-                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
-                    <span className="text-[11px] font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full uppercase tracking-wider">
                       {cls.subjectName || 'Live Lecture'}
                     </span>
                     {isLiveNow ? (
-                      <span className="inline-flex items-center gap-1.5 text-xs font-mono font-black text-rose-400 bg-rose-500/10 border border-rose-500/30 px-2.5 py-1 rounded-full animate-pulse">
-                        <span className="w-2 h-2 rounded-full bg-rose-500" />
+                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-red-700 bg-red-50 border border-red-200 px-2.5 py-1 rounded-full animate-pulse">
+                        <span className="w-2 h-2 rounded-full bg-red-600" />
                         LIVE NOW
                       </span>
                     ) : (
-                      <span className="text-xs font-mono text-slate-400 flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-slate-500" />
+                      <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-slate-400" />
                         {cls.durationMinutes} mins
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-mono font-bold text-base text-white group-hover:text-[#CCFF00] transition mb-2 line-clamp-2">
+                  <h3 className="font-bold text-base text-slate-900 group-hover:text-blue-600 transition mb-2 line-clamp-2">
                     {cls.title}
                   </h3>
 
-                  <p className="text-xs text-slate-400 font-sans line-clamp-2 mb-4 leading-relaxed">
+                  <p className="text-xs text-slate-600 line-clamp-2 mb-4 leading-relaxed">
                     {cls.description || 'Interactive lecture covering essential syllabus fundamentals and practice exercises.'}
                   </p>
 
-                  <div className="bg-[#060C17] rounded-2xl p-3.5 space-y-1.5 text-xs font-mono text-slate-300 border border-white/10 mb-5">
+                  <div className="bg-slate-50 rounded-2xl p-3.5 space-y-1.5 text-xs text-slate-700 border border-slate-200/60 mb-5">
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Scheduled Time:</span>
-                      <span className="font-bold text-[#CCFF00]">{cls.scheduledAt}</span>
+                      <span className="text-slate-500 font-medium">Scheduled Time:</span>
+                      <span className="font-semibold text-slate-900">{cls.scheduledAt}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Faculty / Mentor:</span>
-                      <span className="text-slate-200">{cls.instructorName || 'Senior Faculty'}</span>
+                      <span className="text-slate-500 font-medium">Faculty / Mentor:</span>
+                      <span className="text-slate-800 font-medium">{cls.instructorName || 'Senior Faculty'}</span>
                     </div>
                   </div>
                 </div>
 
                 <button
                   onClick={() => handleJoinClass(cls)}
-                  className={`w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-mono font-black uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer shadow-lg active:scale-95 ${
+                  className={`w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center gap-2 transition cursor-pointer shadow-sm active:scale-95 ${
                     isLiveNow
-                      ? 'bg-rose-500 text-white hover:bg-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.35)]'
-                      : 'bg-[#CCFF00] text-black hover:bg-white shadow-[0_0_15px_rgba(204,255,0,0.25)]'
+                      ? 'bg-red-600 text-white hover:bg-red-700'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
                   }`}
                 >
                   <Video className="w-4 h-4 stroke-[2.5]" />

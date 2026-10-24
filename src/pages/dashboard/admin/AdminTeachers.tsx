@@ -236,25 +236,23 @@ export const AdminTeachers: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header Banner */}
-      <div className="bg-[#0E121A]/90 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#10B981] to-transparent" />
+      {/* Header */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
 
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-[#10B981]/10 border border-[#10B981]/30 text-[#10B981] flex items-center justify-center font-mono font-black text-xl shadow-[0_0_20px_rgba(16,185,129,0.25)] flex-shrink-0">
-            <UserCheck className="w-7 h-7" />
+          <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center font-bold text-xl shadow-xs flex-shrink-0">
+            <UserCheck className="w-6 h-6" />
           </div>
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-              <span className="text-[10px] font-mono tracking-widest text-[#10B981] uppercase font-bold">
-                [ FACULTY GOVERNANCE &middot; REALTIME DB SYNC ]
-              </span>
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+              <span>Faculty Governance</span>
             </div>
-            <h1 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight">
+            <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
               Manage Teachers
             </h1>
-            <p className="text-xs sm:text-sm font-mono text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-slate-500">
               Provision faculty accounts, manage active statuses, and assign instructors to courses.
             </p>
           </div>
@@ -264,24 +262,24 @@ export const AdminTeachers: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsAddModalOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-[#10B981] text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(16,185,129,0.25)] cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-sm hover:shadow cursor-pointer"
         >
-          <UserPlus className="w-4 h-4 stroke-[3]" />
+          <UserPlus className="w-4 h-4" />
           <span>Add Teacher</span>
         </button>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-300 font-mono">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-700">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Filter Tabs & Search */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
           <input
             type="search"
             value={searchQuery}
@@ -290,20 +288,20 @@ export const AdminTeachers: React.FC = () => {
               setCurrentPage(1);
             }}
             placeholder="Search faculty by name, email, or UID..."
-            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#060C17] border border-white/15 rounded-xl text-white placeholder-slate-500 font-mono outline-none focus:border-[#10B981] transition"
+            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
           />
         </div>
 
-        <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 font-mono text-xs">
+        <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 text-xs">
           <button
             onClick={() => {
               setStatusFilter('all');
               setCurrentPage(1);
             }}
-            className={`px-3 py-1.5 rounded-lg font-bold transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl font-semibold transition cursor-pointer ${
               statusFilter === 'all'
-                ? 'bg-white text-black font-bold shadow-md'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
             ALL ({mergedTeachers.length})
@@ -313,10 +311,10 @@ export const AdminTeachers: React.FC = () => {
               setStatusFilter('active');
               setCurrentPage(1);
             }}
-            className={`px-3 py-1.5 rounded-lg font-bold transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl font-semibold transition cursor-pointer ${
               statusFilter === 'active'
-                ? 'bg-[#10B981] text-black shadow-[0_0_12px_rgba(16,185,129,0.35)]'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-emerald-600 text-white shadow-xs'
+                : 'bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
             ACTIVE ({mergedTeachers.filter((t) => t.status === 'active').length})
@@ -326,10 +324,10 @@ export const AdminTeachers: React.FC = () => {
               setStatusFilter('disabled');
               setCurrentPage(1);
             }}
-            className={`px-3 py-1.5 rounded-lg font-bold transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl font-semibold transition cursor-pointer ${
               statusFilter === 'disabled'
-                ? 'bg-rose-500 text-white shadow-[0_0_12px_rgba(244,63,94,0.35)]'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-rose-600 text-white shadow-xs'
+                : 'bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
             DISABLED ({mergedTeachers.filter((t) => t.status === 'disabled').length})
@@ -337,11 +335,11 @@ export const AdminTeachers: React.FC = () => {
         </div>
       </div>
 
-      {/* Teachers Table (Requirement #6) */}
+      {/* Teachers Table */}
       {loading ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl space-y-3">
+        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-3">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="flex justify-between items-center py-2.5 border-b border-white/5">
+            <div key={i} className="flex justify-between items-center py-2.5 border-b border-slate-100">
               <Skeleton className="h-4 w-40" />
               <Skeleton className="h-4 w-28" />
               <Skeleton className="h-4 w-20" />
@@ -349,41 +347,41 @@ export const AdminTeachers: React.FC = () => {
           ))}
         </div>
       ) : filteredTeachers.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 border border-white/10 text-center shadow-2xl">
-          <UserCheck className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="font-display font-bold text-base text-white mb-1">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 text-center shadow-sm">
+          <UserCheck className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+          <h3 className="font-bold text-base text-slate-800 mb-1">
             No Faculty Members Found
           </h3>
-          <p className="text-xs font-mono text-slate-400">
+          <p className="text-xs text-slate-500">
             Click "Add Teacher" above to provision a new faculty account in Realtime Database.
           </p>
         </div>
       ) : (
-        <div className="bg-[#0E121A]/90 border border-white/10 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
+        <div className="bg-white border border-slate-200/80 rounded-3xl overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-black/60 text-[10px] font-mono text-slate-400 uppercase tracking-wider border-b border-white/10">
+              <thead className="bg-slate-50 text-[11px] text-slate-500 font-semibold uppercase tracking-wider border-b border-slate-200">
                 <tr>
-                  <th className="py-3.5 px-4 font-bold">Faculty Member</th>
-                  <th className="py-3.5 px-4 font-bold">Email Address</th>
-                  <th className="py-3.5 px-4 font-bold">Role</th>
-                  <th className="py-3.5 px-4 font-bold">Status</th>
-                  <th className="py-3.5 px-4 font-bold">Date Created</th>
-                  <th className="py-3.5 px-4 font-bold text-right">Actions</th>
+                  <th className="py-3.5 px-4">Faculty Member</th>
+                  <th className="py-3.5 px-4">Email Address</th>
+                  <th className="py-3.5 px-4">Role</th>
+                  <th className="py-3.5 px-4">Status</th>
+                  <th className="py-3.5 px-4">Date Created</th>
+                  <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 font-sans">
+              <tbody className="divide-y divide-slate-100 text-slate-700">
                 {paginatedTeachers.map((t) => (
-                  <tr key={t.uid} className="hover:bg-white/[0.02] transition-colors">
+                  <tr key={t.uid} className="hover:bg-slate-50/70 transition-colors">
                     {/* Name */}
                     <td className="py-3.5 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 text-[#10B981] font-bold flex items-center justify-center text-xs flex-shrink-0 font-mono shadow-[0_0_10px_rgba(16,185,129,0.15)]">
+                        <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 font-bold flex items-center justify-center text-xs flex-shrink-0 shadow-xs">
                           {(t.name || 'T')[0].toUpperCase()}
                         </div>
                         <div className="min-w-0">
-                          <p className="font-bold text-white truncate">{t.name}</p>
-                          <span className="text-[10px] font-mono text-slate-500 truncate block">
+                          <p className="font-bold text-slate-900 truncate">{t.name}</p>
+                          <span className="text-[10px] text-slate-400 truncate block">
                             UID: {t.uid.slice(0, 12)}...
                           </span>
                         </div>
@@ -391,13 +389,13 @@ export const AdminTeachers: React.FC = () => {
                     </td>
 
                     {/* Email */}
-                    <td className="py-3.5 px-4 font-mono text-slate-300">
+                    <td className="py-3.5 px-4 text-slate-600">
                       {t.email}
                     </td>
 
                     {/* Role */}
                     <td className="py-3.5 px-4">
-                      <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold px-2 py-0.5 rounded-full uppercase bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/30">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full uppercase bg-blue-50 text-blue-700 border border-blue-200/80">
                         TEACHER
                       </span>
                     </td>
@@ -405,12 +403,12 @@ export const AdminTeachers: React.FC = () => {
                     {/* Status */}
                     <td className="py-3.5 px-4">
                       {t.status === 'active' ? (
-                        <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold px-2 py-0.5 rounded-full uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                           <span>ACTIVE</span>
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold px-2 py-0.5 rounded-full uppercase bg-rose-500/10 text-rose-400 border border-rose-500/30">
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full uppercase bg-rose-50 text-rose-700 border border-rose-200">
                           <XCircle className="w-3 h-3" />
                           <span>DISABLED</span>
                         </span>
@@ -418,7 +416,7 @@ export const AdminTeachers: React.FC = () => {
                     </td>
 
                     {/* Date Created */}
-                    <td className="py-3.5 px-4 font-mono text-[11px] text-slate-400">
+                    <td className="py-3.5 px-4 text-xs text-slate-500">
                       {t.createdAt ? new Date(t.createdAt).toLocaleDateString() : 'N/A'}
                     </td>
 
@@ -429,7 +427,7 @@ export const AdminTeachers: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => setViewingTeacher(t)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition cursor-pointer"
                           title="View Faculty Details"
                         >
                           <Eye className="w-4 h-4" />
@@ -439,7 +437,7 @@ export const AdminTeachers: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => setAssigningTeacher(t)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#CCFF00] hover:bg-[#CCFF00]/10 transition cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition cursor-pointer"
                           title="Assign to Course"
                         >
                           <BookOpen className="w-4 h-4" />
@@ -452,7 +450,7 @@ export const AdminTeachers: React.FC = () => {
                             setEditingTeacher(t);
                             setNewName(t.name);
                           }}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition cursor-pointer"
                           title="Edit Name"
                         >
                           <Edit2 className="w-4 h-4" />
@@ -462,7 +460,7 @@ export const AdminTeachers: React.FC = () => {
                         <button
                           type="button"
                           onClick={() => handleSendPasswordReset(t.email)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-amber-500/10 transition cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition cursor-pointer"
                           title="Send Password Reset Email"
                         >
                           <KeyRound className="w-4 h-4" />
@@ -475,8 +473,8 @@ export const AdminTeachers: React.FC = () => {
                           onClick={() => handleToggleStatus(t)}
                           className={`p-1.5 rounded-lg transition cursor-pointer ${
                             t.status === 'active'
-                              ? 'text-slate-400 hover:text-rose-400 hover:bg-rose-500/10'
-                              : 'text-slate-400 hover:text-emerald-400 hover:bg-emerald-500/10'
+                              ? 'text-slate-400 hover:text-rose-600 hover:bg-rose-50'
+                              : 'text-slate-400 hover:text-emerald-600 hover:bg-emerald-50'
                           }`}
                           title={t.status === 'active' ? 'Deactivate Account' : 'Activate Account'}
                         >
@@ -492,7 +490,7 @@ export const AdminTeachers: React.FC = () => {
                           type="button"
                           disabled={actionLoading}
                           onClick={() => handleDeleteTeacher(t)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition cursor-pointer"
                           title="Delete Account"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -507,16 +505,16 @@ export const AdminTeachers: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="p-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+            <div className="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
               <span>
-                Page {currentPage} of {totalPages}
+                Page <strong className="text-slate-900">{currentPage}</strong> of <strong className="text-slate-900">{totalPages}</strong>
               </span>
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"
                   disabled={currentPage <= 1}
                   onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                  className="px-2.5 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-30 cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 disabled:opacity-30 cursor-pointer"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -524,7 +522,7 @@ export const AdminTeachers: React.FC = () => {
                   type="button"
                   disabled={currentPage >= totalPages}
                   onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-                  className="px-2.5 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10 disabled:opacity-30 cursor-pointer"
+                  className="px-2.5 py-1 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 disabled:opacity-30 cursor-pointer"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -544,14 +542,14 @@ export const AdminTeachers: React.FC = () => {
 
       {/* Edit Name Modal */}
       {editingTeacher && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-6 max-w-sm w-full text-white shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-2 border-b border-white/10">
-              <h3 className="font-bold text-sm">Edit Teacher Name</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 max-w-sm w-full text-slate-800 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+              <h3 className="font-bold text-sm text-slate-900">Edit Teacher Name</h3>
               <button
                 type="button"
                 onClick={() => setEditingTeacher(null)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -559,7 +557,7 @@ export const AdminTeachers: React.FC = () => {
 
             <form onSubmit={handleSaveName} className="space-y-3">
               <div>
-                <label className="block text-[11px] font-mono text-slate-400 uppercase mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Full Name
                 </label>
                 <input
@@ -567,7 +565,7 @@ export const AdminTeachers: React.FC = () => {
                   required
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full px-3 py-2 bg-black/40 border border-white/10 focus:border-[#10B981] rounded-xl text-white text-xs outline-none"
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 rounded-xl text-slate-800 text-xs outline-none"
                 />
               </div>
 
@@ -575,14 +573,14 @@ export const AdminTeachers: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setEditingTeacher(null)}
-                  className="px-3 py-2 rounded-xl text-xs text-slate-400 hover:text-white"
+                  className="px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={actionLoading}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#10B981] text-black hover:bg-white transition"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm"
                 >
                   Save
                 </button>
@@ -594,48 +592,48 @@ export const AdminTeachers: React.FC = () => {
 
       {/* View Details Modal */}
       {viewingTeacher && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-6 max-w-md w-full text-white shadow-2xl space-y-4 font-mono text-xs">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 max-w-md w-full text-slate-800 shadow-2xl space-y-4 text-xs">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <UserCheck className="w-4 h-4 text-[#10B981]" />
-                <h3 className="font-bold text-sm text-white">Teacher Profile</h3>
+                <UserCheck className="w-4 h-4 text-blue-600" />
+                <h3 className="font-bold text-sm text-slate-900">Teacher Profile</h3>
               </div>
               <button
                 type="button"
                 onClick={() => setViewingTeacher(null)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="space-y-2.5 bg-black/40 p-4 rounded-xl border border-white/5">
+            <div className="space-y-2.5 bg-slate-50 p-4 rounded-2xl border border-slate-100">
               <div>
-                <span className="text-slate-500">Name: </span>
-                <span className="text-white font-bold">{viewingTeacher.name}</span>
+                <span className="text-slate-400">Name: </span>
+                <span className="text-slate-900 font-bold">{viewingTeacher.name}</span>
               </div>
               <div>
-                <span className="text-slate-500">Email: </span>
-                <span className="text-slate-200">{viewingTeacher.email}</span>
+                <span className="text-slate-400">Email: </span>
+                <span className="text-slate-700">{viewingTeacher.email}</span>
               </div>
               <div>
-                <span className="text-slate-500">UID: </span>
-                <span className="text-[#CCFF00] select-all">{viewingTeacher.uid}</span>
+                <span className="text-slate-400">UID: </span>
+                <span className="text-blue-700 select-all font-mono">{viewingTeacher.uid}</span>
               </div>
               <div>
-                <span className="text-slate-500">Role: </span>
-                <span className="uppercase text-[#10B981] font-bold">{viewingTeacher.role}</span>
+                <span className="text-slate-400">Role: </span>
+                <span className="uppercase text-blue-600 font-bold">{viewingTeacher.role}</span>
               </div>
               <div>
-                <span className="text-slate-500">Status: </span>
-                <span className={viewingTeacher.status === 'active' ? 'text-emerald-400 uppercase font-bold' : 'text-rose-400 uppercase font-bold'}>
+                <span className="text-slate-400">Status: </span>
+                <span className={viewingTeacher.status === 'active' ? 'text-emerald-700 uppercase font-semibold' : 'text-rose-700 uppercase font-semibold'}>
                   {viewingTeacher.status}
                 </span>
               </div>
               <div>
-                <span className="text-slate-500">Created: </span>
-                <span className="text-slate-300">
+                <span className="text-slate-400">Created: </span>
+                <span className="text-slate-600">
                   {viewingTeacher.createdAt ? new Date(viewingTeacher.createdAt).toLocaleString() : 'N/A'}
                 </span>
               </div>
@@ -645,7 +643,7 @@ export const AdminTeachers: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setViewingTeacher(null)}
-                className="w-full py-2.5 rounded-xl bg-white/10 text-white font-bold hover:bg-white/15 transition text-xs"
+                className="w-full py-2.5 rounded-xl bg-slate-100 text-slate-700 font-semibold hover:bg-slate-200 transition text-xs"
               >
                 Close
               </button>
@@ -656,19 +654,19 @@ export const AdminTeachers: React.FC = () => {
 
       {/* Assign to Course Modal */}
       {assigningTeacher && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#0E121A] border border-white/10 rounded-2xl p-6 max-w-md w-full text-white shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 max-w-md w-full text-slate-800 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-[#CCFF00]" />
-                <h3 className="font-bold text-sm text-white">
+                <BookOpen className="w-4 h-4 text-blue-600" />
+                <h3 className="font-bold text-sm text-slate-900">
                   Assign Course to {('name' in assigningTeacher ? assigningTeacher.name : assigningTeacher.displayName) || 'Teacher'}
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setAssigningTeacher(null)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -676,34 +674,34 @@ export const AdminTeachers: React.FC = () => {
 
             <form onSubmit={handleAssignCourse} className="space-y-4">
               <div>
-                <label className="block text-[11px] font-mono text-slate-400 uppercase mb-1.5 font-bold">
+                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
                   Select Course
                 </label>
                 <select
                   value={selectedCourseId}
                   onChange={(e) => setSelectedCourseId(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-black/50 border border-white/15 focus:border-[#CCFF00] rounded-xl text-white text-xs outline-none font-mono"
+                  className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 rounded-xl text-slate-800 text-xs outline-none"
                 >
                   {courses.map((c) => (
-                    <option key={c.id} value={c.id} className="bg-[#0E121A] text-white">
+                    <option key={c.id} value={c.id}>
                       {c.title} ({c.subjectName || c.categoryName || 'Course'})
                     </option>
                   ))}
                 </select>
               </div>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-white/10">
+              <div className="flex justify-end gap-2 pt-2 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setAssigningTeacher(null)}
-                  className="px-4 py-2 rounded-xl text-xs text-slate-400 hover:text-white"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={actionLoading}
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#CCFF00] text-black hover:bg-white transition uppercase font-mono"
+                  className="px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm"
                 >
                   {actionLoading ? 'Assigning...' : 'Confirm Assignment'}
                 </button>

@@ -132,8 +132,8 @@ export default function AdminViews() {
     return (
       <div className="space-y-6">
         <SectionHeading tag="Configuration" title="System Settings & Analytics Reports" />
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl max-w-xl space-y-4 text-xs relative overflow-hidden text-white">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] to-transparent" />
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm max-w-xl space-y-4 text-xs sm:text-sm relative overflow-hidden text-slate-800">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-indigo-600" />
           <FormField label="Platform Name" defaultValue="Brainstorm Academy" />
           <FormField label="Support Email" defaultValue="hello@brainstormacademy.in" />
           <FormField label="Platform Tagline" defaultValue="Learn Today. Lead Tomorrow." />
@@ -147,7 +147,7 @@ export default function AdminViews() {
     );
   }
 
-  // 5. Default Fallback for all other routes (tests, materials, lessons, doubts, notifications)
+  // 5. Default Fallback for all other routes
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center flex-wrap gap-4">
@@ -156,16 +156,16 @@ export default function AdminViews() {
           <Plus className="w-4 h-4" /> Add Record
         </Button>
       </div>
-      <div className="p-8 bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl border border-white/10 text-center shadow-2xl text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] to-transparent" />
-        <Layers className="w-12 h-12 text-[#CCFF00] mx-auto mb-3" />
-        <h3 className="font-display font-bold text-base text-white">Platform Component Active</h3>
-        <p className="text-xs font-mono text-slate-400 max-w-md mx-auto mt-1 mb-4">
+      <div className="p-8 bg-white rounded-3xl border border-slate-200/80 text-center shadow-sm text-slate-800 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-indigo-600" />
+        <Layers className="w-12 h-12 text-blue-600 mx-auto mb-3" />
+        <h3 className="font-extrabold text-base text-slate-900">Platform Component Active</h3>
+        <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1 mb-4">
           All administrative records and configurations are ready for full Firebase integration.
         </p>
       </div>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={modalTitle}>
-        <div className="space-y-4 text-xs font-mono">
+        <div className="space-y-4 text-xs sm:text-sm">
           <FormField label="Record Name" placeholder="e.g. New Examination" />
           <Button onClick={() => setIsModalOpen(false)} variant="primary" size="sm" className="w-full">Submit</Button>
         </div>

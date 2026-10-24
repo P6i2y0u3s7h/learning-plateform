@@ -61,8 +61,7 @@ const ADMIN_NAV = [
 ];
 
 const NAV_MAP = { student: STUDENT_NAV, teacher: TEACHER_NAV, admin: ADMIN_NAV };
-const ROLE_LABEL = { student: 'STUDENT PORTAL', teacher: 'TEACHER PORTAL', admin: 'ADMIN CONTROL' };
-const ROLE_COLOR = { student: '#F4B942', teacher: '#10B981', admin: '#F4B942' };
+const ROLE_LABEL = { student: 'Student Portal', teacher: 'Teacher Portal', admin: 'Admin Portal' };
 
 // Direct route prefetchers for instant navigation
 const TEACHER_ROUTE_PREFETCHERS = {
@@ -90,10 +89,9 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
   const navigate = useNavigate();
 
   const navItems = NAV_MAP[role] || STUDENT_NAV;
-  const roleLabel = ROLE_LABEL[role] || 'PORTAL';
-  const roleColor = ROLE_COLOR[role] || '#F4B942';
+  const roleLabel = ROLE_LABEL[role] || 'Portal';
 
-  // Pre-warm teacher routes during browser idle time for zero-latency clicks
+  // Pre-warm teacher routes during browser idle time
   useEffect(() => {
     if (role === 'teacher') {
       const timer = setTimeout(() => {
@@ -104,13 +102,13 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
   }, [role]);
 
   const renderContent = (isMobile = false) => (
-    <div className={`flex flex-col h-full bg-[#060C17] text-white border-r border-white/10 ${!collapsed || isMobile ? 'w-64' : 'w-16'} transition-all duration-300 overflow-hidden`}>
-      {/* 1. Header & User Profile section (fixed at top of sidebar) */}
+    <div className={`flex flex-col h-full bg-white text-slate-800 border-r border-slate-200 ${!collapsed || isMobile ? 'w-64' : 'w-16'} transition-all duration-300 overflow-hidden shadow-xs`}>
+      {/* 1. Header & User Profile section */}
       <div className="flex-shrink-0">
         {/* Brand Wordmark Header */}
-        <div className="flex items-center gap-3 px-3.5 py-4 border-b border-white/10">
+        <div className="flex items-center gap-3 px-3.5 py-4 border-b border-slate-100">
           <Link to="/" className="flex-shrink-0 group" title="Brainstorm Academy">
-            <div className="w-10 h-10 rounded-xl overflow-hidden bg-black flex-shrink-0 flex items-center justify-center border border-white/20 shadow-[0_0_15px_rgba(204,255,0,0.2)]">
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-50 flex-shrink-0 flex items-center justify-center border border-slate-200 shadow-xs">
               <img
                 src={brandLogo}
                 alt="Brainstorm Academy Logo"
@@ -118,56 +116,55 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
               />
             </div>
           </Link>
+
           {(!collapsed || isMobile) && (
             <div className="min-w-0 flex flex-col justify-center">
               <div className="flex items-center gap-1 leading-tight">
-                <span className="font-display font-black text-white text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap">
-                  BRAINSTORM
+                <span className="font-display font-bold text-slate-900 text-sm tracking-tight">
+                  Brainstorm
                 </span>
-                <span className="font-display font-black text-[#CCFF00] text-xs sm:text-sm tracking-wider uppercase whitespace-nowrap drop-shadow-[0_0_12px_rgba(204,255,0,0.4)]">
-                  ACADEMY.
+                <span className="font-display font-bold text-blue-600 text-sm tracking-tight">
+                  Academy.
                 </span>
               </div>
-              <span className="font-mono text-[7px] sm:text-[7.5px] text-[#38BDF8] tracking-[0.18em] uppercase block font-bold whitespace-nowrap mt-0.5">
-                LEARN TODAY. LEAD TOMORROW.
+              <span className="font-sans text-[9px] text-slate-400 font-medium tracking-wide uppercase block mt-0.5">
+                Learn Today. Lead Tomorrow.
               </span>
               <div className="flex items-center gap-1.5 mt-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-                <span className="font-mono text-[8px] text-[#CCFF00] uppercase tracking-widest font-bold">
-                  [ {roleLabel} ]
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <span className="text-[10px] text-blue-700 font-semibold uppercase">
+                  {roleLabel}
                 </span>
               </div>
             </div>
           )}
         </div>
 
-        {/* User Info Strip with Cyber Squircle Avatar */}
+        {/* User Info Strip */}
         {(!collapsed || isMobile) && (
-          <div className="px-3.5 py-3 border-b border-white/10 bg-white/[0.02]">
+          <div className="px-3.5 py-3 border-b border-slate-100 bg-slate-50/60">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#CCFF00] via-[#10B981] to-[#047857] text-black border border-[#CCFF00]/40 flex items-center justify-center flex-shrink-0 font-mono text-xs font-black shadow-[0_0_10px_rgba(204,255,0,0.25)]">
+              <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-sans text-xs font-bold shadow-xs">
                 {(user.name || 'U').charAt(0).toUpperCase()}
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-bold text-white truncate font-sans">{user.name}</p>
-                <p className="font-mono text-[9.5px] text-slate-400 truncate tracking-wide">{user.email}</p>
+                <p className="text-xs font-bold text-slate-900 truncate font-sans">{user.name}</p>
+                <p className="text-[10px] text-slate-500 truncate">{user.email}</p>
               </div>
             </div>
           </div>
         )}
       </div>
 
-      {/* 2. Navigation Directory with Scrub Monospace Styling */}
-      {/* Independently scrolls between profile section and bottom collapse button */}
+      {/* 2. Navigation Directory */}
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-2 py-3 space-y-0.5 overscroll-contain sidebar-scrollbar">
         {(!collapsed || isMobile) && (
-          <div className="px-3 pb-2 pt-1 font-mono text-[9px] text-slate-500 uppercase tracking-[0.2em]">
-            NAVIGATION INDEX
+          <div className="px-3 pb-2 pt-1 text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+            Menu Navigation
           </div>
         )}
         {navItems.map((item, idx) => {
           const Icon = item.icon;
-          const idxString = String(idx + 1).padStart(2, '0');
           return (
             <NavLink
               key={item.path}
@@ -177,21 +174,20 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
               onMouseEnter={() => prefetchTeacherRoute(item.path)}
               onFocus={() => prefetchTeacherRoute(item.path)}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-lg font-mono text-xs tracking-wider uppercase transition-all duration-150 border ${
+                `flex items-center gap-3 px-3 py-2.5 rounded-xl font-sans text-xs font-medium transition-all duration-150 ${
                   isActive
-                    ? 'bg-[#CCFF00]/10 text-white border-[#CCFF00]/40 font-bold shadow-[0_0_12px_rgba(204,255,0,0.15)]'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5 border-transparent'
+                    ? 'bg-blue-50 text-blue-700 font-semibold border-l-4 border-blue-600 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 border-l-4 border-transparent'
                 }`
               }
               title={collapsed && !isMobile ? item.label : undefined}
             >
               {({ isActive }) => (
                 <>
-                  <Icon className={`w-4 h-4 flex-shrink-0 transition-colors ${isActive ? 'text-[#CCFF00]' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 flex-shrink-0 transition-colors ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
                   {(!collapsed || isMobile) && (
                     <div className="flex items-center justify-between flex-1 truncate">
                       <span className="truncate">{item.label}</span>
-                      <span className={`text-[9px] font-mono ${isActive ? 'text-[#CCFF00]' : 'text-slate-600'}`}>{idxString}</span>
                     </div>
                   )}
                 </>
@@ -201,18 +197,18 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
         })}
       </div>
 
-      {/* 3. Collapse Toggle Footer (fixed at bottom of sidebar) */}
+      {/* 3. Collapse Toggle Footer */}
       {!isMobile && (
-        <div className="flex-shrink-0 p-3 border-t border-white/10 bg-[#060C17]">
+        <div className="flex-shrink-0 p-3 border-t border-slate-100 bg-white">
           <button
             type="button"
             onClick={() => setCollapsed(!collapsed)}
-            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-mono text-xs text-slate-400 hover:text-white hover:bg-white/5 border border-white/10 transition-colors cursor-pointer uppercase tracking-wider"
+            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-800 hover:bg-slate-50 border border-slate-200 transition-colors cursor-pointer uppercase tracking-wider"
           >
             {collapsed ? <ChevronRight className="w-4 h-4" /> : (
               <>
                 <ChevronLeft className="w-4 h-4" />
-                <span className="text-[10px]">COLLAPSE</span>
+                <span className="text-[11px]">Collapse</span>
               </>
             )}
           </button>
@@ -228,7 +224,7 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-xs bg-[#060C17] text-white border border-white/15 shadow-md cursor-pointer"
+          className="p-2 rounded-xl bg-white text-slate-800 border border-slate-200 shadow-md cursor-pointer"
           aria-label="Toggle Dashboard Menu"
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -237,15 +233,15 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
 
       {/* Mobile Backdrop & Drawer */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-black/70 backdrop-blur-sm">
-          <div className="fixed inset-y-0 left-0 w-72 h-full z-50 animate-in slide-in-from-left duration-200">
+        <div className="lg:hidden fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-xs">
+          <div className="fixed inset-y-0 left-0 w-72 h-full z-50 animate-in slide-in-from-left duration-200 shadow-2xl">
             {renderContent(true)}
           </div>
           <div className="w-full h-full" onClick={() => setMobileOpen(false)} />
         </div>
       )}
 
-      {/* Desktop Persistent Sidebar: fixed-width, full viewport height, independent */}
+      {/* Desktop Persistent Sidebar */}
       <aside className="hidden lg:flex flex-shrink-0 h-full h-screen h-[100dvh] sticky top-0 z-30">
         {renderContent(false)}
       </aside>

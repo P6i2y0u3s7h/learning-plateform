@@ -123,31 +123,26 @@ export const AdminOverview: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-8 relative">
-      {/* Background ambient lighting */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#CCFF00]/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-20 w-96 h-96 bg-[#10B981]/5 rounded-full blur-[140px] pointer-events-none" />
-
-      {/* Super Admin Welcome Banner - Scrub Dark Glassmorphism */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#10B981] to-transparent" />
+    <div className="space-y-8">
+      {/* Super Admin Welcome Banner (EduCore Theme) */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800" />
 
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#CCFF00] via-[#a3e635] to-[#84cc16] text-black flex items-center justify-center font-mono font-black text-2xl shadow-[0_0_25px_rgba(204,255,0,0.35)] ring-1 ring-white/20 flex-shrink-0">
+          <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center font-black text-2xl shadow-sm flex-shrink-0">
             A
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-1">
-              <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-              <span className="text-[10px] font-mono tracking-widest text-[#CCFF00] uppercase font-bold">
-                [ CENTRAL CONTROL NODE &middot; SUPER ADMIN ]
+              <span className="w-2 h-2 rounded-full bg-blue-600" />
+              <span className="text-[11px] tracking-wider text-blue-600 uppercase font-bold">
+                Platform Control Center &middot; Super Admin
               </span>
             </div>
-            <h1 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight">
+            <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
               Platform Administration
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
               Brainstorm Academy Central Control & Database Management Panel
             </p>
           </div>
@@ -158,7 +153,7 @@ export const AdminOverview: React.FC = () => {
           <button
             type="button"
             onClick={() => setModalConfig({ isOpen: true, defaultRole: 'teacher' })}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(204,255,0,0.25)] cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-sm cursor-pointer"
           >
             <UserPlus className="w-4 h-4 stroke-[2.5]" />
             <span>Add Teacher</span>
@@ -166,38 +161,36 @@ export const AdminOverview: React.FC = () => {
           <button
             type="button"
             onClick={() => setModalConfig({ isOpen: true, defaultRole: 'admin' })}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-[#CCFF00]/40 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm cursor-pointer"
           >
-            <Shield className="w-4 h-4 text-[#CCFF00]" />
+            <Shield className="w-4 h-4 text-blue-300" />
             <span>Add Admin</span>
           </button>
           <Link
             to="/dashboard/admin/courses"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer"
           >
-            <Plus className="w-4 h-4 text-[#CCFF00]" />
+            <Plus className="w-4 h-4 text-blue-600" />
             <span>New Course</span>
           </Link>
         </div>
       </div>
 
-      {/* USER ACCESS & ROLE GOVERNANCE SECTION (Requirement 2) */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-white/10 shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00]/60 via-[#10B981]/60 to-transparent" />
-        
+      {/* USER ACCESS & ROLE GOVERNANCE SECTION */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-sm relative overflow-hidden">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="w-2.5 h-2.5 rounded-sm bg-[#CCFF00]" />
-              <h2 className="font-display font-black text-lg sm:text-xl text-white tracking-tight">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+              <h2 className="font-bold text-lg sm:text-xl text-slate-900 tracking-tight">
                 User Management & Access Control
               </h2>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#CCFF00]/10 border border-[#CCFF00]/30 text-[#CCFF00] font-bold">
-                REALTIME DB
+              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-bold uppercase">
+                Realtime DB
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 font-mono">
-              Provision teachers and admins securely. Manage accounts, reset credentials, or disable access without logging out.
+            <p className="text-xs sm:text-sm text-slate-500">
+              Provision teachers and admins securely. Manage accounts, reset credentials, or disable access with ease.
             </p>
           </div>
 
@@ -207,7 +200,7 @@ export const AdminOverview: React.FC = () => {
               type="button"
               id="admin-btn-add-teacher"
               onClick={() => setModalConfig({ isOpen: true, defaultRole: 'teacher' })}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_20px_rgba(204,255,0,0.25)] cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-sm cursor-pointer"
             >
               <UserPlus className="w-4 h-4 stroke-[2.5]" />
               <span>Add Teacher</span>
@@ -216,7 +209,7 @@ export const AdminOverview: React.FC = () => {
               type="button"
               id="admin-btn-add-admin"
               onClick={() => setModalConfig({ isOpen: true, defaultRole: 'admin' })}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-emerald-500 text-black hover:bg-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.25)] cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm cursor-pointer"
             >
               <Shield className="w-4 h-4 stroke-[2.5]" />
               <span>Add Admin</span>
@@ -224,103 +217,103 @@ export const AdminOverview: React.FC = () => {
             <Link
               to="/dashboard/admin/teachers"
               id="admin-btn-manage-teachers"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-[#CCFF00]/40 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
             >
-              <UserCheck className="w-4 h-4 text-[#CCFF00]" />
+              <UserCheck className="w-4 h-4 text-blue-600" />
               <span>Manage Teachers</span>
             </Link>
             <Link
               to="/dashboard/admin/admins"
               id="admin-btn-manage-admins"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-emerald-400/40 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
             >
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>Manage Admins</span>
             </Link>
             <Link
               to="/dashboard/admin/students"
               id="admin-btn-manage-students"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase tracking-wider bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-cyan-400/40 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all cursor-pointer"
             >
-              <Users className="w-4 h-4 text-cyan-400" />
+              <Users className="w-4 h-4 text-indigo-600" />
               <span>Manage Students</span>
             </Link>
           </div>
         </div>
 
         {/* Realtime Database Summary Badges */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-4 border-t border-white/5">
-          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition flex items-center justify-between">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-5 border-t border-slate-100">
+          <div className="p-4 rounded-2xl bg-blue-50/50 border border-blue-100 hover:border-blue-200 transition flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">RTDB Faculty Records</p>
-              <p className="text-xl font-mono font-bold text-white mt-0.5">
-                {rtdbStats.teachers} <span className="text-xs text-[#CCFF00] font-normal">Active Teachers</span>
+              <p className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">RTDB Faculty Records</p>
+              <p className="text-xl font-bold text-slate-900 mt-0.5">
+                {rtdbStats.teachers} <span className="text-xs text-blue-600 font-normal">Active Teachers</span>
               </p>
             </div>
             <Link
               to="/dashboard/admin/teachers"
-              className="text-xs font-mono text-[#CCFF00] hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1"
             >
-              View <ArrowRight className="w-3 h-3" />
+              View <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 hover:border-indigo-200 transition flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">RTDB Admin Accounts</p>
-              <p className="text-xl font-mono font-bold text-white mt-0.5">
-                {rtdbStats.admins} <span className="text-xs text-emerald-400 font-normal">Super Admins</span>
+              <p className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">RTDB Admin Accounts</p>
+              <p className="text-xl font-bold text-slate-900 mt-0.5">
+                {rtdbStats.admins} <span className="text-xs text-indigo-600 font-normal">Super Admins</span>
               </p>
             </div>
             <Link
               to="/dashboard/admin/admins"
-              className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
             >
-              View <ArrowRight className="w-3 h-3" />
+              View <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-slate-300 transition flex items-center justify-between">
             <div>
-              <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400">Total Learner Profiles</p>
-              <p className="text-xl font-mono font-bold text-white mt-0.5">
-                {rtdbStats.students || stats.totalStudents} <span className="text-xs text-cyan-400 font-normal">Students</span>
+              <p className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold">Total Learner Profiles</p>
+              <p className="text-xl font-bold text-slate-900 mt-0.5">
+                {rtdbStats.students || stats.totalStudents} <span className="text-xs text-slate-600 font-normal">Students</span>
               </p>
             </div>
             <Link
               to="/dashboard/admin/students"
-              className="text-xs font-mono text-cyan-400 hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-slate-700 hover:text-slate-900 flex items-center gap-1"
             >
-              View <ArrowRight className="w-3 h-3" />
+              View <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-300 font-mono">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-red-700">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
 
-      {/* DASHBOARD STATISTICS (Calculated from actual authorized database queries) */}
+      {/* DASHBOARD STATISTICS */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-display font-bold text-lg text-white flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-sm bg-[#CCFF00]" />
+          <h2 className="font-bold text-lg text-slate-900 flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
             Platform Live Metrics
           </h2>
-          <span className="text-xs font-mono text-slate-400">Cloud Firestore Realtime</span>
+          <span className="text-xs text-slate-500 font-medium">Synced with Cloud Firestore</span>
         </div>
 
         {loading ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-              <div key={i} className="bg-[#0E121A]/85 rounded-2xl p-5 border border-white/10 shadow-xl space-y-2">
-                <Skeleton className="h-4 w-20 bg-white/10" />
-                <Skeleton className="h-6 w-12 bg-white/10" />
-                <Skeleton className="h-3 w-28 bg-white/10" />
+              <div key={i} className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-2">
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-6 w-12" />
+                <Skeleton className="h-3 w-28" />
               </div>
             ))}
           </div>
@@ -331,14 +324,14 @@ export const AdminOverview: React.FC = () => {
               label="Total Students"
               value={stats.totalStudents.toString()}
               sub="Registered learners"
-              color="#CCFF00"
+              color="#2563EB"
             />
             <StatCard
               icon={UserCheck}
               label="Total Teachers"
               value={stats.totalTeachers.toString()}
               sub="Faculty accounts"
-              color="#10B981"
+              color="#16A34A"
             />
             <StatCard
               icon={AlertCircle}
@@ -352,35 +345,35 @@ export const AdminOverview: React.FC = () => {
               label="Total Courses"
               value={stats.totalCourses.toString()}
               sub={`${stats.publishedCourses} published`}
-              color="#38BDF8"
+              color="#2563EB"
             />
             <StatCard
               icon={GraduationCap}
               label="Active Enrollments"
               value={stats.activeEnrollments.toString()}
-              sub="Active subscriptions"
-              color="#A855F7"
+              sub="Course admissions"
+              color="#1E3A8A"
             />
             <StatCard
               icon={ClipboardList}
               label="Published Tests"
               value={stats.publishedTests.toString()}
               sub="Mock & chapter exams"
-              color="#06B6D4"
+              color="#0284C7"
             />
             <StatCard
               icon={HelpCircle}
               label="Pending Doubts"
               value={stats.pendingDoubts.toString()}
               sub="Unresolved queries"
-              color="#EC4899"
+              color="#DC2626"
             />
             <StatCard
               icon={CreditCard}
               label="Verified Payments"
               value={stats.verifiedPaymentsCount.toString()}
               sub="Orders completed"
-              color="#10B981"
+              color="#16A34A"
             />
             <StatCard
               icon={TrendingUp}
@@ -394,7 +387,7 @@ export const AdminOverview: React.FC = () => {
               label="Security Status"
               value="Enforced"
               sub="Cloud Security Rules"
-              color="#CCFF00"
+              color="#16A34A"
             />
           </div>
         )}
@@ -406,44 +399,44 @@ export const AdminOverview: React.FC = () => {
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="font-display font-bold text-lg text-white flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#CCFF00]" />
+              <h2 className="font-bold text-lg text-slate-900 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-600" />
                 Recent Student Admissions
               </h2>
-              <p className="text-xs text-slate-400 font-mono mt-0.5">
-                Live user profiles fetched directly from Cloud Firestore
+              <p className="text-xs text-slate-500 mt-0.5">
+                Profiles fetched directly from Cloud Firestore
               </p>
             </div>
             <Link
               to="/dashboard/admin/students"
-              className="text-xs font-mono font-bold text-[#CCFF00] hover:underline"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800"
             >
               Manage All Students →
             </Link>
           </div>
 
           {loading ? (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl space-y-3">
+            <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="flex justify-between items-center py-2 border-b border-white/5">
-                  <Skeleton className="h-4 w-40 bg-white/10" />
-                  <Skeleton className="h-4 w-20 bg-white/10" />
-                  <Skeleton className="h-4 w-16 bg-white/10" />
+                <div key={i} className="flex justify-between items-center py-2 border-b border-slate-100">
+                  <Skeleton className="h-4 w-40" />
+                  <Skeleton className="h-4 w-20" />
+                  <Skeleton className="h-4 w-16" />
                 </div>
               ))}
             </div>
           ) : recentStudents.length === 0 ? (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 text-center shadow-2xl">
-              <Users className="w-10 h-10 text-slate-500 mx-auto mb-2" />
-              <p className="font-bold text-sm text-white font-display">No Students Registered Yet</p>
-              <p className="text-xs text-slate-400 font-mono mt-1">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 text-center shadow-sm">
+              <Users className="w-10 h-10 text-slate-400 mx-auto mb-2" />
+              <p className="font-bold text-sm text-slate-900">No Students Registered Yet</p>
+              <p className="text-xs text-slate-500 mt-1">
                 Student accounts will appear here once users complete registration.
               </p>
             </div>
           ) : (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+            <div className="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
               <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-white/[0.03] border-b border-white/10 text-slate-400 font-mono text-[11px] font-bold uppercase tracking-wider">
+                <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 text-[11px] font-bold uppercase tracking-wider">
                   <tr>
                     <th className="py-3.5 px-4 sm:px-6">Student</th>
                     <th className="py-3.5 px-4">Class / Exam</th>
@@ -451,29 +444,29 @@ export const AdminOverview: React.FC = () => {
                     <th className="py-3.5 px-4 sm:px-6 text-right">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/5 text-slate-200 font-mono">
+                <tbody className="divide-y divide-slate-100 text-slate-700">
                   {recentStudents.map((s) => (
-                    <tr key={s.uid} className="hover:bg-white/[0.02] transition">
+                    <tr key={s.uid} className="hover:bg-slate-50/70 transition">
                       <td className="py-3.5 px-4 sm:px-6">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-xl bg-white/[0.05] border border-white/10 text-[#CCFF00] font-bold flex items-center justify-center text-xs flex-shrink-0 font-display">
+                          <div className="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 font-bold flex items-center justify-center text-xs flex-shrink-0">
                             {(s.displayName || 'S')[0].toUpperCase()}
                           </div>
                           <div>
-                            <p className="font-bold text-sm text-white font-display">{s.displayName || 'Student'}</p>
-                            <p className="text-[10px] text-slate-400 font-mono">{s.email}</p>
+                            <p className="font-semibold text-sm text-slate-900">{s.displayName || 'Student'}</p>
+                            <p className="text-[11px] text-slate-400">{s.email}</p>
                           </div>
                         </div>
                       </td>
-                      <td className="py-3.5 px-4 text-xs text-slate-300">
+                      <td className="py-3.5 px-4 text-xs text-slate-600">
                         {s.classGrade || s.targetExam || 'General'}
                       </td>
-                      <td className="py-3.5 px-4 text-xs text-slate-400">
+                      <td className="py-3.5 px-4 text-xs text-slate-500">
                         {s.phone || '–'}
                       </td>
                       <td className="py-3.5 px-4 sm:px-6 text-right">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-mono">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                           Active
                         </span>
                       </td>
@@ -489,80 +482,79 @@ export const AdminOverview: React.FC = () => {
         <div className="lg:col-span-5 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="font-display font-bold text-lg text-white flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#10B981]" />
+              <h2 className="font-bold text-lg text-slate-900 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-600" />
                 Recent Audit Trail
               </h2>
-              <p className="text-xs text-slate-400 font-mono mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Security log of administrative actions
               </p>
             </div>
             <Link
               to="/dashboard/admin/audit-logs"
-              className="text-xs font-mono font-bold text-[#CCFF00] hover:underline"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800"
             >
               Full Log →
             </Link>
           </div>
 
           {loading ? (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl space-y-3">
+            <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="py-2 border-b border-white/5 space-y-1">
-                  <Skeleton className="h-4 w-32 bg-white/10" />
-                  <Skeleton className="h-3 w-48 bg-white/10" />
+                <div key={i} className="py-2 border-b border-slate-100 space-y-1">
+                  <Skeleton className="h-4 w-32" />
+                  <Skeleton className="h-3 w-48" />
                 </div>
               ))}
             </div>
           ) : recentAuditLogs.length === 0 ? (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 text-center shadow-2xl">
-              <ShieldCheck className="w-10 h-10 text-slate-500 mx-auto mb-2" />
-              <p className="font-bold text-sm text-white font-display">Audit Log Active</p>
-              <p className="text-xs text-slate-400 font-mono mt-1">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200/80 text-center shadow-sm">
+              <ShieldCheck className="w-10 h-10 text-slate-400 mx-auto mb-2" />
+              <p className="font-bold text-sm text-slate-900">Audit Log Active</p>
+              <p className="text-xs text-slate-500 mt-1">
                 Every course update, teacher approval, and settings change will be logged here automatically.
               </p>
             </div>
           ) : (
-            <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-2xl divide-y divide-white/5">
+            <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm divide-y divide-slate-100">
               {recentAuditLogs.map((log) => (
                 <div key={log.id} className="py-3 first:pt-0 last:pb-0">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono font-bold text-[#CCFF00] bg-[#CCFF00]/10 border border-[#CCFF00]/20 px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded">
                       {log.action}
                     </span>
-                    <span className="text-[10px] font-mono text-slate-500">
+                    <span className="text-[10px] text-slate-400">
                       {new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </span>
                   </div>
-                  <p className="text-xs text-white mt-1.5 font-medium line-clamp-1 font-mono">
+                  <p className="text-xs text-slate-800 mt-1.5 font-medium line-clamp-1">
                     {log.details || `Modified ${log.targetCollection}`}
                   </p>
-                  <p className="text-[10px] font-mono text-slate-400 mt-0.5">By: {log.adminEmail}</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">By: {log.adminEmail}</p>
                 </div>
               ))}
             </div>
           )}
 
           {/* Quick Shortcuts Box */}
-          <div className="bg-[#0E121A]/90 border border-white/10 rounded-3xl p-6 shadow-2xl space-y-3 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] to-transparent" />
-            <h3 className="font-display font-bold text-base text-white flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#CCFF00]" />
+          <div className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm space-y-3 relative overflow-hidden">
+            <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-blue-600" />
               Administrative Master Control
             </h3>
-            <p className="text-xs text-slate-400 font-mono leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               Manage all administrative modules without manual code modifications. All records sync in real-time with Cloud Firestore.
             </p>
             <div className="pt-2 flex flex-wrap gap-2 text-xs">
               <Link
                 to="/dashboard/admin/settings"
-                className="px-3 py-1.5 rounded-xl font-mono text-xs bg-white/5 border border-white/10 hover:border-[#CCFF00]/30 hover:bg-white/10 transition text-slate-200"
+                className="px-3.5 py-1.5 rounded-xl font-semibold bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 hover:text-blue-700 transition text-slate-700"
               >
                 Website Settings
               </Link>
               <Link
                 to="/dashboard/admin/reports"
-                className="px-3 py-1.5 rounded-xl font-mono text-xs bg-white/5 border border-white/10 hover:border-[#CCFF00]/30 hover:bg-white/10 transition text-slate-200"
+                className="px-3.5 py-1.5 rounded-xl font-semibold bg-slate-50 border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 hover:text-blue-700 transition text-slate-700"
               >
                 Analytics Reports
               </Link>

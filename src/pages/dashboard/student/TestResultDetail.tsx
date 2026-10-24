@@ -125,20 +125,17 @@ export const TestResultDetail: React.FC = () => {
   const timeTakenMins = Math.round((attempt.timeSpentSeconds || 0) / 60);
 
   return (
-    <div className="space-y-8 max-w-5xl mx-auto pb-12 relative">
-      {/* Zero-cost GPU accelerated ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
-
+    <div className="space-y-6">
       {/* Back button and breadcrumb */}
-      <div className="flex items-center justify-between font-mono">
+      <div className="flex items-center justify-between text-xs font-medium">
         <Link
           to="/dashboard/student/results"
-          className="inline-flex items-center gap-2 text-xs font-bold text-[#38BDF8] hover:text-[#CCFF00] transition"
+          className="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 transition font-semibold"
         >
           <ChevronLeft className="w-4 h-4" />
-          <span>[ ALL TEST RESULTS ]</span>
+          <span>All Test Results</span>
         </Link>
-        <span className="text-xs text-slate-500">
+        <span className="text-slate-400">
           Attempted on {attempt.submittedAt ? new Date(attempt.submittedAt).toLocaleDateString() : 'Today'}
         </span>
       </div>
@@ -146,48 +143,47 @@ export const TestResultDetail: React.FC = () => {
       {/* ======================================================== */}
       {/* 1. SCORE HERO CARD                                       */}
       {/* ======================================================== */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 text-white shadow-2xl border border-white/10 relative overflow-hidden">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
+      <div className="bg-white rounded-3xl p-6 sm:p-8 text-slate-900 shadow-sm border border-slate-200/80 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <div className="flex items-center gap-2 flex-wrap font-mono">
+            <div className="flex items-center gap-2 flex-wrap">
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${
                   isPass
-                    ? 'bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/30'
-                    : 'bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30'
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                    : 'bg-amber-50 text-amber-700 border border-amber-200'
                 }`}
               >
-                {isPass ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
-                {isPass ? 'PASSED ASSESSMENT' : 'NEEDS REINFORCEMENT'}
+                {isPass ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> : <XCircle className="w-3.5 h-3.5 text-amber-600" />}
+                {isPass ? 'Passed Assessment' : 'Needs Reinforcement'}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-500 font-medium">
                 Passing Req: {test.passingMarks} Pts
               </span>
             </div>
 
-            <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
+            <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
               {test.title}
             </h1>
-            <p className="text-xs text-slate-400 font-mono">
+            <p className="text-xs sm:text-sm text-slate-500">
               {test.subjectName || 'Curriculum Subject'} • {test.classGrade || 'Class Batch'}
             </p>
           </div>
 
           {/* Big Score Display */}
-          <div className="flex items-center gap-5 bg-[#060C17] rounded-2xl p-5 border border-white/15 font-mono">
+          <div className="flex items-center gap-5 bg-slate-50 rounded-2xl p-5 border border-slate-200">
             <div className="text-center">
-              <p className="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Score Obtained</p>
-              <p className="font-bold text-3xl sm:text-4xl text-[#CCFF00] mt-0.5">
+              <p className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Score Obtained</p>
+              <p className="font-extrabold text-3xl sm:text-4xl text-blue-600 mt-0.5">
                 {attempt.score} <span className="text-sm text-slate-400 font-normal">/ {attempt.totalMarks}</span>
               </p>
             </div>
-            <div className="h-10 w-px bg-white/15" />
+            <div className="h-10 w-px bg-slate-200" />
             <div className="text-center">
-              <p className="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Percentage</p>
-              <p className="font-bold text-3xl sm:text-4xl text-white mt-0.5">
+              <p className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">Percentage</p>
+              <p className="font-extrabold text-3xl sm:text-4xl text-slate-900 mt-0.5">
                 {attempt.percentage}%
               </p>
             </div>
@@ -195,16 +191,16 @@ export const TestResultDetail: React.FC = () => {
         </div>
 
         {/* Action bar inside hero */}
-        <div className="relative z-10 mt-6 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono">
-          <div className="flex items-center gap-4 text-xs text-slate-400">
+        <div className="relative z-10 mt-6 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-4 text-xs text-slate-500 font-medium">
             <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-[#CCFF00]" />
-              Time: <strong className="text-white">{timeTakenMins > 0 ? `${timeTakenMins} Mins` : '< 1 Min'}</strong>
+              <Clock className="w-4 h-4 text-blue-600" />
+              Time: <strong className="text-slate-900">{timeTakenMins > 0 ? `${timeTakenMins} Mins` : '< 1 Min'}</strong>
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <TrendingUp className="w-4 h-4 text-[#10B981]" />
-              Accuracy: <strong className="text-white">{attempt.accuracyPercentage || 0}%</strong>
+              <TrendingUp className="w-4 h-4 text-emerald-600" />
+              Accuracy: <strong className="text-slate-900">{attempt.accuracyPercentage || 0}%</strong>
             </span>
           </div>
 
@@ -212,7 +208,7 @@ export const TestResultDetail: React.FC = () => {
             {test.allowRetake && (
               <button
                 onClick={() => navigate(`/dashboard/student/exam/${test.id}`)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider bg-[#CCFF00] hover:bg-white text-black transition shadow-[0_0_12px_rgba(204,255,0,0.25)] cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition shadow-sm cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Retake Test</span>
@@ -220,7 +216,7 @@ export const TestResultDetail: React.FC = () => {
             )}
             <Link
               to="/dashboard/student/tests"
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/10 text-white transition"
+              className="px-4 py-2 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
             >
               Back to Tests
             </Link>
@@ -231,50 +227,50 @@ export const TestResultDetail: React.FC = () => {
       {/* ======================================================== */}
       {/* 2. STATS BREAKDOWN GRID                                  */}
       {/* ======================================================== */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono">
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-xl flex items-center gap-3.5 text-white">
-          <div className="w-12 h-12 rounded-2xl bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/30 flex items-center justify-center font-bold flex-shrink-0">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex items-center gap-3.5 text-slate-900">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center font-bold flex-shrink-0">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-slate-400">Correct</p>
-            <p className="font-bold text-xl text-white mt-0.5">
+            <p className="text-xs text-slate-500 font-medium">Correct</p>
+            <p className="font-extrabold text-xl text-slate-900 mt-0.5">
               {attempt.correctAnswersCount || 0}
             </p>
           </div>
         </div>
 
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-xl flex items-center gap-3.5 text-white">
-          <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-400 border border-red-500/30 flex items-center justify-center font-bold flex-shrink-0">
+        <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex items-center gap-3.5 text-slate-900">
+          <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 border border-rose-200 flex items-center justify-center font-bold flex-shrink-0">
             <XCircle className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-slate-400">Incorrect</p>
-            <p className="font-bold text-xl text-white mt-0.5">
+            <p className="text-xs text-slate-500 font-medium">Incorrect</p>
+            <p className="font-extrabold text-xl text-slate-900 mt-0.5">
               {attempt.incorrectAnswersCount || 0}
             </p>
           </div>
         </div>
 
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-xl flex items-center gap-3.5 text-white">
-          <div className="w-12 h-12 rounded-2xl bg-white/5 text-slate-400 border border-white/10 flex items-center justify-center font-bold flex-shrink-0">
+        <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex items-center gap-3.5 text-slate-900">
+          <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 border border-slate-200 flex items-center justify-center font-bold flex-shrink-0">
             <HelpCircle className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-slate-400">Unattempted</p>
-            <p className="font-bold text-xl text-white mt-0.5">
+            <p className="text-xs text-slate-500 font-medium">Unattempted</p>
+            <p className="font-extrabold text-xl text-slate-900 mt-0.5">
               {attempt.unattemptedCount || 0}
             </p>
           </div>
         </div>
 
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-5 border border-white/10 shadow-xl flex items-center gap-3.5 text-white">
-          <div className="w-12 h-12 rounded-2xl bg-[#CCFF00]/10 text-[#CCFF00] border border-[#CCFF00]/30 flex items-center justify-center font-bold flex-shrink-0">
+        <div className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm flex items-center gap-3.5 text-slate-900">
+          <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 border border-blue-200 flex items-center justify-center font-bold flex-shrink-0">
             <Award className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-slate-400">Accuracy Rate</p>
-            <p className="font-bold text-xl text-white mt-0.5">
+            <p className="text-xs text-slate-500 font-medium">Accuracy Rate</p>
+            <p className="font-extrabold text-xl text-slate-900 mt-0.5">
               {attempt.accuracyPercentage || 0}%
             </p>
           </div>
@@ -287,22 +283,20 @@ export const TestResultDetail: React.FC = () => {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00]" />
-              <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-wider font-bold">
-                ANSWER EVALUATION
-              </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+              Answer Evaluation
             </div>
-            <h2 className="font-mono font-bold text-xl text-white">
+            <h2 className="font-bold text-xl text-slate-900">
               Comprehensive Answer Key & Solutions
             </h2>
-            <p className="text-xs text-slate-400 font-mono mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               Review correct answers, your chosen selections, and detailed faculty step-by-step rationales.
             </p>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 font-mono">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 text-xs font-medium">
             {[
               { id: 'all', label: `All (${test.questions?.length || 0})` },
               { id: 'correct', label: `Correct (${attempt.correctAnswersCount || 0})` },
@@ -312,10 +306,10 @@ export const TestResultDetail: React.FC = () => {
               <button
                 key={f.id}
                 onClick={() => setFilterMode(f.id as any)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-xl transition whitespace-nowrap cursor-pointer ${
                   filterMode === f.id
-                    ? 'bg-[#CCFF00] text-black shadow-[0_0_12px_rgba(204,255,0,0.25)]'
-                    : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                    ? 'bg-blue-600 text-white font-semibold shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 {f.label}
@@ -335,25 +329,25 @@ export const TestResultDetail: React.FC = () => {
             return (
               <div
                 key={q.id}
-                className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-white/10 shadow-xl space-y-5 text-white"
+                className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-sm space-y-5 text-slate-900"
               >
                 {/* Header status */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/10 font-mono">
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100 text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-sm text-white">
+                    <span className="font-bold text-sm text-slate-900">
                       Question {test.questions ? test.questions.indexOf(q) + 1 : qIdx + 1}
                     </span>
                     {isCorrect ? (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/30">
-                        <Check className="w-3 h-3" /> Correct (+{res?.marksObtained || q.marks})
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                        <Check className="w-3 h-3 text-emerald-600" /> Correct (+{res?.marksObtained || q.marks})
                       </span>
                     ) : isUnattempted ? (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-slate-400 border border-white/10">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-500 border border-slate-200">
                         Unattempted (0 Marks)
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/30">
-                        <X className="w-3 h-3" /> Incorrect ({res?.marksObtained || 0} Marks)
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+                        <X className="w-3 h-3 text-rose-600" /> Incorrect ({res?.marksObtained || 0} Marks)
                       </span>
                     )}
                   </div>
@@ -364,26 +358,26 @@ export const TestResultDetail: React.FC = () => {
                 </div>
 
                 {/* Question Statement */}
-                <p className="text-sm text-slate-100 font-medium leading-relaxed font-sans">
+                <p className="text-sm text-slate-900 font-medium leading-relaxed font-sans">
                   {q.questionText}
                 </p>
 
                 {/* Options List */}
-                <div className="space-y-2.5 pt-1 font-mono">
+                <div className="space-y-2.5 pt-1">
                   {q.options.map((opt, oIdx) => {
                     const letter = String.fromCharCode(65 + oIdx);
                     const isSelected = userSelections.includes(opt.id);
                     const isRightAnswer = (q.correctOptionIds || []).includes(opt.id);
 
-                    let optionStyle = 'border-white/10 bg-[#060C17] text-slate-300';
-                    let letterStyle = 'bg-white/10 text-slate-300';
+                    let optionStyle = 'border-slate-200 bg-slate-50 text-slate-700';
+                    let letterStyle = 'bg-slate-200 text-slate-700';
 
                     if (isRightAnswer) {
-                      optionStyle = 'border-[#10B981] bg-[#10B981]/10 text-emerald-200';
-                      letterStyle = 'bg-[#10B981] text-black font-black';
+                      optionStyle = 'border-emerald-300 bg-emerald-50/80 text-emerald-950 font-medium';
+                      letterStyle = 'bg-emerald-600 text-white font-bold';
                     } else if (isSelected && !isRightAnswer) {
-                      optionStyle = 'border-red-500 bg-red-950/30 text-red-300';
-                      letterStyle = 'bg-red-500 text-white font-black';
+                      optionStyle = 'border-rose-300 bg-rose-50/80 text-rose-950 font-medium';
+                      letterStyle = 'bg-rose-600 text-white font-bold';
                     }
 
                     return (
@@ -397,17 +391,17 @@ export const TestResultDetail: React.FC = () => {
                           >
                             {letter}
                           </span>
-                          <span className="font-medium leading-relaxed font-sans">{opt.text}</span>
+                          <span className="leading-relaxed font-sans">{opt.text}</span>
                         </div>
 
                         <div className="flex items-center gap-2">
                           {isRightAnswer && (
-                            <span className="text-[10px] font-bold text-[#10B981] bg-[#10B981]/20 border border-[#10B981]/30 px-2 py-0.5 rounded-md uppercase">
+                            <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-md uppercase">
                               Correct Choice
                             </span>
                           )}
                           {isSelected && !isRightAnswer && (
-                            <span className="text-[10px] font-bold text-red-400 bg-red-950/50 border border-red-500/30 px-2 py-0.5 rounded-md uppercase">
+                            <span className="text-[10px] font-bold text-rose-700 bg-rose-100 border border-rose-300 px-2 py-0.5 rounded-md uppercase">
                               Your Selection
                             </span>
                           )}
@@ -419,12 +413,12 @@ export const TestResultDetail: React.FC = () => {
 
                 {/* Explanation Box */}
                 {q.explanation && (
-                  <div className="p-4 bg-white/5 rounded-2xl border border-white/10 space-y-1 font-mono">
-                    <p className="text-[11px] font-bold text-[#38BDF8] uppercase tracking-wider flex items-center gap-1.5">
+                  <div className="p-4 bg-blue-50/50 rounded-2xl border border-blue-100 space-y-1">
+                    <p className="text-[11px] font-bold text-blue-700 uppercase tracking-wider flex items-center gap-1.5">
                       <BookOpen className="w-3.5 h-3.5" />
                       Faculty Explanation & Concept Highlights
                     </p>
-                    <p className="text-xs text-slate-200 leading-relaxed font-sans">
+                    <p className="text-xs text-slate-700 leading-relaxed font-sans">
                       {q.explanation}
                     </p>
                   </div>

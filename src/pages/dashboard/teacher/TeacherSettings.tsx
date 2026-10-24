@@ -67,98 +67,96 @@ export const TeacherSettings: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
-      {/* Header */}
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <span className="font-mono text-[10px] text-[#CCFF00] tracking-widest uppercase font-bold bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/20">
-            FACULTY PROFILE & PREFERENCES
-          </span>
+    <div className="space-y-6 max-w-4xl mx-auto">
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+          Faculty Profile & Preferences
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black font-display text-white uppercase tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           Teacher Account Settings
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 font-sans mt-0.5">
+        <p className="text-xs sm:text-sm text-slate-500 mt-1">
           Manage your faculty credentials, contact information, and teaching specialization.
         </p>
       </div>
 
       {/* Verification / Status Badge */}
-      <div className="bg-[#0E121A] border border-white/10 rounded-3xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#CCFF00] p-0.5 flex-shrink-0">
-            <div className="w-full h-full rounded-[14px] bg-[#0E121A] flex items-center justify-center font-display font-black text-xl text-[#CCFF00]">
-              {(formData.displayName || 'T').charAt(0).toUpperCase()}
-            </div>
+          <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center font-extrabold text-xl text-white shadow-sm flex-shrink-0">
+            {(formData.displayName || 'T').charAt(0).toUpperCase()}
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="font-display font-bold text-white text-base uppercase">
+              <h3 className="font-bold text-slate-900 text-base">
                 {formData.displayName || 'Faculty Member'}
               </h3>
-              <span className="font-mono text-[9px] font-bold text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded-full border border-[#10B981]/30 uppercase flex items-center gap-1">
-                <CheckCircle className="w-3 h-3" />
+              <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 uppercase flex items-center gap-1">
+                <CheckCircle className="w-3 h-3 text-emerald-600" />
                 Approved Educator
               </span>
             </div>
-            <p className="text-xs font-mono text-slate-400 mt-0.5">{user?.email}</p>
+            <p className="text-xs text-slate-500 mt-0.5">{user?.email}</p>
           </div>
         </div>
 
-        <div className="text-xs font-mono text-slate-400 bg-white/5 px-4 py-2 rounded-xl border border-white/10">
-          Role: <span className="text-[#CCFF00] font-bold uppercase">{role}</span>
+        <div className="text-xs text-slate-600 bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 font-medium">
+          Role: <span className="text-blue-700 font-bold uppercase">{role}</span>
         </div>
       </div>
 
       {/* Feedback Alerts */}
       {successMessage && (
-        <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-mono flex items-center gap-3">
-          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm flex items-center gap-3 shadow-sm">
+          <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
           <span>{successMessage}</span>
         </div>
       )}
       {errorMessage && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs font-mono flex items-center gap-3">
-          <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+        <div className="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm flex items-center gap-3 shadow-sm">
+          <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {/* Main Settings Form */}
-      <form onSubmit={handleSubmit} className="bg-[#0E121A] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6">
-        <h3 className="font-display font-bold text-white text-base uppercase tracking-wider border-b border-white/10 pb-3 flex items-center gap-2">
-          <User className="w-4 h-4 text-[#CCFF00]" />
+      <form onSubmit={handleSubmit} className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+        <h3 className="font-bold text-slate-900 text-base border-b border-slate-100 pb-3 flex items-center gap-2">
+          <User className="w-4 h-4 text-blue-600" />
           <span>Professional Credentials</span>
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               Full Legal Name
             </label>
             <div className="relative">
-              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 required
                 value={formData.displayName}
                 onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               Primary Email (Immutable)
             </label>
             <div className="relative">
-              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="email"
                 disabled
                 value={user?.email || ''}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17]/60 border border-white/5 text-slate-400 text-xs outline-none font-mono cursor-not-allowed"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-500 text-xs sm:text-sm outline-none cursor-not-allowed"
               />
             </div>
           </div>
@@ -166,33 +164,33 @@ export const TeacherSettings: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               Contact Phone Number
             </label>
             <div className="relative">
-              <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="tel"
                 placeholder="+91 98765 43210"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               Subject Specialization
             </label>
             <div className="relative">
-              <BookOpen className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <BookOpen className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="e.g. Mathematics, Physics, Organic Chemistry"
                 value={formData.subjectSpecialization}
                 onChange={(e) => setFormData({ ...formData, subjectSpecialization: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
               />
             </div>
           </div>
@@ -200,56 +198,56 @@ export const TeacherSettings: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               Highest Educational Qualification
             </label>
             <div className="relative">
-              <GraduationCap className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <GraduationCap className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="e.g. M.Sc. Physics (IIT Delhi) / Ph.D."
                 value={formData.highestQualification}
                 onChange={(e) => setFormData({ ...formData, highestQualification: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               Teaching Experience (Years)
             </label>
             <div className="relative">
-              <Briefcase className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <Briefcase className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="e.g. 8 Years"
                 value={formData.experienceYears}
                 onChange={(e) => setFormData({ ...formData, experienceYears: e.target.value })}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
               />
             </div>
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+          <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
             Doubt Support & Office Hours
           </label>
           <div className="relative">
-            <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+            <Clock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
               placeholder="e.g. Mon-Fri 4:00 PM - 7:00 PM IST"
               value={formData.officeHours}
               onChange={(e) => setFormData({ ...formData, officeHours: e.target.value })}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+          <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
             Educator Bio & Teaching Philosophy
           </label>
           <textarea
@@ -257,13 +255,13 @@ export const TeacherSettings: React.FC = () => {
             placeholder="A brief overview of your academic background and teaching philosophy visible to enrolled students..."
             value={formData.bio}
             onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans resize-none"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition resize-none"
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               City
             </label>
             <input
@@ -271,12 +269,12 @@ export const TeacherSettings: React.FC = () => {
               placeholder="e.g. New Delhi"
               value={formData.city}
               onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-mono text-slate-300 uppercase mb-1 font-semibold">
+            <label className="block text-xs font-semibold uppercase text-slate-700 mb-1">
               State / Region
             </label>
             <input
@@ -284,16 +282,16 @@ export const TeacherSettings: React.FC = () => {
               placeholder="e.g. Delhi NCR"
               value={formData.state}
               onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#060C17] border border-white/15 focus:border-[#CCFF00] text-white text-xs outline-none transition font-sans"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 text-slate-900 text-xs sm:text-sm outline-none transition"
             />
           </div>
         </div>
 
-        <div className="pt-4 border-t border-white/10 flex justify-end">
+        <div className="pt-4 border-t border-slate-100 flex justify-end">
           <button
             type="submit"
             disabled={saving}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#CCFF00] hover:bg-white text-black font-mono font-bold text-xs uppercase tracking-wider transition shadow-[0_0_20px_rgba(204,255,0,0.3)] disabled:opacity-50 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm tracking-wide transition shadow-sm active:scale-95 disabled:opacity-50 cursor-pointer"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
             <span>Save Profile Changes</span>

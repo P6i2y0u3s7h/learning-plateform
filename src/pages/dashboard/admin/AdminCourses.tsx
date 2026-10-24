@@ -262,41 +262,41 @@ export const AdminCourses: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-widest rounded-full bg-[#CCFF00]/10 border border-[#CCFF00]/30 text-[#CCFF00]">
-              [ ACADEMIC CURRICULUM · SYLLABUS REGISTRY ]
-            </span>
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+        <div className="space-y-1.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-blue-50 border border-blue-200 text-blue-700">
+            <BookMarked className="w-3.5 h-3.5 text-blue-600" />
+            <span>Course Catalog & Hierarchy</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-white tracking-tight mt-1.5">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Course Catalog & Hierarchy
           </h1>
-          <p className="text-xs sm:text-sm font-mono text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500">
             Create school classes (6-12), Science PCM/PCB, Commerce, Arts streams, Competitive exams, and AMU/Jamia entrance batches.
           </p>
         </div>
 
         <button
           onClick={handleOpenCreate}
-          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#CCFF00] text-black text-xs font-mono font-bold uppercase tracking-wider shadow-lg hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition cursor-pointer self-start md:self-auto"
+          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-xs sm:text-sm font-semibold shadow-sm hover:bg-blue-700 hover:shadow transition cursor-pointer self-start md:self-auto"
         >
-          <Plus className="w-4 h-4 text-black" />
+          <Plus className="w-4 h-4" />
           <span>Create New Course</span>
         </button>
       </div>
 
       {/* Dynamic Category Filter Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 font-mono">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1">
         <button
           onClick={() => {
             setSelectedCategoryFilter('all');
             setCurrentPage(1);
           }}
-          className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+          className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
             selectedCategoryFilter === 'all'
-              ? 'bg-[#CCFF00] text-black shadow-[0_0_12px_rgba(204,255,0,0.35)]'
-              : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
           }`}
         >
           ALL CATEGORIES ({courses.length})
@@ -310,10 +310,10 @@ export const AdminCourses: React.FC = () => {
                 setSelectedCategoryFilter(cat.id);
                 setCurrentPage(1);
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
                 selectedCategoryFilter === cat.id
-                  ? 'bg-[#CCFF00] text-black shadow-[0_0_12px_rgba(204,255,0,0.35)]'
-                  : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
             >
               {cat.name.toUpperCase()} ({count})
@@ -323,9 +323,9 @@ export const AdminCourses: React.FC = () => {
       </div>
 
       {/* Controls: Search and Publish Filter */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl p-4 rounded-2xl border border-white/10 shadow-xl flex flex-col md:flex-row gap-4 justify-between items-center">
+      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-center">
         <div className="relative w-full md:w-96">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
           <input
             type="text"
             placeholder="Search by title, subject, grade, stream, or exam..."
@@ -334,12 +334,12 @@ export const AdminCourses: React.FC = () => {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-full pl-10 pr-4 py-2 rounded-xl text-xs md:text-sm bg-[#060C17] border border-white/15 text-white placeholder-slate-500 font-mono outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
           />
         </div>
 
-        <div className="flex items-center gap-2 w-full md:w-auto font-mono">
-          <Filter className="w-4 h-4 text-slate-500 hidden sm:block" />
+        <div className="flex items-center gap-2 w-full md:w-auto">
+          <Filter className="w-4 h-4 text-slate-400 hidden sm:block" />
           {(['all', 'published', 'draft'] as const).map((st) => (
             <button
               key={st}
@@ -347,10 +347,10 @@ export const AdminCourses: React.FC = () => {
                 setFilterPublish(st);
                 setCurrentPage(1);
               }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase whitespace-nowrap transition-colors ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold uppercase whitespace-nowrap transition-colors ${
                 filterPublish === st
-                  ? 'bg-white/15 border border-white/25 text-white shadow-sm'
-                  : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                  ? 'bg-blue-50 border border-blue-200 text-blue-700 shadow-xs'
+                  : 'bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               {st === 'published' ? 'Published' : st === 'draft' ? 'Drafts' : 'All States'}
@@ -361,8 +361,8 @@ export const AdminCourses: React.FC = () => {
 
       {/* Error state */}
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-300 font-mono text-sm flex items-center gap-3">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm flex items-center gap-3">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />
           <span>{error}</span>
         </div>
       )}
@@ -371,7 +371,7 @@ export const AdminCourses: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-5 border border-white/10 space-y-3">
+            <div key={i} className="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm space-y-3">
               <Skeleton className="h-6 w-3/4 rounded-lg" />
               <Skeleton className="h-4 w-1/2 rounded-lg" />
               <Skeleton className="h-16 w-full rounded-xl" />
@@ -380,10 +380,10 @@ export const AdminCourses: React.FC = () => {
           ))}
         </div>
       ) : filteredCourses.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl p-16 rounded-2xl border border-white/10 shadow-2xl text-center text-slate-400 font-mono">
-          <BookMarked className="w-12 h-12 mx-auto text-slate-600 mb-3" />
-          <p className="font-bold text-white text-base">No Courses Found</p>
-          <p className="text-xs text-slate-400 mt-1">
+        <div className="bg-white p-16 rounded-3xl border border-slate-200/80 shadow-sm text-center text-slate-500">
+          <BookMarked className="w-12 h-12 mx-auto text-slate-300 mb-3" />
+          <p className="font-bold text-slate-800 text-base">No Courses Found</p>
+          <p className="text-xs text-slate-500 mt-1">
             Adjust your search keywords or create a new course using the button above.
           </p>
         </div>
@@ -393,20 +393,20 @@ export const AdminCourses: React.FC = () => {
             {paginatedCourses.map((c) => (
               <div
                 key={c.id}
-                className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl border border-white/10 hover:border-white/20 shadow-xl flex flex-col justify-between p-5 space-y-4 group transition-all text-white relative overflow-hidden"
+                className="bg-white rounded-3xl border border-slate-200/80 hover:border-blue-300 shadow-sm hover:shadow-md flex flex-col justify-between p-5 space-y-4 group transition-all text-slate-800 relative overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#CCFF00]/40 to-transparent" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#CCFF00]/10 border border-[#CCFF00]/30 text-[#CCFF00] truncate max-w-[130px]">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 border border-blue-200 text-blue-700 truncate max-w-[130px]">
                       {c.categoryName || c.categoryId}
                     </span>
                     <button
                       onClick={() => handleTogglePublish(c)}
-                      className={`inline-flex items-center gap-1 text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border transition cursor-pointer ${
+                      className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full border transition cursor-pointer ${
                         c.isPublished
-                          ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20'
-                          : 'bg-amber-500/10 border-amber-500/30 text-amber-400 hover:bg-amber-500/20'
+                          ? 'bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100'
+                          : 'bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100'
                       }`}
                       title={c.isPublished ? 'Published (Click to Unpublish)' : 'Draft (Click to Publish)'}
                     >
@@ -415,40 +415,40 @@ export const AdminCourses: React.FC = () => {
                     </button>
                   </div>
 
-                  <h3 className="font-display font-bold text-sm text-white line-clamp-2 leading-snug group-hover:text-[#CCFF00] transition-colors">
+                  <h3 className="font-bold text-sm text-slate-900 line-clamp-2 leading-snug group-hover:text-blue-600 transition-colors">
                     {c.title}
                   </h3>
 
-                  <p className="text-xs font-mono text-slate-400 line-clamp-2 mt-1.5">
+                  <p className="text-xs text-slate-500 line-clamp-2 mt-1.5">
                     {c.description || 'Comprehensive curriculum with video lessons and assessments.'}
                   </p>
 
-                  <div className="bg-[#060C17]/90 rounded-xl p-3 text-xs font-mono text-slate-300 space-y-1 mt-3 border border-white/5">
+                  <div className="bg-slate-50 rounded-2xl p-3 text-xs text-slate-600 space-y-1.5 mt-3 border border-slate-100">
                     <div className="flex justify-between">
-                      <span className="text-slate-500">Grade / Class:</span>
-                      <span className="font-semibold text-white">{c.classGrade || 'Class 10'}</span>
+                      <span className="text-slate-400">Grade / Class:</span>
+                      <span className="font-semibold text-slate-800">{c.classGrade || 'Class 10'}</span>
                     </div>
                     {c.stream && (
                       <div className="flex justify-between">
-                        <span className="text-slate-500">Stream:</span>
-                        <span className="font-semibold text-[#CCFF00]">{c.stream}</span>
+                        <span className="text-slate-400">Stream:</span>
+                        <span className="font-semibold text-blue-600">{c.stream}</span>
                       </div>
                     )}
                     {c.targetExam && (
                       <div className="flex justify-between">
-                        <span className="text-slate-500">Exam:</span>
-                        <span className="font-semibold text-amber-400">{c.targetExam}</span>
+                        <span className="text-slate-400">Exam:</span>
+                        <span className="font-semibold text-amber-600">{c.targetExam}</span>
                       </div>
                     )}
                     <div className="flex justify-between">
-                      <span className="text-slate-500">Validity:</span>
-                      <span className="text-slate-400">{c.validityDays ? `${c.validityDays} Days` : '365 Days'}</span>
+                      <span className="text-slate-400">Validity:</span>
+                      <span className="text-slate-600">{c.validityDays ? `${c.validityDays} Days` : '365 Days'}</span>
                     </div>
-                    <div className="flex justify-between pt-1 border-t border-white/10">
-                      <span className="text-slate-400">Tuition Fee:</span>
-                      <span className="font-bold text-white font-mono">
+                    <div className="flex justify-between pt-1 border-t border-slate-200">
+                      <span className="text-slate-500">Tuition Fee:</span>
+                      <span className="font-bold text-slate-900">
                         {c.price === 0 || c.isFree ? (
-                          <span className="text-[#CCFF00]">Free</span>
+                          <span className="text-emerald-600">Free</span>
                         ) : (
                           `₹${c.price.toLocaleString('en-IN')}`
                         )}
@@ -457,17 +457,17 @@ export const AdminCourses: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-2 font-mono">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
                   <button
                     onClick={() => handleOpenEdit(c)}
-                    className="flex-1 py-1.5 rounded-xl text-xs font-bold text-slate-200 bg-white/5 border border-white/10 hover:border-[#CCFF00]/40 hover:bg-white/10 hover:text-white transition flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="flex-1 py-1.5 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200/80 hover:bg-blue-100 transition flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <Edit2 className="w-3.5 h-3.5 text-[#CCFF00]" />
+                    <Edit2 className="w-3.5 h-3.5 text-blue-600" />
                     <span>Edit</span>
                   </button>
                   <button
                     onClick={() => setDeletingCourse(c)}
-                    className="p-1.5 rounded-xl text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 transition cursor-pointer"
+                    className="p-1.5 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition cursor-pointer"
                     title="Delete Course"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -479,16 +479,16 @@ export const AdminCourses: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between bg-[#0E121A]/85 backdrop-blur-2xl rounded-2xl p-4 border border-white/10 shadow-xl font-mono">
-              <p className="text-xs text-slate-400">
-                Showing page <strong className="text-white">{currentPage}</strong> of{' '}
-                <strong className="text-white">{totalPages}</strong> ({filteredCourses.length} Courses)
+            <div className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm">
+              <p className="text-xs text-slate-500">
+                Showing page <strong className="text-slate-900">{currentPage}</strong> of{' '}
+                <strong className="text-slate-900">{totalPages}</strong> ({filteredCourses.length} Courses)
               </p>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 transition cursor-pointer"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 disabled:opacity-30 transition cursor-pointer"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -496,10 +496,10 @@ export const AdminCourses: React.FC = () => {
                   <button
                     key={p}
                     onClick={() => setCurrentPage(p)}
-                    className={`w-8 h-8 rounded-lg text-xs font-bold transition font-mono ${
+                    className={`w-8 h-8 rounded-lg text-xs font-semibold transition ${
                       currentPage === p
-                        ? 'bg-[#CCFF00] text-black font-bold shadow-[0_0_12px_rgba(204,255,0,0.4)]'
-                        : 'border border-white/10 text-slate-300 hover:bg-white/5'
+                        ? 'bg-blue-600 text-white font-bold shadow-xs'
+                        : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {p}
@@ -508,7 +508,7 @@ export const AdminCourses: React.FC = () => {
                 <button
                   onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:text-white hover:bg-white/5 disabled:opacity-30 transition cursor-pointer"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 disabled:opacity-30 transition cursor-pointer"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -520,26 +520,25 @@ export const AdminCourses: React.FC = () => {
 
       {/* Create / Edit Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in overflow-y-auto">
-          <div className="bg-[#0D111A]/95 backdrop-blur-2xl rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-white/15 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto text-white">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] to-transparent" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-slate-200 shadow-2xl relative my-8 max-h-[90vh] overflow-y-auto text-slate-800">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <h3 className="font-display font-extrabold text-xl text-white mb-1">
+            <h3 className="font-extrabold text-xl text-slate-900 mb-1">
               {editingCourse ? 'Edit Course Curriculum' : 'Create New Course Offering'}
             </h3>
-            <p className="text-xs font-mono text-slate-400 mb-5">
+            <p className="text-xs text-slate-500 mb-5">
               Configure course metadata, category, pricing, validity duration, and assigned instructor.
             </p>
 
-            <form onSubmit={handleSaveCourse} className="space-y-4 text-xs font-mono">
+            <form onSubmit={handleSaveCourse} className="space-y-4 text-xs">
               <div>
-                <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Course Title
                 </label>
                 <input
@@ -548,22 +547,22 @@ export const AdminCourses: React.FC = () => {
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   placeholder="e.g. Class 11 Science (PCM) — Physics, Chemistry & Math"
-                  className="w-full py-2.5 px-3.5 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                  className="w-full py-2.5 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                  <label className="block font-semibold text-slate-700 mb-1">
                     Category (Firestore Collection)
                   </label>
                   <select
                     value={formData.categoryId}
                     onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   >
                     {categories.map((cat) => (
-                      <option key={cat.id} value={cat.id} className="bg-[#0E121A] text-white">
+                      <option key={cat.id} value={cat.id}>
                         {cat.name}
                       </option>
                     ))}
@@ -571,24 +570,24 @@ export const AdminCourses: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                  <label className="block font-semibold text-slate-700 mb-1">
                     School Class / Grade Level
                   </label>
                   <select
                     value={formData.classGrade}
                     onChange={(e) => setFormData({ ...formData, classGrade: e.target.value })}
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   >
-                    <option value="Class 6" className="bg-[#0E121A] text-white">Class 6</option>
-                    <option value="Class 7" className="bg-[#0E121A] text-white">Class 7</option>
-                    <option value="Class 8" className="bg-[#0E121A] text-white">Class 8</option>
-                    <option value="Class 9" className="bg-[#0E121A] text-white">Class 9</option>
-                    <option value="Class 10" className="bg-[#0E121A] text-white">Class 10</option>
-                    <option value="Class 11" className="bg-[#0E121A] text-white">Class 11</option>
-                    <option value="Class 12" className="bg-[#0E121A] text-white">Class 12</option>
-                    <option value="Class 9 Entrance" className="bg-[#0E121A] text-white">Class 9 Entrance</option>
-                    <option value="Class 11 Entrance" className="bg-[#0E121A] text-white">Class 11 Entrance</option>
-                    <option value="Competitive Exam" className="bg-[#0E121A] text-white">Competitive Exam</option>
+                    <option value="Class 6">Class 6</option>
+                    <option value="Class 7">Class 7</option>
+                    <option value="Class 8">Class 8</option>
+                    <option value="Class 9">Class 9</option>
+                    <option value="Class 10">Class 10</option>
+                    <option value="Class 11">Class 11</option>
+                    <option value="Class 12">Class 12</option>
+                    <option value="Class 9 Entrance">Class 9 Entrance</option>
+                    <option value="Class 11 Entrance">Class 11 Entrance</option>
+                    <option value="Competitive Exam">Competitive Exam</option>
                   </select>
                 </div>
               </div>
@@ -596,24 +595,24 @@ export const AdminCourses: React.FC = () => {
               {/* Conditional Stream & Target Exam Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                  <label className="block font-semibold text-slate-700 mb-1">
                     Stream (For Class 11 & 12)
                   </label>
                   <select
                     value={formData.stream}
                     onChange={(e) => setFormData({ ...formData, stream: e.target.value as any })}
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   >
-                    <option value="" className="bg-[#0E121A] text-white">None / General</option>
-                    <option value="Science PCM" className="bg-[#0E121A] text-white">Science PCM (Physics, Chem, Math)</option>
-                    <option value="Science PCB" className="bg-[#0E121A] text-white">Science PCB (Physics, Chem, Bio)</option>
-                    <option value="Commerce" className="bg-[#0E121A] text-white">Commerce (Accountancy, Business, Econ)</option>
-                    <option value="Arts" className="bg-[#0E121A] text-white">Arts (History, Pol Sci, Geography)</option>
+                    <option value="">None / General</option>
+                    <option value="Science PCM">Science PCM (Physics, Chem, Math)</option>
+                    <option value="Science PCB">Science PCB (Physics, Chem, Bio)</option>
+                    <option value="Commerce">Commerce (Accountancy, Business, Econ)</option>
+                    <option value="Arts">Arts (History, Pol Sci, Geography)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                  <label className="block font-semibold text-slate-700 mb-1">
                     Target Exam / Entrance
                   </label>
                   <input
@@ -621,15 +620,15 @@ export const AdminCourses: React.FC = () => {
                     value={formData.targetExam}
                     onChange={(e) => setFormData({ ...formData, targetExam: e.target.value })}
                     placeholder="BPSC TRE, UP Super TET, BSSC, Bihar SI, AMU, Jamia..."
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   />
                 </div>
               </div>
 
               {/* Pricing & Validity */}
-              <div className="p-4 bg-[#060C17] rounded-2xl border border-white/10 space-y-3">
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-slate-300 uppercase">Pricing & Validity Configuration</span>
+                  <span className="font-semibold text-xs text-slate-700">Pricing & Validity Configuration</span>
                   <label className="inline-flex items-center gap-1.5 cursor-pointer">
                     <input
                       type="checkbox"
@@ -641,15 +640,15 @@ export const AdminCourses: React.FC = () => {
                           price: e.target.checked ? 0 : formData.price || 999,
                         })
                       }
-                      className="rounded accent-[#CCFF00]"
+                      className="rounded accent-blue-600"
                     />
-                    <span className="text-xs font-semibold text-[#CCFF00]">100% Free Course</span>
+                    <span className="text-xs font-semibold text-blue-600">100% Free Course</span>
                   </label>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                       Final Tuition Price (₹)
                     </label>
                     <input
@@ -660,12 +659,12 @@ export const AdminCourses: React.FC = () => {
                         const val = Number(e.target.value);
                         setFormData({ ...formData, price: val, isFree: val === 0 });
                       }}
-                      className="w-full py-2 px-3 bg-[#0E121A] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00]"
+                      className="w-full py-2 px-3 bg-white border border-slate-200 rounded-xl text-slate-800 outline-none focus:border-blue-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                       Original Price (₹ MRP)
                     </label>
                     <input
@@ -673,12 +672,12 @@ export const AdminCourses: React.FC = () => {
                       min="0"
                       value={formData.originalPrice}
                       onChange={(e) => setFormData({ ...formData, originalPrice: Number(e.target.value) })}
-                      className="w-full py-2 px-3 bg-[#0E121A] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00]"
+                      className="w-full py-2 px-3 bg-white border border-slate-200 rounded-xl text-slate-800 outline-none focus:border-blue-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-slate-400 mb-1">
+                    <label className="block text-[11px] font-semibold text-slate-600 mb-1">
                       Course Validity (Days)
                     </label>
                     <input
@@ -687,7 +686,7 @@ export const AdminCourses: React.FC = () => {
                       value={formData.validityDays}
                       onChange={(e) => setFormData({ ...formData, validityDays: Number(e.target.value) })}
                       placeholder="e.g. 365"
-                      className="w-full py-2 px-3 bg-[#0E121A] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00]"
+                      className="w-full py-2 px-3 bg-white border border-slate-200 rounded-xl text-slate-800 outline-none focus:border-blue-600"
                     />
                   </div>
                 </div>
@@ -696,7 +695,7 @@ export const AdminCourses: React.FC = () => {
               {/* Instructor Assignment */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                  <label className="block font-semibold text-slate-700 mb-1">
                     Assigned Lead Faculty
                   </label>
                   <select
@@ -710,11 +709,11 @@ export const AdminCourses: React.FC = () => {
                         instructorName: teacher?.displayName || '',
                       });
                     }}
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   >
-                    <option value="" className="bg-[#0E121A] text-white">Unassigned / Academy Faculty</option>
+                    <option value="">Unassigned / Academy Faculty</option>
                     {teachers.map((t) => (
-                      <option key={t.uid} value={t.uid} className="bg-[#0E121A] text-white">
+                      <option key={t.uid} value={t.uid}>
                         {t.displayName} ({t.email})
                       </option>
                     ))}
@@ -722,7 +721,7 @@ export const AdminCourses: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                  <label className="block font-semibold text-slate-700 mb-1">
                     Subject Name
                   </label>
                   <input
@@ -731,13 +730,13 @@ export const AdminCourses: React.FC = () => {
                     value={formData.subjectName}
                     onChange={(e) => setFormData({ ...formData, subjectName: e.target.value })}
                     placeholder="e.g. Physics, Chemistry, Math"
-                    className="w-full py-2.5 px-3 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition"
+                    className="w-full py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-slate-300 mb-1 uppercase tracking-wider">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Course Description & Syllabus Summary
                 </label>
                 <textarea
@@ -746,7 +745,7 @@ export const AdminCourses: React.FC = () => {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Outline core themes, chapter breakdown, problem sets, and target outcomes..."
-                  className="w-full py-2.5 px-3.5 bg-[#060C17] border border-white/15 rounded-xl text-white outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00]/30 transition resize-none"
+                  className="w-full py-2.5 px-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition resize-none"
                 />
               </div>
 
@@ -756,27 +755,27 @@ export const AdminCourses: React.FC = () => {
                   id="isPublished"
                   checked={formData.isPublished}
                   onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-                  className="w-4 h-4 rounded accent-[#CCFF00]"
+                  className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 accent-blue-600"
                 />
-                <label htmlFor="isPublished" className="font-semibold text-xs text-slate-300 cursor-pointer">
+                <label htmlFor="isPublished" className="font-medium text-xs text-slate-700 cursor-pointer">
                   Publish immediately (Visible in student discovery catalog)
                 </label>
               </div>
 
-              <div className="pt-3 flex justify-end gap-2 border-t border-white/10">
+              <div className="pt-3 flex justify-end gap-2 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-white hover:bg-white/5 transition border border-transparent hover:border-white/10"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold bg-[#CCFF00] text-black hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition cursor-pointer disabled:opacity-50 shadow-md"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer disabled:opacity-50 shadow-sm"
                 >
-                  <Save className="w-3.5 h-3.5 text-black" />
+                  <Save className="w-3.5 h-3.5" />
                   <span>{saving ? 'Saving...' : 'Save Course to Firestore'}</span>
                 </button>
               </div>
@@ -787,25 +786,24 @@ export const AdminCourses: React.FC = () => {
 
       {/* Delete Confirmation Modal */}
       {deletingCourse && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-          <div className="bg-[#0D111A]/95 backdrop-blur-2xl rounded-3xl max-w-sm w-full p-6 border border-white/15 shadow-2xl space-y-4 text-white relative">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500 to-transparent" />
-            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center mx-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-sm w-full p-6 border border-slate-200 shadow-2xl space-y-4 text-slate-800 relative">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center mx-auto">
               <Trash2 className="w-6 h-6" />
             </div>
-            <div className="text-center font-mono">
-              <h3 className="font-display font-bold text-base text-white">
+            <div className="text-center">
+              <h3 className="font-bold text-base text-slate-900">
                 Delete Course Record
               </h3>
-              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-                Are you sure you want to delete <strong className="text-white">{deletingCourse.title}</strong>? This will remove the course and its enrolled access from Firestore.
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Are you sure you want to delete <strong className="text-slate-800">{deletingCourse.title}</strong>? This will remove the course and its enrolled access from Firestore.
               </p>
             </div>
-            <div className="flex gap-2 font-mono">
+            <div className="flex gap-2">
               <button
                 type="button"
                 onClick={() => setDeletingCourse(null)}
-                className="flex-1 py-2 rounded-xl border border-white/10 text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition"
+                className="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
               >
                 Cancel
               </button>
@@ -813,7 +811,7 @@ export const AdminCourses: React.FC = () => {
                 type="button"
                 onClick={handleConfirmDelete}
                 disabled={deleting}
-                className="flex-1 py-2 rounded-xl bg-rose-600 text-white text-xs font-semibold hover:bg-rose-500 hover:shadow-[0_0_15px_rgba(244,63,94,0.4)] transition"
+                className="flex-1 py-2 rounded-xl bg-rose-600 text-white text-xs font-semibold hover:bg-rose-700 transition"
               >
                 {deleting ? 'Deleting...' : 'Confirm Delete'}
               </button>

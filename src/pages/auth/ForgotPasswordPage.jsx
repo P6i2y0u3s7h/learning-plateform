@@ -36,18 +36,18 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-gray-100 shadow-xl">
+    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC]">
+      <div className="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-sm">
         <div className="text-center">
           <Link to="/" className="inline-flex items-center gap-2 mb-4 group">
-            <div className="w-12 h-12 rounded-2xl bg-[#17365D] flex items-center justify-center group-hover:bg-[#2457A7] transition-colors shadow-md">
-              <GraduationCap className="w-7 h-7 text-[#F4B942]" />
+            <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+              <GraduationCap className="w-7 h-7" />
             </div>
           </Link>
-          <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[#17365D]">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-900">
             Reset Password
           </h2>
-          <p className="mt-2 text-sm text-[#6B7280]">
+          <p className="mt-2 text-sm text-slate-500">
             Enter your registered email address and we will dispatch a password recovery link via Firebase.
           </p>
         </div>

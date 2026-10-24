@@ -4,9 +4,7 @@ import {
   GraduationCap,
   UserPlus,
   AlertCircle,
-  Briefcase,
   CheckCircle2,
-  Clock,
   ArrowRight,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -103,55 +101,44 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center py-14 px-4 sm:px-6 lg:px-8 bg-[#070E1A] scrub-grid-bg relative overflow-hidden">
-      {/* Ambient Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(36,87,167,0.15),transparent_70%)] pointer-events-none" />
-
-      <div className="max-w-xl w-full space-y-6 bg-[#0A1324] border border-white/10 p-8 sm:p-10 rounded-xs shadow-2xl relative z-10 text-white">
-        {/* Top Architectural Metadata Strip */}
-        <div className="flex items-center justify-between pb-4 border-b border-white/10 text-[10px] font-mono tracking-[0.2em] text-slate-400 uppercase">
-          <div className="flex items-center gap-1.5 text-amber-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            <span>ENROLLMENT PORTAL</span>
+    <div className="min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
+      <div className="max-w-xl w-full space-y-6 bg-white border border-slate-200 p-7 sm:p-10 rounded-2xl shadow-sm relative z-10 text-slate-900">
+        
+        {/* Top Status Strip */}
+        <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+          <div className="flex items-center gap-1.5 text-blue-600">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span>Student Enrollment Portal</span>
           </div>
-          <span>SESSION 2026-27</span>
+          <span>Session 2026–27</span>
         </div>
 
         {/* Brand Header */}
-        <div className="text-left pt-2">
-          <Link to="/" className="inline-flex items-center gap-2.5 mb-3 group">
-            <div className="w-9 h-9 rounded-xs bg-[#17365D] border border-white/15 flex items-center justify-center">
-              <GraduationCap className="w-5 h-5 text-[#F4B942]" />
-            </div>
-            <span className="font-display font-black text-white text-base tracking-wider uppercase">
-              BRAINSTORM ACADEMY.
-            </span>
-          </Link>
-
-          <h2 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-tight">
-            CREATE STUDENT ACCOUNT.
-            <span className="block font-editorial font-normal italic lowercase tracking-normal text-slate-400 text-xl mt-1">
-              begin your structured academic journey.
-            </span>
+        <div className="text-left pt-1">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight leading-tight">
+            Create Student Account
           </h2>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Begin your structured academic journey across school courses and competitive exams.
+          </p>
         </div>
 
         {/* Auth Error Banner */}
         {authError && (
-          <div className="p-3.5 bg-rose-950/40 border border-rose-500/30 rounded-xs text-xs text-rose-200 flex items-start gap-2.5 animate-in fade-in font-mono">
-            <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
+          <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 flex items-start gap-2.5 animate-in fade-in">
+            <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
             <div className="flex-1">
-              <p className="font-bold text-rose-300 uppercase tracking-wider">Registration Error</p>
-              <p className="font-sans text-slate-300 mt-0.5">{authError}</p>
+              <p className="font-bold">Registration Error</p>
+              <p className="mt-0.5">{authError}</p>
             </div>
           </div>
         )}
 
         {/* Registration Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1">
-            <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-              FULL NAME
+          <div className="space-y-1.5">
+            <label className="block text-xs font-semibold text-slate-700">
+              Full Name *
             </label>
             <input
               id="register-input-fullname"
@@ -159,19 +146,19 @@ export default function RegisterPage() {
               value={formData.fullName}
               onChange={(e) => update('fullName', e.target.value)}
               placeholder="e.g. Rahul Kumar"
-              className="w-full px-3.5 py-2.5 bg-[#060C17] border border-white/15 focus:border-amber-400 rounded-xs text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-colors"
+              className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
               required
               autoComplete="name"
             />
             {errors.fullName && (
-              <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.fullName}</p>
+              <p className="text-xs text-red-600 mt-1">{errors.fullName}</p>
             )}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="space-y-1">
-              <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-                EMAIL ADDRESS
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700">
+                Email Address *
               </label>
               <input
                 id="register-input-email"
@@ -179,18 +166,18 @@ export default function RegisterPage() {
                 value={formData.email}
                 onChange={(e) => update('email', e.target.value)}
                 placeholder="name@example.com"
-                className="w-full px-3.5 py-2.5 bg-[#060C17] border border-white/15 focus:border-amber-400 rounded-xs text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
                 required
                 autoComplete="email"
               />
               {errors.email && (
-                <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.email}</p>
+                <p className="text-xs text-red-600 mt-1">{errors.email}</p>
               )}
             </div>
 
-            <div className="space-y-1">
-              <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-                MOBILE NUMBER
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700">
+                Mobile Number
               </label>
               <input
                 id="register-input-phone"
@@ -198,109 +185,111 @@ export default function RegisterPage() {
                 value={formData.phone}
                 onChange={(e) => update('phone', e.target.value)}
                 placeholder="10-digit number"
-                className="w-full px-3.5 py-2.5 bg-[#060C17] border border-white/15 focus:border-amber-400 rounded-xs text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
                 autoComplete="tel"
               />
               {errors.phone && (
-                <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.phone}</p>
+                <p className="text-xs text-red-600 mt-1">{errors.phone}</p>
               )}
             </div>
           </div>
 
-          <div className="space-y-1">
-            <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-              CLASS OR TARGET EXAM
+          <div className="space-y-1.5">
+            <label className="block text-xs font-semibold text-slate-700">
+              Primary Academic Goal / Class
             </label>
             <select
-              id="register-select-class"
               value={formData.studentClass}
               onChange={(e) => update('studentClass', e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-[#060C17] border border-white/15 focus:border-amber-400 rounded-xs text-xs sm:text-sm text-white outline-none transition-colors"
+              className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 outline-none transition-colors"
             >
               {classOrExamOptions.map((opt) => (
-                <option key={opt.value} value={opt.value} className="bg-[#0A1324] text-white">
+                <option key={opt.value} value={opt.value}>
                   {opt.label}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="space-y-1">
-              <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-                PASSWORD
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700">
+                Password *
               </label>
               <input
                 id="register-input-password"
                 type="password"
                 value={formData.password}
                 onChange={(e) => update('password', e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 bg-[#060C17] border border-white/15 focus:border-amber-400 rounded-xs text-xs sm:text-sm text-white placeholder-slate-500 outline-none"
+                placeholder="Min 6 characters"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
                 required
                 autoComplete="new-password"
               />
               {errors.password && (
-                <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.password}</p>
+                <p className="text-xs text-red-600 mt-1">{errors.password}</p>
               )}
             </div>
 
-            <div className="space-y-1">
-              <label className="block font-mono text-[10px] text-slate-400 tracking-[0.16em] uppercase font-semibold">
-                CONFIRM PASSWORD
+            <div className="space-y-1.5">
+              <label className="block text-xs font-semibold text-slate-700">
+                Confirm Password *
               </label>
               <input
                 id="register-input-confirm-password"
                 type="password"
                 value={formData.confirmPassword}
                 onChange={(e) => update('confirmPassword', e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 bg-[#060C17] border border-white/15 focus:border-amber-400 rounded-xs text-xs sm:text-sm text-white placeholder-slate-500 outline-none"
+                placeholder="Re-enter password"
+                className="w-full px-3.5 py-2.5 bg-white border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none transition-colors"
                 required
                 autoComplete="new-password"
               />
               {errors.confirmPassword && (
-                <p className="font-mono text-[11px] text-rose-400 mt-1">{errors.confirmPassword}</p>
+                <p className="text-xs text-red-600 mt-1">{errors.confirmPassword}</p>
               )}
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pt-1 font-mono text-xs">
-            <input
-              id="agreeTerms"
-              type="checkbox"
-              checked={formData.agreeTerms}
-              onChange={(e) => update('agreeTerms', e.target.checked)}
-              className="rounded-xs border-white/20 text-[#2457A7] focus:ring-0 cursor-pointer"
-            />
-            <label htmlFor="agreeTerms" className="text-slate-400 cursor-pointer">
-              I agree to the Terms of Service & Privacy Policy
+          <div className="pt-1">
+            <label className="flex items-start gap-2.5 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.agreeTerms}
+                onChange={(e) => update('agreeTerms', e.target.checked)}
+                className="w-4 h-4 mt-0.5 rounded border-slate-300 text-blue-600 focus:ring-blue-600 accent-blue-600 cursor-pointer"
+              />
+              <span className="text-xs text-slate-600 leading-normal">
+                I agree to the Terms of Service and Privacy Policy for Brainstorm Academy.
+              </span>
             </label>
+            {errors.agreeTerms && (
+              <p className="text-xs text-red-600 mt-1">{errors.agreeTerms}</p>
+            )}
           </div>
-          {errors.agreeTerms && (
-            <p className="font-mono text-[11px] text-rose-400">{errors.agreeTerms}</p>
-          )}
 
           <button
-            id="register-submit-btn"
             type="submit"
             disabled={loading}
-            className="w-full py-3.5 px-6 rounded-xs bg-[#F4B942] hover:bg-amber-400 text-[#070E1A] font-mono text-xs font-bold uppercase tracking-[0.16em] transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer mt-4"
+            className="w-full py-3 px-6 rounded-xl text-white font-sans text-xs sm:text-sm font-semibold bg-blue-600 hover:bg-blue-700 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm mt-4"
           >
-            <UserPlus className="w-3.5 h-3.5" />
+            <UserPlus className="w-4 h-4" />
             <span>
-              {loading ? 'REGISTERING...' : 'CREATE STUDENT ACCOUNT'}
+              {loading ? 'Creating Student Account...' : 'Complete Student Registration'}
             </span>
           </button>
         </form>
 
-        {/* Existing account link */}
-        <div className="pt-2 text-center font-mono text-[11px] text-slate-400 tracking-wider">
-          ALREADY ENROLLED?{' '}
-          <Link to={ROUTES.LOGIN} className="font-bold text-amber-400 hover:underline uppercase">
-            Sign In here →
+        <div className="pt-2 text-center text-xs text-slate-500">
+          Already have an account?{' '}
+          <Link
+            to={ROUTES.LOGIN}
+            className="font-semibold text-blue-600 hover:underline"
+          >
+            Sign In →
           </Link>
         </div>
+
       </div>
     </div>
   );

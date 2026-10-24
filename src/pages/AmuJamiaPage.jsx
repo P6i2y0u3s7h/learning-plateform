@@ -57,39 +57,39 @@ export default function AmuJamiaPage() {
   });
 
   return (
-    <div className="w-full bg-[#07080D] text-slate-100 min-h-screen py-12">
+    <div className="w-full bg-[#F8FAFC] text-slate-900 min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6">
-          <Link to="/" className="hover:text-white transition-colors">HOME</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
-          <span className="text-[#CCFF00] font-semibold">AMU & JAMIA ENTRANCE</span>
+        <div className="flex items-center gap-2 text-xs font-medium text-slate-500 mb-6">
+          <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+          <span className="text-blue-600 font-semibold">AMU & Jamia Entrance</span>
         </div>
 
-        {/* Header Hero Banner */}
-        <div className="bg-[#0E121A] border border-white/10 rounded-3xl p-8 sm:p-12 mb-12 text-white relative overflow-hidden shadow-2xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#CCFF00]/10 border border-[#CCFF00]/25 text-[#CCFF00] font-mono text-xs uppercase tracking-widest mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span>CENTRAL UNIVERSITY ENTRANCE BLUEPRINT</span>
+        {/* Header Hero Banner (EduCore Theme) */}
+        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/40 border border-blue-200/80 rounded-3xl p-8 sm:p-12 mb-12 relative overflow-hidden shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mb-4">
+            <span className="w-2 h-2 rounded-full bg-blue-600" />
+            <span>Central University Entrance Blueprint</span>
           </div>
 
-          <h1 className="font-display font-black text-3xl sm:text-5xl uppercase tracking-tight mb-4 text-white">
-            AMU & JAMIA MILLIA{' '}
-            <span className="font-editorial italic font-normal text-slate-300 normal-case">
+          <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4 text-slate-900">
+            AMU & Jamia Millia{' '}
+            <span className="text-blue-600">
               Entrance Preparation.
             </span>
           </h1>
 
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed mb-8 font-sans">
+          <p className="text-slate-600 text-sm sm:text-base max-w-2xl leading-relaxed mb-8">
             Specialized coaching for Aligarh Muslim University (AMU) & Jamia Millia Islamia (JMI) Class 9, Class 11 (Science, Commerce, Arts), and Diploma Engineering entrance examinations.
           </p>
 
           <div className="flex flex-wrap gap-4">
             <Link
               to={ROUTES.MOCK_TESTS}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#CCFF00] hover:text-black transition-all shadow-md"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white text-xs font-semibold uppercase tracking-wider hover:bg-blue-700 transition-all shadow-sm"
             >
-              <span>PRACTICE ENTRANCE MOCK TESTS</span>
+              <span>Practice Entrance Mock Tests</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -97,8 +97,8 @@ export default function AmuJamiaPage() {
 
         {/* Filter Tabs */}
         <div className="mb-10">
-          <h2 className="font-mono text-xs text-slate-400 uppercase tracking-widest mb-3">
-            FILTER ENTRANCE BATCHES:
+          <h2 className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-3">
+            Filter Entrance Batches:
           </h2>
           <div className="flex flex-wrap gap-2.5">
             {[
@@ -111,10 +111,10 @@ export default function AmuJamiaPage() {
               <button
                 key={item.id}
                 onClick={() => setActiveFilter(item.id)}
-                className={`px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition cursor-pointer border ${
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer border ${
                   activeFilter === item.id
-                    ? 'bg-white text-black border-white font-extrabold shadow-md'
-                    : 'bg-[#0E121A] text-slate-400 hover:text-white border-white/10 hover:border-white/20'
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                    : 'bg-white text-slate-700 hover:text-blue-600 border-slate-200 hover:border-blue-200 shadow-sm'
                 }`}
               >
                 {item.label}
@@ -126,28 +126,28 @@ export default function AmuJamiaPage() {
         {/* Courses Grid */}
         <div className="mb-8">
           <SectionHeading
-            tag="UNIVERSITY ENTRANCE"
+            tag="University Entrance"
             tagNumber="02"
-            title="AVAILABLE ENTRANCE"
-            highlight="PROGRAMS."
+            title="Available Entrance"
+            highlight="Programs."
           />
         </div>
 
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="bg-[#0E121A] p-5 rounded-2xl border border-white/10 space-y-3">
-                <Skeleton className="h-44 w-full rounded-xl bg-white/5" />
-                <Skeleton className="h-5 w-3/4 rounded-lg bg-white/5" />
-                <Skeleton className="h-4 w-1/2 rounded-lg bg-white/5" />
+              <div key={i} className="bg-white p-5 rounded-2xl border border-slate-200/80 space-y-3 shadow-sm">
+                <Skeleton className="h-44 w-full rounded-xl" />
+                <Skeleton className="h-5 w-3/4 rounded-lg" />
+                <Skeleton className="h-4 w-1/2 rounded-lg" />
               </div>
             ))}
           </div>
         ) : filteredCourses.length === 0 ? (
-          <div className="py-20 text-center text-slate-400 bg-[#0E121A] rounded-2xl border border-white/10 p-8 mb-16">
-            <Building2 className="w-12 h-12 mx-auto text-slate-600 mb-4" />
-            <h3 className="font-display font-extrabold text-white text-lg uppercase">No Entrance Batches Found</h3>
-            <p className="text-xs text-slate-400 mt-1">
+          <div className="py-20 text-center text-slate-500 bg-white rounded-2xl border border-slate-200/80 p-8 mb-16 shadow-sm">
+            <Building2 className="w-12 h-12 mx-auto text-slate-400 mb-4" />
+            <h3 className="font-bold text-slate-900 text-lg">No Entrance Batches Found</h3>
+            <p className="text-xs text-slate-500 mt-1">
               Check back or adjust filters to view other university entrance programs.
             </p>
           </div>

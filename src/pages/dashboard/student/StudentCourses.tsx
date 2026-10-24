@@ -127,22 +127,19 @@ export const StudentCourses: React.FC = () => {
       {/* Zero-cost GPU accelerated ambient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(204,255,0,0.04),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(56,189,248,0.04),transparent_50%)] pointer-events-none" />
 
-      {/* Header Banner */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-6 text-white">
-        {/* Specular hairline top glow */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
+      {/* Header Banner - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
 
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-            <span className="font-mono text-xs text-[#CCFF00] uppercase tracking-widest font-bold">
-              [ 03 // CURRICULUM ]
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Curriculum
           </div>
-          <h1 className="font-mono font-black text-2xl sm:text-3xl text-white tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
             My Enrolled Courses
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Access your active syllabi, resume chapters, and monitor curriculum completion.
           </p>
         </div>
@@ -150,7 +147,7 @@ export const StudentCourses: React.FC = () => {
         <div className="flex items-center gap-2">
           <Link
             to="/school-courses"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(204,255,0,0.3)] active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm active:scale-95"
           >
             <span>Browse More Courses</span>
             <ArrowRight className="w-4 h-4" />
@@ -160,14 +157,14 @@ export const StudentCourses: React.FC = () => {
 
       {/* Error Notice */}
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl flex items-center gap-3 text-xs sm:text-sm font-mono shadow-lg">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl flex items-center gap-3 text-xs sm:text-sm shadow-sm">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Controls: Search & Status Filters */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
@@ -178,7 +175,7 @@ export const StudentCourses: React.FC = () => {
               setCurrentPage(1);
             }}
             placeholder="Search by course title or subject..."
-            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#060C17] border border-white/15 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#CCFF00] focus:ring-1 focus:ring-[#CCFF00] transition font-sans"
+            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition"
           />
         </div>
 
@@ -188,10 +185,10 @@ export const StudentCourses: React.FC = () => {
               setStatusFilter('all');
               setCurrentPage(1);
             }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition cursor-pointer border ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer border ${
               statusFilter === 'all'
-                ? 'bg-[#CCFF00] text-black border-[#CCFF00] shadow-[0_0_12px_rgba(204,255,0,0.25)]'
-                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
             All ({enrolledCourses.length})
@@ -201,10 +198,10 @@ export const StudentCourses: React.FC = () => {
               setStatusFilter('in_progress');
               setCurrentPage(1);
             }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition cursor-pointer border ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer border ${
               statusFilter === 'in_progress'
-                ? 'bg-[#38BDF8] text-black border-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.25)]'
-                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
             In Progress
@@ -214,10 +211,10 @@ export const StudentCourses: React.FC = () => {
               setStatusFilter('completed');
               setCurrentPage(1);
             }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition cursor-pointer border ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer border ${
               statusFilter === 'completed'
-                ? 'bg-emerald-400 text-black border-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.25)]'
-                : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
             }`}
           >
             Completed
@@ -231,7 +228,7 @@ export const StudentCourses: React.FC = () => {
           {[1, 2, 3, 4, 5, 6].map((i) => (
             <div
               key={i}
-              className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl p-6 border border-white/10 shadow-xl space-y-4"
+              className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4"
             >
               <div className="flex justify-between items-center">
                 <Skeleton className="h-5 w-24 rounded-full" />
@@ -247,19 +244,16 @@ export const StudentCourses: React.FC = () => {
           ))}
         </div>
       ) : filteredCourses.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl text-center relative overflow-hidden">
-          {/* Top specular hairline */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent" />
-
-          <div className="w-20 h-20 bg-gradient-to-br from-[#CCFF00]/20 to-[#38BDF8]/20 border border-[#CCFF00]/30 rounded-3xl flex items-center justify-center mx-auto mb-4 text-[#CCFF00] shadow-[0_0_20px_rgba(204,255,0,0.15)]">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-sm text-center relative overflow-hidden">
+          <div className="w-20 h-20 bg-blue-50 border border-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-4 text-blue-600">
             <GraduationCap className="w-10 h-10" />
           </div>
-          <h3 className="font-mono font-black text-xl sm:text-2xl text-white mb-2 tracking-tight">
+          <h3 className="font-bold text-xl sm:text-2xl text-slate-900 mb-2 tracking-tight">
             {enrolledCourses.length === 0
               ? 'No Enrolled Courses Found'
               : 'No matching courses found'}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-400 font-mono max-w-md mx-auto mb-8 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-8 leading-relaxed">
             {enrolledCourses.length === 0
               ? 'You have not enrolled in any programs yet. Explore our targeted school curriculums, competitive exam batches, and entrance test preparation modules.'
               : 'Try clearing your search query or switching your status filter to see other enrolled subjects.'}
@@ -269,19 +263,19 @@ export const StudentCourses: React.FC = () => {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/school-courses"
-                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(204,255,0,0.25)] active:scale-95"
+                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm active:scale-95"
               >
                 School Courses (Class 6–12)
               </Link>
               <Link
                 to="/competitive-exams"
-                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-black uppercase tracking-wider bg-[#38BDF8] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.25)] active:scale-95"
+                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-700 transition shadow-sm active:scale-95"
               >
                 Competitive Exams (BPSC / TET)
               </Link>
               <Link
                 to="/amu-jamia"
-                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-black uppercase tracking-wider bg-[#F4B942] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(244,185,66,0.25)] active:scale-95"
+                className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-blue-700 text-white hover:bg-blue-800 transition shadow-sm active:scale-95"
               >
                 AMU & Jamia Entrances
               </Link>
@@ -292,7 +286,7 @@ export const StudentCourses: React.FC = () => {
                 setSearchQuery('');
                 setStatusFilter('all');
               }}
-              className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-[#CCFF00] bg-[#CCFF00]/10 hover:bg-[#CCFF00]/20 border border-[#CCFF00]/30 transition"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition"
             >
               Reset Filters
             </button>
@@ -311,50 +305,48 @@ export const StudentCourses: React.FC = () => {
               return (
                 <div
                   key={enrollment.id}
-                  className="bg-[#0E121A]/85 backdrop-blur-xl rounded-3xl border border-white/10 p-6 shadow-xl hover:border-[#CCFF00]/40 transition-all flex flex-col justify-between group text-white relative overflow-hidden"
+                  className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between group relative overflow-hidden"
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
                   <div>
                     {/* Top Badges */}
                     <div className="flex items-center justify-between mb-3.5">
-                      <span className="text-[11px] font-mono font-bold text-[#38BDF8] bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                      <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full uppercase tracking-wider">
                         {subject}
                       </span>
                       {isCompleted ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-full">
-                          <CheckCircle2 className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                           Completed
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono font-bold text-[#CCFF00] bg-[#CCFF00]/10 border border-[#CCFF00]/30 px-2.5 py-0.5 rounded-full">
-                          <Clock className="w-3 h-3" />
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">
+                          <Clock className="w-3 h-3 text-blue-600" />
                           Active
                         </span>
                       )}
                     </div>
 
                     {/* Course Title */}
-                    <h3 className="font-mono font-bold text-white text-base group-hover:text-[#CCFF00] transition line-clamp-2 mb-2">
+                    <h3 className="font-bold text-slate-900 text-base group-hover:text-blue-600 transition line-clamp-2 mb-2">
                       {title}
                     </h3>
 
                     {/* Description or details */}
-                    <p className="text-xs text-slate-400 font-sans line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-slate-500 line-clamp-2 mb-4 leading-relaxed">
                       {course?.shortDescription ||
                         course?.description ||
                         'Comprehensive syllabus coverage with interactive lectures and assessments.'}
                     </p>
 
                     {/* Progress Bar */}
-                    <div className="space-y-1.5 mb-6 bg-[#060C17] p-3.5 rounded-2xl border border-white/10 font-mono text-xs">
-                      <div className="flex justify-between text-slate-400">
+                    <div className="space-y-1.5 mb-6 bg-slate-50 p-3.5 rounded-2xl border border-slate-200/60 text-xs">
+                      <div className="flex justify-between text-slate-600">
                         <span className="font-medium">Syllabus Completion</span>
-                        <span className="font-bold text-[#CCFF00]">{progress}%</span>
+                        <span className="font-bold text-blue-700">{progress}%</span>
                       </div>
                       <ProgressBar
                         value={progress}
-                        color={isCompleted ? '#10B981' : '#CCFF00'}
+                        color={isCompleted ? '#16A34A' : '#2563EB'}
                         height={6}
                       />
                       <div className="flex justify-between items-center text-[10px] text-slate-500 pt-0.5">
@@ -367,17 +359,17 @@ export const StudentCourses: React.FC = () => {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-white/10">
+                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
                     <Link
                       to={`/dashboard/student/classroom/${targetId}`}
-                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition-all shadow-[0_0_15px_rgba(204,255,0,0.25)] active:scale-95"
+                      className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm active:scale-95"
                     >
-                      <PlayCircle className="w-4 h-4 text-black" />
+                      <PlayCircle className="w-4 h-4 text-white" />
                       <span>{isCompleted ? 'Review Lessons' : 'Resume Learning'}</span>
                     </Link>
                     <Link
                       to="/dashboard/student/materials"
-                      className="px-3 py-2.5 rounded-xl text-xs font-mono font-bold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/15 transition"
+                      className="px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition"
                       title="Download Notes"
                     >
                       Notes
@@ -390,16 +382,16 @@ export const StudentCourses: React.FC = () => {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl font-mono text-xs text-slate-400">
+            <div className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm text-xs text-slate-500 font-medium">
               <p>
-                Showing page <strong className="text-white">{currentPage}</strong> of{' '}
-                <strong className="text-white">{totalPages}</strong>
+                Showing page <strong className="text-slate-900">{currentPage}</strong> of{' '}
+                <strong className="text-slate-900">{totalPages}</strong>
               </p>
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Previous page"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -408,10 +400,10 @@ export const StudentCourses: React.FC = () => {
                   <button
                     key={page}
                     onClick={() => handlePageChange(page)}
-                    className={`w-8 h-8 rounded-lg text-xs font-mono font-bold transition ${
+                    className={`w-8 h-8 rounded-lg text-xs font-semibold transition ${
                       currentPage === page
-                        ? 'bg-[#CCFF00] text-black border border-[#CCFF00]'
-                        : 'border border-white/10 text-slate-300 hover:bg-white/5'
+                        ? 'bg-blue-600 text-white border border-blue-600 shadow-sm'
+                        : 'border border-slate-200 text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {page}
@@ -420,7 +412,7 @@ export const StudentCourses: React.FC = () => {
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-lg border border-white/10 text-slate-400 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed transition"
+                  className="p-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
                   aria-label="Next page"
                 >
                   <ChevronRight className="w-4 h-4" />

@@ -154,89 +154,87 @@ export const TeacherDoubts: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Top Header - Scrub Aesthetic */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0E121A] via-[#090D14] to-[#04060A] border border-white/10 p-6 sm:p-8 shadow-2xl">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#CCFF00]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#CCFF00] font-mono text-xs uppercase tracking-widest mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-              [ 07 // STUDENT DOUBT RESOLUTION ]
-            </div>
-            <h1 className="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
-              Student Doubt Resolution
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1 tracking-tight">
-              Address student inquiries, clarify challenging concepts, and provide guided step-by-step solutions.
-            </p>
+      {/* Top Header - EduCore Theme */}
+      <div className="relative overflow-hidden rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700" />
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+            Student Doubt Resolution
           </div>
-
-          {pendingCount > 0 && (
-            <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-400 px-4 py-2 rounded-2xl text-xs font-mono font-bold shadow-md self-start sm:self-auto">
-              <Clock className="w-4 h-4 text-amber-400" />
-              <span>{pendingCount} Pending Inquiries</span>
-            </div>
-          )}
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Student Doubt Resolution
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Address student inquiries, clarify challenging concepts, and provide guided step-by-step solutions.
+          </p>
         </div>
+
+        {pendingCount > 0 && (
+          <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-4 py-2 rounded-2xl text-xs font-semibold shadow-xs self-start sm:self-auto">
+            <Clock className="w-4 h-4 text-amber-600" />
+            <span>{pendingCount} Pending Inquiries</span>
+          </div>
+        )}
       </div>
 
       {error && (
-        <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-rose-300 font-mono">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-400" />
+        <div className="p-4 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-red-700">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 text-red-500" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Filter and Search */}
-      <div className="bg-[#0E121A]/85 backdrop-blur-xl rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:max-w-md">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by student name, question, course..."
-            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-[#060C17] border border-white/10 rounded-xl text-white placeholder-slate-500 font-mono outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80 transition"
+            className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:ring-2 focus:ring-blue-100 focus:border-blue-600 transition"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
           <button
             onClick={() => setStatusFilter('all')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition cursor-pointer border ${
               statusFilter === 'all'
-                ? 'bg-[#CCFF00] text-black shadow-md'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-100'
             }`}
           >
             All ({doubts.length})
           </button>
           <button
             onClick={() => setStatusFilter('pending')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition cursor-pointer border ${
               statusFilter === 'pending'
-                ? 'bg-amber-400 text-black shadow-md'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-amber-600 text-white border-amber-600 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-amber-600 hover:bg-slate-100'
             }`}
           >
             Pending ({doubts.filter((d) => d.status === 'pending').length})
           </button>
           <button
             onClick={() => setStatusFilter('in_review')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition cursor-pointer border ${
               statusFilter === 'in_review'
-                ? 'bg-sky-400 text-black shadow-md'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-blue-500 text-white border-blue-500 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-slate-100'
             }`}
           >
             In Review
           </button>
           <button
             onClick={() => setStatusFilter('resolved')}
-            className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition cursor-pointer border ${
               statusFilter === 'resolved'
-                ? 'bg-emerald-400 text-black shadow-md'
-                : 'bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10'
+                ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-emerald-600 hover:bg-slate-100'
             }`}
           >
             Resolved
@@ -248,22 +246,22 @@ export const TeacherDoubts: React.FC = () => {
       {loading ? (
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl space-y-3">
-              <Skeleton className="h-4 w-32 rounded-full bg-white/5" />
-              <Skeleton className="h-6 w-3/4 bg-white/5" />
-              <Skeleton className="h-10 w-full rounded-xl bg-white/5" />
+            <div key={i} className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-3">
+              <Skeleton className="h-4 w-32 rounded-full" />
+              <Skeleton className="h-6 w-3/4" />
+              <Skeleton className="h-10 w-full rounded-xl" />
             </div>
           ))}
         </div>
       ) : filteredDoubts.length === 0 ? (
-        <div className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-12 border border-white/10 text-center shadow-2xl">
-          <div className="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-3 text-emerald-400">
+        <div className="bg-white rounded-3xl p-12 border border-slate-200/80 text-center shadow-sm">
+          <div className="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mx-auto mb-3 text-emerald-600">
             <CheckCircle2 className="w-7 h-7" />
           </div>
-          <h3 className="font-display font-bold text-base text-white mb-1">
+          <h3 className="font-bold text-base text-slate-900 mb-1">
             All Doubts Resolved
           </h3>
-          <p className="text-xs text-slate-400 font-mono max-w-sm mx-auto">
+          <p className="text-xs text-slate-500 max-w-sm mx-auto">
             There are no student doubt tickets requiring faculty action matching your filter.
           </p>
         </div>
@@ -276,42 +274,42 @@ export const TeacherDoubts: React.FC = () => {
             return (
               <div
                 key={doubt.id}
-                className="bg-[#0E121A]/85 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl hover:border-white/20 transition-all space-y-4 text-white"
+                className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:border-blue-300 transition-all space-y-4 text-slate-900"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5 flex-wrap">
-                    <span className="text-[11px] font-mono font-bold text-[#CCFF00] bg-[#CCFF00]/10 border border-[#CCFF00]/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    <span className="text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                       {doubt.subjectName}
                     </span>
-                    <span className="text-xs text-white font-mono font-bold">
+                    <span className="text-xs text-slate-900 font-bold">
                       {doubt.studentName}
                     </span>
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-xs text-slate-500">
                       ({doubt.studentEmail})
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2">
                     {isResolved ? (
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                        <CheckCircle2 className="w-3 h-3" />
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                         Resolved
                       </span>
                     ) : isInReview ? (
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold text-sky-400 bg-sky-500/10 px-2.5 py-0.5 rounded-full border border-sky-500/20">
-                        <Clock className="w-3 h-3" />
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                        <Clock className="w-3 h-3 text-blue-600" />
                         In Review
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">
-                        <Clock className="w-3 h-3" />
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                        <Clock className="w-3 h-3 text-amber-600" />
                         Pending Reply
                       </span>
                     )}
 
                     <button
                       onClick={() => handleOpenReply(doubt)}
-                      className="px-4 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#CCFF00] text-black hover:bg-white transition cursor-pointer shadow-md active:scale-95"
+                      className="px-4 py-1.5 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer shadow-sm active:scale-95"
                     >
                       {doubt.facultyReply ? 'Edit Answer' : 'Answer Question'}
                     </button>
@@ -319,22 +317,22 @@ export const TeacherDoubts: React.FC = () => {
                 </div>
 
                 <div className="text-xs leading-relaxed space-y-1.5">
-                  <p className="font-mono uppercase tracking-wider text-[11px] text-slate-400">Question Statement:</p>
-                  <p className="bg-[#060C17] p-3.5 rounded-xl border border-white/10 font-mono text-slate-200 whitespace-pre-wrap">
+                  <p className="font-semibold uppercase tracking-wider text-[11px] text-slate-500">Question Statement:</p>
+                  <p className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-slate-800 whitespace-pre-wrap">
                     {doubt.question}
                   </p>
                 </div>
 
                 {doubt.attachmentUrls && doubt.attachmentUrls.length > 0 && (
                   <div className="pt-1">
-                    <p className="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-1.5">
                       Student Attached Diagram / Equation:
                     </p>
                     <a
                       href={doubt.attachmentUrls[0]}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#CCFF00] bg-white/5 border border-white/10 hover:bg-white/10 px-3.5 py-1.5 rounded-xl transition shadow-xs"
+                      className="inline-flex items-center gap-2 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 hover:bg-blue-100 px-3.5 py-1.5 rounded-xl transition shadow-xs"
                     >
                       <ImageIcon className="w-3.5 h-3.5" />
                       <span>{doubt.attachmentNames?.[0] || 'View Attached Image'}</span>
@@ -345,23 +343,23 @@ export const TeacherDoubts: React.FC = () => {
 
                 {/* Faculty Reply Box */}
                 {doubt.facultyReply && (
-                  <div className="p-4 bg-emerald-950/20 rounded-2xl border border-emerald-500/20 space-y-2">
+                  <div className="p-4 bg-emerald-50/70 rounded-2xl border border-emerald-200 space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-mono font-bold text-emerald-300 flex items-center gap-1.5">
-                        <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="font-bold text-emerald-800 flex items-center gap-1.5">
+                        <UserCheck className="w-3.5 h-3.5 text-emerald-600" />
                         <span>Faculty Reply: {doubt.repliedByName || 'Faculty Member'}</span>
                       </span>
-                      <span className="text-[11px] font-mono text-emerald-500">
+                      <span className="text-[11px] text-emerald-600">
                         {doubt.repliedAt ? new Date(doubt.repliedAt).toLocaleDateString() : 'Recent'}
                       </span>
                     </div>
-                    <p className="text-xs font-mono text-slate-200 leading-relaxed whitespace-pre-wrap pl-4 border-l-2 border-[#CCFF00]">
+                    <p className="text-xs text-slate-700 leading-relaxed whitespace-pre-wrap pl-4 border-l-2 border-emerald-500">
                       {doubt.facultyReply}
                     </p>
                   </div>
                 )}
 
-                <div className="text-[11px] font-mono text-slate-400 pt-2 border-t border-white/5 flex items-center justify-between">
+                <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100 flex items-center justify-between">
                   <span>Course: {doubt.courseTitle || 'Curriculum Course'}</span>
                   <span>Asked: {new Date(doubt.createdAt).toLocaleString()}</span>
                 </div>
@@ -373,42 +371,42 @@ export const TeacherDoubts: React.FC = () => {
 
       {/* Reply Modal */}
       {selectedDoubt && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-          <div className="bg-[#0E121A] rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-white/15 shadow-2xl relative max-h-[90vh] overflow-y-auto text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-slate-200 shadow-2xl relative max-h-[90vh] overflow-y-auto text-slate-900">
             <button
               onClick={() => setSelectedDoubt(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#CCFF00] font-mono text-[10px] uppercase tracking-widest mb-2 w-fit">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-              [ FACULTY_DESK_RESPONSE ]
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-[11px] font-semibold uppercase tracking-wider mb-2 w-fit">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+              Faculty Response Desk
             </div>
 
-            <h3 className="font-display font-bold text-xl text-white mb-1">
+            <h3 className="font-bold text-xl text-slate-900 mb-1">
               Respond to Student Question
             </h3>
-            <p className="text-xs text-slate-400 font-mono mb-4">
-              Student: <strong className="text-white">{selectedDoubt.studentName}</strong> • Subject: <strong className="text-white">{selectedDoubt.subjectName}</strong>
+            <p className="text-xs text-slate-500 mb-4">
+              Student: <strong className="text-slate-900">{selectedDoubt.studentName}</strong> • Subject: <strong className="text-slate-900">{selectedDoubt.subjectName}</strong>
             </p>
 
-            <div className="bg-[#080B11] p-4 rounded-2xl border border-white/10 text-xs text-slate-300 mb-4 space-y-1.5 font-mono">
-              <p className="font-bold text-[#CCFF00] uppercase tracking-wider text-[11px]">Question:</p>
+            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-slate-700 mb-4 space-y-1.5">
+              <p className="font-bold text-blue-700 uppercase tracking-wider text-[11px]">Question:</p>
               <p className="leading-relaxed whitespace-pre-wrap">{selectedDoubt.question}</p>
             </div>
 
             {replySuccess && (
-              <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 rounded-2xl text-xs font-mono font-bold flex items-center gap-2 mb-4">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-semibold flex items-center gap-2 mb-4">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                 <span>Response dispatched to student dashboard successfully!</span>
               </div>
             )}
 
             <form onSubmit={handleSendReply} className="space-y-4 text-xs">
               <div>
-                <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">
+                <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                   Faculty Explanation & Detailed Derivation
                 </label>
                 <textarea
@@ -417,12 +415,12 @@ export const TeacherDoubts: React.FC = () => {
                   value={replyText}
                   onChange={(e) => setReplyText(e.target.value)}
                   placeholder="Provide step-by-step mathematical reasoning, theorem citations, and clear guidance..."
-                  className="w-full py-2.5 px-3 bg-[#060C17] border border-white/10 rounded-xl text-white font-mono text-xs placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#CCFF00]/40 focus:border-[#CCFF00]/80 leading-relaxed transition"
+                  className="w-full py-2.5 px-3 bg-white border border-slate-300 rounded-xl text-slate-900 text-xs placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-600 leading-relaxed transition"
                 />
               </div>
 
               <div>
-                <label className="block font-mono text-[11px] uppercase tracking-wider text-slate-300 mb-1.5">
+                <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                   Resolution Status
                 </label>
                 <div className="flex gap-4">
@@ -432,9 +430,9 @@ export const TeacherDoubts: React.FC = () => {
                       name="status"
                       checked={replyStatus === 'resolved'}
                       onChange={() => setReplyStatus('resolved')}
-                      className="accent-[#CCFF00]"
+                      className="text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="font-mono text-xs text-emerald-400">Mark as Resolved</span>
+                    <span className="text-xs text-emerald-700 font-semibold">Mark as Resolved</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -442,25 +440,25 @@ export const TeacherDoubts: React.FC = () => {
                       name="status"
                       checked={replyStatus === 'in_review'}
                       onChange={() => setReplyStatus('in_review')}
-                      className="accent-[#CCFF00]"
+                      className="text-blue-600 focus:ring-blue-500"
                     />
-                    <span className="font-mono text-xs text-sky-400">Under Active Review</span>
+                    <span className="text-xs text-blue-700 font-semibold">Under Active Review</span>
                   </label>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-white/10 flex justify-end gap-2.5">
+              <div className="pt-3 border-t border-slate-200 flex justify-end gap-2.5">
                 <button
                   type="button"
                   onClick={() => setSelectedDoubt(null)}
-                  className="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-white/5 transition"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submittingReply}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-[#CCFF00] hover:bg-white text-black transition cursor-pointer disabled:opacity-50 shadow-lg active:scale-95"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white transition cursor-pointer disabled:opacity-50 shadow-sm active:scale-95"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>{submittingReply ? 'Sending Response...' : 'Post Reply'}</span>

@@ -40,21 +40,18 @@ export default function Modal({
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-black/75 backdrop-blur-md"
+        className="absolute inset-0 bg-slate-900/40 backdrop-blur-xs"
         onClick={closeOnOverlay ? onClose : undefined}
       />
 
       {/* Dialog */}
-      <div className={`relative w-full ${sizes[size]} bg-[#0D111A]/95 border border-white/15 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.9)] flex flex-col max-h-[90vh] overflow-hidden animate-[fadeInScale_0.2s_ease] text-white`}>
-        {/* Specular highlight */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#10B981] to-transparent" />
-
+      <div className={`relative w-full ${sizes[size]} bg-white border border-slate-200 rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden animate-[fadeInScale_0.2s_ease] text-slate-900`}>
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
-          <h2 className="font-display font-bold text-white text-lg tracking-tight">{title}</h2>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white">
+          <h2 className="font-display font-bold text-slate-900 text-lg tracking-tight">{title}</h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-4 h-4" />
@@ -62,13 +59,13 @@ export default function Modal({
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-5 text-slate-300">
+        <div className="flex-1 overflow-y-auto px-6 py-5 text-slate-600">
           {children}
         </div>
 
         {/* Footer */}
         {footer && (
-          <div className="px-6 py-4 border-t border-white/10 flex items-center justify-end gap-3 bg-white/[0.02]">
+          <div className="px-6 py-3.5 border-t border-slate-100 flex items-center justify-end gap-3 bg-slate-50/80">
             {footer}
           </div>
         )}
@@ -76,7 +73,7 @@ export default function Modal({
 
       <style>{`
         @keyframes fadeInScale {
-          from { opacity: 0; transform: scale(0.95) translateY(8px); }
+          from { opacity: 0; transform: scale(0.96) translateY(6px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
       `}</style>
@@ -98,24 +95,24 @@ export function ConfirmModal({ isOpen, onClose, onConfirm, title, message, confi
         <>
           <button
             type="button"
-            className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 transition-all cursor-pointer"
             onClick={onClose}
             disabled={loading}
+            className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer"
           >
             Cancel
           </button>
-          <button
-            type="button"
-            className="px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-rose-600 hover:bg-rose-500 transition-all shadow-[0_0_15px_rgba(225,29,72,0.3)] cursor-pointer"
+          <Button
+            variant={confirmVariant}
+            size="sm"
+            loading={loading}
             onClick={onConfirm}
-            disabled={loading}
           >
-            {loading ? 'Processing...' : confirmLabel}
-          </button>
+            {confirmLabel}
+          </Button>
         </>
       }
     >
-      <p className="text-slate-300 text-sm font-mono">{message}</p>
+      <p className="text-sm text-slate-600 leading-relaxed">{message}</p>
     </Modal>
   );
 }

@@ -23,6 +23,9 @@ import {
   Check,
   Play,
   Flame,
+  Users,
+  Clock,
+  Star,
 } from 'lucide-react';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { CourseCard } from '../components/common/CourseCard';
@@ -40,7 +43,7 @@ export default function HomePage() {
   const [activeTrack, setActiveTrack] = useState('competitive');
   const [liveCourses, setLiveCourses] = useState(SAMPLE_COURSES);
 
-  // Interactive Prep Velocity Calculator State (Scrub Tools style)
+  // Interactive Prep Velocity Calculator State
   const [calcExam, setCalcExam] = useState('bpsc');
   const [dailyHours, setDailyHours] = useState(4);
   const [baselineScore, setBaselineScore] = useState(65);
@@ -123,545 +126,275 @@ export default function HomePage() {
   }, [calcExam, dailyHours]);
 
   return (
-    <div className="w-full bg-[#07080D] text-slate-100 overflow-hidden relative">
-      {/* Background Decorative Grid & Glow Blobs */}
-      <div className="absolute inset-0 scrub-grid-bg opacity-30 pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-gradient-to-b from-[#CCFF00]/10 via-[#00F59B]/5 to-transparent blur-[140px] pointer-events-none" />
-
+    <div className="w-full bg-[#F8FAFC] text-slate-900 overflow-hidden relative">
+      
       {/* ======================================================== */}
-      {/* 1. HERO SECTION                                          */}
+      {/* 1. HERO SECTION (EduCore Two-Column Academic Layout)    */}
       {/* ======================================================== */}
-      <section className="relative pt-12 sm:pt-20 pb-16 lg:pb-24 border-b border-white/5">
+      <section className="relative pt-12 sm:pt-16 pb-16 lg:pb-24 bg-gradient-to-b from-blue-50/70 via-[#F8FAFC] to-[#F8FAFC] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Main Giant Headline */}
-          <div className="text-center max-w-5xl mx-auto">
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.02] uppercase text-white mb-6">
-              WHERE ASPIRANTS EVOLVE INTO{' '}
-              <span className="font-editorial italic font-normal text-slate-300 normal-case block sm:inline">
-                Top Rankers.
-              </span>
-            </h1>
-
-            <p className="text-base sm:text-lg md:text-xl text-slate-400 font-sans max-w-3xl mx-auto leading-relaxed mb-8">
-              An ultra-high-yield academic learning engine engineered for competitive exams (BPSC, Bihar SI, Super TET), elite university entrance preparation (AMU, Jamia), and CBSE board toppers. Zero fluff. Precision pedagogy.
-            </p>
-
-            {/* Persona / Track Switcher (JoinScrub style dual-mode switch) */}
-            <div className="inline-flex p-1 rounded-full bg-[#0E121A] border border-white/10 mb-8 max-w-full overflow-x-auto">
-              <button
-                type="button"
-                onClick={() => setActiveTrack('competitive')}
-                className={`px-4 sm:px-6 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
-                  activeTrack === 'competitive'
-                    ? 'bg-white text-black font-extrabold shadow-md'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                01 // Competitive (BPSC, SI, TET)
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTrack('entrance')}
-                className={`px-4 sm:px-6 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
-                  activeTrack === 'entrance'
-                    ? 'bg-white text-black font-extrabold shadow-md'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                02 // Entrance (AMU, Jamia)
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTrack('school')}
-                className={`px-4 sm:px-6 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
-                  activeTrack === 'school'
-                    ? 'bg-white text-black font-extrabold shadow-md'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                03 // School (CBSE 6-12)
-              </button>
-            </div>
-
-            {/* High-Contrast Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <a
-                href="#courses"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-black font-mono text-xs font-black tracking-[0.16em] uppercase hover:bg-[#CCFF00] hover:text-black transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_35px_rgba(204,255,0,0.5)]"
-              >
-                <span>EXPLORE ALL COURSES</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <Link
-                to={ROUTES.MOCK_TESTS}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/[0.05] border border-white/20 hover:border-white/40 hover:bg-white/10 text-white font-mono text-xs tracking-[0.16em] uppercase font-bold transition-all"
-              >
-                <span>TAKE FREE MOCK TEST</span>
-                <ArrowUpRight className="w-4 h-4 text-[#CCFF00]" />
-              </Link>
-            </div>
-
-            {/* Live Trust Badges Strip */}
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-4 border-t border-white/5 text-xs font-mono text-slate-400">
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#CCFF00]" />
-                14,200+ Active Students
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#CCFF00]" />
-                94.8% First-Attempt Success
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#CCFF00]" />
-                450+ All-India Rankers
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#CCFF00]" />
-                100% NTA & NCERT Aligned
-              </span>
-            </div>
-          </div>
-
-          {/* Interactive Live Hero Terminal Card */}
-          <div className="mt-14 max-w-4xl mx-auto rounded-2xl bg-[#0E121A] border border-white/10 overflow-hidden shadow-2xl relative">
-            <div className="px-5 py-3.5 bg-black/40 border-b border-white/5 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                <span className="ml-2 font-mono text-[11px] text-slate-400 uppercase tracking-widest">
-                  SYS: LIVE CLASS & EXAM ENGINE // SESSION 2026-27
-                </span>
-              </div>
-              <span className="font-mono text-[10px] text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-0.5 rounded-full border border-[#CCFF00]/20 font-bold">
-                ● 1,420 STUDENTS IN MOCK EXAM ROOM
-              </span>
-            </div>
-
-            <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 bg-gradient-to-b from-white/[0.02] to-transparent">
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 flex flex-col justify-between">
-                <div>
-                  <span className="font-mono text-[10px] text-slate-400 tracking-wider uppercase block mb-1">
-                    ACTIVE BATCH
-                  </span>
-                  <h4 className="font-display font-extrabold text-white text-base uppercase">
-                    {activeTrack === 'competitive'
-                      ? 'BPSC TRE 4.0 & BIHAR SI COMMANDO'
-                      : activeTrack === 'entrance'
-                      ? 'AMU & JAMIA 11TH SCIENCE ENTRANCE'
-                      : 'CBSE CLASS 10 BOARD MISSION 95+'}
-                  </h4>
-                </div>
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400">SYLLABUS PACING</span>
-                  <span className="text-[#CCFF00] font-bold">88% COMPLETED</span>
-                </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            {/* Left Column: Heading, Subtitle & Prominent Actions */}
+            <div className="lg:col-span-7 text-left">
+              
+              {/* Educational Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wide mb-6 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                <span>Premier Education & Exam Preparation</span>
               </div>
 
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 flex flex-col justify-between">
-                <div>
-                  <span className="font-mono text-[10px] text-slate-400 tracking-wider uppercase block mb-1">
-                    ALL-INDIA MOCK RANK
-                  </span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display font-black text-2xl text-white">AIR 04</span>
-                    <span className="font-mono text-xs text-emerald-400 font-bold">TOP 0.1%</span>
-                  </div>
-                </div>
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400">TEST ACCURACY</span>
-                  <span className="text-white font-bold">96.4% ACCURACY</span>
-                </div>
-              </div>
+              {/* Main Headline */}
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1E3A8A] tracking-tight leading-[1.12] mb-6">
+                Learn Today.{' '}
+                <span className="text-[#2563EB] block sm:inline">Lead Tomorrow.</span>
+              </h1>
 
-              <div className="p-4 rounded-xl bg-black/30 border border-white/5 flex flex-col justify-between">
-                <div>
-                  <span className="font-mono text-[10px] text-slate-400 tracking-wider uppercase block mb-1">
-                    DOUBT RESOLUTION SPEED
-                  </span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display font-black text-2xl text-white">~8 MINS</span>
-                    <span className="font-mono text-xs text-[#CCFF00] font-bold">VERIFIED</span>
-                  </div>
-                </div>
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400">TEACHER STATUS</span>
-                  <span className="text-emerald-400 font-bold">● 18 FACULTY ONLINE</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              {/* Supporting Text */}
+              <p className="text-base sm:text-lg text-slate-600 font-sans leading-relaxed mb-8 max-w-xl">
+                Your complete learning platform for school courses, competitive exams, university entrance preparation, and mock tests.
+              </p>
 
-      {/* ======================================================== */}
-      {/* 2. CONTINUOUS INFINITE MARQUEE BANNER (JoinScrub iconic) */}
-      {/* ======================================================== */}
-      <section className="border-y border-white/10 bg-[#0A0D14] py-3.5 overflow-hidden whitespace-nowrap">
-        <div className="animate-marquee flex items-center gap-8 font-mono text-xs uppercase tracking-[0.2em] font-semibold text-slate-300">
-          <span>✦ CBSE CLASS 6-12 FOUNDATION</span>
-          <span className="text-[#CCFF00]">✦ BPSC TRE 3.0 & 4.0</span>
-          <span>✦ BIHAR SI COMMANDO BATCH</span>
-          <span className="text-[#00F59B]">✦ AMU & JAMIA ENTRANCE PREP</span>
-          <span>✦ UP SUPER TET PEDAGOGY</span>
-          <span className="text-amber-400">✦ NTA-GRADE TIMED MOCK TESTS</span>
-          <span>✦ 1-ON-1 DOUBT ENGINE</span>
-          <span className="text-[#CCFF00]">✦ 100% NCERT ALIGNED STUDY NOTES</span>
-          <span>✦ 450+ ALL-INDIA MERIT TOPPERS</span>
-          {/* Duplicate loop */}
-          <span>✦ CBSE CLASS 6-12 FOUNDATION</span>
-          <span className="text-[#CCFF00]">✦ BPSC TRE 3.0 & 4.0</span>
-          <span>✦ BIHAR SI COMMANDO BATCH</span>
-          <span className="text-[#00F59B]">✦ AMU & JAMIA ENTRANCE PREP</span>
-          <span>✦ UP SUPER TET PEDAGOGY</span>
-          <span className="text-amber-400">✦ NTA-GRADE TIMED MOCK TESTS</span>
-          <span>✦ 1-ON-1 DOUBT ENGINE</span>
-          <span className="text-[#CCFF00]">✦ 100% NCERT ALIGNED STUDY NOTES</span>
-          <span>✦ 450+ ALL-INDIA MERIT TOPPERS</span>
-        </div>
-      </section>
+              {/* Prominent Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
+                <a
+                  href="#courses"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-sans text-sm font-semibold transition-all shadow-sm hover:shadow-md active:scale-98"
+                >
+                  <span>Explore Courses</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
 
-      {/* ======================================================== */}
-      {/* 3. THE OLD WAY VS THE BRAINSTORM ENGINE                   */}
-      {/* ======================================================== */}
-      <section className="py-20 lg:py-28 border-b border-white/5 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="ARCHITECTURE COMPARISON"
-            tagNumber="01"
-            title="THE TRADITIONAL COACHING MODEL IS"
-            highlight="OBSOLETE."
-            subtitle="Legacy coaching centers sell inflated promises with zero individual attention. Brainstorm Academy replaces rote chaos with modern, diagnostic-driven learning infrastructure."
-          />
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* The Old Way Card */}
-            <div className="p-8 rounded-3xl glass-card-subtle border-rose-500/20 shadow-[0_12px_36px_rgba(244,63,94,0.06)] relative overflow-hidden">
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
-                <span className="font-mono text-xs text-rose-400 tracking-widest uppercase font-bold">
-                  [ 01 // THE OLD WAY ]
-                </span>
-                <span className="text-xs font-mono text-rose-400/80 uppercase">
-                  TRADITIONAL OFFLINE TUITIONS
-                </span>
-              </div>
-
-              <ul className="space-y-5">
-                {[
-                  '100+ students packed into crowded coaching halls where introverts never get to ask questions.',
-                  'Outdated rote-learning sheets completely disconnected from changing BPSC and NTA question patterns.',
-                  'Blind test attempts without question-by-question analytics, negative marking breakdowns, or timing metrics.',
-                  'Hefty upfront fees of ₹40,000–₹80,000 with zero refund flexibility or missed-class backup.',
-                  'Doubts left unanswered for days, causing foundational learning gaps to compound.',
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3.5 text-sm text-slate-400 font-sans">
-                    <span className="w-5 h-5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-mono font-bold">
-                      ✕
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* The Brainstorm Way Card */}
-            <div className="p-8 rounded-3xl glass-cockpit border-[#CCFF00]/30 shadow-[0_0_50px_rgba(204,255,0,0.08)] relative overflow-hidden">
-              {/* Subtle top specular glass highlight */}
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#CCFF00]/40 to-transparent" />
-
-              <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
-                <span className="font-mono text-xs text-[#CCFF00] tracking-widest uppercase font-bold">
-                  [ 02 // THE BRAINSTORM ENGINE ]
-                </span>
-                <span className="text-xs font-mono text-[#CCFF00] uppercase font-bold">
-                  PRECISION ACADEMIC PLATFORM
-                </span>
-              </div>
-
-              <ul className="space-y-5">
-                {[
-                  'Bite-sized, high-yield conceptual lessons taught by experienced subject specialists and exam toppers.',
-                  'Authentic NTA-style CBT test room with instant All-India rank, time per question, and weak-topic diagnostics.',
-                  'Dedicated 1-on-1 doubt resolution portal where expert mentors answer step-by-step.',
-                  '100% transparent and affordable pricing with free introductory batches and lifetime lecture replays.',
-                  'Structured curriculum blueprints for BPSC TRE, Bihar SI, Super TET, AMU/Jamia, and CBSE 6–12.',
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3.5 text-sm text-slate-200 font-sans">
-                    <span className="w-5 h-5 rounded-full bg-[#CCFF00]/15 text-[#CCFF00] border border-[#CCFF00]/30 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-mono font-bold shadow-[0_0_12px_rgba(204,255,0,0.3)]">
-                      ✓
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* 4. THE 5-STEP ENGINE (Glassmorphism Process Cards)       */}
-      {/* ======================================================== */}
-      <section className="py-20 lg:py-28 border-b border-white/5 bg-[#060709] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="SYSTEM WORKFLOW"
-            tagNumber="02"
-            title="HOW THE BRAINSTORM ENGINE"
-            highlight="CRACKS RANKS."
-            subtitle="Five systematic phases designed to take an aspirant from foundational uncertainty to verified exam top rank."
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            {[
-              {
-                number: '01',
-                title: 'DIAGNOSTIC ONBOARDING',
-                desc: 'Take an instant 15-minute diagnostic test to benchmark your current syllabus mastery and identify weak micro-topics.',
-                tag: 'PHASE 01',
-              },
-              {
-                number: '02',
-                title: 'TARGETED BATCH SYNC',
-                desc: 'Get automatically assigned to specialized cohorts for BPSC, Bihar SI, AMU/Jamia entrance, or CBSE board classes.',
-                tag: 'PHASE 02',
-              },
-              {
-                number: '03',
-                title: 'DAILY LIVE MASTERY',
-                desc: 'Attend interactive live lectures, download crisp PDF notes, and solve 10 years of authentic past exam questions.',
-                tag: 'PHASE 03',
-              },
-              {
-                number: '04',
-                title: 'PROCTORED CBT MOCK',
-                desc: 'Practice under real exam conditions with strict countdown timers, negative marking penalties, and peer percentiles.',
-                tag: 'PHASE 04',
-              },
-              {
-                number: '05',
-                title: 'MERIT LIST SELECTION',
-                desc: 'Enter exam day with confidence, flawless speed-accuracy balance, and secure your target university or government post.',
-                tag: 'PHASE 05',
-              },
-            ].map((step) => (
-              <div
-                key={step.number}
-                className="p-6 rounded-2xl glass-cockpit-interactive flex flex-col justify-between group relative overflow-hidden"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-2xl font-black text-white group-hover:text-[#CCFF00] transition-colors">
-                      {step.number}
-                    </span>
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-slate-400 glass-pill px-2.5 py-0.5 rounded-full">
-                      {step.tag}
-                    </span>
-                  </div>
-                  <h3 className="font-display font-extrabold text-sm sm:text-base text-white uppercase tracking-tight mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed font-sans">
-                    {step.desc}
-                  </p>
-                </div>
-
-                <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-500 group-hover:text-slate-300">
-                  <span>STEP // {step.number}</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform text-[#CCFF00]" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ======================================================== */}
-      {/* 5. INTERACTIVE PREP VELOCITY & SCORE ESTIMATOR TOOL      */}
-      {/* ======================================================== */}
-      <section className="py-20 lg:py-28 border-b border-white/5 relative">
-        {/* Subtle Ambient Aurora Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#38BDF8]/10 via-[#CCFF00]/10 to-[#8B5CF6]/10 blur-[130px] pointer-events-none rounded-full" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <SectionHeading
-            tag="INTERACTIVE TOOLS"
-            tagNumber="03"
-            title="PREP VELOCITY &"
-            highlight="SCORE PREDICTOR."
-            subtitle="Configure your target exam and daily study commitment to calculate your projected percentile and time to full syllabus mastery."
-          />
-
-          <div className="p-8 sm:p-10 rounded-3xl glass-cockpit shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 relative overflow-hidden">
-            {/* Top specular highlight */}
-            <div className="absolute top-0 left-1/4 right-1/4 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-
-            {/* Input Controls */}
-            <div className="lg:col-span-7 space-y-6">
-              <div>
-                <label className="block font-mono text-xs text-slate-400 uppercase tracking-wider mb-2">
-                  01 // SELECT YOUR TARGET EXAMINATION
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { id: 'bpsc', label: 'BPSC TRE 4.0' },
-                    { id: 'amu', label: 'AMU / JAMIA' },
-                    { id: 'school', label: 'CBSE 10 & 12' },
-                  ].map((exam) => (
-                    <button
-                      key={exam.id}
-                      type="button"
-                      onClick={() => setCalcExam(exam.id)}
-                      className={`p-3 rounded-2xl border text-left font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
-                        calcExam === exam.id
-                          ? 'border-[#CCFF00] bg-[#CCFF00]/15 text-white font-bold shadow-[0_0_20px_rgba(204,255,0,0.15)]'
-                          : 'border-white/10 glass-pill text-slate-400 hover:text-white'
-                      }`}
-                    >
-                      {exam.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <label className="font-mono text-xs text-slate-400 uppercase tracking-wider">
-                    02 // DAILY COMMITTED STUDY HOURS
-                  </label>
-                  <span className="font-mono text-xs text-[#CCFF00] font-bold">
-                    {dailyHours} HOURS / DAY
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min="2"
-                  max="10"
-                  step="1"
-                  value={dailyHours}
-                  onChange={(e) => setDailyHours(Number(e.target.value))}
-                  className="w-full accent-[#CCFF00] cursor-pointer"
-                />
-                <div className="flex justify-between font-mono text-[10px] text-slate-500 mt-1">
-                  <span>2h (Casual)</span>
-                  <span>6h (Intensive)</span>
-                  <span>10h (Full-time Aspirant)</span>
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <label className="font-mono text-xs text-slate-400 uppercase tracking-wider">
-                    03 // CURRENT BASELINE MOCK TEST SCORE
-                  </label>
-                  <span className="font-mono text-xs text-white font-bold">
-                    {baselineScore}% ACCURACY
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min="40"
-                  max="90"
-                  step="5"
-                  value={baselineScore}
-                  onChange={(e) => setBaselineScore(Number(e.target.value))}
-                  className="w-full accent-[#CCFF00] cursor-pointer"
-                />
-                <div className="flex justify-between font-mono text-[10px] text-slate-500 mt-1">
-                  <span>40% (Beginner)</span>
-                  <span>65% (Intermediate)</span>
-                  <span>90% (Advanced)</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Calculated Output Stats in Frosted Glass Panel */}
-            <div className="lg:col-span-5 p-6 rounded-2xl glass-card-subtle flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest block mb-4">
-                  PREDICTIVE ALGORITHM OUTPUT
-                </span>
-
-                <div className="space-y-4">
-                  <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-                    <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider block mb-1">
-                      PROJECTED EXAM PERCENTILE
-                    </span>
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-display font-black text-3xl sm:text-4xl text-[#CCFF00]">
-                        {projectedPercentile}th
-                      </span>
-                      <span className="font-mono text-xs text-emerald-400 font-bold">PERCENTILE</span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                      <span className="font-mono text-[9px] text-slate-400 uppercase tracking-wider block mb-1">
-                        TIMELINE TO MASTERY
-                      </span>
-                      <span className="font-display font-black text-xl text-white">
-                        {weeksToMastery} WEEKS
-                      </span>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/5">
-                      <span className="font-mono text-[9px] text-slate-400 uppercase tracking-wider block mb-1">
-                        RECOMMENDED MOCKS
-                      </span>
-                      <span className="font-display font-black text-xl text-white">
-                        {dailyHours >= 6 ? '28 Full Mocks' : '16 Full Mocks'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6 mt-6 border-t border-white/5">
                 <Link
                   to={ROUTES.REGISTER}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-mono text-xs font-black uppercase tracking-wider hover:bg-[#CCFF00] hover:text-black transition-all shadow-[0_0_25px_rgba(255,255,255,0.2)]"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-sans text-sm font-semibold transition-all shadow-xs active:scale-98"
                 >
-                  <span>LOCK IN PREP ROADMAP</span>
+                  <span>Start Learning</span>
+                  <ArrowUpRight className="w-4 h-4 text-blue-600" />
+                </Link>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80">
+                <div>
+                  <p className="text-2xl font-bold font-display text-slate-900">14,200+</p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">Enrolled Students</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold font-display text-blue-600">98%</p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">Exam Pass Rate</p>
+                </div>
+                <div>
+                  <p className="text-2xl font-bold font-display text-emerald-600">450+</p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">Merit Rankers</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Interactive Academic Spotlight Card */}
+            <div className="lg:col-span-5">
+              <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-md relative overflow-hidden">
+                {/* Decorative top accent */}
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-400" />
+
+                {/* Card Header */}
+                <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                      <GraduationCap className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-sm text-slate-900 leading-tight">Academic Spotlight</h3>
+                      <p className="text-xs text-slate-500">Live Learning Batches 2026–27</p>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-200">
+                    Live Batches
+                  </span>
+                </div>
+
+                {/* Persona Switcher Tabs */}
+                <div className="grid grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-xl mb-5">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTrack('competitive')}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer truncate ${
+                      activeTrack === 'competitive'
+                        ? 'bg-white text-blue-700 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    Competitive
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTrack('entrance')}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer truncate ${
+                      activeTrack === 'entrance'
+                        ? 'bg-white text-blue-700 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    Entrance
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTrack('school')}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all cursor-pointer truncate ${
+                      activeTrack === 'school'
+                        ? 'bg-white text-blue-700 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    School 6-12
+                  </button>
+                </div>
+
+                {/* Active Program Card */}
+                <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 mb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[11px] font-semibold text-blue-700 uppercase tracking-wide">
+                      {activeTrack === 'competitive' ? 'Government Recruitment' : activeTrack === 'entrance' ? 'Central University' : 'CBSE Curriculum'}
+                    </span>
+                    <span className="text-xs font-bold text-slate-700">Batch 2026</span>
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-sm mb-2 leading-snug">
+                    {activeTrack === 'competitive'
+                      ? 'BPSC TRE 4.0 & Bihar SI Target Cohort'
+                      : activeTrack === 'entrance'
+                      ? 'AMU & Jamia Millia 11th Science Entrance'
+                      : 'Class 10 CBSE Board Exam Foundation'}
+                  </h4>
+                  <div className="flex items-center gap-3 text-xs text-slate-500">
+                    <span className="flex items-center gap-1">
+                      <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+                      140+ Lessons
+                    </span>
+                    <span>•</span>
+                    <span className="flex items-center gap-1">
+                      <ClipboardList className="w-3.5 h-3.5 text-blue-600" />
+                      24 Mock Tests
+                    </span>
+                  </div>
+                </div>
+
+                {/* Quick Academic Features */}
+                <div className="space-y-2.5 mb-5 text-xs text-slate-600">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>NCERT & NTA syllabus-aligned video lessons & PDF notes</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Timed CBT Mock tests with instant performance analytics</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Step-by-step doubt resolution support by expert faculty</span>
+                  </div>
+                </div>
+
+                {/* CTA Link */}
+                <Link
+                  to={ROUTES.MOCK_TESTS}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs border border-blue-200 transition-colors"
+                >
+                  <span>Take Free Diagnostic Test</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
+
           </div>
+
         </div>
       </section>
 
       {/* ======================================================== */}
-      {/* 6. CURATED COURSE CATALOG                                 */}
+      {/* 2. PROGRAM CATEGORY MARQUEE BAR                          */}
       {/* ======================================================== */}
-      <section id="courses" className="py-20 lg:py-28 border-b border-white/5">
+      <section className="border-b border-slate-200 bg-white py-3.5 overflow-hidden whitespace-nowrap">
+        <div className="animate-marquee flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-slate-600">
+          <span>• CBSE Class 6–12 Foundation</span>
+          <span className="text-blue-600">• BPSC TRE 3.0 & 4.0</span>
+          <span>• Bihar SI Preparation</span>
+          <span className="text-indigo-600">• AMU & Jamia Millia Entrance</span>
+          <span>• UP Super TET Coaching</span>
+          <span className="text-amber-600">• NTA CBT Mock Test Series</span>
+          <span>• 1-on-1 Student Doubt Clearing</span>
+          <span className="text-emerald-600">• 100% NCERT Aligned Revision Notes</span>
+          <span>• 450+ Verified All-India Selections</span>
+          {/* Duplicate loop */}
+          <span>• CBSE Class 6–12 Foundation</span>
+          <span className="text-blue-600">• BPSC TRE 3.0 & 4.0</span>
+          <span>• Bihar SI Preparation</span>
+          <span className="text-indigo-600">• AMU & Jamia Millia Entrance</span>
+          <span>• UP Super TET Coaching</span>
+          <span className="text-amber-600">• NTA CBT Mock Test Series</span>
+          <span>• 1-on-1 Student Doubt Clearing</span>
+          <span className="text-emerald-600">• 100% NCERT Aligned Revision Notes</span>
+          <span>• 450+ Verified All-India Selections</span>
+        </div>
+      </section>
+
+      {/* ======================================================== */}
+      {/* 3. CURATED COURSE CATALOG & BROWSER                      */}
+      {/* ======================================================== */}
+      <section id="courses" className="py-16 lg:py-24 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           <SectionHeading
-            tag="FEATURED CURRICULUM"
-            tagNumber="04"
-            title="SYSTEMATIC BATCHES FOR"
-            highlight="SERIOUS ASPIRANTS."
-            subtitle="Explore our comprehensive batches with full syllabus coverage, chapter-wise mock tests, and verified mentor doubt support."
+            tag="Course Catalog"
+            tagNumber="01"
+            title="Comprehensive Courses for"
+            highlight="School & Competitive Exams."
+            subtitle="Explore our syllabus-aligned courses with chapter video lessons, conceptual notes, derivations, and board examination test series."
           />
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2 mb-10">
-            {SEARCH_PILLS.map((pill) => (
-              <button
-                key={pill.id}
-                type="button"
-                onClick={() => setSelectedCategory(pill.id)}
-                className={`px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer border ${
-                  selectedCategory === pill.id
-                    ? 'bg-white text-black border-white font-extrabold shadow-md'
-                    : 'glass-pill text-slate-400 hover:text-white'
-                }`}
-              >
-                {pill.label}
-              </button>
-            ))}
+          {/* Search & Category Filter Bar */}
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-xs mb-8">
+            <div className="flex flex-col md:flex-row items-center gap-3.5 mb-4">
+              <div className="relative flex-1 w-full">
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                <input
+                  type="text"
+                  placeholder="Search by course name, exam, or subject..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition"
+                />
+              </div>
+
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="px-3 py-2 text-xs font-semibold text-slate-500 hover:text-slate-800"
+                >
+                  Clear Search
+                </button>
+              )}
+            </div>
+
+            {/* Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {SEARCH_PILLS.map((pill) => (
+                <button
+                  key={pill.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(pill.id)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
+                    selectedCategory === pill.id
+                      ? 'bg-blue-600 text-white font-semibold shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  {pill.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Courses Grid */}
@@ -675,132 +408,409 @@ export default function HomePage() {
             ))}
           </div>
 
+          {filteredCourses.length === 0 && (
+            <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center my-6">
+              <p className="text-base font-semibold text-slate-800 mb-1">No courses match your filter</p>
+              <p className="text-xs text-slate-500 mb-4">Try clearing your search query or selecting a different category.</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('');
+                  setSelectedCategory('all');
+                }}
+                className="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold shadow-xs"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+
           <div className="text-center mt-12">
             <Link
               to={ROUTES.SCHOOL_COURSES}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass-pill hover:border-white/40 text-white font-mono text-xs font-bold tracking-widest uppercase transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-slate-300 hover:border-blue-400 hover:bg-slate-50 text-slate-800 text-xs font-semibold uppercase tracking-wider transition-all shadow-xs"
             >
-              <span>VIEW COMPLETE COURSE REPOSITORY</span>
-              <ArrowUpRight className="w-4 h-4 text-[#CCFF00]" />
+              <span>Explore All Courses Repository</span>
+              <ArrowUpRight className="w-4 h-4 text-blue-600" />
             </Link>
           </div>
+
         </div>
       </section>
 
       {/* ======================================================== */}
-      {/* 7. DUAL PORTAL SHOWCASE                                  */}
+      {/* 4. THE 5-STEP STRUCTURED PEDAGOGY                       */}
       {/* ======================================================== */}
-      <section className="py-20 lg:py-28 border-b border-white/5 bg-[#060709] relative">
+      <section className="py-16 lg:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           <SectionHeading
-            tag="DUAL PORTAL ARCHITECTURE"
-            tagNumber="05"
-            title="PURPOSE-BUILT PORTALS FOR"
-            highlight="STUDENTS & EDUCATORS."
-            subtitle="Role-tailored infrastructure designed to eliminate friction and maximize academic performance."
+            tag="Learning Methodology"
+            tagNumber="02"
+            title="How Brainstorm Academy"
+            highlight="Powers Academic Success."
+            subtitle="Five systematic phases designed to take an aspirant from foundational concept learning to confident top exam performance."
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Student Portal Card */}
-            <div className="p-8 rounded-3xl glass-cockpit-interactive flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="font-mono text-xs text-[#CCFF00] tracking-widest uppercase font-bold">
-                    [ 01 // STUDENT PORTAL ]
-                  </span>
-                  <span className="font-mono text-[10px] text-slate-400 uppercase glass-pill px-3 py-1 rounded-full">
-                    FREE ACCESS INCLUDED
-                  </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+            {[
+              {
+                number: '01',
+                title: 'Diagnostic Evaluation',
+                desc: 'Take an initial 15-minute diagnostic test to benchmark current syllabus mastery and identify weak micro-topics.',
+                tag: 'Phase 01',
+              },
+              {
+                number: '02',
+                title: 'Targeted Curriculum',
+                desc: 'Get aligned with structured syllabus schedules for CBSE school grades, BPSC, Bihar SI, or university entrance exams.',
+                tag: 'Phase 02',
+              },
+              {
+                number: '03',
+                title: 'Concept Video Lessons',
+                desc: 'Watch high-yield chapter video lectures, download curated PDF revision notes, and solve standard past examination questions.',
+                tag: 'Phase 03',
+              },
+              {
+                number: '04',
+                title: 'Proctored Mock Practice',
+                desc: 'Practice under real exam conditions with strict timer controls, negative marking, and detailed score breakdowns.',
+                tag: 'Phase 04',
+              },
+              {
+                number: '05',
+                title: 'Doubt & Exam Mastery',
+                desc: 'Clear persistent doubts 1-on-1 with expert educators and enter exam day fully prepared with proven accuracy.',
+                tag: 'Phase 05',
+              },
+            ].map((step) => (
+              <div
+                key={step.number}
+                className="p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xl font-bold font-display text-blue-600">
+                      {step.number}
+                    </span>
+                    <span className="text-[11px] font-semibold text-slate-500 bg-white border border-slate-200 px-2.5 py-0.5 rounded-full">
+                      {step.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-sm sm:text-base text-slate-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+                    {step.desc}
+                  </p>
                 </div>
-                <h3 className="font-display font-extrabold text-2xl text-white uppercase mb-4">
-                  THE ASPIRANT COCKPIT
-                </h3>
-                <p className="text-sm text-slate-400 leading-relaxed mb-6 font-sans">
-                  Full-screen distraction-free examination rooms, chapter progress trackers, downloadable handwritten revision notes, and instant mentor doubt submission.
-                </p>
 
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Proctored CBT Exam Room
-                  </div>
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Chapter Video Player
-                  </div>
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ PDF Revision Viewer
-                  </div>
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Rank Diagnostic Reports
-                  </div>
+                <div className="pt-4 mt-4 border-t border-slate-200/80 flex items-center justify-between text-xs font-semibold text-blue-600">
+                  <span>Step {step.number}</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
-
-              <Link
-                to={ROUTES.STUDENT.ROOT}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-black font-mono text-xs font-black uppercase tracking-wider hover:bg-[#CCFF00] hover:text-black transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-              >
-                <span>ENTER STUDENT PORTAL</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Teacher / Faculty Portal Card */}
-            <div className="p-8 rounded-3xl glass-cockpit-interactive flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="font-mono text-xs text-amber-400 tracking-widest uppercase font-bold">
-                    [ 02 // TEACHER & FACULTY ]
-                  </span>
-                  <span className="font-mono text-[10px] text-slate-400 uppercase glass-pill px-3 py-1 rounded-full">
-                    VERIFIED EDUCATORS
-                  </span>
-                </div>
-                <h3 className="font-display font-extrabold text-2xl text-white uppercase mb-4">
-                  THE PEDAGOGY ENGINE
-                </h3>
-                <p className="text-sm text-slate-400 leading-relaxed mb-6 font-sans">
-                  Powerful lesson creation workflows, interactive test builders with negative marking controls, question banks, and student doubt management consoles.
-                </p>
-
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Dynamic Test Series Builder
-                  </div>
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Lesson & Video Manager
-                  </div>
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Student Doubt Console
-                  </div>
-                  <div className="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-                    ✓ Enrollment Analytics
-                  </div>
-                </div>
-              </div>
-
-              <Link
-                to={ROUTES.TEACHER.ROOT}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full glass-pill hover:border-white/40 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all"
-              >
-                <span>FACULTY DASHBOARD</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
-              </Link>
-            </div>
+            ))}
           </div>
+
         </div>
       </section>
 
       {/* ======================================================== */}
-      {/* 8. WALL OF TOPPERS / VERIFIED TESTIMONIALS               */}
+      {/* 5. INTERACTIVE PREP VELOCITY CALCULATOR                  */}
       {/* ======================================================== */}
-      <section className="py-20 lg:py-28 border-b border-white/5">
+      <section className="py-16 lg:py-24 border-b border-slate-200 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           <SectionHeading
-            tag="VERIFIED EVIDENCE"
-            tagNumber="06"
-            title="REAL RESULTS FROM"
-            highlight="TOP PERFORMERS."
-            subtitle="Meet the students who transformed their exam scores with Brainstorm Academy's structured pedagogy and mock tests."
+            tag="Student Planning Tool"
+            tagNumber="03"
+            title="Study Planner &"
+            highlight="Score Estimator."
+            subtitle="Configure your target exam and daily study commitment to calculate your projected percentile and time to full syllabus mastery."
+          />
+
+          <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            {/* Input Controls */}
+            <div className="lg:col-span-7 space-y-6">
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2.5">
+                  1. Select Target Examination
+                </label>
+                <div className="grid grid-cols-3 gap-2.5">
+                  {[
+                    { id: 'bpsc', label: 'BPSC TRE 4.0' },
+                    { id: 'amu', label: 'AMU & Jamia' },
+                    { id: 'school', label: 'CBSE 10 & 12' },
+                  ].map((exam) => (
+                    <button
+                      key={exam.id}
+                      type="button"
+                      onClick={() => setCalcExam(exam.id)}
+                      className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all cursor-pointer ${
+                        calcExam === exam.id
+                          ? 'border-blue-600 bg-blue-50 text-blue-700 shadow-xs'
+                          : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      {exam.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                    2. Daily Study Commitment
+                  </label>
+                  <span className="text-xs font-bold text-blue-600">
+                    {dailyHours} Hours / Day
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="2"
+                  max="10"
+                  step="1"
+                  value={dailyHours}
+                  onChange={(e) => setDailyHours(Number(e.target.value))}
+                  className="w-full accent-blue-600 cursor-pointer"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+                  <span>2 hrs (Foundation)</span>
+                  <span>6 hrs (Standard)</span>
+                  <span>10 hrs (Intensive)</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">
+                    3. Current Diagnostic Score
+                  </label>
+                  <span className="text-xs font-bold text-slate-900">
+                    {baselineScore}% Accuracy
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="40"
+                  max="90"
+                  step="5"
+                  value={baselineScore}
+                  onChange={(e) => setBaselineScore(Number(e.target.value))}
+                  className="w-full accent-blue-600 cursor-pointer"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500 mt-1">
+                  <span>40% (Beginner)</span>
+                  <span>65% (Intermediate)</span>
+                  <span>90% (Advanced)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Calculated Output Stats Panel */}
+            <div className="lg:col-span-5 p-6 rounded-2xl bg-blue-50/60 border border-blue-100 flex flex-col justify-between">
+              <div>
+                <span className="text-xs font-semibold text-blue-800 uppercase tracking-wide block mb-3">
+                  Projected Preparation Output
+                </span>
+
+                <div className="space-y-3.5">
+                  <div className="p-4 rounded-xl bg-white border border-blue-100 shadow-xs">
+                    <span className="text-xs text-slate-500 uppercase tracking-wide block mb-1">
+                      Projected Exam Percentile
+                    </span>
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-display font-extrabold text-3xl sm:text-4xl text-blue-600">
+                        {projectedPercentile}th
+                      </span>
+                      <span className="text-xs text-emerald-600 font-bold">Percentile</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="p-3.5 rounded-xl bg-white border border-blue-100 shadow-xs">
+                      <span className="text-[11px] text-slate-500 uppercase block mb-1">
+                        Time to Mastery
+                      </span>
+                      <span className="font-bold text-lg text-slate-900">
+                        {weeksToMastery} Weeks
+                      </span>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-white border border-blue-100 shadow-xs">
+                      <span className="text-[11px] text-slate-500 uppercase block mb-1">
+                        Mock Tests Needed
+                      </span>
+                      <span className="font-bold text-lg text-slate-900">
+                        {dailyHours >= 6 ? '28 Full Mocks' : '16 Full Mocks'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-blue-200/60">
+                <Link
+                  to={ROUTES.REGISTER}
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-xs transition-colors"
+                >
+                  <span>Start Your Learning Plan</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ======================================================== */}
+      {/* 6. PURPOSE-BUILT PORTALS (Student, Teacher, Admin)      */}
+      {/* ======================================================== */}
+      <section className="py-16 lg:py-24 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <SectionHeading
+            tag="Platform Architecture"
+            tagNumber="04"
+            title="Integrated Experience for"
+            highlight="Students, Teachers & Administrators."
+            subtitle="Role-tailored dashboards designed to keep educational content organized, tests transparent, and progress visible."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            {/* Student Portal Card */}
+            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-blue-200 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+                  <GraduationCap className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-slate-900 mb-2">
+                  Student Dashboard
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  Enrolled courses, lesson progress, downloadable revision notes, authentic CBT practice tests, and question-by-question analytics.
+                </p>
+                <div className="space-y-2 mb-6 text-xs text-slate-600 font-medium">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <span>CBT Mock Test Room</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <span>Chapter Progress Tracking</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    <span>Ask a Doubt Mentorship</span>
+                  </div>
+                </div>
+              </div>
+              <Link
+                to={ROUTES.STUDENT.ROOT}
+                className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition-colors shadow-xs"
+              >
+                <span>Enter Student Portal</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Teacher Portal Card */}
+            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-blue-200 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
+                  <BookOpen className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-slate-900 mb-2">
+                  Teacher Dashboard
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  Manage assigned curriculum, upload notes and assignments, build practice tests, and resolve student doubts efficiently.
+                </p>
+                <div className="space-y-2 mb-6 text-xs text-slate-600 font-medium">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <span>Course & Material Uploads</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <span>Test Series Management</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <span>Doubt Resolution Center</span>
+                  </div>
+                </div>
+              </div>
+              <Link
+                to={ROUTES.TEACHER.ROOT}
+                className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors shadow-xs"
+              >
+                <span>Enter Teacher Portal</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Admin Dashboard Card */}
+            <div className="p-7 rounded-2xl bg-white border border-slate-200 shadow-xs hover:border-blue-200 hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-5">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-slate-900 mb-2">
+                  Admin Dashboard
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  Complete administrative control center for user management, teacher provisioning, payment verification, and platform analytics.
+                </p>
+                <div className="space-y-2 mb-6 text-xs text-slate-600 font-medium">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-indigo-600" />
+                    <span>User & Faculty Management</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-indigo-600" />
+                    <span>Audit Logs & Compliance</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-indigo-600" />
+                    <span>Platform Statistics & Reports</span>
+                  </div>
+                </div>
+              </div>
+              <Link
+                to={ROUTES.ADMIN.ROOT}
+                className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors shadow-xs"
+              >
+                <span>Admin Console</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ======================================================== */}
+      {/* 7. STUDENT SUCCESS & TESTIMONIALS                       */}
+      {/* ======================================================== */}
+      <section className="py-16 lg:py-24 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <SectionHeading
+            tag="Student Feedback"
+            tagNumber="05"
+            title="Real Feedback from"
+            highlight="Our Top Performers."
+            subtitle="Meet students and teachers who achieved their academic and examination goals with Brainstorm Academy."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -810,15 +820,15 @@ export default function HomePage() {
                 exam: 'AMU 11th Science Entrance',
                 rank: 'AIR 14',
                 quote:
-                  'The chapter-wise PYQ analysis and negative-marking mock tests gave me the exact timing strategy I needed. Cracked AMU on my first attempt!',
+                  'The chapter-wise past question analysis and negative-marking mock tests gave me the exact timing strategy I needed. Cracked AMU on my first attempt!',
                 year: '2025 Batch',
               },
               {
                 name: 'Priyanka Kumari',
-                exam: 'BPSC TRE 2.0 (Classes 9-10)',
+                exam: 'BPSC TRE 2.0 (Classes 9–10)',
                 rank: 'Selected / 1st List',
                 quote:
-                  'Brainstorm Academy’s pedagogy modules and bilingual test series are leagues ahead of offline coachings in Patna. Highly recommended for all teachers.',
+                  'Brainstorm Academy’s pedagogy modules and bilingual test series are leagues ahead. The doubt clearing and practice tests made all the difference.',
                 year: '2024 Batch',
               },
               {
@@ -826,53 +836,54 @@ export default function HomePage() {
                 exam: 'CBSE Class 10 Board',
                 rank: '97.2% Aggregate',
                 quote:
-                  'The revision notes and doubt solving engine cleared all my physics and math doubts before exams. Score shot up from 78% in pre-boards to 97% in boards.',
+                  'The revision notes and practice problems cleared all my physics and math doubts before exams. My scores improved consistently every month.',
                 year: '2025 Batch',
               },
             ].map((topper, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-3xl glass-cockpit-interactive flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-xs text-[#CCFF00] font-bold">
+                    <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
                       {topper.rank}
                     </span>
-                    <span className="font-mono text-[10px] text-slate-400 uppercase glass-pill px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] text-slate-500 font-medium">
                       {topper.year}
                     </span>
                   </div>
-                  <p className="text-sm text-slate-300 leading-relaxed italic mb-6 font-sans">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic mb-6 font-sans">
                     "{topper.quote}"
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/5">
-                  <h4 className="font-display font-extrabold text-white text-sm uppercase">
+                <div className="pt-4 border-t border-slate-100">
+                  <h4 className="font-bold text-slate-900 text-sm">
                     {topper.name}
                   </h4>
-                  <span className="font-mono text-xs text-slate-400">
+                  <span className="text-xs text-slate-500">
                     {topper.exam}
                   </span>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* ======================================================== */}
-      {/* 9. FAQ ACCORDION                                         */}
+      {/* 8. FAQ ACCORDION                                         */}
       {/* ======================================================== */}
-      <section className="py-20 lg:py-28 border-b border-white/5 bg-[#060709]">
+      <section className="py-16 lg:py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             center
-            tag="FREQUENTLY ASKED QUESTIONS"
-            tagNumber="07"
-            title="EVERYTHING YOU NEED TO"
-            highlight="KNOW."
+            tag="Frequently Asked Questions"
+            tagNumber="06"
+            title="Everything You Need to"
+            highlight="Know."
             subtitle="Clear, transparent answers about our curriculum, test series, admissions, and faculty."
           />
           <FAQSection />
@@ -880,78 +891,45 @@ export default function HomePage() {
       </section>
 
       {/* ======================================================== */}
-      {/* 10. FLOATING GLASSMORPHIC CONVERSION CTA ISLAND           */}
+      {/* 9. BOTTOM CTA BANNER                                     */}
       {/* ======================================================== */}
-      <section className="py-24 lg:py-36 relative overflow-hidden">
-        {/* Hardware-optimized Glowing Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(204,255,0,0.08),transparent_50%),radial-gradient(ellipse_at_70%_50%,rgba(56,189,248,0.08),transparent_50%),radial-gradient(ellipse_at_50%_90%,rgba(139,92,246,0.08),transparent_50%)] pointer-events-none" />
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* The Glassmorphic Cockpit Island Card */}
-          <div className="glass-cockpit rounded-3xl p-8 sm:p-14 lg:p-16 text-center relative overflow-hidden shadow-[0_25px_90px_rgba(0,0,0,0.9)] border border-white/20 bg-gradient-to-b from-white/[0.08] via-white/[0.02] to-transparent backdrop-blur-3xl">
-            {/* Top Glowing Specular Glass Highlight */}
-            <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-[#CCFF00] via-[#38BDF8] to-transparent shadow-[0_0_20px_#CCFF00]" />
-            <div className="absolute top-0 left-1/3 right-1/3 h-[1px] bg-white shadow-[0_0_10px_#ffffff]" />
-
-            {/* Architectural Crosshair Corners */}
-            <span className="absolute top-3.5 left-4 font-mono text-xs text-white/30 select-none">+</span>
-            <span className="absolute top-3.5 right-4 font-mono text-xs text-white/30 select-none">+</span>
-            <span className="absolute bottom-3.5 left-4 font-mono text-xs text-white/30 select-none">+</span>
-            <span className="absolute bottom-3.5 right-4 font-mono text-xs text-white/30 select-none">+</span>
-
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill text-[#CCFF00] font-mono text-xs uppercase tracking-widest mb-6 border border-[#CCFF00]/30 shadow-[0_0_15px_rgba(204,255,0,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-              <span>SESSION 2026-27 ADMISSIONS ACTIVE</span>
-            </div>
-
-            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white mb-6 leading-tight">
-              CRACK YOUR DREAM EXAM{' '}
-              <span className="font-editorial italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#CCFF00] via-white to-[#38BDF8] normal-case block">
-                In 2026.
-              </span>
-            </h2>
-
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed font-sans">
-              Join over 14,200 ambitious aspirants preparing with precision pedagogy, interactive tests, and verified mentor guidance.
-            </p>
-
-            {/* Floating Glass Pill Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10 max-w-2xl mx-auto">
-              <span className="glass-pill px-3.5 py-1.5 rounded-full font-mono text-[11px] text-slate-200 uppercase tracking-wider flex items-center gap-1.5 border border-white/15">
-                <span className="text-[#CCFF00]">✦</span> 14,200+ Active Aspirants
-              </span>
-              <span className="glass-pill px-3.5 py-1.5 rounded-full font-mono text-[11px] text-slate-200 uppercase tracking-wider flex items-center gap-1.5 border border-white/15">
-                <span className="text-[#38BDF8]">⚡</span> 1-on-1 Doubt Engine
-              </span>
-              <span className="glass-pill px-3.5 py-1.5 rounded-full font-mono text-[11px] text-slate-200 uppercase tracking-wider flex items-center gap-1.5 border border-white/15">
-                <span className="text-[#A855F7]">🛡</span> 100% NTA & NCERT Aligned
-              </span>
-              <span className="glass-pill px-3.5 py-1.5 rounded-full font-mono text-[11px] text-slate-200 uppercase tracking-wider flex items-center gap-1.5 border border-white/15">
-                <span className="text-emerald-400">🎓</span> 450+ Verified Top Rankers
-              </span>
-            </div>
-
-            {/* High-Impact Glass CTA Actions */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to={ROUTES.REGISTER}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full bg-white text-black font-mono text-xs font-black tracking-[0.16em] uppercase hover:bg-[#CCFF00] hover:text-black transition-all shadow-[0_0_35px_rgba(255,255,255,0.3)] hover:shadow-[0_0_45px_rgba(204,255,0,0.6)] cursor-pointer"
-              >
-                <span>CREATE FREE ACCOUNT</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <Link
-                to={ROUTES.MOCK_TESTS}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full glass-pill hover:border-white/50 text-white font-mono text-xs tracking-[0.16em] uppercase font-bold transition-all cursor-pointer border border-white/20"
-              >
-                <span>START FREE MOCK TEST</span>
-                <ArrowUpRight className="w-4 h-4 text-[#CCFF00]" />
-              </Link>
-            </div>
+      <section className="py-16 lg:py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium uppercase tracking-wider mb-6">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span>Admissions Active for 2026–27 Session</span>
           </div>
+
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+            Start Your Academic Journey Today
+          </h2>
+
+          <p className="text-blue-100 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed font-sans">
+            Join thousands of students and teachers already learning, testing, and achieving top ranks with Brainstorm Academy.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <Link
+              to={ROUTES.REGISTER}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-white text-blue-700 font-semibold text-xs sm:text-sm shadow-md hover:bg-slate-50 transition-colors"
+            >
+              <span>Create Free Student Account</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <Link
+              to={ROUTES.MOCK_TESTS}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-blue-800/80 hover:bg-blue-800 text-white border border-blue-400/40 font-semibold text-xs sm:text-sm transition-colors"
+            >
+              <span>Take Free Mock Test</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+
         </div>
       </section>
+
     </div>
   );
 }
