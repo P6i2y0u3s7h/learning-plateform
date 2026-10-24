@@ -258,28 +258,30 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 text-slate-800 transition-all duration-300 ${
-        scrolled ? 'shadow-xs' : ''
-      }`}>
-        <div className="max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20 gap-3 w-full min-w-0">
+      <header
+        className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md transition-all duration-200 motion-reduce:transition-none border-b ${
+          scrolled ? 'border-slate-200/90 shadow-xs' : 'border-slate-100 shadow-none'
+        }`}
+      >
+        <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
+          <div className="flex items-center justify-between h-18 sm:h-20 gap-4 sm:gap-6 w-full min-w-0">
             
-            {/* 1. Left: Brand Wordmark & Logo */}
+            {/* 1. Left Section: Branding */}
             <div className="flex items-center justify-start flex-shrink-0">
               <Link 
                 to={ROUTES.HOME} 
-                className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 group py-1"
+                className="flex items-center gap-3 group py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-xl transition-all duration-200 motion-reduce:transition-none"
                 aria-label="Brainstorm Academy Homepage"
               >
-                <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden group-hover:border-blue-400 group-hover:shadow-sm transition-all duration-300 flex-shrink-0">
+                <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E2E8F0] shadow-xs flex items-center justify-center overflow-hidden group-hover:border-blue-400 group-hover:shadow-sm transition-all duration-200 motion-reduce:transition-none flex-shrink-0">
                   <img 
                     src={brandLogo} 
                     alt="Brainstorm Academy Logo" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200 motion-reduce:transition-none"
                   />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <div className="flex items-center gap-1 leading-tight">
+                  <div className="flex items-baseline gap-1 leading-tight">
                     <span className="font-display font-bold text-slate-900 text-base sm:text-lg tracking-tight">
                       Brainstorm
                     </span>
@@ -287,17 +289,17 @@ export const Navbar: React.FC = () => {
                       Academy.
                     </span>
                   </div>
-                  <span className="font-sans text-[10px] text-slate-500 font-medium tracking-wider uppercase block -mt-0.5 hidden min-[440px]:block">
-                    Learn Today. Lead Tomorrow.
+                  <span className="font-sans text-[9.5px] sm:text-[10px] text-slate-400 font-semibold tracking-wider uppercase block -mt-0.5 hidden min-[440px]:block">
+                    LEARN TODAY. LEAD TOMORROW.
                   </span>
                 </div>
               </Link>
             </div>
 
-            {/* 2. Center: Navigation Items */}
-            <div className="hidden xl:flex items-center justify-center flex-1 min-w-0 px-4">
+            {/* 2. Center Section: Navigation Menu */}
+            <div className="hidden lg:flex items-center justify-center flex-1 min-w-0 px-2 xl:px-6">
               <nav 
-                className="flex items-center gap-1 p-1 rounded-full bg-slate-100/80 border border-slate-200/80 transition-all"
+                className="flex items-center gap-1 p-1.5 rounded-full bg-[#F3F6FA] border border-[#E2E8F0] shadow-xs transition-all duration-200 motion-reduce:transition-none"
                 aria-label="Main Navigation"
               >
                 {NAV_ITEMS.map((item) => (
@@ -305,10 +307,10 @@ export const Navbar: React.FC = () => {
                     key={item.path}
                     to={item.path}
                     className={({ isActive }) =>
-                      `px-3.5 py-1.5 rounded-full text-xs font-sans font-semibold transition-all duration-150 whitespace-nowrap ${
+                      `relative px-3.5 py-1.5 rounded-full text-xs font-sans transition-all duration-200 ease-out motion-reduce:transition-none whitespace-nowrap cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                         isActive
-                          ? 'bg-blue-600 text-white shadow-xs'
-                          : 'text-slate-600 hover:text-blue-600 hover:bg-white/60'
+                          ? 'bg-white text-blue-600 font-semibold shadow-xs border border-slate-200/70'
+                          : 'text-[#334155] hover:text-blue-600 hover:bg-white/70 font-medium'
                       }`
                     }
                   >
@@ -318,14 +320,14 @@ export const Navbar: React.FC = () => {
               </nav>
             </div>
 
-            {/* 3. Right: Action Controls (Search + User Menu + Hamburger) */}
-            <div className="flex items-center justify-end gap-2 sm:gap-2.5 flex-shrink-0">
+            {/* 3. Right Section: Action Controls (Search + Sign In / User Profile + Mobile Toggle) */}
+            <div className="flex items-center justify-end gap-2.5 sm:gap-3 flex-shrink-0">
               
-              {/* Search Icon Button */}
+              {/* Circular Search Icon Button */}
               <button
                 type="button"
                 onClick={() => setSpotlightOpen(true)}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-600 transition-all cursor-pointer shadow-xs active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 text-slate-600 hover:text-blue-600 transition-all duration-200 ease-out motion-reduce:transition-none cursor-pointer shadow-xs hover:shadow-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0"
                 aria-label="Open search (Ctrl+K or ⌘K)"
                 title="Search (⌘K)"
               >
@@ -338,7 +340,7 @@ export const Navbar: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setUserMenuOpen((prev) => !prev)}
-                    className="flex items-center gap-2 h-10 px-3 rounded-full bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors flex-shrink-0 cursor-pointer"
+                    className="flex items-center gap-2 h-10 px-3 rounded-full bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 transition-all duration-200 ease-out motion-reduce:transition-none flex-shrink-0 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                     aria-expanded={userMenuOpen}
                     aria-label="User Account Menu"
                   >
@@ -358,7 +360,7 @@ export const Navbar: React.FC = () => {
 
                   {/* Dropdown Menu Modal */}
                   {userMenuOpen && (
-                    <div className="absolute right-0 top-12 w-72 bg-white border border-slate-200 rounded-2xl p-4 shadow-xl z-50 text-slate-800 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="absolute right-0 top-12 w-72 bg-white border border-[#E2E8F0] rounded-2xl p-4 shadow-xl z-50 text-slate-800 animate-in fade-in zoom-in-95 duration-150">
                       {/* User Info Header */}
                       <div className="flex items-center gap-3 pb-3 border-b border-slate-100 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-blue-600 text-white font-sans font-bold text-base flex items-center justify-center flex-shrink-0 shadow-xs">
@@ -384,7 +386,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/teacher"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <LayoutDashboard className="w-4 h-4 text-blue-600" />
                               <span>Teacher Overview</span>
@@ -392,7 +394,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/teacher/materials"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <BookOpen className="w-4 h-4 text-slate-400" />
                               <span>Study Materials</span>
@@ -400,7 +402,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/teacher/tests"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <ClipboardList className="w-4 h-4 text-slate-400" />
                               <span>Test Management</span>
@@ -411,7 +413,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/admin"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <LayoutDashboard className="w-4 h-4 text-blue-600" />
                               <span>Admin Overview</span>
@@ -419,7 +421,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/admin/teachers"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <User className="w-4 h-4 text-slate-400" />
                               <span>Teacher Directory</span>
@@ -427,7 +429,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/admin/students"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <BookOpen className="w-4 h-4 text-slate-400" />
                               <span>Student Directory</span>
@@ -438,7 +440,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to={getDashboardPath()}
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <LayoutDashboard className="w-4 h-4 text-blue-600" />
                               <span>Student Dashboard</span>
@@ -446,7 +448,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/student/courses"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <BookOpen className="w-4 h-4 text-slate-400" />
                               <span>My Enrolled Courses</span>
@@ -454,7 +456,7 @@ export const Navbar: React.FC = () => {
                             <Link
                               to="/dashboard/student/profile"
                               onClick={() => setUserMenuOpen(false)}
-                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[#334155] hover:bg-[#F3F6FA] hover:text-blue-600 transition-colors"
                             >
                               <User className="w-4 h-4 text-slate-400" />
                               <span>Student Profile</span>
@@ -482,21 +484,12 @@ export const Navbar: React.FC = () => {
                       </div>
                     </div>
                   )}
-
-                  {/* Quick Direct Portal Link */}
-                  <Link
-                    to={getDashboardPath()}
-                    className="inline-flex items-center gap-1.5 h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-semibold transition-all flex-shrink-0 whitespace-nowrap shadow-xs"
-                  >
-                    <LayoutDashboard className="w-3.5 h-3.5" />
-                    <span>Dashboard</span>
-                  </Link>
                 </div>
               ) : (
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <Link
                     to={ROUTES.LOGIN}
-                    className="inline-flex items-center justify-center gap-1.5 h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-semibold transition-all shadow-xs cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 h-10 px-4 sm:px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-semibold shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 flex-shrink-0"
                   >
                     <LogIn className="w-3.5 h-3.5" />
                     <span>Sign In</span>
@@ -508,7 +501,7 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="xl:hidden h-10 w-10 rounded-xl flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors cursor-pointer flex-shrink-0 ml-1"
+                className="lg:hidden h-10 w-10 rounded-xl flex items-center justify-center text-slate-700 hover:text-blue-600 bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 transition-all duration-200 ease-out motion-reduce:transition-none cursor-pointer shadow-xs active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0 ml-1"
                 aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileOpen}
               >
@@ -522,7 +515,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation Drawer */}
         {mobileOpen && (
-          <div className="xl:hidden border-t border-slate-200 bg-white px-4 pt-4 pb-8 space-y-4 animate-in fade-in slide-in-from-top-2 max-h-[calc(100vh-5rem)] overflow-y-auto text-slate-800 shadow-lg">
+          <div className="lg:hidden border-t border-[#E2E8F0] bg-white px-4 pt-4 pb-8 space-y-4 animate-in fade-in slide-in-from-top-2 max-h-[calc(100vh-5rem)] overflow-y-auto text-slate-800 shadow-lg">
             {/* Quick Search Action */}
             <button
               type="button"
@@ -530,13 +523,13 @@ export const Navbar: React.FC = () => {
                 setMobileOpen(false);
                 setSpotlightOpen(true);
               }}
-              className="w-full flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 text-xs hover:border-blue-400 transition-all cursor-pointer"
+              className="w-full flex items-center justify-between p-3 rounded-xl bg-[#F3F6FA] border border-[#E2E8F0] text-slate-500 text-xs hover:border-blue-400 transition-all cursor-pointer"
             >
               <div className="flex items-center gap-2.5">
                 <Search className="w-4 h-4 text-blue-600" />
                 <span className="font-sans">Search courses, exams, tests...</span>
               </div>
-              <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-[10px] text-slate-400 font-mono">⌘K</span>
+              <span className="px-2 py-0.5 rounded-md bg-white border border-[#E2E8F0] text-[10px] text-slate-400 font-mono">⌘K</span>
             </button>
 
             {/* Navigation Links */}
@@ -552,7 +545,7 @@ export const Navbar: React.FC = () => {
                       `flex items-center justify-between p-3 rounded-xl font-sans text-xs font-semibold transition-all ${
                         isActive
                           ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                          : 'text-slate-700 hover:bg-slate-50'
+                          : 'text-[#334155] hover:bg-[#F3F6FA]'
                       }`
                     }
                   >
@@ -570,7 +563,7 @@ export const Navbar: React.FC = () => {
             <div className="pt-4 border-t border-slate-100">
               {user ? (
                 <div className="space-y-2">
-                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+                  <div className="p-3 bg-[#F3F6FA] border border-[#E2E8F0] rounded-xl flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-sans font-bold text-xs flex items-center justify-center">
                         {userProfile?.displayName ? userProfile.displayName[0].toUpperCase() : 'U'}
@@ -603,7 +596,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     to={ROUTES.LOGIN}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-blue-600 text-white font-sans text-xs font-semibold shadow-xs"
+                    className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-semibold shadow-xs transition-colors"
                   >
                     <LogIn className="w-3.5 h-3.5" />
                     <span>Sign In</span>
@@ -611,7 +604,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     to={ROUTES.REGISTER}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 font-sans text-xs font-semibold hover:bg-slate-50"
+                    className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-slate-700 font-sans text-xs font-semibold hover:bg-slate-50 transition-colors"
                   >
                     <span>Register</span>
                     <ArrowRight className="w-3 h-3" />
