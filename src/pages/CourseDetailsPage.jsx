@@ -217,8 +217,8 @@ export default function CourseDetailsPage() {
           {/* Main Content (Left 2 cols) */}
           <div className="lg:col-span-2 space-y-8">
             {/* Header Card (EduCore Theme) */}
-            <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-sm relative">
-              <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-sm relative">
+              <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
                 <span className="text-[11px] font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
                   {course.subjectName || 'General'}
                 </span>
@@ -239,16 +239,16 @@ export default function CourseDetailsPage() {
                 )}
               </div>
 
-              <h1 className="font-extrabold text-slate-900 text-2xl sm:text-3xl lg:text-4xl mb-4 leading-tight tracking-tight">
+              <h1 className="font-extrabold text-slate-900 text-xl sm:text-3xl lg:text-4xl mb-3 sm:mb-4 leading-tight tracking-tight">
                 {course.title}
               </h1>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+              <p className="text-slate-600 text-xs sm:text-base leading-relaxed mb-6">
                 {course.description}
               </p>
 
               {/* Course Metrics HUD Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-100 text-xs">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 py-4 border-y border-slate-100 text-xs">
                 <div>
                   <p className="text-[10px] text-slate-400 uppercase font-semibold">Chapters</p>
                   <p className="font-bold text-slate-900 mt-0.5">{chapters.length || course.totalChapters || 8} Modules</p>
@@ -267,20 +267,20 @@ export default function CourseDetailsPage() {
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3 text-xs">
-                <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+                <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50 px-2.5 sm:px-3 py-1.5 rounded-full border border-emerald-200 text-[11px] sm:text-xs">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                   <span className="font-medium">NCERT Aligned & Exam Oriented</span>
                 </div>
-                <div className="flex items-center gap-2 text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                <div className="flex items-center gap-2 text-blue-700 bg-blue-50 px-2.5 sm:px-3 py-1.5 rounded-full border border-blue-200 text-[11px] sm:text-xs">
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
                   <span className="font-medium">Notes & CBT Tests Included</span>
                 </div>
               </div>
             </div>
 
             {/* Navigation Tabs */}
-            <div className="flex border-b border-slate-200 gap-3 text-xs">
+            <div className="flex border-b border-slate-200 gap-1.5 sm:gap-3 text-xs overflow-x-auto no-scrollbar">
               {[
                 { id: 'curriculum', num: '01', label: `Syllabus (${chapters.length} Modules)` },
                 { id: 'materials', num: '02', label: `Study Notes (${materials.length})` },
@@ -289,7 +289,7 @@ export default function CourseDetailsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`py-3 px-4 font-semibold border-b-2 transition cursor-pointer ${
+                  className={`py-2.5 sm:py-3 px-3 sm:px-4 font-semibold border-b-2 transition cursor-pointer whitespace-nowrap ${
                     activeTab === tab.id
                       ? 'border-blue-600 text-blue-600'
                       : 'border-transparent text-slate-500 hover:text-slate-900'

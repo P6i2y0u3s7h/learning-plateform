@@ -67,20 +67,20 @@ export default function AmuJamiaPage() {
         </div>
 
         {/* Header Hero Banner (EduCore Theme) */}
-        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/40 border border-blue-200/80 rounded-3xl p-8 sm:p-12 mb-12 relative overflow-hidden shadow-sm">
+        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/40 border border-blue-200/80 rounded-2xl sm:rounded-3xl p-5 sm:p-12 mb-8 sm:mb-12 relative overflow-hidden shadow-sm">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mb-4">
             <span className="w-2 h-2 rounded-full bg-blue-600" />
             <span>Central University Entrance Blueprint</span>
           </div>
 
-          <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4 text-slate-900">
+          <h1 className="font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight mb-3 sm:mb-4 text-slate-900 leading-tight">
             AMU & Jamia Millia{' '}
             <span className="text-blue-600">
               Entrance Preparation.
             </span>
           </h1>
 
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl leading-relaxed mb-8">
+          <p className="text-slate-600 text-xs sm:text-base max-w-2xl leading-relaxed mb-6 sm:mb-8">
             Specialized coaching for Aligarh Muslim University (AMU) & Jamia Millia Islamia (JMI) Class 9, Class 11 (Science, Commerce, Arts), and Diploma Engineering entrance examinations.
           </p>
 

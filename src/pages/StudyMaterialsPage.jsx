@@ -132,27 +132,27 @@ export default function StudyMaterialsPage() {
         </div>
 
         {/* Hero Header (EduCore Theme) */}
-        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/40 border border-blue-200/80 rounded-3xl p-8 sm:p-12 mb-10 relative overflow-hidden shadow-sm">
+        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/40 border border-blue-200/80 rounded-2xl sm:rounded-3xl p-5 sm:p-12 mb-8 sm:mb-10 relative overflow-hidden shadow-sm">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mb-4">
             <span className="w-2 h-2 rounded-full bg-blue-600" />
             <span>Curated Digital Academic Repository</span>
           </div>
 
-          <h1 className="font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4 text-slate-900">
+          <h1 className="font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight mb-3 sm:mb-4 text-slate-900 leading-tight">
             High-Yield Notes &{' '}
             <span className="text-blue-600">
               Study Blueprints.
             </span>
           </h1>
 
-          <p className="text-slate-600 text-sm sm:text-base max-w-2xl leading-relaxed mb-6">
+          <p className="text-slate-600 text-xs sm:text-base max-w-2xl leading-relaxed mb-4 sm:mb-6">
             Access chapter notes, formula sheets, NCERT solutions, previous 10-year question banks, and concise revision summaries designed for academic excellence.
           </p>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-5 mb-8 shadow-sm space-y-4">
-          <div className="flex flex-col md:flex-row gap-4 justify-between items-center">
+        <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-5 mb-8 shadow-sm space-y-4">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 justify-between items-stretch sm:items-center">
             {/* Search Field */}
             <div className="relative w-full md:w-96">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />

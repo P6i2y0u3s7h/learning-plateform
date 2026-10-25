@@ -146,21 +146,21 @@ export default function HomePage() {
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1E3A8A] tracking-tight leading-[1.12] mb-6">
+              <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1E3A8A] tracking-tight leading-[1.15] mb-4 sm:mb-6">
                 Learn Today.{' '}
                 <span className="text-[#2563EB] block sm:inline">Lead Tomorrow.</span>
               </h1>
 
               {/* Supporting Text */}
-              <p className="text-base sm:text-lg text-slate-600 font-sans leading-relaxed mb-8 max-w-xl">
+              <p className="text-sm sm:text-lg text-slate-600 font-sans leading-relaxed mb-6 sm:mb-8 max-w-xl">
                 Your complete learning platform for school courses, competitive exams, university entrance preparation, and mock tests.
               </p>
 
               {/* Prominent Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 mb-8 sm:mb-10">
                 <a
                   href="#courses"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-sans text-sm font-semibold transition-all shadow-sm hover:shadow-md active:scale-98"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-sans text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow-md active:scale-98"
                 >
                   <span>Explore Courses</span>
                   <ArrowRight className="w-4 h-4" />
@@ -168,7 +168,7 @@ export default function HomePage() {
 
                 <Link
                   to={ROUTES.REGISTER}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-sans text-sm font-semibold transition-all shadow-xs active:scale-98"
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-sans text-xs sm:text-sm font-semibold transition-all shadow-xs active:scale-98"
                 >
                   <span>Start Learning</span>
                   <ArrowUpRight className="w-4 h-4 text-blue-600" />
@@ -176,18 +176,18 @@ export default function HomePage() {
               </div>
 
               {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-slate-200/80">
                 <div>
-                  <p className="text-2xl font-bold font-display text-slate-900">14,200+</p>
-                  <p className="text-xs text-slate-500 font-medium mt-0.5">Enrolled Students</p>
+                  <p className="text-xl sm:text-2xl font-bold font-display text-slate-900">14,200+</p>
+                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">Enrolled Students</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold font-display text-blue-600">98%</p>
-                  <p className="text-xs text-slate-500 font-medium mt-0.5">Exam Pass Rate</p>
+                  <p className="text-xl sm:text-2xl font-bold font-display text-blue-600">98%</p>
+                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">Exam Pass Rate</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold font-display text-emerald-600">450+</p>
-                  <p className="text-xs text-slate-500 font-medium mt-0.5">Merit Rankers</p>
+                  <p className="text-xl sm:text-2xl font-bold font-display text-emerald-600">450+</p>
+                  <p className="text-[11px] sm:text-xs text-slate-500 font-medium mt-0.5">Merit Rankers</p>
                 </div>
               </div>
 
@@ -195,7 +195,7 @@ export default function HomePage() {
 
             {/* Right Column: Interactive Academic Spotlight Card */}
             <div className="lg:col-span-5">
-              <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-7 shadow-md relative overflow-hidden">
+              <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-4 sm:p-7 shadow-md relative overflow-hidden">
                 {/* Decorative top accent */}
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-400" />
 
@@ -531,7 +531,7 @@ export default function HomePage() {
             subtitle="Configure your target exam and daily study commitment to calculate your projected percentile and time to full syllabus mastery."
           />
 
-          <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-4 sm:p-10 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
             
             {/* Input Controls */}
             <div className="lg:col-span-7 space-y-6">
@@ -539,7 +539,7 @@ export default function HomePage() {
                 <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2.5">
                   1. Select Target Examination
                 </label>
-                <div className="grid grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-1 min-[420px]:grid-cols-3 gap-2 sm:gap-2.5">
                   {[
                     { id: 'bpsc', label: 'BPSC TRE 4.0' },
                     { id: 'amu', label: 'AMU & Jamia' },

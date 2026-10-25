@@ -66,11 +66,11 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="mt-auto bg-white text-slate-700 pt-16 pb-12 border-t border-slate-200 shadow-xs">
+    <footer className="mt-auto bg-white text-slate-700 pt-10 sm:pt-16 pb-8 sm:pb-12 border-t border-slate-200 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Status & Telemetry Bar */}
-        <div className="pb-8 mb-10 border-b border-slate-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="pb-6 sm:pb-8 mb-8 sm:mb-10 border-b border-slate-200/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
               <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
@@ -265,9 +265,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright Strip */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
           <p>© {new Date().getFullYear()} Brainstorm Academy. Learn Today. Lead Tomorrow. All Rights Reserved.</p>
-          <div className="flex items-center gap-4 font-medium">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 font-medium">
             <Link to={ROUTES.SCHOOL_COURSES} className="hover:text-blue-600 transition-colors">Courses</Link>
             <Link to={ROUTES.MOCK_TESTS} className="hover:text-blue-600 transition-colors">Mock Tests</Link>
             <Link to={ROUTES.STUDY_MATERIALS} className="hover:text-blue-600 transition-colors">Study Notes</Link>

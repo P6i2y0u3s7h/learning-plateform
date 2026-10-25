@@ -220,21 +220,21 @@ export default function DashboardSidebar({ role = 'student', user = {} }) {
   return (
     <>
       {/* Mobile Hamburger Toggle Header */}
-      <div className="lg:hidden fixed top-3 left-4 z-50">
+      <div className="lg:hidden fixed top-2.5 left-2.5 sm:left-3 z-50">
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-xl bg-white text-slate-800 border border-slate-200 shadow-md cursor-pointer"
+          className="p-1.5 sm:p-2 rounded-xl bg-white text-slate-800 border border-slate-200 shadow-md cursor-pointer hover:bg-slate-50 transition-colors"
           aria-label="Toggle Dashboard Menu"
         >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
         </button>
       </div>
 
       {/* Mobile Backdrop & Drawer */}
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-xs">
-          <div className="fixed inset-y-0 left-0 w-72 h-full z-50 animate-in slide-in-from-left duration-200 shadow-2xl">
+          <div className="fixed inset-y-0 left-0 w-72 max-w-[85vw] h-full z-50 animate-in slide-in-from-left duration-200 shadow-2xl">
             {renderContent(true)}
           </div>
           <div className="w-full h-full" onClick={() => setMobileOpen(false)} />

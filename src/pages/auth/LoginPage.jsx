@@ -105,14 +105,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
-      <div className="max-w-md w-full space-y-6 bg-white border border-slate-200 p-7 sm:p-9 rounded-2xl shadow-sm relative z-10 text-slate-900">
+    <div className="min-h-[85vh] flex items-center justify-center py-8 sm:py-12 px-3 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
+      <div className="max-w-md w-full space-y-5 sm:space-y-6 bg-white border border-slate-200 p-5 sm:p-9 rounded-2xl shadow-sm relative z-10 text-slate-900">
         
         {/* Top Status Strip */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs font-semibold uppercase tracking-wider text-slate-500">
+        <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 text-xs font-semibold uppercase tracking-wider text-slate-500">
           <div className="flex items-center gap-1.5 text-blue-600">
             <span className="w-2 h-2 rounded-full bg-blue-600" />
-            <span>
+            <span className="text-[11px] sm:text-xs">
               {activePortal === 'admin'
                 ? 'Administrator Portal'
                 : activePortal === 'teacher'
@@ -120,11 +120,11 @@ export default function LoginPage() {
                 : 'Student Portal'}
             </span>
           </div>
-          <span className="text-emerald-600 font-medium">Secure Login</span>
+          <span className="text-emerald-600 font-medium text-[11px] sm:text-xs">Secure Login</span>
         </div>
 
         {/* Portal Switcher Tabs: Student vs Teacher vs Admin */}
-        <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl">
+        <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl text-xs">
           <button
             type="button"
             onClick={() => {
@@ -134,7 +134,7 @@ export default function LoginPage() {
               setAuthError('');
               setErrors({});
             }}
-            className={`py-2 px-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+            className={`py-2 px-1.5 sm:px-2 rounded-lg text-[11px] sm:text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all cursor-pointer ${
               activePortal === 'student'
                 ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'

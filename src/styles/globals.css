@@ -61,6 +61,7 @@ html {
   -webkit-text-size-adjust: 100%;
   background-color: #F8FAFC;
   color: #111827;
+  overflow-x: hidden;
 }
 
 body {
@@ -69,10 +70,12 @@ body {
   color: #111827;
   line-height: 1.6;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
@@ -84,8 +87,21 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: #F8FAFC;
   color: #111827;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* EduCore Label & Heading Utilities */

@@ -263,33 +263,33 @@ export const Navbar: React.FC = () => {
           scrolled ? 'border-slate-200/90 shadow-xs' : 'border-slate-100 shadow-none'
         }`}
       >
-        <div className="max-w-[1720px] w-full mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-18 sm:h-20 gap-4 sm:gap-6 w-full min-w-0">
+        <div className="max-w-[1720px] w-full mx-auto px-3 sm:px-6 md:px-8 xl:px-12">
+          <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-6 w-full min-w-0">
             
             {/* 1. Left Section: Branding */}
-            <div className="flex items-center justify-start flex-shrink-0">
+            <div className="flex items-center justify-start flex-shrink-0 min-w-0">
               <Link 
                 to={ROUTES.HOME} 
-                className="flex items-center gap-3 group py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-xl transition-all duration-200 motion-reduce:transition-none"
+                className="flex items-center gap-2 sm:gap-3 group py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-xl transition-all duration-200 motion-reduce:transition-none"
                 aria-label="Brainstorm Academy Homepage"
               >
-                <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-[#E2E8F0] shadow-xs flex items-center justify-center overflow-hidden group-hover:border-blue-400 group-hover:shadow-sm transition-all duration-200 motion-reduce:transition-none flex-shrink-0">
+                <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white border border-[#E2E8F0] shadow-xs flex items-center justify-center overflow-hidden group-hover:border-blue-400 group-hover:shadow-sm transition-all duration-200 motion-reduce:transition-none flex-shrink-0">
                   <img 
                     src={brandLogo} 
                     alt="Brainstorm Academy Logo" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200 motion-reduce:transition-none"
                   />
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center min-w-0">
                   <div className="flex items-baseline gap-1 leading-tight">
-                    <span className="font-display font-bold text-slate-900 text-base sm:text-lg tracking-tight">
+                    <span className="font-display font-bold text-slate-900 text-sm sm:text-lg tracking-tight">
                       Brainstorm
                     </span>
-                    <span className="font-display font-bold text-blue-600 text-base sm:text-lg tracking-tight">
+                    <span className="font-display font-bold text-blue-600 text-sm sm:text-lg tracking-tight">
                       Academy.
                     </span>
                   </div>
-                  <span className="font-sans text-[9.5px] sm:text-[10px] text-slate-400 font-semibold tracking-wider uppercase block -mt-0.5 hidden min-[440px]:block">
+                  <span className="font-sans text-[9px] sm:text-[10px] text-slate-400 font-semibold tracking-wider uppercase block -mt-0.5 hidden min-[520px]:block">
                     LEARN TODAY. LEAD TOMORROW.
                   </span>
                 </div>
@@ -321,26 +321,26 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* 3. Right Section: Action Controls (Search + Sign In / User Profile + Mobile Toggle) */}
-            <div className="flex items-center justify-end gap-2.5 sm:gap-3 flex-shrink-0">
+            <div className="flex items-center justify-end gap-1.5 sm:gap-3 flex-shrink-0">
               
               {/* Circular Search Icon Button */}
               <button
                 type="button"
                 onClick={() => setSpotlightOpen(true)}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 text-slate-600 hover:text-blue-600 transition-all duration-200 ease-out motion-reduce:transition-none cursor-pointer shadow-xs hover:shadow-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 text-slate-600 hover:text-blue-600 transition-all duration-200 ease-out motion-reduce:transition-none cursor-pointer shadow-xs hover:shadow-sm active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0"
                 aria-label="Open search (Ctrl+K or ⌘K)"
                 title="Search (⌘K)"
               >
-                <Search className="w-4 h-4" />
+                <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
 
               {/* Desktop Auth Actions & User Profile */}
               {user ? (
-                <div className="flex items-center gap-2 flex-shrink-0 relative" ref={userMenuRef}>
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 relative" ref={userMenuRef}>
                   <button
                     type="button"
                     onClick={() => setUserMenuOpen((prev) => !prev)}
-                    className="flex items-center gap-2 h-10 px-3 rounded-full bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 transition-all duration-200 ease-out motion-reduce:transition-none flex-shrink-0 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    className="flex items-center gap-1.5 sm:gap-2 h-9 sm:h-10 px-2 sm:px-3 rounded-full bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 transition-all duration-200 ease-out motion-reduce:transition-none flex-shrink-0 cursor-pointer shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                     aria-expanded={userMenuOpen}
                     aria-label="User Account Menu"
                   >
@@ -360,7 +360,7 @@ export const Navbar: React.FC = () => {
 
                   {/* Dropdown Menu Modal */}
                   {userMenuOpen && (
-                    <div className="absolute right-0 top-12 w-72 bg-white border border-[#E2E8F0] rounded-2xl p-4 shadow-xl z-50 text-slate-800 animate-in fade-in zoom-in-95 duration-150">
+                    <div className="absolute right-0 top-11 sm:top-12 w-[calc(100vw-24px)] max-w-xs sm:w-72 bg-white border border-[#E2E8F0] rounded-2xl p-4 shadow-xl z-50 text-slate-800 animate-in fade-in zoom-in-95 duration-150">
                       {/* User Info Header */}
                       <div className="flex items-center gap-3 pb-3 border-b border-slate-100 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-blue-600 text-white font-sans font-bold text-base flex items-center justify-center flex-shrink-0 shadow-xs">
@@ -489,7 +489,7 @@ export const Navbar: React.FC = () => {
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <Link
                     to={ROUTES.LOGIN}
-                    className="inline-flex items-center justify-center gap-2 h-10 px-4 sm:px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-semibold shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 flex-shrink-0"
+                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 h-9 sm:h-10 px-2.5 sm:px-5 rounded-lg sm:rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-sans text-xs font-semibold shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 ease-out motion-reduce:transition-none motion-reduce:transform-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 flex-shrink-0"
                   >
                     <LogIn className="w-3.5 h-3.5" />
                     <span>Sign In</span>
@@ -501,11 +501,11 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden h-10 w-10 rounded-xl flex items-center justify-center text-slate-700 hover:text-blue-600 bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 transition-all duration-200 ease-out motion-reduce:transition-none cursor-pointer shadow-xs active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0 ml-1"
+                className="lg:hidden h-9 w-9 sm:h-10 sm:w-10 rounded-lg sm:rounded-xl flex items-center justify-center text-slate-700 hover:text-blue-600 bg-white hover:bg-[#F3F6FA] border border-[#E2E8F0] hover:border-blue-300 transition-all duration-200 ease-out motion-reduce:transition-none cursor-pointer shadow-xs active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 flex-shrink-0 ml-0.5 sm:ml-1"
                 aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {mobileOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
 
             </div>
@@ -672,7 +672,7 @@ export const Navbar: React.FC = () => {
             </form>
 
             {/* Filter Category Chips */}
-            <div className="px-4 sm:px-6 py-2.5 border-b border-slate-100 flex items-center gap-2 bg-slate-50/70 overflow-x-auto">
+            <div className="px-3 sm:px-6 py-2.5 border-b border-slate-100 flex items-center gap-1.5 sm:gap-2 bg-slate-50/70 overflow-x-auto no-scrollbar flex-nowrap">
               {[
                 { id: 'all', label: 'All Courses', count: filterCounts.all },
                 { id: 'school', label: 'School (6–12)', count: filterCounts.school },

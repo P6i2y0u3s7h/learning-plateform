@@ -64,15 +64,15 @@ export default function ClassPage() {
       </div>
 
       {/* Header */}
-      <div className="bg-[#17365D] rounded-3xl p-8 mb-10 text-white shadow-lg">
+      <div className="bg-[#17365D] rounded-2xl sm:rounded-3xl p-5 sm:p-8 mb-8 sm:mb-10 text-white shadow-lg">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-          <div className="w-16 h-16 rounded-2xl bg-[#F4B942] flex items-center justify-center flex-shrink-0">
-            <BookOpen className="w-8 h-8 text-[#17365D]" />
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-[#F4B942] flex items-center justify-center flex-shrink-0">
+            <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-[#17365D]" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-[#F4B942] text-xs font-bold uppercase tracking-wider mb-1">NCERT & State Board</p>
-            <h1 className="font-display font-black text-3xl sm:text-4xl mb-2">{label} Curriculum</h1>
-            <p className="text-blue-200 text-sm sm:text-base max-w-xl leading-relaxed">
+            <p className="text-[#F4B942] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-1">NCERT & State Board</p>
+            <h1 className="font-display font-black text-2xl sm:text-4xl mb-2">{label} Curriculum</h1>
+            <p className="text-blue-200 text-xs sm:text-base max-w-xl leading-relaxed">
               Complete syllabus coverage for {label} with chapter-wise video lectures, exemplar problems, notes, and term assessments.
             </p>
           </div>

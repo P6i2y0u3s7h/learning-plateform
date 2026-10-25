@@ -101,21 +101,21 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[90vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
-      <div className="max-w-xl w-full space-y-6 bg-white border border-slate-200 p-7 sm:p-10 rounded-2xl shadow-sm relative z-10 text-slate-900">
+    <div className="min-h-[90vh] flex items-center justify-center py-8 sm:py-12 px-3 sm:px-6 lg:px-8 bg-[#F8FAFC] relative">
+      <div className="max-w-xl w-full space-y-5 sm:space-y-6 bg-white border border-slate-200 p-5 sm:p-10 rounded-2xl shadow-sm relative z-10 text-slate-900">
         
         {/* Top Status Strip */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs font-semibold text-slate-500 uppercase tracking-wide">
+        <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 text-xs font-semibold text-slate-500 uppercase tracking-wide">
           <div className="flex items-center gap-1.5 text-blue-600">
             <span className="w-2 h-2 rounded-full bg-blue-600" />
-            <span>Student Enrollment Portal</span>
+            <span className="text-[11px] sm:text-xs">Student Enrollment Portal</span>
           </div>
-          <span>Session 2026–27</span>
+          <span className="text-[11px] sm:text-xs">Session 2026–27</span>
         </div>
 
         {/* Brand Header */}
         <div className="text-left pt-1">
-          <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-3xl text-slate-900 tracking-tight leading-tight">
             Create Student Account
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
